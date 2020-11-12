@@ -1,11 +1,6 @@
 import { signin, signout, useSession } from 'next-auth/client'
 import styles from './nav.module.css'
 
-/**
- * The approach used in this component shows how to built a sign in and sign out
- * component that works on pages which support both client and server side
- * rendering, and avoids any flash incorrect content on initial page load.
- **/
 const Nav = () => {
   const [session, loading] = useSession()
 
