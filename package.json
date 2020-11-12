@@ -1,6 +1,9 @@
 {
-  "name": "with-next-auth",
-  "version": "1.0.0",
+  "name": "kalabam",
+  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
+  "version": "0.1.0",
+  "author": "chr-ge",
+  "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -8,6 +11,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@chakra-ui/icons": "^1.0.0-next.3",
+    "@emotion/styled": "^11.0.0",
+    "emotion-theming": "^11.0.0",
+    "framer-motion": "^2.9.4",
     "next": "latest",
     "next-auth": "^3.1.0",
     "react": "^16.13.1",
