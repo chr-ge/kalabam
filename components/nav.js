@@ -1,56 +1,64 @@
-import { signin, signout, useSession } from 'next-auth/client'
-import styles from './nav.module.css'
+import { signin, signout, useSession } from "next-auth/client";
+import { Avatar, Box, Flex, Heading, Button } from "@chakra-ui/core";
 
 const Nav = () => {
-  const [session, loading] = useSession()
+  const [session, loading] = useSession();
 
   return (
     <nav>
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
-      <p
-        className={`nojs-show ${
-          !session && loading ? styles.loading : styles.loaded
-        }`}
+      <Flex
+        align="center"
+        justify="space-between"
+        backgroundColor="gray.200"
+        py="1"
+        px="4"
       >
+        <Heading color="blue.800">Kalabam</Heading>
         {!session && (
-          <>
-            <span className={styles.notSignedIn}>Not signed in</span>
-            <a
-              href={`/api/auth/signin`}
+          <Box>
+            <Button
+              colorScheme="pink"
+              color="white"
+              aria-label="Sign In"
+              size="sm"
+              isLoading={loading}
               onClick={(e) => {
-                e.preventDefault()
-                signin()
+                e.preventDefault();
+                signin();
               }}
             >
-              <button className={styles.signinButton}>Sign in</button>
-            </a>
-          </>
+              Sign in
+            </Button>
+          </Box>
         )}
         {session && (
-          <>
-            <span
-              style={{ backgroundImage: `url(${session.user.image})` }}
-              className={styles.avatar}
+          <Flex align="center">
+            <Avatar
+              src={session.user.image}
+              name={session.user.name}
+              size="sm"
+              mr="3"
             />
-            <span className={styles.signedIn}>
-              Signed in as <strong>{session.user.email}</strong>
-            </span>
-            <a
-              href={`/api/auth/signout`}
+            <Button
+              colorScheme="teal"
+              aria-label="Sign Out"
+              size="sm"
+              isLoading={loading}
               onClick={(e) => {
-                e.preventDefault()
-                signout()
+                e.preventDefault();
+                signout();
               }}
             >
-              <button className={styles.signoutButton}>Sign out</button>
-            </a>
-          </>
+              Sign out
+            </Button>
+          </Flex>
         )}
-      </p>
+      </Flex>
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
