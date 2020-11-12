@@ -1,5 +1,4 @@
 import Nav from "../components/nav";
-import Footer from "../components/footer";
 
 const NextAuth = () => (
   <>
@@ -23,7 +22,6 @@ const NextAuth = () => (
         <a href="https://next-auth.js.org/configuration/database">docs</a>
       </p>
     </main>
-    <Footer />
   </>
 );
 

@@ -1,5 +1,5 @@
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
 
 const options = {
   // @link https://next-auth.js.org/configuration/providers
@@ -16,17 +16,14 @@ const options = {
       clientId: process.env.NEXTAUTH_GOOGLE_ID,
       clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET,
     }),
-    Providers.Facebook({
-      clientId: process.env.NEXTAUTH_FACEBOOK_ID,
-      clientSecret: process.env.NEXTAUTH_FACEBOOK_SECRET,
-    }),
-    Providers.Twitter({
-      clientId: process.env.NEXTAUTH_TWITTER_ID,
-      clientSecret: process.env.NEXTAUTH_TWITTER_SECRET,
-    }),
-    Providers.GitHub({
-      clientId: process.env.NEXTAUTH_GITHUB_ID,
-      clientSecret: process.env.NEXTAUTH_GITHUB_SECRET,
+    Providers.Apple({
+      clientId: process.env.NEXTAUTH_APPLE_ID,
+      clientSecret: {
+        appleId: process.env.NEXTAUTH_APPLE_ID,
+        teamId: process.env.NEXTAUTH_APPLE_TEAM_ID,
+        privateKey: process.env.NEXTAUTH_APPLE_PRIVATE_KEY,
+        keyId: process.env.NEXTAUTH_APPLE_KEY_ID,
+      },
     }),
   ],
 
@@ -73,7 +70,7 @@ const options = {
      *                           Return `false` to deny access
      */
     signIn: async (user, account, profile) => {
-      return true
+      return true;
     },
 
     /**
@@ -85,7 +82,7 @@ const options = {
      */
     session: async (session, user) => {
       //session.customSessionProperty = 'bar'
-      return Promise.resolve(session)
+      return Promise.resolve(session);
     },
 
     /**
@@ -101,7 +98,7 @@ const options = {
       //const isSignIn = (user) ? true : false
       // Add auth_time to token on signin in
       //if (isSignIn) { token.auth_time = Math.floor(Date.now() / 1000) }
-      return Promise.resolve(token)
+      return Promise.resolve(token);
     },
   },
 
@@ -117,10 +114,10 @@ const options = {
   },
 
   // Additional options
-  // secret: 'abcdef123456789' // Recommended (but auto-generated if not specified)
-  // debug: true, // Use this option to enable debug messages in the console
-}
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: true, // Use this option to enable debug messages in the console
+};
 
-const Auth = (req, res) => NextAuth(req, res, options)
+const Auth = (req, res) => NextAuth(req, res, options);
 
-export default Auth
+export default Auth;
