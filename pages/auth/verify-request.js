@@ -3,7 +3,7 @@ import { Center, Link, Icon, Stack, Text } from '@chakra-ui/core'
 import { RiMailCheckFill } from 'react-icons/ri'
 import Layout from '../../components/Layout'
 
-export default function VerifyRequest () {
+function VerifyRequest () {
   return (
     <Layout>
       <Center m='24'>
@@ -21,3 +21,5 @@ export default function VerifyRequest () {
     </Layout>
   )
 }
+
+export default VerifyRequest

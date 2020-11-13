@@ -18,7 +18,7 @@ import {
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 
-export default function SignIn ({ providers, error }) {
+function SignIn ({ providers, error }) {
   const [email, setEmail] = useState('')
 
   return (
@@ -84,3 +84,5 @@ SignIn.getInitialProps = async (context) => {
     error: context.query.error
   }
 }
+
+export default SignIn

@@ -15,7 +15,7 @@ import {
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 
-export default function SignUp ({ providers }) {
+function SignUp ({ providers }) {
   const [email, setEmail] = useState('')
 
   return (
@@ -23,7 +23,13 @@ export default function SignUp ({ providers }) {
       <Center m='16'>
         <Stack spacing={3}>
           <Heading>Sign Up To Kalabam</Heading>
-          <Text mb='10' fontSize='sm' textAlign='center' color='gray.500' pt='1'>
+          <Text
+            mb='10'
+            fontSize='sm'
+            textAlign='center'
+            color='gray.500'
+            pt='1'
+          >
             Already Have An Account?{' '}
             <Link href='/auth/signin'>
               <A color='blue.900'>Login</A>
@@ -74,3 +80,5 @@ SignUp.getInitialProps = async (context) => {
     providers: await providers(context)
   }
 }
+
+export default SignUp
