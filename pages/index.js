@@ -1,5 +1,5 @@
-import { Text } from "@chakra-ui/core";
-import Layout from "../components/Layout";
+import { Text } from '@chakra-ui/core'
+import Layout from '../components/Layout'
 
 const NextAuth = () => (
   <Layout>
@@ -7,6 +7,6 @@ const NextAuth = () => (
       Multiplayer Games for Class Activities or Interactive Presentations
     </Text>
   </Layout>
-);
+)
 
-export default NextAuth;
+export default NextAuth

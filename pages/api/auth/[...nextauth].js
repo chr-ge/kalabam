@@ -1,16 +1,16 @@
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
+import NextAuth from 'next-auth'
+import Providers from 'next-auth/providers'
 
 const options = {
   // @link https://next-auth.js.org/configuration/providers
   providers: [
     Providers.Email({
       server: process.env.NEXTAUTH_EMAIL_SERVER,
-      from: process.env.NEXTAUTH_EMAIL_FROM,
+      from: process.env.NEXTAUTH_EMAIL_FROM
     }),
     Providers.Google({
       clientId: process.env.NEXTAUTH_GOOGLE_ID,
-      clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET,
+      clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET
     }),
     Providers.Apple({
       clientId: process.env.NEXTAUTH_APPLE_ID,
@@ -18,9 +18,9 @@ const options = {
         appleId: process.env.NEXTAUTH_APPLE_ID,
         teamId: process.env.NEXTAUTH_APPLE_TEAM_ID,
         privateKey: process.env.NEXTAUTH_APPLE_PRIVATE_KEY,
-        keyId: process.env.NEXTAUTH_APPLE_KEY_ID,
-      },
-    }),
+        keyId: process.env.NEXTAUTH_APPLE_KEY_ID
+      }
+    })
   ],
 
   // @link https://next-auth.js.org/configuration/databases
@@ -66,7 +66,7 @@ const options = {
      *                           Return `false` to deny access
      */
     signIn: async (user, account, profile) => {
-      return true;
+      return true
     },
 
     /**
@@ -77,8 +77,8 @@ const options = {
      * @return {object}              Session that will be returned to the client
      */
     session: async (session, user) => {
-      //session.customSessionProperty = 'bar'
-      return Promise.resolve(session);
+      // session.customSessionProperty = 'bar'
+      return Promise.resolve(session)
     },
 
     /**
@@ -91,27 +91,27 @@ const options = {
      * @return {object}            JSON Web Token that will be saved
      */
     jwt: async (token, user, account, profile, isNewUser) => {
-      //const isSignIn = (user) ? true : false
+      // const isSignIn = (user) ? true : false
       // Add auth_time to token on signin in
-      //if (isSignIn) { token.auth_time = Math.floor(Date.now() / 1000) }
-      return Promise.resolve(token);
-    },
+      // if (isSignIn) { token.auth_time = Math.floor(Date.now() / 1000) }
+      return Promise.resolve(token)
+    }
   },
 
   // @link https://next-auth.js.org/configuration/pages
   pages: {
     signIn: '/auth/signin',
-    //signOut: '/api/auth/signout',
-    //error: '/api/auth/error', // Error code passed in query string as ?error=
-    verifyRequest: '/auth/verify-request', // (used for check email message)
-    //newUser: null // If set, new users will be directed here on first sign in
+    // signOut: '/api/auth/signout',
+    // error: '/api/auth/error', // Error code passed in query string as ?error=
+    verifyRequest: '/auth/verify-request' // (used for check email message)
+    // newUser: null // If set, new users will be directed here on first sign in
   },
 
   // Additional options
   secret: process.env.NEXTAUTH_SECRET,
-  debug: true, // Use this option to enable debug messages in the console
-};
+  debug: true // Use this option to enable debug messages in the console
+}
 
-const Auth = (req, res) => NextAuth(req, res, options);
+const Auth = (req, res) => NextAuth(req, res, options)
 
-export default Auth;
+export default Auth
