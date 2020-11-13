@@ -17,4 +17,4 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Run Standard
-          command: standard
+          command: yarn run standard
