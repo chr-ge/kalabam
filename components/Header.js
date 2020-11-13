@@ -1,35 +1,46 @@
-import { signin, signout, useSession } from "next-auth/client";
-import { Avatar, Box, Flex, Heading, Button } from "@chakra-ui/core";
+import { signin, signout, useSession } from 'next-auth/client'
+import {
+  Avatar,
+  Menu,
+  MenuButton,
+  Box,
+  MenuList,
+  MenuDivider,
+  MenuItem,
+  Flex,
+  Heading,
+  Button
+} from '@chakra-ui/core'
 
 const Nav = () => {
-  const [session, loading] = useSession();
+  const [session, loading] = useSession()
 
   return (
     <nav>
       <noscript>
-        <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
+        <style>{'.nojs-show { opacity: 1; top: 0; }'}</style>
       </noscript>
       <Flex
-        align="center"
-        justify="space-between"
-        backgroundColor="gray.200"
-        borderBottomColor="gray.300"
-        borderBottomWidth="thick"
-        py="1"
-        px="4"
+        align='center'
+        justify='space-between'
+        backgroundColor='gray.200'
+        borderBottomColor='gray.300'
+        borderBottomWidth='thick'
+        py='1'
+        px='4'
       >
-        <Heading color="blue.800">Kalabam</Heading>
+        <Heading color='blue.800'>Kalabam</Heading>
         {!session && (
           <Box>
             <Button
-              colorScheme="pink"
-              color="white"
-              aria-label="Sign In"
-              size="sm"
+              colorScheme='pink'
+              color='white'
+              aria-label='Sign In'
+              size='sm'
               isLoading={loading}
               onClick={(e) => {
-                e.preventDefault();
-                signin();
+                e.preventDefault()
+                signin()
               }}
             >
               Sign in
@@ -37,30 +48,32 @@ const Nav = () => {
           </Box>
         )}
         {session && (
-          <Flex align="center">
-            <Avatar
+          <Menu>
+            <MenuButton
+              as={Avatar}
               src={session.user.image}
               name={session.user.name}
-              size="sm"
-              mr="3"
+              size='sm'
+              cursor='pointer'
             />
-            <Button
-              colorScheme="teal"
-              aria-label="Sign Out"
-              size="sm"
-              isLoading={loading}
-              onClick={(e) => {
-                e.preventDefault();
-                signout();
-              }}
-            >
-              Sign out
-            </Button>
-          </Flex>
+            <MenuList borderColor='gray.300'>
+              <MenuItem>My Account</MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault()
+                  signout()
+                }}
+              >
+                Logout
+              </MenuItem>
+              <MenuDivider />
+              <MenuItem>Help</MenuItem>
+            </MenuList>
+          </Menu>
         )}
       </Flex>
     </nav>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav
