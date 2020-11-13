@@ -3,9 +3,8 @@ import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
 import theme from "../theme";
 
 const App = ({ Component, pageProps }) => {
-  const { session } = pageProps;
   return (
-    <Provider session={session}>
+    <Provider session={pageProps.session}>
       <ThemeProvider theme={theme}>
         <ColorModeProvider
           options={{

@@ -12,14 +12,13 @@ import {
   Text,
 } from "@chakra-ui/core";
 import { FaGoogle, FaApple } from "react-icons/fa";
-import Nav from "../../components/nav";
+import Layout from "../../components/Layout";
 
 export default function SignUp({ providers }) {
   const [email, setEmail] = useState("");
 
   return (
-    <>
-      <Nav />
+    <Layout>
       <Center m="16">
         <Stack spacing={3}>
           <Heading mb="10">Sign Up To Kalabam</Heading>
@@ -65,7 +64,7 @@ export default function SignUp({ providers }) {
           </Text>
         </Stack>
       </Center>
-    </>
+    </Layout>
   );
 }
 

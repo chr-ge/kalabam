@@ -1,13 +1,12 @@
-import { Box, Container, Text } from "@chakra-ui/core";
-import Nav from "../components/nav";
+import { Text } from "@chakra-ui/core";
+import Layout from "../components/Layout";
 
 const NextAuth = () => (
-  <>
-    <Nav />
-    <Container>
-      <Text>Multiplayer Games for Class Activities or Interactive Presentations</Text>
-    </Container>
-  </>
+  <Layout>
+    <Text>
+      Multiplayer Games for Class Activities or Interactive Presentations
+    </Text>
+  </Layout>
 );
 
 export default NextAuth;
