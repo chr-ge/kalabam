@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { providers, signIn } from 'next-auth/client'
 import {
   Button,
@@ -6,7 +7,7 @@ import {
   Center,
   Heading,
   Flex,
-  Link,
+  Link as A,
   Stack,
   Input,
   Text
@@ -24,8 +25,8 @@ export default function SignUp ({ providers }) {
           <Heading>Sign Up To Kalabam</Heading>
           <Text mb='10' fontSize='sm' textAlign='center' color='gray.500' pt='1'>
             Already Have An Account?{' '}
-            <Link href='/auth/signin' color='blue.900'>
-              Login
+            <Link href='/auth/signin'>
+              <A color='blue.900'>Login</A>
             </Link>
           </Text>
           <Button

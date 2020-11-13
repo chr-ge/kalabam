@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { providers, signIn } from 'next-auth/client'
 import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
   Button,
   Divider,
   Center,
   Heading,
   Flex,
-  Link,
+  Link as A,
   Stack,
   Input,
   Text
@@ -14,18 +18,25 @@ import {
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 
-export default function SignIn ({ providers }) {
+export default function SignIn ({ providers, error }) {
   const [email, setEmail] = useState('')
 
   return (
     <Layout title='Sign In | Kalabam'>
       <Center m='16'>
         <Stack spacing={3}>
+          {error && (
+            <Alert status='error'>
+              <AlertIcon />
+              <AlertTitle mr={2}>Error!</AlertTitle>
+              {error}
+            </Alert>
+          )}
           <Heading>Sign In To Kalabam</Heading>
           <Text mb='10' fontSize='sm' textAlign='center' color='gray.500' pt='1'>
             Need an account?{' '}
-            <Link href='/auth/signup' color='blue.900'>
-              Sign Up
+            <Link href='/auth/signup'>
+              <A color='blue.900'>Sign Up</A>
             </Link>
           </Text>
           <Button
@@ -69,6 +80,7 @@ export default function SignIn ({ providers }) {
 
 SignIn.getInitialProps = async (context) => {
   return {
-    providers: await providers(context)
+    providers: await providers(context),
+    error: context.query.error
   }
 }
