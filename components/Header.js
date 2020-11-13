@@ -13,6 +13,8 @@ const Nav = () => {
         align="center"
         justify="space-between"
         backgroundColor="gray.200"
+        borderBottomColor="gray.300"
+        borderBottomWidth="thick"
         py="1"
         px="4"
       >
