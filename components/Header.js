@@ -7,12 +7,13 @@ import {
   MenuList,
   MenuDivider,
   MenuItem,
+  Link,
   Flex,
   Heading,
   Button
 } from '@chakra-ui/core'
 
-const Nav = () => {
+const Header = () => {
   const [session, loading] = useSession()
 
   return (
@@ -57,7 +58,7 @@ const Nav = () => {
               cursor='pointer'
             />
             <MenuList borderColor='gray.300'>
-              <MenuItem>My Account</MenuItem>
+              <MenuItem><Link href='/account'>My Account</Link></MenuItem>
               <MenuItem
                 onClick={(e) => {
                   e.preventDefault()
@@ -76,4 +77,4 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default Header
