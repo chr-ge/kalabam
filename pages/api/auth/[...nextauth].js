@@ -5,13 +5,9 @@ const options = {
   // @link https://next-auth.js.org/configuration/providers
   providers: [
     Providers.Email({
-      // SMTP connection string or nodemailer configuration object https://nodemailer.com/
       server: process.env.NEXTAUTH_EMAIL_SERVER,
-      // Email services often only allow sending email from a valid/verified address
       from: process.env.NEXTAUTH_EMAIL_FROM,
     }),
-    // When configuring oAuth providers make sure you enabling requesting
-    // permission to get the users email address (required to sign in)
     Providers.Google({
       clientId: process.env.NEXTAUTH_GOOGLE_ID,
       clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET,
@@ -109,7 +105,7 @@ const options = {
     signIn: '/auth/signin',
     //signOut: '/api/auth/signout',
     //error: '/api/auth/error', // Error code passed in query string as ?error=
-    //verifyRequest: '/api/auth/verify-request', // (used for check email message)
+    verifyRequest: '/auth/verify-request', // (used for check email message)
     //newUser: null // If set, new users will be directed here on first sign in
   },
 
