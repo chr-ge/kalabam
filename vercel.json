@@ -1,0 +1,8 @@
+{
+    "version": "2",
+    "cleanUrls": "true",
+    "github": {
+        "enabled": true,
+        "autoAlias": true
+    }
+}
