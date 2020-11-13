@@ -18,7 +18,7 @@ export default function SignUp({ providers }) {
   const [email, setEmail] = useState("");
 
   return (
-    <Layout>
+    <Layout title="Sign Up | Kalabam">
       <Center m="16">
         <Stack spacing={3}>
           <Heading mb="10">Sign Up To Kalabam</Heading>
