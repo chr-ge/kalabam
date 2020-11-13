@@ -14,7 +14,7 @@ import {
 import { FaGoogle, FaApple } from "react-icons/fa";
 import Nav from "../../components/nav";
 
-export default function SignIn({ providers }) {
+export default function SignUp({ providers }) {
   const [email, setEmail] = useState("");
 
   return (
@@ -22,14 +22,14 @@ export default function SignIn({ providers }) {
       <Nav />
       <Center m="16">
         <Stack spacing={3}>
-          <Heading mb="10">Sign In To Kalabam</Heading>
+          <Heading mb="10">Sign Up To Kalabam</Heading>
           <Button
             leftIcon={<FaGoogle />}
             size="lg"
             colorScheme="googleBlue"
             onClick={() => signIn(providers.google.id)}
           >
-            Sign in with Google
+            Sign Up With Google
           </Button>
           <Button
             leftIcon={<FaApple />}
@@ -37,7 +37,7 @@ export default function SignIn({ providers }) {
             colorScheme="black"
             onClick={() => signIn(providers.apple.id)}
           >
-            Sign in with Apple
+            Sign Up With Apple
           </Button>
           <Flex align="center">
             <Divider color="gray.400" />
@@ -49,17 +49,18 @@ export default function SignIn({ providers }) {
           <Input
             aria-label="Email Input"
             placeholder="Email Address"
+            type="email"
             size="lg"
             borderColor="gray.400"
             onChange={(e) => setEmail(e.target.value)}
           />
           <Button colorScheme="pink" onClick={() => signIn("email", { email })}>
-            Sign in with Email
+            Sign Up With Email
           </Button>
           <Text fontSize="sm" textAlign="center" color="gray.500" pt="3">
-            Need an account?{" "}
-            <Link href="/auth/signup" color="blue.900">
-              Sign Up
+            Already Have An Account?{" "}
+            <Link href="/auth/signin" color="blue.900">
+              Login
             </Link>
           </Text>
         </Stack>
@@ -68,7 +69,7 @@ export default function SignIn({ providers }) {
   );
 }
 
-SignIn.getInitialProps = async (context) => {
+SignUp.getInitialProps = async (context) => {
   return {
     providers: await providers(context),
   };
