@@ -21,7 +21,13 @@ export default function SignUp({ providers }) {
     <Layout title="Sign Up | Kalabam">
       <Center m="16">
         <Stack spacing={3}>
-          <Heading mb="10">Sign Up To Kalabam</Heading>
+          <Heading>Sign Up To Kalabam</Heading>
+          <Text mb="10" fontSize="sm" textAlign="center" color="gray.500" pt="1">
+            Already Have An Account?{" "}
+            <Link href="/auth/signin" color="blue.900">
+              Login
+            </Link>
+          </Text>
           <Button
             leftIcon={<FaGoogle />}
             size="lg"
@@ -56,12 +62,6 @@ export default function SignUp({ providers }) {
           <Button colorScheme="pink" onClick={() => signIn("email", { email })}>
             Sign Up With Email
           </Button>
-          <Text fontSize="sm" textAlign="center" color="gray.500" pt="3">
-            Already Have An Account?{" "}
-            <Link href="/auth/signin" color="blue.900">
-              Login
-            </Link>
-          </Text>
         </Stack>
       </Center>
     </Layout>

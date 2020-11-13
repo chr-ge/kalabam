@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Header from "../components/Header";
 import { Container } from "@chakra-ui/core";
+import Header from "../components/Header";
 
 const Layout = ({ title, children }) => {
   return (
