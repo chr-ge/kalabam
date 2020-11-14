@@ -10,7 +10,7 @@ const Layout = ({ title, children }) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <Header />
-      <Container>{children}</Container>
+      <Container my='4'>{children}</Container>
     </>
   )
 }

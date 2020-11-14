@@ -1,4 +1,5 @@
 import { signin, signout, useSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
 import {
   Avatar,
   Menu,
@@ -7,7 +8,6 @@ import {
   MenuList,
   MenuDivider,
   MenuItem,
-  Link,
   Flex,
   Heading,
   Button
@@ -15,6 +15,7 @@ import {
 
 const Header = () => {
   const [session, loading] = useSession()
+  const router = useRouter()
 
   return (
     <nav>
@@ -58,7 +59,9 @@ const Header = () => {
               cursor='pointer'
             />
             <MenuList borderColor='gray.300'>
-              <MenuItem><Link href='/account'>My Account</Link></MenuItem>
+              <MenuItem onClick={() => router.push('/account')}>
+                My Account
+              </MenuItem>
               <MenuItem
                 onClick={(e) => {
                   e.preventDefault()
