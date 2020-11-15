@@ -53,7 +53,7 @@ function SignUp ({ providers }) {
           </Button>
           <Flex align='center'>
             <Divider color='gray.400' />
-            <Text p='2' fontSize='xs' color='gray.400'>
+            <Text p='3' fontSize='xs' color='gray.400'>
               Or
             </Text>
             <Divider color='gray.400' />

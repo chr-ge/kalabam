@@ -2,7 +2,6 @@ import { getSession } from 'next-auth/client'
 import { Heading, Box, Text } from '@chakra-ui/core'
 import styled from '@emotion/styled'
 import Layout from '../components/Layout'
-import AccessDenied from '../components/AccessDenied'
 
 const AngledText = styled(Text)({
   clipPath: 'polygon(1.5% 0%, 100% 0%, 98.5% 100%, 0% 100%)',
@@ -12,14 +11,6 @@ const AngledText = styled(Text)({
 })
 
 function Account ({ session }) {
-  if (!session) {
-    return (
-      <Layout>
-        <AccessDenied />
-      </Layout>
-    )
-  }
-
   return (
     <Layout title='My Account | Kalabam'>
       <Heading>My Account</Heading>
@@ -45,6 +36,14 @@ function Account ({ session }) {
 
 export async function getServerSideProps (context) {
   const session = await getSession(context)
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/signin',
+        permanent: false
+      }
+    }
+  }
 
   return {
     props: {
