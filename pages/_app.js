@@ -1,15 +1,14 @@
-import { Provider } from "next-auth/client";
-import { ThemeProvider, CSSReset, ColorModeProvider } from "@chakra-ui/core";
-import theme from "../theme";
+import { Provider } from 'next-auth/client'
+import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core'
+import theme from '../theme'
 
 const App = ({ Component, pageProps }) => {
-  const { session } = pageProps;
   return (
-    <Provider session={session}>
+    <Provider session={pageProps.session}>
       <ThemeProvider theme={theme}>
         <ColorModeProvider
           options={{
-            useSystemColorMode: true,
+            useSystemColorMode: true
           }}
         >
           <CSSReset />
@@ -17,7 +16,7 @@ const App = ({ Component, pageProps }) => {
         </ColorModeProvider>
       </ThemeProvider>
     </Provider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
