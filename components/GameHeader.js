@@ -30,7 +30,7 @@ const GameHeader = () => {
             colorScheme='blue'
             aria-label='Sign In'
             size='sm'
-            onClick={() => router.push('/games/create')}
+            onClick={() => router.back()}
           >
             Cancel
           </Button>
@@ -41,7 +41,7 @@ const GameHeader = () => {
             color='white'
             aria-label='Sign In'
             size='sm'
-            onClick={() => router.push('/games/create')}
+            onClick={() => true}
           >
             Done
           </Button>
