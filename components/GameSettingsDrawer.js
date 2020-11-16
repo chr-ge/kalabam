@@ -28,6 +28,7 @@ const GameSettingsDrawer = () => {
         colorScheme='pink'
         onClick={onOpen}
         size='sm'
+        px='5'
       >
         Game Settings
       </Button>
