@@ -11,7 +11,7 @@ import {
   Stack,
   Input,
   Text
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 

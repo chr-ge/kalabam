@@ -14,7 +14,7 @@ import {
   Input,
   Textarea,
   useDisclosure
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { SettingsIcon } from '@chakra-ui/icons'
 
 const GameSettingsDrawer = () => {

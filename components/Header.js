@@ -11,7 +11,7 @@ import {
   MenuItem,
   Flex,
   Heading
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 
 const Header = () => {
   const [session, loading] = useSession()

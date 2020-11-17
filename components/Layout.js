@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Container } from '@chakra-ui/core'
+import { Container } from '@chakra-ui/react'
 import Header from '../components/Header'
 
 const Layout = ({ title, children }) => {

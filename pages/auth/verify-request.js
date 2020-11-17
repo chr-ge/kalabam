@@ -1,5 +1,5 @@
 import React from 'react'
-import { Center, Link, Icon, Stack, Text } from '@chakra-ui/core'
+import { Center, Link, Icon, Stack, Text } from '@chakra-ui/react'
 import { RiMailCheckFill } from 'react-icons/ri'
 import Layout from '../../components/Layout'
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Center, Flex, IconButton, Textarea, Text } from '@chakra-ui/core'
+import { Center, Flex, IconButton, Textarea, Text } from '@chakra-ui/react'
 import { CheckCircleIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 
@@ -63,7 +63,7 @@ const AnswerInput = ({ index }) => {
         onChange={(e) => setChars(e.target.value)}
         maxLength={75}
         resize='none'
-        isFullWidth
+        isFullWidth='true'
       />
       {chars.length > 0 && (
         <Text fontSize='sm' alignSelf='start'>

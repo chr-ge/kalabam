@@ -1,10 +1,5 @@
 import { useRouter } from 'next/router'
-import {
-  Button,
-  Box,
-  Flex,
-  Heading
-} from '@chakra-ui/core'
+import { Button, Box, Flex, Heading } from '@chakra-ui/react'
 import GameSettingsDrawer from './GameSettingsDrawer'
 
 const GameHeader = () => {

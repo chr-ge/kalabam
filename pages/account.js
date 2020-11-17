@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { Heading, Box, Text } from '@chakra-ui/core'
+import { Heading, Box, Text } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import Layout from '../components/Layout'
 

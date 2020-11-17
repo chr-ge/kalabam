@@ -14,7 +14,7 @@ import {
   Stack,
   Input,
   Text
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 
@@ -33,7 +33,13 @@ function SignIn ({ providers, error }) {
             </Alert>
           )}
           <Heading>Sign In To Kalabam</Heading>
-          <Text mb='10' fontSize='sm' textAlign='center' color='gray.500' pt='1'>
+          <Text
+            mb='10'
+            fontSize='sm'
+            textAlign='center'
+            color='gray.500'
+            pt='1'
+          >
             Need an account?{' '}
             <Link href='/auth/signup'>
               <A color='blue.900'>Sign Up</A>
