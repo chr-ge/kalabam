@@ -63,7 +63,6 @@ const AnswerInput = ({ index }) => {
         onChange={(e) => setChars(e.target.value)}
         maxLength={75}
         resize='none'
-        isFullWidth='true'
       />
       {chars.length > 0 && (
         <Text fontSize='sm' alignSelf='start'>
