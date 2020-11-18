@@ -77,8 +77,14 @@ const options = {
      * @return {object}              Session that will be returned to the client
      */
     session: async (session, user) => {
-      // session.customSessionProperty = 'bar'
-      return Promise.resolve(session)
+      const sessionUser = {
+        ...session.user,
+        id: user.id
+      }
+      return Promise.resolve({
+        ...session,
+        user: sessionUser
+      })
     },
 
     /**
@@ -109,7 +115,7 @@ const options = {
 
   // Additional options
   secret: process.env.NEXTAUTH_SECRET,
-  debug: true // Use this option to enable debug messages in the console
+  debug: false // Use this option to enable debug messages in the console
 }
 
 const Auth = (req, res) => NextAuth(req, res, options)
