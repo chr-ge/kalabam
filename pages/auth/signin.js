@@ -84,10 +84,12 @@ function SignIn ({ providers, error }) {
   )
 }
 
-SignIn.getInitialProps = async (context) => {
+export async function getServerSideProps (context) {
   return {
-    providers: await providers(context),
-    error: context.query.error
+    props: {
+      providers: await providers(context),
+      error: context.query.error || null
+    }
   }
 }
 

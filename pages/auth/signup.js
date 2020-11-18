@@ -75,9 +75,11 @@ function SignUp ({ providers }) {
   )
 }
 
-SignUp.getInitialProps = async (context) => {
+export async function getServerSideProps (context) {
   return {
-    providers: await providers(context)
+    props: {
+      providers: await providers(context)
+    }
   }
 }
 
