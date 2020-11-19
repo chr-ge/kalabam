@@ -15,6 +15,7 @@ const theme = extendTheme({
       500: '#000000',
       600: '#222222'
     },
+    lightPink: '#fdf9ff',
     googleBlue: {
       500: '#4285F4',
       600: '#427AF4'

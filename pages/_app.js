@@ -1,18 +1,18 @@
 import { Provider } from 'next-auth/client'
 import { ChakraProvider } from '@chakra-ui/react'
-import { GameCreateProvider } from '../context/GameCreate'
+import { GameCreateProvider } from '../context/Game/GameCreateContext'
 import FontFace from '../components/font-face'
 import theme from '../theme'
 
 const App = ({ Component, pageProps }) => {
   return (
     <Provider session={pageProps.session}>
-      <GameCreateProvider>
-        <ChakraProvider theme={theme}>
+      <ChakraProvider theme={theme}>
+        <GameCreateProvider>
           <Component {...pageProps} />
-        </ChakraProvider>
-        <FontFace />
-      </GameCreateProvider>
+        </GameCreateProvider>
+      </ChakraProvider>
+      <FontFace />
     </Provider>
   )
 }

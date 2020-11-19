@@ -25,10 +25,10 @@ const AnswerInput = ({ index }) => {
 
   return (
     <Flex
-      height='100px'
+      p='1'
+      height='110px'
       align='center'
       rounded='md'
-      p='1'
       shadow='lg'
       bgColor='white'
     >
