@@ -13,7 +13,7 @@ const bounceTransition = {
   }
 }
 
-const AnswerInput = ({ index }) => {
+const AnswerInput = ({ answer }) => {
   const [chars, setChars] = useState(0)
   const [toggle, setToggle] = useState(false)
 
@@ -32,7 +32,7 @@ const AnswerInput = ({ index }) => {
       shadow='lg'
       bgColor='white'
     >
-      <Center width='15%' height='100%' bg='tomato' rounded='md'>
+      <Center width='15%' height='100%' bgColor={answer.color} rounded='md'>
         <MotionIconButton
           aria-label='Toggle Correct Answer'
           icon={<CheckCircleIcon h='8' w='8' />}
@@ -52,7 +52,7 @@ const AnswerInput = ({ index }) => {
         />
       </Center>
       <Textarea
-        placeholder={`Add Answer ${index}`}
+        placeholder={`Add Answer ${answer.id}`}
         variant='unstyled'
         mx='2'
         fontSize='lg'
