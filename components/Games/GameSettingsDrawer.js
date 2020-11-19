@@ -43,7 +43,7 @@ const GameSettingsDrawer = () => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader borderBottomWidth='1px' borderColor='gray.200'>
-              Game Summary
+              Game Settings
             </DrawerHeader>
             <DrawerBody>
               <Stack spacing='24px'>
