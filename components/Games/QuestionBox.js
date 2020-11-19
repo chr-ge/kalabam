@@ -27,7 +27,7 @@ const QuestionBox = ({ question, index, onClick }) => {
         description:
           'To make the game engaging, we recommend adding at least one question.',
         status: 'info',
-        position: 'bottom-right',
+        position: 'bottom',
         duration: 3000,
         isClosable: true
       })
