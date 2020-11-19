@@ -20,7 +20,6 @@ const Question = ({ question }) => {
 
   return (
     <Box flex='1' p='10'>
-      <Text>{question.id}</Text>
       <Input
         py='14'
         placeholder='Click to start typing your question'
@@ -48,7 +47,7 @@ const Question = ({ question }) => {
               max={60}
               step={5}
             >
-              <SliderTrack>
+              <SliderTrack h='2'>
                 <SliderFilledTrack />
               </SliderTrack>
               <SliderThumb p='4'>
@@ -70,7 +69,7 @@ const Question = ({ question }) => {
               max={2000}
               step={500}
             >
-              <SliderTrack>
+              <SliderTrack h='2'>
                 <SliderFilledTrack />
               </SliderTrack>
               <SliderThumb p='4'>
@@ -92,7 +91,7 @@ const Question = ({ question }) => {
       </Flex>
       <SimpleGrid columns={[1, 1, 2]} spacing={4}>
         {question.answers.map((a) => (
-          <AnswerInput key={a.id} index={a.id} />
+          <AnswerInput key={a.id} answer={a} />
         ))}
       </SimpleGrid>
     </Box>
