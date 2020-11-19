@@ -18,7 +18,7 @@ function Create () {
     <Flex direction='column' height='100%'>
       <GameHeader />
       <Box flex={1}>
-        <Flex bgColor='lightPink' height='100%'>
+        <Flex direction={{ base: 'column', md: 'row' }} bgColor='lightPink' height='100%'>
           <Flex direction='column' height='100%' bgColor='gray.100'>
             <VStack
               w='48'
