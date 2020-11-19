@@ -1,5 +1,11 @@
-export default (state, action) => {
+export default function reducer (state, action) {
   switch (action.type) {
+    case 'UPDATE_GAME_SETTINGS':
+      return {
+        ...state,
+        title: action.payload.title,
+        description: action.payload.description
+      }
     case 'ADD_QUESTION':
       return {
         ...state,

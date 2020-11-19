@@ -12,10 +12,10 @@ const initialState = {
       timeLimit: 20,
       points: 1000,
       answers: [
-        { id: 1, answer: '', isCorrect: false },
-        { id: 2, answer: '', isCorrect: false },
-        { id: 3, answer: '', isCorrect: false },
-        { id: 4, answer: '', isCorrect: false }
+        { id: 1, answer: '', color: 'tomato', isCorrect: false },
+        { id: 2, answer: '', color: 'pink.400', isCorrect: false },
+        { id: 3, answer: '', color: 'purple.400', isCorrect: false },
+        { id: 4, answer: '', color: 'teal.400', isCorrect: false }
       ]
     }
   ]
@@ -26,10 +26,10 @@ const GameCreateContext = createContext(initialState)
 export const GameCreateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(GameCreateReducer, initialState)
 
-  const deleteQuestion = (questionId) => {
+  const updateGameSettings = ({ title, description }) => {
     dispatch({
-      type: 'DELETE_QUESTION',
-      payload: questionId
+      type: 'UPDATE_GAME_SETTINGS',
+      payload: { title, description }
     })
   }
 
@@ -42,18 +42,25 @@ export const GameCreateProvider = ({ children }) => {
         timeLimit: 20,
         points: 1000,
         answers: [
-          { id: 1, answer: '', isCorrect: false },
-          { id: 2, answer: '', isCorrect: false },
-          { id: 3, answer: '', isCorrect: false },
-          { id: 4, answer: '', isCorrect: false }
+          { id: 1, answer: '', color: 'tomato', isCorrect: false },
+          { id: 2, answer: '', color: 'pink.400', isCorrect: false },
+          { id: 3, answer: '', color: 'purple.400', isCorrect: false },
+          { id: 4, answer: '', color: 'teal.400', isCorrect: false }
         ]
       }
     })
   }
 
+  const deleteQuestion = (questionId) => {
+    dispatch({
+      type: 'DELETE_QUESTION',
+      payload: questionId
+    })
+  }
+
   return (
     <GameCreateContext.Provider
-      value={{ ...state, deleteQuestion, addQuestion }}
+      value={{ ...state, updateGameSettings, addQuestion, deleteQuestion }}
     >
       {children}
     </GameCreateContext.Provider>
