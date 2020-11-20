@@ -39,7 +39,7 @@ const QuestionBox = ({ question, index }) => {
   }
 
   return (
-    <Flex direction='column' p='2' minH='32' bgColor='gray.300'>
+    <Flex direction='column' p='2' minH='32' w='48' bgColor='gray.300'>
       <Flex>
         <Text>{index}. quiz</Text>
         <Spacer />

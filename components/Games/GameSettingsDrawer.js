@@ -64,7 +64,8 @@ const GameSettingsDrawer = () => {
               icon={<IoMdSettings size='18' />}
               onClick={onOpen}
             />
-          </ButtonGroup>)
+          </ButtonGroup>
+          )
         : (
           <Button
             leftIcon={<IoMdSettings size='18' />}
@@ -74,7 +75,8 @@ const GameSettingsDrawer = () => {
             px='5'
           >
             Game Settings
-          </Button>)}
+          </Button>
+          )}
       <Drawer
         isOpen={isOpen}
         placement='right'
@@ -95,13 +97,14 @@ const GameSettingsDrawer = () => {
                 <Box>
                   <FormLabel htmlFor='title'>Title</FormLabel>
                   <Input
-                    ref={titleField}
                     id='title'
+                    ref={titleField}
                     value={settings.title}
+                    placeholder='Enter game title...'
+                    borderColor='gray.200'
+                    focusBorderColor='teal.200'
                     onChange={(e) =>
                       setSettings({ ...settings, title: e.target.value })}
-                    borderColor='gray.200'
-                    placeholder='Enter game title...'
                   />
                 </Box>
                 <Box>
@@ -115,6 +118,7 @@ const GameSettingsDrawer = () => {
                     maxH='250px'
                     id='description'
                     borderColor='gray.200'
+                    focusBorderColor='teal.200'
                     value={settings.description}
                     onChange={(e) =>
                       setSettings({ ...settings, description: e.target.value })}
