@@ -49,7 +49,7 @@ const Question = ({ question }) => {
               Time Limit
             </Text>
             <Slider
-              defaultValue={20}
+              value={q.timeLimit}
               aria-labelledby='time_limit'
               onChange={(val) => setQ({ ...q, timeLimit: val })}
               colorScheme='pink'
@@ -71,7 +71,7 @@ const Question = ({ question }) => {
               Points
             </Text>
             <Slider
-              defaultValue={1000}
+              value={q.points}
               aria-labelledby='points'
               onChange={(val) => setQ({ ...q, points: val })}
               colorScheme='purple'
