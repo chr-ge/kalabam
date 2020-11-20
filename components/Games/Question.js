@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {
   Box,
   Center,
@@ -12,18 +13,28 @@ import {
   Text
 } from '@chakra-ui/react'
 import AnswerInput from '../../components/Games/AnswerInput'
+import { useGameCreate } from '../../context/Game/GameCreateContext'
 
 const Question = ({ question }) => {
-  const handleChange = (value) => {
-    question.points = value
-  }
+  const { updateQuestion } = useGameCreate()
+  const [q, setQ] = useState(question)
+
+  useEffect(() => {
+    setQ(question)
+  }, [question])
+
+  useEffect(() => {
+    updateQuestion(q)
+  }, [q])
 
   return (
     <Box flex='1' p='10'>
+      <Box>{question.id}</Box>
       <Input
         py='14'
+        value={q.question}
         placeholder='Click to start typing your question'
-        onChange={(e) => (question.title = e.target.value)}
+        onChange={(e) => setQ({ ...q, question: e.target.value })}
         borderColor='gray.400'
         focusBorderColor='purple.400'
         textAlign='center'
@@ -40,7 +51,7 @@ const Question = ({ question }) => {
             <Slider
               defaultValue={20}
               aria-labelledby='time_limit'
-              onChange={(e) => (question.timeLimit = e.target.value)}
+              onChange={(val) => setQ({ ...q, timeLimit: val })}
               colorScheme='pink'
               size='lg'
               min={5}
@@ -50,8 +61,8 @@ const Question = ({ question }) => {
               <SliderTrack h='2'>
                 <SliderFilledTrack />
               </SliderTrack>
-              <SliderThumb p='4'>
-                <Text fontSize='xs'>{question.timeLimit}s</Text>
+              <SliderThumb p='4' h='10' w='10'>
+                <Text fontSize='sm'>{q.timeLimit}s</Text>
               </SliderThumb>
             </Slider>
           </Box>
@@ -62,7 +73,7 @@ const Question = ({ question }) => {
             <Slider
               defaultValue={1000}
               aria-labelledby='points'
-              onChange={handleChange}
+              onChange={(val) => setQ({ ...q, points: val })}
               colorScheme='purple'
               size='lg'
               min={0}
@@ -72,8 +83,8 @@ const Question = ({ question }) => {
               <SliderTrack h='2'>
                 <SliderFilledTrack />
               </SliderTrack>
-              <SliderThumb p='4'>
-                <Text fontSize='xs'>{question.points}</Text>
+              <SliderThumb p='4' h='10' w='10'>
+                <Text fontSize='sm'>{q.points}</Text>
               </SliderThumb>
             </Slider>
           </Box>
