@@ -19,6 +19,7 @@ const AnswerInput = ({ answer }) => {
 
   const handleToggle = () => {
     setToggle((prev) => !prev)
+    answer.isCorrect = !answer.isCorrect
   }
 
   const hoverStyle = toggle ? 'transparent' : 'green.400'
@@ -60,7 +61,10 @@ const AnswerInput = ({ answer }) => {
         wordBreak='break-word'
         textOverflow='ellipsis'
         whiteSpace='pre-line'
-        onChange={(e) => setChars(e.target.value)}
+        onChange={(e) => {
+          setChars(e.target.value)
+          answer.answer = e.target.value
+        }}
         maxLength={75}
         resize='none'
       />
