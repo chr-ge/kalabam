@@ -10,11 +10,11 @@ import {
 import { DeleteIcon } from '@chakra-ui/icons'
 import { useGameCreate } from '../../context/Game/GameCreateContext'
 
-const QuestionBox = ({ question, index, onClick }) => {
-  const toast = useToast()
-  const TOAST_ID = 'cannot-delete'
+const TOAST_ID = 'cannot-delete'
 
-  const { questions, deleteQuestion } = useGameCreate()
+const QuestionBox = ({ question, index }) => {
+  const { questions, setActiveQuestion, deleteQuestion } = useGameCreate()
+  const toast = useToast()
 
   const handleDelete = () => {
     if (questions.length > 1) {
@@ -32,6 +32,10 @@ const QuestionBox = ({ question, index, onClick }) => {
         isClosable: true
       })
     }
+  }
+
+  const handleClick = () => {
+    setActiveQuestion(question)
   }
 
   return (
@@ -61,13 +65,13 @@ const QuestionBox = ({ question, index, onClick }) => {
         mt='1'
         bgColor='white'
         rounded='md'
-        onClick={onClick}
+        onClick={handleClick}
         boxShadow='inner'
         display='block'
         overflow='hidden'
         whiteSpace='normal'
       >
-        {question.title}
+        {question.question}
       </Button>
     </Flex>
   )

@@ -61,7 +61,7 @@ const GameSettingsDrawer = () => {
             <IconButton
               aria-label='Open Game Settings'
               borderLeftRadius='0'
-              icon={<IoMdSettings />}
+              icon={<IoMdSettings size='18' />}
               onClick={onOpen}
             />
           </ButtonGroup>)

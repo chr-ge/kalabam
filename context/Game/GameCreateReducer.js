@@ -11,6 +11,20 @@ export default function reducer (state, action) {
         ...state,
         questions: [...state.questions, action.payload]
       }
+    case 'SET_ACTIVE_QUESTION':
+      return {
+        ...state,
+        activeQuestion: action.payload
+      }
+    case 'UPDATE_QUESTION': {
+      const index = state.questions.findIndex(
+        (question) => question.id === action.payload.id
+      )
+      state.questions[index] = action.payload
+      return {
+        ...state
+      }
+    }
     case 'DELETE_QUESTION':
       return {
         ...state,

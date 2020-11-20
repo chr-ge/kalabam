@@ -18,7 +18,19 @@ const initialState = {
         { id: 4, answer: '', color: 'teal.400', isCorrect: false }
       ]
     }
-  ]
+  ],
+  activeQuestion: {
+    id: 1,
+    question: '',
+    timeLimit: 20,
+    points: 1000,
+    answers: [
+      { id: 1, answer: '', color: 'tomato', isCorrect: false },
+      { id: 2, answer: '', color: 'pink.400', isCorrect: false },
+      { id: 3, answer: '', color: 'purple.400', isCorrect: false },
+      { id: 4, answer: '', color: 'teal.400', isCorrect: false }
+    ]
+  }
 }
 
 const GameCreateContext = createContext(initialState)
@@ -51,6 +63,20 @@ export const GameCreateProvider = ({ children }) => {
     })
   }
 
+  const setActiveQuestion = (question) => {
+    dispatch({
+      type: 'SET_ACTIVE_QUESTION',
+      payload: question
+    })
+  }
+
+  const updateQuestion = (question) => {
+    dispatch({
+      type: 'UPDATE_QUESTION',
+      payload: question
+    })
+  }
+
   const deleteQuestion = (questionId) => {
     dispatch({
       type: 'DELETE_QUESTION',
@@ -60,7 +86,14 @@ export const GameCreateProvider = ({ children }) => {
 
   return (
     <GameCreateContext.Provider
-      value={{ ...state, updateGameSettings, addQuestion, deleteQuestion }}
+      value={{
+        ...state,
+        updateGameSettings,
+        addQuestion,
+        setActiveQuestion,
+        updateQuestion,
+        deleteQuestion
+      }}
     >
       {children}
     </GameCreateContext.Provider>

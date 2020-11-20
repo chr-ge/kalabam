@@ -1,27 +1,26 @@
-import { useState } from 'react'
 import { getSession } from 'next-auth/client'
-import { Box, Button, Flex, Spacer, VStack } from '@chakra-ui/react'
+import { Box, Button, Flex, Stack } from '@chakra-ui/react'
 import GameHeader from '../../components/Games/GameHeader'
 import Question from '../../components/Games/Question'
 import QuestionBox from '../../components/Games/QuestionBox'
 import { useGameCreate } from '../../context/Game/GameCreateContext'
 
 function Create () {
-  const { questions, addQuestion } = useGameCreate()
-  const [activeQuestion, setActiveQuestion] = useState(questions[0])
-
-  const handleCreate = () => {
-    addQuestion()
-  }
+  const { questions, activeQuestion, addQuestion } = useGameCreate()
 
   return (
-    <Flex direction='column' height='100%'>
+    <Flex direction='column' h='100%'>
       <GameHeader />
       <Box flex={1}>
-        <Flex direction={{ base: 'column', md: 'row' }} bgColor='lightPink' height='100%'>
-          <Flex direction='column' height='100%' bgColor='gray.100'>
-            <VStack
-              w='48'
+        <Flex
+          direction={{ base: 'column', md: 'row' }}
+          bgColor='lightPink'
+          h='100%'
+        >
+          <Flex direction='column' h='100%' bgColor='gray.100'>
+            <Stack
+              w={{ base: '100%', md: '48' }}
+              direction={{ base: 'row', md: 'column' }}
               align='stretch'
               overflowY='auto'
               maxH='calc(100vh - 7.3rem)'
@@ -31,18 +30,16 @@ function Create () {
                   key={q.id}
                   index={i + 1}
                   question={q}
-                  onClick={() => setActiveQuestion(q)}
                 />
               ))}
-              <Spacer />
-            </VStack>
+            </Stack>
             <Button
               m='2'
               boxShadow='md'
               aria-label='Add Question'
               size='lg'
               colorScheme='yellow'
-              onClick={handleCreate}
+              onClick={addQuestion}
             >
               Add Question
             </Button>
