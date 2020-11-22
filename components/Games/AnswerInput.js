@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Center, Flex, IconButton, Textarea, Text } from '@chakra-ui/react'
+import { useState, useEffect } from 'react'
+import { Center, Flex, IconButton, Text, Textarea } from '@chakra-ui/react'
 import { CheckCircleIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 
@@ -15,7 +15,11 @@ const bounceTransition = {
 
 const AnswerInput = ({ answer }) => {
   const [chars, setChars] = useState(0)
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(answer.isCorrect)
+
+  useEffect(() => {
+    setToggle(answer.isCorrect)
+  }, [answer])
 
   const handleToggle = () => {
     setToggle((prev) => !prev)
@@ -53,9 +57,10 @@ const AnswerInput = ({ answer }) => {
         />
       </Center>
       <Textarea
-        placeholder={`Add Answer ${answer.id}`}
-        variant='unstyled'
         mx='2'
+        placeholder={`Add Answer ${answer.id}`}
+        value={answer.answer}
+        variant='unstyled'
         fontSize='lg'
         overflowWrap='break-word'
         wordBreak='break-word'

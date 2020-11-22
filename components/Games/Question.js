@@ -98,7 +98,7 @@ const Question = ({ question }) => {
         </Center>
       </Flex>
       <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-        {question.answers.map((a) => (
+        {q.answers.map((a) => (
           <AnswerInput key={a.id} answer={a} />
         ))}
       </SimpleGrid>
