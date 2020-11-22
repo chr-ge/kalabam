@@ -1,9 +1,27 @@
 import { useRouter } from 'next/router'
-import { Button, Box, Flex, Heading } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
+import { useGameCreate } from '../../context/Game/GameCreateContext'
+import { useAddGame } from '../../lib/api-hooks'
 import GameSettingsDrawer from './GameSettingsDrawer'
 
 const GameHeader = () => {
   const router = useRouter()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { title, description, questions } = useGameCreate()
+  const [addGame] = useAddGame()
+
+  const handleDone = async () => {
+    if (!title) {
+      onOpen()
+    } else {
+      try {
+        await addGame({ title, description, questions })
+        router.push('/')
+      } catch (err) {
+        global.alert('An error has occurred')
+      }
+    }
+  }
 
   return (
     <nav>
@@ -17,7 +35,7 @@ const GameHeader = () => {
         px='4'
       >
         <Heading color='blue.800'>Kalabam</Heading>
-        <GameSettingsDrawer />
+        <GameSettingsDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
         <Box>
           <Button
             variant='outline'
@@ -36,7 +54,7 @@ const GameHeader = () => {
             color='white'
             aria-label='Sign In'
             size='sm'
-            onClick={() => true}
+            onClick={handleDone}
           >
             Done
           </Button>

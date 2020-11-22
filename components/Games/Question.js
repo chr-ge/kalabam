@@ -28,8 +28,7 @@ const Question = ({ question }) => {
   }, [q])
 
   return (
-    <Box flex='1' p='10'>
-      <Box>{question.id}</Box>
+    <Box flex={1} p='10'>
       <Input
         py='14'
         value={q.question}
@@ -45,9 +44,7 @@ const Question = ({ question }) => {
       <Flex py='16' justify='space-evenly'>
         <Stack w='40%' justify='center'>
           <Box mb='5'>
-            <Text id='time_limit' mb='2'>
-              Time Limit
-            </Text>
+            <Text id='time_limit' mb='2'>Time Limit</Text>
             <Slider
               value={q.timeLimit}
               aria-labelledby='time_limit'

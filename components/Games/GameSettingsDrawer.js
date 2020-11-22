@@ -15,14 +15,12 @@ import {
   FormLabel,
   Input,
   Tag,
-  Textarea,
-  useDisclosure
+  Textarea
 } from '@chakra-ui/react'
 import { IoMdSettings, IoIosCheckmarkCircle } from 'react-icons/io'
 import { useGameCreate } from '../../context/Game/GameCreateContext'
 
-const GameSettingsDrawer = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
   const titleField = useRef()
 
   const { title, description, updateGameSettings } = useGameCreate()

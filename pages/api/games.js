@@ -14,25 +14,26 @@ export default async (req, res) => {
       return
     }
 
-    const { title, description } = JSON.parse(req.body)
+    const { title, description, questions } = JSON.parse(req.body)
 
-    if (!title || !description) {
-      res.status(400).json({ status: 'malformed content' })
+    if (!title || !questions) {
+      res.status(400).json({ success: false, status: 'malformed content' })
       return
     }
 
     const { result } = await createGame({
       title,
       description,
+      questions,
       createdBy: new ObjectId(user.id)
     })
 
     if (!result.ok) {
-      res.status(500).json({ status: 'unable to add item' })
+      res.status(500).json({ success: false, status: 'unable to create game' })
       return
     }
 
-    return res.status(201).json({ status: 'created' })
+    return res.status(201).json({ success: true, status: 'created' })
   }
 
   res.end()
