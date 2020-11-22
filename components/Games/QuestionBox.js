@@ -13,7 +13,7 @@ import { useGameCreate } from '../../context/Game/GameCreateContext'
 const TOAST_ID = 'cannot-delete'
 
 const QuestionBox = ({ question, index }) => {
-  const { questions, setActiveQuestion, deleteQuestion } = useGameCreate()
+  const { questions, activeQuestion, setActiveQuestion, deleteQuestion } = useGameCreate()
   const toast = useToast()
 
   const handleDelete = () => {
@@ -39,7 +39,13 @@ const QuestionBox = ({ question, index }) => {
   }
 
   return (
-    <Flex direction='column' p='2' minH='32' w='48' bgColor='gray.300'>
+    <Flex
+      direction='column'
+      p='2'
+      minH='32'
+      w={{ base: '48', xl: '52' }}
+      bgColor={activeQuestion === question ? 'gray.400' : 'gray.300'}
+    >
       <Flex>
         <Text>{index}. quiz</Text>
         <Spacer />

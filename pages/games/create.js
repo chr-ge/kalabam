@@ -19,7 +19,7 @@ function Create () {
         >
           <Flex direction='column' h='100%' bgColor='gray.100'>
             <Stack
-              w={{ base: '100%', md: '48' }}
+              w={{ base: '100%', md: '48', xl: '52' }}
               direction={{ base: 'row', md: 'column' }}
               align='stretch'
               overflowY='auto'
