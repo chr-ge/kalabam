@@ -2,6 +2,7 @@ import { signin, signout, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import {
   Avatar,
+  Button,
   Menu,
   MenuButton,
   Box,
@@ -9,9 +10,8 @@ import {
   MenuDivider,
   MenuItem,
   Flex,
-  Heading,
-  Button
-} from '@chakra-ui/core'
+  Heading
+} from '@chakra-ui/react'
 
 const Header = () => {
   const [session, loading] = useSession()
@@ -50,30 +50,43 @@ const Header = () => {
           </Box>
         )}
         {session && (
-          <Menu>
-            <MenuButton
-              as={Avatar}
-              src={session.user.image}
-              name={session.user.name}
+          <Box>
+            <Button
+              marginRight='4'
+              colorScheme='pink'
+              color='white'
+              aria-label='Sign In'
               size='sm'
-              cursor='pointer'
-            />
-            <MenuList borderColor='gray.300'>
-              <MenuItem onClick={() => router.push('/account')}>
-                My Account
-              </MenuItem>
-              <MenuItem
-                onClick={(e) => {
-                  e.preventDefault()
-                  signout()
-                }}
-              >
-                Logout
-              </MenuItem>
-              <MenuDivider />
-              <MenuItem>Help</MenuItem>
-            </MenuList>
-          </Menu>
+              isLoading={loading}
+              onClick={() => router.push('/games/create')}
+            >
+              Create
+            </Button>
+            <Menu>
+              <MenuButton
+                as={Avatar}
+                src={session.user.image}
+                name={session.user.name}
+                size='sm'
+                cursor='pointer'
+              />
+              <MenuList borderColor='gray.300'>
+                <MenuItem onClick={() => router.push('/account')}>
+                  My Account
+                </MenuItem>
+                <MenuItem
+                  onClick={(e) => {
+                    e.preventDefault()
+                    signout()
+                  }}
+                >
+                  Logout
+                </MenuItem>
+                <MenuDivider />
+                <MenuItem>Help</MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
         )}
       </Flex>
     </nav>

@@ -1,18 +1,26 @@
-import { theme as chakraTheme } from '@chakra-ui/core'
+import { extendTheme } from '@chakra-ui/react'
 
-const theme = {
-  ...chakraTheme,
+const theme = extendTheme({
+  fonts: {
+    body: "'Cera Pro', sans-serif",
+    heading: "'Cera Pro Black', sans-serif"
+  },
+  styles: {
+    global: {
+      'html, body, #__next': { height: '100%' }
+    }
+  },
   colors: {
-    ...chakraTheme.colors,
     black: {
       500: '#000000',
       600: '#222222'
     },
+    lightPink: '#fdf9ff',
     googleBlue: {
       500: '#4285F4',
       600: '#427AF4'
     }
   }
-}
+})
 
 export default theme

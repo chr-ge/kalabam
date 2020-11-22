@@ -1,20 +1,18 @@
 import { Provider } from 'next-auth/client'
-import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core'
+import { ChakraProvider } from '@chakra-ui/react'
+import { GameCreateProvider } from '../context/Game/GameCreateContext'
+import FontFace from '../components/font-face'
 import theme from '../theme'
 
 const App = ({ Component, pageProps }) => {
   return (
     <Provider session={pageProps.session}>
-      <ThemeProvider theme={theme}>
-        <ColorModeProvider
-          options={{
-            useSystemColorMode: true
-          }}
-        >
-          <CSSReset />
+      <ChakraProvider theme={theme}>
+        <GameCreateProvider>
           <Component {...pageProps} />
-        </ColorModeProvider>
-      </ThemeProvider>
+        </GameCreateProvider>
+      </ChakraProvider>
+      <FontFace />
     </Provider>
   )
 }
