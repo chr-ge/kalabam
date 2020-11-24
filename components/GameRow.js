@@ -1,18 +1,34 @@
-import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
+import Image from 'next/image'
+import { Button, Flex, Tag, Text, Spacer } from '@chakra-ui/react'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 const GameRow = ({ game }) => {
+  dayjs.extend(relativeTime)
+
   return (
-    <Flex my='2' border='1px' borderColor='blue.100'>
+    <Flex mt='2' p='1' border='1px' borderColor='blue.100'>
       <Image
-        w={{ base: '24', md: '48' }}
-        src='https://create.kahoot.it/shared/theme/kahoot/img/placeholder-cover-kahoot.png'
+        width={128}
+        height={128}
+        src={game.image || '/images/game.png'}
       />
-      <Box flex={1}>
+      <Flex flex={1} p='2' direction='column'>
         <Text fontSize='lg'>{game.title}</Text>
-        <Text>{game.description}</Text>
-      </Box>
+        <Text fontSize='sm' color='gray.600' noOfLines={2} isTruncated>{game.description}</Text>
+        <Spacer />
+        <Flex>
+          <Tag colorScheme='purple'>
+            {game.questionCount}{' '}
+            {game.questionCount === 1 ? 'question' : 'questions'}
+          </Tag>
+          <Text ml='1' fontSize='sm'>• Created {dayjs(game.created).fromNow()}</Text>
+        </Flex>
+      </Flex>
       <Flex direction='column' justify='flex-end'>
-        <Button colorScheme='green' mb='2'>Play</Button>
+        <Button colorScheme='green' mb='2'>
+          Play
+        </Button>
         <Button colorScheme='blue'>Edit</Button>
       </Flex>
     </Flex>
