@@ -10,19 +10,24 @@ function Index () {
   return (
     <Box bg='gray.100' h='100%'>
       <Layout title='My Games'>
-        <Flex justify='center' my='6' mx='24'>
-          <Box w='96' h='48' p='2' rounded='md' bg='white' boxShadow='md'>
+        <Flex
+          my='6'
+          mx={{ base: '2', sm: '12', md: '24' }}
+          direction={{ base: 'column-reverse', md: 'row' }}
+          justify='center'
+        >
+          <Box w={{ md: '96' }} mt={{ base: '4', md: '0' }} h='48' p='2' rounded='md' bg='white' boxShadow='md'>
             <Heading as='h3' pl='2' fontSize='xl' bg='pink.100'>What's New</Heading>
             <Stack>
               <Box>News 1</Box>
-              <Box>News 1</Box>
+              <Box>News 2</Box>
             </Stack>
           </Box>
-          <Box w='100%' ml='8' p='2' rounded='md' bg='white' boxShadow='md'>
+          <Box w='100%' ml={{ md: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
             <Heading as='h3' pl='2' fontSize='xl' bg='teal.100'>My Games</Heading>
             <Stack>
               {isLoading
-                ? [1, 2, 3, 4].map((n) => <Skeleton key={n} h='128px' />)
+                ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='128px' />)
                 : data.map((game) => <GameRow key={game._id} game={game} />)}
             </Stack>
           </Box>
