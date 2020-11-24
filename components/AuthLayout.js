@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import Header from '../components/Header'
+import { Container } from '@chakra-ui/react'
+import Header from './Header'
 
-const Layout = ({ title, children }) => {
+const AuthLayout = ({ title, children }) => {
   return (
     <>
       <Head>
@@ -9,9 +10,9 @@ const Layout = ({ title, children }) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <Header />
-      {children}
+      <Container my='4'>{children}</Container>
     </>
   )
 }
 
-export default Layout
+export default AuthLayout

@@ -16,6 +16,7 @@
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
+    "dayjs": "^1.9.6",
     "framer-motion": "^2.9.4",
     "mongodb": "^3.6.3",
     "next": "latest",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { providers, signIn } from 'next-auth/client'
 import {
@@ -16,13 +16,13 @@ import {
   Text
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
-import Layout from '../../components/Layout'
+import AuthLayout from '../../components/AuthLayout'
 
 function SignIn ({ providers, error }) {
   const [email, setEmail] = useState('')
 
   return (
-    <Layout title='Sign In | Kalabam'>
+    <AuthLayout title='Sign In | Kalabam'>
       <Center m='16'>
         <Stack spacing={3}>
           {error && (
@@ -80,7 +80,7 @@ function SignIn ({ providers, error }) {
           </Button>
         </Stack>
       </Center>
-    </Layout>
+    </AuthLayout>
   )
 }
 

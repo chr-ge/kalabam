@@ -1,19 +1,21 @@
 import { ObjectId } from 'mongodb'
 import { getUserFromSession } from '../../models/User'
-import { createGame } from '../../models/Game'
+import { getGamesCreatedByUser, createGame } from '../../models/Game'
 
 export default async (req, res) => {
   let user
   try {
     user = await getUserFromSession({ req })
-  } catch {} // eslint-disable-line no-empty
+  } catch {
+    res.status(401).end()
+    return
+  }
+
+  if (req.method === 'GET') {
+    return res.status(200).json(await getGamesCreatedByUser(user.id))
+  }
 
   if (req.method === 'POST') {
-    if (!user) {
-      res.status(401).end()
-      return
-    }
-
     const { title, description, questions } = JSON.parse(req.body)
 
     if (!title || !questions) {

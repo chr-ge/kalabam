@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { providers, signIn } from 'next-auth/client'
 import {
@@ -13,13 +13,13 @@ import {
   Text
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
-import Layout from '../../components/Layout'
+import AuthLayout from '../../components/AuthLayout'
 
 function SignUp ({ providers }) {
   const [email, setEmail] = useState('')
 
   return (
-    <Layout title='Sign Up | Kalabam'>
+    <AuthLayout title='Sign Up | Kalabam'>
       <Center m='16'>
         <Stack spacing={3}>
           <Heading>Sign Up To Kalabam</Heading>
@@ -71,7 +71,7 @@ function SignUp ({ providers }) {
           </Button>
         </Stack>
       </Center>
-    </Layout>
+    </AuthLayout>
   )
 }
 
