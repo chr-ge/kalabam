@@ -44,6 +44,24 @@ export async function getGamesCreatedByUser (userId) {
   return games
 }
 
+export async function getGameById (gameId) {
+  const { db } = await connectToDatabase()
+  const collection = db.collection('games')
+
+  const game = await collection
+    .aggregate([
+      {
+        $match: {
+          _id: new ObjectId(gameId)
+        }
+      },
+      ...populateCreatedByAggregateStages
+    ])
+    .toArray()
+
+  return game[0]
+}
+
 export const createGame = async (newGame) => {
   const dateNow = new Date()
 
@@ -57,4 +75,12 @@ export const createGame = async (newGame) => {
   const collection = db.collection('games')
 
   return await collection.insertOne(game)
+}
+
+export async function deleteGame (id) {
+  const { db } = await connectToDatabase()
+  const collection = db.collection('games')
+
+  const response = await collection.deleteOne({ _id: new ObjectId(id) })
+  return response.result.ok === 1
 }
