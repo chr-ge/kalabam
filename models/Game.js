@@ -12,8 +12,10 @@ const populateCreatedByAggregateStages = [
   },
   {
     $addFields: {
-      user: { $arrayElemAt: ['$createdBy_user', 0] }
-
+      user: { $arrayElemAt: ['$createdBy_user', 0] },
+      questionCount: {
+        $size: '$questions'
+      }
     }
   },
   {
