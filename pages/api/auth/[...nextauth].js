@@ -70,6 +70,15 @@ const options = {
     },
 
     /**
+     * @param  {string} url      URL provided as callback URL by the client
+     * @param  {string} baseUrl  Default base URL of site (can be used as fallback)
+     * @return {string}          URL the client will be redirect to
+     */
+    redirect: async (_, baseUrl) => {
+      return Promise.resolve(baseUrl)
+    },
+
+    /**
      * @link https://next-auth.js.org/configuration/callbacks#session-callback
      * @param  {object} session      Session object
      * @param  {object} user         User object    (if using database sessions)
