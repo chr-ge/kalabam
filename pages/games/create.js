@@ -10,7 +10,7 @@ function Create () {
 
   return (
     <Flex direction='column' h='100%'>
-      <GameHeader />
+      <GameHeader mode='create' />
       <Box flex={1}>
         <Flex
           direction={{ base: 'column', md: 'row' }}
