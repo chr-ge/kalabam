@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   IconButton,
-  Link,
   Menu,
   MenuButton,
   MenuItem,
@@ -16,6 +15,7 @@ import {
 import { HiDotsVertical } from 'react-icons/hi'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { Link } from './Link'
 import { useDeleteGame } from '../lib/api-hooks'
 
 dayjs.extend(relativeTime)
