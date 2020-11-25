@@ -84,3 +84,20 @@ export async function deleteGame (id) {
   const response = await collection.deleteOne({ _id: new ObjectId(id) })
   return response.result.ok === 1
 }
+
+export async function updateGameById (gameId, updates) {
+  const gameObjectId = new ObjectId(gameId)
+
+  const { db } = await connectToDatabase()
+  const collection = db.collection('games')
+
+  const { changes, ...newUpdates } = updates
+
+  const queryUpdates = {
+    $set: {
+      ...newUpdates
+    }
+  }
+
+  return await collection.findOneAndUpdate({ _id: gameObjectId }, queryUpdates)
+}
