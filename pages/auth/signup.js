@@ -13,13 +13,13 @@ import {
   Text
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
-import AuthLayout from '../../components/AuthLayout'
+import Layout from '../../components/Layout'
 
 function SignUp ({ providers }) {
   const [email, setEmail] = useState('')
 
   return (
-    <AuthLayout title='Sign Up | Kalabam'>
+    <Layout title='Sign Up | Kalabam'>
       <Center m='16'>
         <Stack spacing={3}>
           <Heading>Sign Up To Kalabam</Heading>
@@ -71,7 +71,7 @@ function SignUp ({ providers }) {
           </Button>
         </Stack>
       </Center>
-    </AuthLayout>
+    </Layout>
   )
 }
 

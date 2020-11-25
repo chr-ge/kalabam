@@ -6,8 +6,8 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
-  Divider,
   Center,
+  Divider,
   Heading,
   Flex,
   Link as A,
@@ -16,13 +16,13 @@ import {
   Text
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
-import AuthLayout from '../../components/AuthLayout'
+import Layout from '../../components/Layout'
 
 function SignIn ({ providers, error }) {
   const [email, setEmail] = useState('')
 
   return (
-    <AuthLayout title='Sign In | Kalabam'>
+    <Layout title='Sign In | Kalabam'>
       <Center m='16'>
         <Stack spacing={3}>
           {error && (
@@ -80,7 +80,7 @@ function SignIn ({ providers, error }) {
           </Button>
         </Stack>
       </Center>
-    </AuthLayout>
+    </Layout>
   )
 }
 

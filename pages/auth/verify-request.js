@@ -1,10 +1,10 @@
 import { Center, Link, Icon, Stack, Text } from '@chakra-ui/react'
 import { RiMailCheckFill } from 'react-icons/ri'
-import AuthLayout from '../../components/AuthLayout'
+import Layout from '../../components/Layout'
 
 function VerifyRequest () {
   return (
-    <AuthLayout>
+    <Layout>
       <Center m='24'>
         <Stack spacing={2} textAlign='center' align='center'>
           <Icon as={RiMailCheckFill} boxSize={12} color='blue.900' />
@@ -17,7 +17,7 @@ function VerifyRequest () {
           </Link>
         </Stack>
       </Center>
-    </AuthLayout>
+    </Layout>
   )
 }
 
