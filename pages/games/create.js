@@ -1,8 +1,6 @@
 import { getSession } from 'next-auth/client'
 import { Box, Button, Flex, Stack } from '@chakra-ui/react'
-import GameHeader from '../../components/Games/GameHeader'
-import Question from '../../components/Games/Question'
-import QuestionBox from '../../components/Games/QuestionBox'
+import { GameHeader, Question, QuestionBox } from '../../components/Games'
 import { useGameContext } from '../../context/Game/GameContext'
 
 function Create () {
