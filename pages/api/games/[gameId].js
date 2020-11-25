@@ -1,4 +1,4 @@
-import { getGameById, deleteGame } from '../../../models/Game'
+import { getGameById, updateGameById, deleteGame } from '../../../models/Game'
 import { getUserFromSession } from '../../../models/User'
 
 export default async (req, res) => {
@@ -11,8 +11,36 @@ export default async (req, res) => {
   }
 
   const gameId = req.query.gameId
-
   const game = await getGameById(gameId)
+
+  if (req.method === 'GET') {
+    return res.status(200).json(game)
+  }
+
+  if (req.method === 'PUT') {
+    if (user.id.toString() !== game.createdBy.toString()) {
+      res.status(403).end()
+      return
+    }
+
+    const updates = JSON.parse(req.body);
+
+    ['_id', 'createdBy', 'created'].forEach((key) => {
+      delete updates[key]
+    })
+
+    const missingValue = ['title', 'description', 'questions'].some(
+      (key) => key == null
+    )
+
+    if (missingValue) {
+      res.status(400).json({ status: 'missing required value' })
+    }
+
+    updates.updated = new Date()
+
+    return res.status(200).json(await updateGameById(gameId, updates))
+  }
 
   if (req.method === 'DELETE') {
     if (user.id.toString() !== game.createdBy.toString()) {
