@@ -91,6 +91,13 @@ export const GameProvider = ({ children }) => {
     })
   }
 
+  const resetContext = () => {
+    dispatch({
+      type: 'RESET',
+      payload: initialState
+    })
+  }
+
   return (
     <GameContext.Provider
       value={{
@@ -100,7 +107,8 @@ export const GameProvider = ({ children }) => {
         addQuestion,
         setActiveQuestion,
         updateQuestion,
-        deleteQuestion
+        deleteQuestion,
+        resetContext
       }}
     >
       {children}

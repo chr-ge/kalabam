@@ -7,7 +7,7 @@ import GameSettingsDrawer from './GameSettingsDrawer'
 const GameHeader = ({ mode }) => {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { _id, title, description, questions } = useGameContext()
+  const { _id, title, description, questions, resetContext } = useGameContext()
 
   const [addGame, { isLoading: addIsLoading }] = useAddGame()
   const [editGame, { isLoading: editIsLoading }] = useEditGame(_id)
@@ -22,6 +22,7 @@ const GameHeader = ({ mode }) => {
         } else {
           await editGame({ title, description, questions })
         }
+        resetContext()
         router.push('/')
       } catch (err) {
         global.alert('An error has occurred')
