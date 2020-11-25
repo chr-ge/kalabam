@@ -35,6 +35,8 @@ export default function reducer (state, action) {
         ...state,
         questions: state.questions.filter((q) => q.id !== action.payload)
       }
+    case 'RESET':
+      return action.payload
     default:
       throw new Error(`Unknown action: ${action.type}`)
   }

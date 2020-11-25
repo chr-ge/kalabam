@@ -18,12 +18,12 @@ import {
   Textarea
 } from '@chakra-ui/react'
 import { IoMdSettings, IoIosCheckmarkCircle } from 'react-icons/io'
-import { useGameCreate } from '../../context/Game/GameCreateContext'
+import { useGameContext } from '../../context/Game/GameContext'
 
 const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
   const titleField = useRef()
 
-  const { title, description, updateGameSettings } = useGameCreate()
+  const { title, description, updateGameSettings } = useGameContext()
 
   const [settings, setSettings] = useState({
     title,

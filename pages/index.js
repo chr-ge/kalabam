@@ -2,7 +2,7 @@ import { getSession } from 'next-auth/client'
 import { Box, Flex, Heading, Skeleton, Stack } from '@chakra-ui/react'
 import { useGames } from '../lib/api-hooks'
 import Layout from '../components/Layout'
-import GameRow from '../components/GameRow'
+import { GameRow } from '../components/Games'
 
 function Index () {
   const { isLoading, data } = useGames()

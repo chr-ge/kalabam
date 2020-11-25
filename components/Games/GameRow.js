@@ -15,8 +15,8 @@ import {
 import { HiDotsVertical } from 'react-icons/hi'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { Link } from './Link'
-import { useDeleteGame } from '../lib/api-hooks'
+import { Link } from '../Link'
+import { useDeleteGame } from '../../lib/api-hooks'
 
 dayjs.extend(relativeTime)
 
@@ -44,7 +44,7 @@ const GameRow = ({ game }) => {
       <Image width={128} height={128} src={game.image || '/images/game.png'} />
       <Flex flex={1} p='2' direction='column'>
         <Text fontSize='lg'>{game.title}</Text>
-        <Text fontSize='sm' color='gray.600' noOfLines={2} isTruncated>
+        <Text fontSize='sm' pr='5' color='gray.600' noOfLines={2} isTruncated>
           {game.description}
         </Text>
         <Spacer />

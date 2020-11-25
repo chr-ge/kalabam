@@ -1,15 +1,13 @@
 import { useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { Box, Button, Flex, Stack } from '@chakra-ui/react'
-import GameHeader from '../../components/Games/GameHeader'
-import Question from '../../components/Games/Question'
-import QuestionBox from '../../components/Games/QuestionBox'
+import { GameHeader, Question, QuestionBox } from '../../components/Games'
 import GameLoading from '../../components/GameLoading'
-import { useGameCreate } from '../../context/Game/GameCreateContext'
+import { useGameContext } from '../../context/Game/GameContext'
 import { useGameById } from '../../lib/api-hooks'
 
 function Edit ({ gameId }) {
-  const { setGame, questions, activeQuestion, addQuestion } = useGameCreate()
+  const { setGame, questions, activeQuestion, addQuestion } = useGameContext()
   const { isLoading, data } = useGameById(gameId)
 
   useEffect(() => {
