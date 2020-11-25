@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   IconButton,
+  Link,
   Menu,
   MenuButton,
   MenuItem,
@@ -65,7 +66,7 @@ const GameRow = ({ game }) => {
             isLoading={isLoading}
           />
           <MenuList>
-            <MenuItem>Edit</MenuItem>
+            <MenuItem as={Link} href={`/games/${game._id}/edit`}>Edit</MenuItem>
             <MenuItem onClick={handleDelete}>Delete</MenuItem>
           </MenuList>
         </Menu>
