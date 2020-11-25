@@ -1,5 +1,10 @@
 export default function reducer (state, action) {
   switch (action.type) {
+    case 'SET_GAME':
+      return {
+        ...action.payload,
+        activeQuestion: action.payload.questions[0]
+      }
     case 'UPDATE_GAME_SETTINGS':
       return {
         ...state,

@@ -38,6 +38,13 @@ const GameCreateContext = createContext(initialState)
 export const GameCreateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(GameCreateReducer, initialState)
 
+  const setGame = (game) => {
+    dispatch({
+      type: 'SET_GAME',
+      payload: game
+    })
+  }
+
   const updateGameSettings = ({ title, description }) => {
     dispatch({
       type: 'UPDATE_GAME_SETTINGS',
@@ -88,6 +95,7 @@ export const GameCreateProvider = ({ children }) => {
     <GameCreateContext.Provider
       value={{
         ...state,
+        setGame,
         updateGameSettings,
         addQuestion,
         setActiveQuestion,
