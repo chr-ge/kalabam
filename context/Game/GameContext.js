@@ -1,5 +1,5 @@
 import { useReducer, useContext, createContext } from 'react'
-import GameCreateReducer from './GameCreateReducer'
+import GameReducer from './GameReducer'
 import uniqid from 'uniqid'
 
 const initialState = {
@@ -33,10 +33,10 @@ const initialState = {
   }
 }
 
-const GameCreateContext = createContext(initialState)
+const GameContext = createContext(initialState)
 
-export const GameCreateProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(GameCreateReducer, initialState)
+export const GameProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(GameReducer, initialState)
 
   const setGame = (game) => {
     dispatch({
@@ -92,7 +92,7 @@ export const GameCreateProvider = ({ children }) => {
   }
 
   return (
-    <GameCreateContext.Provider
+    <GameContext.Provider
       value={{
         ...state,
         setGame,
@@ -104,8 +104,8 @@ export const GameCreateProvider = ({ children }) => {
       }}
     >
       {children}
-    </GameCreateContext.Provider>
+    </GameContext.Provider>
   )
 }
 
-export const useGameCreate = () => useContext(GameCreateContext)
+export const useGameContext = () => useContext(GameContext)

@@ -8,12 +8,12 @@ import {
   useToast
 } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
-import { useGameCreate } from '../../context/Game/GameCreateContext'
+import { useGameContext } from '../../context/Game/GameContext'
 
 const TOAST_ID = 'cannot-delete'
 
 const QuestionBox = ({ question, index }) => {
-  const { questions, activeQuestion, setActiveQuestion, deleteQuestion } = useGameCreate()
+  const { questions, activeQuestion, setActiveQuestion, deleteQuestion } = useGameContext()
   const toast = useToast()
 
   const handleDelete = () => {

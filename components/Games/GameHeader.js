@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router'
 import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
-import { useGameCreate } from '../../context/Game/GameCreateContext'
+import { useGameContext } from '../../context/Game/GameContext'
 import { useAddGame, useEditGame } from '../../lib/api-hooks'
 import GameSettingsDrawer from './GameSettingsDrawer'
 
 const GameHeader = ({ mode }) => {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { _id, title, description, questions } = useGameCreate()
+  const { _id, title, description, questions } = useGameContext()
 
   const [addGame, { isLoading: addIsLoading }] = useAddGame()
   const [editGame, { isLoading: editIsLoading }] = useEditGame(_id)

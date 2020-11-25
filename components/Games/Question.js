@@ -13,10 +13,10 @@ import {
   Text
 } from '@chakra-ui/react'
 import AnswerInput from '../../components/Games/AnswerInput'
-import { useGameCreate } from '../../context/Game/GameCreateContext'
+import { useGameContext } from '../../context/Game/GameContext'
 
 const Question = ({ question }) => {
-  const { updateQuestion } = useGameCreate()
+  const { updateQuestion } = useGameContext()
   const [q, setQ] = useState(question)
 
   useEffect(() => {
