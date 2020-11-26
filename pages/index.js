@@ -1,14 +1,20 @@
 import { getSession } from 'next-auth/client'
-import { Box, Flex, Heading, Skeleton, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Skeleton, Stack, Text, useColorModeValue } from '@chakra-ui/react'
 import { useGames } from '../lib/api-hooks'
 import Layout from '../components/Layout'
 import { GameRow } from '../components/Games'
 
+const news = [
+  { title: '✏️ Try the New Edit Feature', description: 'You can now edit your Kalabam games.' },
+  { title: '✅ Kalabam is Now in Alpha', description: 'Try the Alpha release of Kalabam and leave us Feedback!' }
+]
+
 function Index () {
   const { isLoading, data } = useGames()
+  const bgColor = useColorModeValue('white', 'gray.600')
 
   return (
-    <Box bg='gray.100' h='100%'>
+    <Box h='100%'>
       <Layout title='My Games'>
         <Flex
           my='6'
@@ -17,22 +23,20 @@ function Index () {
           justify='center'
         >
           <Box mt={{ base: '4', md: '0' }}>
-            <Box w={{ md: '80' }} p='2' rounded='md' bg='white' boxShadow='md'>
-              <Heading as='h3' pl='2' fontSize='xl' bg='pink.100'>What's New</Heading>
+            <Box w={{ md: '80' }} p='2' rounded='md' bg={bgColor} boxShadow='md'>
+              <Heading as='h3' pl='2' fontSize='xl' bg='pink.200'>What's New</Heading>
               <Stack>
-                <Box mt='2' p='2' border='1px' borderColor='pink.100'>
-                  <Text mb='1' fontWeight='bold'>✏️ Try the New Edit Feature</Text>
-                  <Text>You can now edit your Kalabam games.</Text>
-                </Box>
-                <Box mt='2' p='2' border='1px' borderColor='pink.100'>
-                  <Text mb='1' fontWeight='bold'>✅ Kalabam is Now in Alpha</Text>
-                  <Text>Try the Alpha release of Kalabam and leave us Feedback!</Text>
-                </Box>
+                {news.map(({ title, description }, i) => (
+                  <Box key={i} mt='2' p='2' border='1px' borderColor='pink.200'>
+                    <Text mb='1' fontWeight='bold'>{title}</Text>
+                    <Text>{description}</Text>
+                  </Box>
+                ))}
               </Stack>
             </Box>
           </Box>
-          <Box w='100%' ml={{ md: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
-            <Heading as='h3' pl='2' fontSize='xl' bg='teal.100'>My Games</Heading>
+          <Box w='100%' ml={{ md: '8' }} p='2' rounded='md' bg={bgColor} boxShadow='md'>
+            <Heading as='h3' pl='2' fontSize='xl' bg='teal.200'>My Games</Heading>
             <Stack>
               {isLoading
                 ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='128px' />)
