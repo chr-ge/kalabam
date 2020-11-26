@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Link from 'next/link'
 import { providers, signIn } from 'next-auth/client'
 import {
   Button,
@@ -7,13 +6,14 @@ import {
   Center,
   Heading,
   Flex,
-  Link as A,
   Stack,
   Input,
-  Text
+  Text,
+  useColorModeValue
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
+import { Link } from '../../components/Link'
 
 function SignUp ({ providers }) {
   const [email, setEmail] = useState('')
@@ -31,14 +31,12 @@ function SignUp ({ providers }) {
             pt='1'
           >
             Already Have An Account?{' '}
-            <Link href='/auth/signin'>
-              <A color='blue.900'>Login</A>
-            </Link>
+            <Link href='/auth/signin' color={useColorModeValue('blue.900', 'blue.200')}>Login</Link>
           </Text>
           <Button
             leftIcon={<FaGoogle />}
             size='lg'
-            colorScheme='googleBlue'
+            colorScheme={useColorModeValue('googleBlue')}
             onClick={() => signIn(providers.google.id)}
           >
             Sign Up With Google
@@ -46,7 +44,7 @@ function SignUp ({ providers }) {
           <Button
             leftIcon={<FaApple />}
             size='lg'
-            colorScheme='black'
+            colorScheme={useColorModeValue('black')}
             onClick={() => signIn(providers.apple.id)}
           >
             Sign Up With Apple
