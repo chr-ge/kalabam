@@ -1,3 +1,5 @@
+import { initialState } from './initialState'
+
 export default function reducer (state, action) {
   switch (action.type) {
     case 'SET_GAME':
@@ -36,7 +38,7 @@ export default function reducer (state, action) {
         questions: state.questions.filter((q) => q.id !== action.payload)
       }
     case 'RESET':
-      return action.payload
+      return initialState
     default:
       throw new Error(`Unknown action: ${action.type}`)
   }
