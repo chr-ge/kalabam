@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { Box, Button, Flex, Stack } from '@chakra-ui/react'
-import { GameHeader, Question, QuestionBox } from '../../components/Games'
-import GameLoading from '../../components/GameLoading'
+import { GameHeader, GameLoading, Question, QuestionBox } from '../../components/Games'
 import { useGameContext } from '../../context/Game/GameContext'
 import { useGameById } from '../../lib/api-hooks'
 
