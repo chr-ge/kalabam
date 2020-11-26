@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react'
+import { mode } from '@chakra-ui/theme-tools'
 
 const theme = extendTheme({
   fonts: {
@@ -6,9 +7,10 @@ const theme = extendTheme({
     heading: "'Cera Pro Black', sans-serif"
   },
   styles: {
-    global: {
-      'html, body, #__next': { height: '100%' }
-    }
+    global: (props) => ({
+      'html, body, #__next': { height: '100%' },
+      body: { bg: mode('gray.100', 'gray.700')(props) }
+    })
   },
   colors: {
     black: {
