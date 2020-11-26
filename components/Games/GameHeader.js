@@ -22,8 +22,8 @@ const GameHeader = ({ mode }) => {
         } else {
           await editGame({ title, description, questions })
         }
-        router.push('/')
         resetContext()
+        router.push('/')
       } catch (err) {
         global.alert('An error has occurred')
       }
@@ -51,8 +51,8 @@ const GameHeader = ({ mode }) => {
             colorScheme='blue'
             size='sm'
             onClick={() => {
-              router.back()
               resetContext()
+              router.back()
             }}
           >
             Cancel
