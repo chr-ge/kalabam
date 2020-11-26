@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 function Account ({ session }) {
   return (
-    <Box bg='gray.100' h='100%'>
+    <Box h='100%'>
       <Layout title='My Account | Kalabam'>
         <Container mt='6'>
           <Heading mb='6' textAlign='center'>My Account</Heading>
