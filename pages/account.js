@@ -1,36 +1,36 @@
 import { getSession } from 'next-auth/client'
-import { Heading, Box, Text } from '@chakra-ui/react'
-import styled from '@emotion/styled'
+import { Box, Container, Flex, Heading, Text } from '@chakra-ui/react'
 import Layout from '../components/Layout'
-
-const AngledText = styled(Text)({
-  clipPath: 'polygon(1.5% 0%, 100% 0%, 98.5% 100%, 0% 100%)',
-  background: '#11998E',
-  background: '-webkit-linear-gradient(to right, #38ef7d, #11998e)', // eslint-disable-line no-dupe-keys
-  background: 'linear-gradient(to right, #38EF7D, #11998E)' // eslint-disable-line no-dupe-keys
-})
 
 function Account ({ session }) {
   return (
-    <Layout title='My Account | Kalabam'>
-      <Heading>My Account</Heading>
-      <Box my='6'>
-        <AngledText fontWeight='bold' fontSize='xl' bg='yellow.300' pl='4'>
-          Name
-        </AngledText>
-        <Text mt='2' pl='4' fontSize='lg'>
-          {session.user.name}
-        </Text>
-      </Box>
-      <Box my='6'>
-        <AngledText fontWeight='bold' fontSize='xl' bg='orange.300' pl='4'>
-          Email
-        </AngledText>
-        <Text mt='2' pl='4' fontSize='lg'>
-          {session.user.email}
-        </Text>
-      </Box>
-    </Layout>
+    <Box bg='gray.100' h='100%'>
+      <Layout title='My Account | Kalabam'>
+        <Container mt='6'>
+          <Heading mb='6' textAlign='center'>My Account</Heading>
+          <Flex direction='column'>
+            <Box p='2' bg='white' rounded='md'>
+              <Box mb='6'>
+                <Text fontWeight='bold' fontSize='xl' bg='yellow.300' pl='4'>
+                  Name
+                </Text>
+                <Text mt='2' pl='4' fontSize='lg'>
+                  {session.user.name}
+                </Text>
+              </Box>
+              <Box mb='4'>
+                <Text fontWeight='bold' fontSize='xl' bg='orange.300' pl='4'>
+                  Email
+                </Text>
+                <Text mt='2' pl='4' fontSize='lg'>
+                  {session.user.email}
+                </Text>
+              </Box>
+            </Box>
+          </Flex>
+        </Container>
+      </Layout>
+    </Box>
   )
 }
 
