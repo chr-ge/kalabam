@@ -22,8 +22,8 @@ const GameHeader = ({ mode }) => {
         } else {
           await editGame({ title, description, questions })
         }
-        resetContext()
         router.push('/')
+        resetContext()
       } catch (err) {
         global.alert('An error has occurred')
       }
@@ -50,7 +50,10 @@ const GameHeader = ({ mode }) => {
             marginRight='2'
             colorScheme='blue'
             size='sm'
-            onClick={() => router.back()}
+            onClick={() => {
+              router.back()
+              resetContext()
+            }}
           >
             Cancel
           </Button>
