@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import {
   Avatar,
   Button,
+  IconButton,
   Menu,
   MenuButton,
   Box,
@@ -10,12 +11,30 @@ import {
   MenuDivider,
   MenuItem,
   Flex,
-  Heading
+  Heading,
+  useColorMode
 } from '@chakra-ui/react'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 const Header = () => {
   const [session, loading] = useSession()
+  const { colorMode, toggleColorMode } = useColorMode()
   const router = useRouter()
+
+  const isLight = colorMode === 'light'
+
+  const ColorModeButton = () => (
+    <IconButton
+      size='sm'
+      fontSize='xl'
+      marginRight='4'
+      variant='ghost'
+      onClick={toggleColorMode}
+      icon={isLight ? <MoonIcon /> : <SunIcon />}
+      colorScheme={isLight ? 'purple' : 'yellow'}
+      aria-label={`Toggle ${isLight ? 'Dark' : 'Light'}`}
+    />
+  )
 
   return (
     <nav>
@@ -25,15 +44,16 @@ const Header = () => {
       <Flex
         align='center'
         justify='space-between'
-        backgroundColor='gray.200'
-        borderBottomColor='gray.300'
+        backgroundColor={isLight ? 'gray.200' : 'gray.800'}
+        borderBottomColor={isLight ? 'gray.300' : 'gray.900'}
         borderBottomWidth='thick'
         py='1'
         px='4'
       >
-        <Heading color='blue.800'>Kalabam</Heading>
+        <Heading color={isLight ? 'blue.800' : 'gray.300'}>Kalabam</Heading>
         {!session && (
           <Box>
+            <ColorModeButton />
             <Button
               colorScheme='pink'
               color='white'
@@ -51,6 +71,7 @@ const Header = () => {
         )}
         {session && (
           <Box>
+            <ColorModeButton />
             <Button
               marginRight='4'
               colorScheme='pink'
