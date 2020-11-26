@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Center, Flex, IconButton, Text, Textarea } from '@chakra-ui/react'
+import { Center, Flex, IconButton, Text, Textarea, useColorModeValue } from '@chakra-ui/react'
 import { CheckCircleIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 
@@ -35,7 +35,7 @@ const AnswerInput = ({ answer }) => {
       align='center'
       rounded='md'
       shadow='lg'
-      bgColor='white'
+      bg={useColorModeValue('white', 'gray.600')}
     >
       <Center width='15%' height='100%' bgColor={answer.color} rounded='md'>
         <MotionIconButton

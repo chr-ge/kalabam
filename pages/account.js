@@ -1,15 +1,17 @@
 import { getSession } from 'next-auth/client'
-import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import Layout from '../components/Layout'
 
 function Account ({ session }) {
+  const bgColor = useColorModeValue('white', 'gray.600')
+
   return (
-    <Box bg='gray.100' h='100%'>
+    <Box h='100%'>
       <Layout title='My Account | Kalabam'>
         <Container mt='6'>
           <Heading mb='6' textAlign='center'>My Account</Heading>
           <Flex direction='column'>
-            <Box p='2' bg='white' rounded='md' shadow='md'>
+            <Box p='2' bg={bgColor} rounded='md' shadow='md'>
               <Box mb='6'>
                 <Text fontWeight='bold' fontSize='xl' bg='yellow.300' pl='4'>Name</Text>
                 <Text mt='2' pl='4' fontSize='lg'>{session.user.name}</Text>
@@ -23,7 +25,7 @@ function Account ({ session }) {
               <Flex
                 p='2'
                 border='1px'
-                bgColor='gray.200'
+                bg={bgColor}
                 borderColor='gray.500'
                 rounded='md'
                 shadow='md'

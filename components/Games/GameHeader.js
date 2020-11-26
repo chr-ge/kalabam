@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, useDisclosure, useColorModeValue } from '@chakra-ui/react'
 import { useGameContext } from '../../context/Game/GameContext'
 import { useAddGame, useEditGame } from '../../lib/api-hooks'
 import GameSettingsDrawer from './GameSettingsDrawer'
@@ -37,11 +37,11 @@ const GameHeader = ({ mode }) => {
         px='4'
         align='center'
         justify='space-between'
-        backgroundColor='gray.200'
-        borderBottomColor='gray.300'
+        backgroundColor={useColorModeValue('gray.200', 'gray.800')}
+        borderBottomColor={useColorModeValue('gray.300', 'gray.900')}
         borderBottomWidth='thick'
       >
-        <Heading color='blue.800'>Kalabam</Heading>
+        <Heading color={useColorModeValue('blue.800', 'gray.300')}>Kalabam</Heading>
         <GameSettingsDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
         <Box>
           <Button

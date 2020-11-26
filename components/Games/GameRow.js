@@ -40,7 +40,7 @@ const GameRow = ({ game }) => {
   }
 
   return (
-    <Flex mt='2' p='1' border='1px' borderColor='blue.100'>
+    <Flex mt='2' p='1' border='1px' borderColor='teal.200'>
       <Image width={128} height={128} src={game.image || '/images/game.png'} />
       <Flex flex={1} p='2' direction='column'>
         <Text fontSize='lg'>{game.title}</Text>
