@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { Box, Button, Flex, Stack } from '@chakra-ui/react'
+import { Box, Button, Flex, Stack, useColorModeValue } from '@chakra-ui/react'
 import { GameHeader, Question, QuestionBox } from '../../components/Games'
 import { useGameContext } from '../../context/Game/GameContext'
 
@@ -12,10 +12,10 @@ function Create () {
       <Box flex={1}>
         <Flex
           direction={{ base: 'column', md: 'row' }}
-          bgColor='lightPink'
+          bg={useColorModeValue('lightPink', 'purple.800')}
           h='100%'
         >
-          <Flex direction='column' h='100%' bgColor='gray.100'>
+          <Flex direction='column' h='100%' bg={useColorModeValue('gray.100', 'gray.700')}>
             <Stack
               w={{ base: '100%', md: '48', xl: '52' }}
               direction={{ base: 'row', md: 'column' }}

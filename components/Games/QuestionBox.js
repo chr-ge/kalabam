@@ -5,7 +5,8 @@ import {
   Text,
   Tooltip,
   Spacer,
-  useToast
+  useToast,
+  useColorModeValue
 } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
 import { useGameContext } from '../../context/Game/GameContext'
@@ -44,7 +45,11 @@ const QuestionBox = ({ question, index }) => {
       p='2'
       minH='32'
       w={{ base: '48', xl: '52' }}
-      bgColor={activeQuestion === question ? 'gray.400' : 'gray.300'}
+      bgColor={
+        activeQuestion === question
+          ? useColorModeValue('gray.400', 'purple.900')
+          : useColorModeValue('gray.300', 'gray.900')
+      }
     >
       <Flex>
         <Text>{index}. quiz</Text>
@@ -69,7 +74,7 @@ const QuestionBox = ({ question, index }) => {
         flex='1'
         p='1'
         mt='1'
-        bgColor='white'
+        bg={useColorModeValue('white', 'gray.600')}
         rounded='md'
         onClick={handleClick}
         boxShadow='inner'

@@ -10,7 +10,8 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  Text
+  Text,
+  useColorModeValue
 } from '@chakra-ui/react'
 import AnswerInput from '../../components/Games/AnswerInput'
 import { useGameContext } from '../../context/Game/GameContext'
@@ -38,7 +39,7 @@ const Question = ({ question }) => {
         focusBorderColor='purple.400'
         textAlign='center'
         fontWeight='bold'
-        bgColor='white'
+        bg={useColorModeValue('white', 'gray.600')}
         fontSize='2xl'
       />
       <Flex py='16' justify='space-evenly'>
@@ -58,7 +59,7 @@ const Question = ({ question }) => {
               <SliderTrack h='2'>
                 <SliderFilledTrack />
               </SliderTrack>
-              <SliderThumb p='4' h='10' w='10'>
+              <SliderThumb p='4' h='10' w='10' bg={useColorModeValue('white', 'gray.600')}>
                 <Text fontSize='sm'>{q.timeLimit}s</Text>
               </SliderThumb>
             </Slider>
@@ -80,7 +81,7 @@ const Question = ({ question }) => {
               <SliderTrack h='2'>
                 <SliderFilledTrack />
               </SliderTrack>
-              <SliderThumb p='4' h='10' w='10'>
+              <SliderThumb p='4' h='10' w='10' bg={useColorModeValue('white', 'gray.600')}>
                 <Text fontSize='sm'>{q.points}</Text>
               </SliderThumb>
             </Slider>
