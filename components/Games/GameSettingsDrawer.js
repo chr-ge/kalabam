@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Box,
   Button,
@@ -22,13 +22,14 @@ import { useGameContext } from '../../context/Game/GameContext'
 
 const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
   const titleField = useRef()
-
   const { title, description, updateGameSettings } = useGameContext()
+  const [settings, setSettings] = useState({ title, description })
 
-  const [settings, setSettings] = useState({
-    title,
-    description
-  })
+  useEffect(() => {
+    if (title) {
+      setSettings({ title, description })
+    }
+  }, [title])
 
   const handleDone = () => {
     updateGameSettings({
@@ -113,6 +114,7 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                     </Box>
                   </FormLabel>
                   <Textarea
+                    minH='150px'
                     maxH='250px'
                     id='description'
                     borderColor='gray.200'
