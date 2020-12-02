@@ -7,7 +7,7 @@ const Layout = ({ title, bg, children }) => {
     <>
       <Head>
         <title>{title || 'Kalabam'}</title>
-        <meta charSet="utf-8" />
+        <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <Box d='flex' h='100%' flexDirection='column'>
