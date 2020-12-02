@@ -62,7 +62,7 @@ export async function getServerSideProps (context) {
 
   return {
     props: {
-      gameId: context.query.gameId[0]
+      gameId: context.query.gameId
     }
   }
 }
