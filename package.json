@@ -1,5 +1,6 @@
 {
   "name": "kalabam",
+  "productName": "Kalabam",
   "description": "Multiplayer Games for Class Activities or Interactive Presentations",
   "version": "0.1.0",
   "author": "chr-ge",
@@ -8,7 +9,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "standard"
+    "test": "jest --coverage",
+    "lint": "standard",
+    "lint-fix": "standard --fix"
   },
   "license": "MIT",
   "dependencies": {
@@ -34,6 +37,8 @@
     "mongodb": "^3.6.3"
   },
   "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
     "standard": "^16.0.2"
   }
 }
