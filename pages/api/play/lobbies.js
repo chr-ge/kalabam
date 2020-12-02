@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb'
 import { getUserFromSession } from '../../../models/User'
 import { createLobby } from '../../../models/Lobby'
-import { generateGameCode } from '../../../util/random'
+import { generateGameCode, formatGameCode } from '../../../util/gameCode'
 
 export default async (req, res) => {
   let user
@@ -22,8 +22,8 @@ export default async (req, res) => {
 
     const gameCode = generateGameCode()
     const { result } = await createLobby({
-      gameId,
       gameCode,
+      gameId: new ObjectId(gameId),
       createdBy: new ObjectId(user.id)
     })
 
@@ -32,7 +32,13 @@ export default async (req, res) => {
       return
     }
 
-    return res.status(201).json({ success: true, status: 'created', data: { gameCode } })
+    return res.status(201).json({
+      success: true,
+      status: 'created',
+      data: {
+        gameCode: formatGameCode(gameCode)
+      }
+    })
   }
 
   res.end()
