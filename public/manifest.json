@@ -1,0 +1,10 @@
+{
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/",
+  "app_name": "Kalabam",
+  "short_name": "Kalabam",
+  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
+  "categories": ["games", "quiz"]
+}
