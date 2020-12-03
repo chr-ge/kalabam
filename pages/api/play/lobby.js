@@ -1,7 +1,9 @@
 import { ObjectId } from 'mongodb'
 import { getUserFromSession } from '../../../models/User'
 import { createLobby } from '../../../models/Lobby'
-import { generateGameCode, formatGameCode } from '../../../util/gameCode'
+import { generateGameCode } from '../../../util/gameCode'
+
+import { pusher } from '../pusher/auth'
 
 export default async (req, res) => {
   let user
@@ -32,11 +34,15 @@ export default async (req, res) => {
       return
     }
 
+    pusher.trigger('game-lobby', 'my-event', {
+      message: 'hello world'
+    })
+
     return res.status(201).json({
       success: true,
       message: 'Lobby created',
       data: {
-        gameCode: formatGameCode(gameCode)
+        gameCode
       }
     })
   }
