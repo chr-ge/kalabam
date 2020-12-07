@@ -1,10 +1,8 @@
 {
   "name": "@kalabam/website",
-  "private": true,
   "version": "0.1.0",
-  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
+  "private": true,
   "author": "chr-ge",
-  "homepage": "https://github.com/chr-ge/kalabam",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chr-ge/kalabam.git",
