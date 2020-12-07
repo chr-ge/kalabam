@@ -19,7 +19,7 @@ export default async (req, res) => {
     const { title, description, questions } = JSON.parse(req.body)
 
     if (!title || !questions) {
-      res.status(400).json({ success: false, status: 'malformed content' })
+      res.status(400).json({ success: false, message: 'Malformed content' })
       return
     }
 
@@ -31,11 +31,11 @@ export default async (req, res) => {
     })
 
     if (!result.ok) {
-      res.status(500).json({ success: false, status: 'unable to create game' })
+      res.status(500).json({ success: false, message: 'Unable to create game' })
       return
     }
 
-    return res.status(201).json({ success: true, status: 'created' })
+    return res.status(201).json({ success: true, message: 'Game created' })
   }
 
   res.end()

@@ -62,7 +62,7 @@ export async function getGameById (gameId) {
   return game[0]
 }
 
-export const createGame = async (newGame) => {
+export async function createGame (newGame) {
   const dateNow = new Date()
 
   const game = {

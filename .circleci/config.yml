@@ -18,3 +18,6 @@ jobs:
       - run:
           name: Run Standard
           command: yarn run standard
+      - run:
+          name: Run Tests
+          command: yarn run jest

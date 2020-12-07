@@ -34,7 +34,7 @@ export default async (req, res) => {
     )
 
     if (missingValue) {
-      res.status(400).json({ status: 'missing required value' })
+      res.status(400).json({ success: false, message: 'missing required value' })
     }
 
     updates.updated = new Date()
