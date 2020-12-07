@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
-
+import { useChannel, useEvent } from '@harelpls/use-pusher'
 import { Button, Flex, Heading, Icon, Skeleton, Tag } from '@chakra-ui/react'
 import { FaRegUserCircle, FaPlayCircle } from 'react-icons/fa'
 import Layout from '../../../components/Layout'
@@ -8,7 +8,8 @@ import { useCreateLobby } from '../../../lib/api-hooks'
 import { formatGameCode } from '../../../util/gameCode'
 
 function Play ({ gameId }) {
-  const [createLobby, { isLoading, data }] = useCreateLobby()
+  const [code, setCode] = useState('000000')
+  const [createLobby, { isLoading }] = useCreateLobby()
 
   useEffect(() => {
     const create = async () => {
@@ -21,6 +22,11 @@ function Play ({ gameId }) {
     create()
   }, [])
 
+  const channel = useChannel('game-lobby')
+  useEvent(channel, 'game', ({ gameCode }) =>
+    setCode(gameCode)
+  )
+
   return (
     <Layout title='My Games'>
       <Flex h='100%' direction='column'>
@@ -31,9 +37,7 @@ function Play ({ gameId }) {
         >
           <Heading p='6' bg='yellow.100' color='blue.800' fontSize='5xl'>Game Code:</Heading>
           <Skeleton startColor='teal.100' endColor='teal.300' speed={0.7} isLoaded={!isLoading}>
-            <Heading p='6' bg='teal.200' fontSize='6xl'>
-              {data ? formatGameCode(data.data.gameCode) : '000 000'}
-            </Heading>
+            <Heading p='6' bg='teal.200' fontSize='6xl'>{formatGameCode(code)}</Heading>
           </Skeleton>
         </Flex>
         <Flex flex={1} align='center' bg='lightPink' direction='column'>
