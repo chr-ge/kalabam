@@ -1,15 +1,21 @@
 {
   "name": "kalabam",
   "productName": "Kalabam",
-  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
-  "version": "0.1.0",
-  "author": "chr-ge",
   "private": true,
+  "version": "0.2.0",
+  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
+  "author": "chr-ge",
+  "homepage": "https://github.com/chr-ge/kalabam",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chr-ge/kalabam.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "lint": "standard",
     "lint-fix": "standard --fix"
   },
