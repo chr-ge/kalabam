@@ -1,0 +1,15 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": ["@kalabam/app", "@kalabam/website"],
+  "command": {
+    "version": { "exact": true },
+    "publish": {
+      "conventionalCommits": true,
+      "ignoreChanges": ["*.md"],
+      "message": "chore(release): publish",
+      "allowBranch": "master"
+    }
+  }
+}

@@ -17,7 +17,7 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Run Standard
-          command: yarn run standard
+          command: yarn lint
       - run:
           name: Run Tests
-          command: yarn run jest
+          command: yarn test
