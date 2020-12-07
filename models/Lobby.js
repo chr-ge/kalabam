@@ -1,5 +1,9 @@
-// import { ObjectId } from 'mongodb'
 import { connectToDatabase } from '../db/mongodb'
+
+export const getLobbyByGameCode = async (gameCode) => {
+  const { db } = await connectToDatabase()
+  return await db.collection('lobbies').findOne({ gameCode: gameCode })
+}
 
 export const createLobby = async (newLobby) => {
   const dateNow = new Date()
