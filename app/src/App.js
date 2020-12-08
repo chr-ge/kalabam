@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import theme from '@kalabam/theme'
 
 import Home from './pages/Home'
+import Join from './pages/Join'
 
 function App () {
   return (
@@ -12,6 +13,9 @@ function App () {
         <Switch>
           <Route exact path='/'>
             <Home />
+          </Route>
+          <Route exact path='/join'>
+            <Join />
           </Route>
         </Switch>
       </Router>
