@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.0",
-    "@harelpls/use-pusher": "^7.1.0",
     "cors": "^2.8.5",
     "dayjs": "^1.9.6",
     "mongodb": "^3.6.3",
