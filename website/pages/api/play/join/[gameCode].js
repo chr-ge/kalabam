@@ -1,6 +1,15 @@
+import Cors from 'cors'
 import { getLobbyByGameCode } from '../../../../models/Lobby'
+import initMiddleware from '../../../../lib/init-middleware'
+
+const cors = initMiddleware(
+  Cors({
+    methods: ['GET']
+  })
+)
 
 export default async (req, res) => {
+  await cors(req, res)
   const gameCode = req.query.gameCode
 
   if (req.method === 'GET') {
