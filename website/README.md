@@ -1,8 +1,8 @@
 # Kalabam Website
 
-### Multiplayer Games for Class Activities or Interactive Presentations
+## Multiplayer Games for Class Activities or Interactive Presentations
 
-#### Run Locally
+### Run Locally
 - `yarn install`
 - `yarn dev`
 
