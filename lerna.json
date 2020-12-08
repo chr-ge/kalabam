@@ -2,7 +2,7 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["@kalabam/app", "@kalabam/website"],
+  "packages": ["@kalabam/app", "@kalabam/theme", "@kalabam/website"],
   "command": {
     "version": { "exact": true },
     "publish": {

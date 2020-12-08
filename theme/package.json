@@ -1,0 +1,14 @@
+{
+  "name": "@kalabam/theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kalabam theme",
+  "author": "chr-ge",
+  "main": "index.cjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chr-ge/kalabam.git",
+    "directory": "theme"
+  },
+  "type": "module"
+}

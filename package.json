@@ -3,6 +3,7 @@
   "private": true,
   "workspaces": [
     "app",
+    "theme",
     "website"
   ],
   "repository": {
@@ -19,6 +20,7 @@
     "dedup": "yarn-deduplicate --strategy highest yarn.lock"
   },
   "dependencies": {
+    "@kalabam/theme": "1.0.0",
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",

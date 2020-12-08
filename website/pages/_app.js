@@ -3,7 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
 import { GameProvider } from '../context/Game/GameContext'
 import FontFace from '../components/FontFace'
-import theme from '../theme'
+import theme from "@kalabam/theme"
 
 const config = {
   clientKey: '179761146c8708fdb1bb',
