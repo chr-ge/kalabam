@@ -4,11 +4,10 @@
   "private": true,
   "description": "Kalabam theme",
   "author": "chr-ge",
-  "main": "index.cjs",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chr-ge/kalabam.git",
     "directory": "theme"
-  },
-  "type": "module"
+  }
 }

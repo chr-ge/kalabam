@@ -1,6 +1,6 @@
-import { extendTheme } from '@chakra-ui/react'
+const { extendTheme } = require('@chakra-ui/react') 
 
-const theme = extendTheme({
+module.exports = extendTheme({
   fonts: {
     body: "'Cera Pro', sans-serif",
     heading: "'Cera Pro Black', sans-serif"
@@ -22,5 +22,3 @@ const theme = extendTheme({
     }
   }
 })
-
-export default theme
