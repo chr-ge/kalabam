@@ -9,12 +9,12 @@
     "type": "git",
     "url": "git+https://github.com/chr-ge/kalabam.git"
   },
-  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
   "author": "chr-ge",
+  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
   "homepage": "https://github.com/chr-ge/kalabam#readme",
   "scripts": {
-    "lint": "lerna run lint --scope @kalabam/website --stream",
-    "test": "lerna run test --scope @kalabam/website --stream",
+    "lint": "lerna run lint --stream",
+    "test": "lerna run test --stream",
     "clean": "lerna clean --yes && rm -rf node_modules"
   },
   "devDependencies": {
