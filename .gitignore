@@ -22,6 +22,7 @@ yarn-debug.log*
 yarn-error.log*
 .yarn-integrity
 *.cache
+.eslintcache
 
 # misc
 .DS_Store
