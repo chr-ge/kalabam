@@ -1,5 +1,5 @@
 import Pusher from 'pusher'
-import { getGameById } from '../../../models/Game'
+import { getLobbyByGameCode } from '../../../models/Game'
 
 export const pusher = new Pusher({
   appId: '1107416',
@@ -12,12 +12,10 @@ export const pusher = new Pusher({
 export default async (req, res) => {
   try {
     const { socketId, channelName } = req.body
-    console.log('AUTH', socketId, channelName)
-    const gameId = channelName.split('-')[1]
+    const gameCode = channelName.split('-')[1]
+    const game = await getLobbyByGameCode(gameCode)
 
-    const game = await getGameById(gameId)
-
-    if (game._id.toString()) {
+    if (game) {
       const auth = pusher.authenticate(socketId, channelName)
       return res.send(auth)
     }
