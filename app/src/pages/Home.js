@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { writeStorage } from '@rehooks/local-storage'
 import { useHistory } from 'react-router-dom'
-import { Button, Center, Heading, PinInput, PinInputField, Stack, useToast } from '@chakra-ui/react'
+import { Button, Heading, PinInput, PinInputField, Stack, useToast } from '@chakra-ui/react'
+import Layout from '../components/layouts/Layout'
 
 const Home = () => {
   const toast = useToast()
@@ -11,7 +12,9 @@ const Home = () => {
 
   const handleClick = async () => {
     setLoading(true)
-    const res = await global.fetch(`http://localhost:3000/api/play/join/${gameCode}`)
+    const res = await global.fetch(
+      `http://localhost:3000/api/play/join/${gameCode}`
+    )
     setLoading(false)
     if (res.status >= 300) {
       toast({
@@ -29,7 +32,7 @@ const Home = () => {
   }
 
   return (
-    <Center h='100vh'>
+    <Layout>
       <Stack spacing={4}>
         <Heading mb='2' fontSize='7xl' color='blue.800' textAlign='center'>
           Kalabam
@@ -64,7 +67,7 @@ const Home = () => {
           Join Game
         </Button>
       </Stack>
-    </Center>
+    </Layout>
   )
 }
 

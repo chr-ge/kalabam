@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
-import { Button, Center, Heading, Input, VStack } from '@chakra-ui/react'
+import { Button, Heading, Input, VStack } from '@chakra-ui/react'
+import Layout from '../components/layouts/Layout'
 
 const Join = () => {
   const history = useHistory()
@@ -15,7 +16,7 @@ const Join = () => {
   })
 
   return (
-    <Center h='100vh'>
+    <Layout>
       <VStack spacing={4}>
         <Heading mb='2' fontSize='7xl' color='blue.800' textAlign='center'>
           Kalabam
@@ -25,6 +26,7 @@ const Join = () => {
           placeholder='Nickname'
           focusBorderColor='teal.300'
           onChange={(e) => setName(e.target.value)}
+          autoFocus
         />
         <Button
           py='6'
@@ -40,7 +42,7 @@ const Join = () => {
           Ready to Play
         </Button>
       </VStack>
-    </Center>
+    </Layout>
   )
 }
 
