@@ -12,9 +12,7 @@ const Home = () => {
 
   const handleClick = async () => {
     setLoading(true)
-    const res = await global.fetch(
-      `http://localhost:3000/api/play/join/${gameCode}`
-    )
+    const res = await global.fetch(process.env.REACT_APP_JOIN_ENDPOINT + '/' + gameCode)
     setLoading(false)
     if (res.status >= 300) {
       toast({
