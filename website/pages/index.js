@@ -8,7 +8,7 @@ function Index () {
   const { isLoading, data } = useGames()
 
   return (
-    <Layout title='My Games' bg='gray.100'>
+    <Layout title='My Games | Kalabam' bg='gray.100'>
       <Flex
         my='6'
         mx={{ base: '2', sm: '12', md: '24' }}

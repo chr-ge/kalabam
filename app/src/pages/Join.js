@@ -17,7 +17,7 @@ const Join = () => {
   return (
     <Center h='100vh'>
       <VStack spacing={4}>
-        <Heading mb='4' fontSize='7xl' color='blue.800' textAlign='center'>
+        <Heading mb='2' fontSize='7xl' color='blue.800' textAlign='center'>
           Kalabam
         </Heading>
         <Input

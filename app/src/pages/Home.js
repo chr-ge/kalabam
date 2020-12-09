@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <Center h='100vh'>
       <Stack spacing={4}>
-        <Heading mb='4' fontSize='7xl' color='blue.800' textAlign='center'>
+        <Heading mb='2' fontSize='7xl' color='blue.800' textAlign='center'>
           Kalabam
         </Heading>
         <Stack direction='row'>
