@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import {
   Button,
   Flex,
@@ -21,8 +22,9 @@ import { useDeleteGame } from '../../lib/api-hooks'
 dayjs.extend(relativeTime)
 
 const GameRow = ({ game }) => {
-  const [deleteGame, { isLoading }] = useDeleteGame(game._id.toString())
   const toast = useToast()
+  const router = useRouter()
+  const [deleteGame, { isLoading }] = useDeleteGame(game._id.toString())
 
   const handleDelete = async () => {
     if (!global.confirm('Are you sure?')) return
@@ -66,11 +68,18 @@ const GameRow = ({ game }) => {
             isLoading={isLoading}
           />
           <MenuList>
-            <MenuItem as={Link} href={`/games/${game._id}/edit`}>Edit</MenuItem>
+            <MenuItem as={Link} href={`/games/${game._id}/edit`}>
+              Edit
+            </MenuItem>
             <MenuItem onClick={handleDelete}>Delete</MenuItem>
           </MenuList>
         </Menu>
-        <Button colorScheme='green'>Play</Button>
+        <Button
+          colorScheme='green'
+          onClick={() => router.push(`/play/lobby/${game._id.toString()}`)}
+        >
+          Play
+        </Button>
       </Flex>
     </Flex>
   )

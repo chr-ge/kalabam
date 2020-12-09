@@ -17,7 +17,7 @@ function Index () {
       >
         <Box mt={{ base: '4', md: '0' }}>
           <Box w={{ md: '80' }} p='2' rounded='md' bg='white' boxShadow='md'>
-            <Heading as='h3' pl='2' fontSize='xl' bg='pink.100'>What's New</Heading>
+            <Heading as='h3' pl='2' py='2' fontSize='xl' bg='pink.100'>What's New</Heading>
             <Stack>
               <Box mt='2' p='2' border='1px' borderColor='pink.100'>
                 <Text mb='1' fontWeight='bold'>✏️ Try the New Edit Feature</Text>
@@ -31,7 +31,7 @@ function Index () {
           </Box>
         </Box>
         <Box w='100%' ml={{ md: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
-          <Heading as='h3' pl='2' fontSize='xl' bg='teal.100'>My Games</Heading>
+          <Heading as='h3' pl='2' py='2' fontSize='xl' bg='teal.100'>My Games</Heading>
           <Stack>
             {isLoading
               ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='128px' />)

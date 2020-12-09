@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { useChannel, useEvent } from '@harelpls/use-pusher'
-import { Button, Flex, Heading, Icon, Skeleton, Tag } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Icon, Skeleton, Tag } from '@chakra-ui/react'
 import { FaRegUserCircle, FaPlayCircle } from 'react-icons/fa'
 import Layout from '../../../components/Layout'
 import { useCreateLobby } from '../../../lib/api-hooks'
@@ -35,9 +35,12 @@ function Play ({ gameId }) {
           borderBottomColor='purple.500'
           borderBottomWidth='thick'
         >
-          <Heading p='6' bg='yellow.100' color='blue.800' fontSize='5xl'>Game Code:</Heading>
+          <Box h='28' px='6' py='3' bg='yellow.100'>
+            <Heading fontSize='4xl'>Join at</Heading>
+            <Heading fontSize='4xl' color='blue.800'>play.kalabam.com</Heading>
+          </Box>
           <Skeleton startColor='teal.100' endColor='teal.300' speed={0.7} isLoaded={!isLoading}>
-            <Heading p='6' bg='teal.200' fontSize='6xl'>{formatGameCode(code)}</Heading>
+            <Heading h='28' px='8' py='3' bg='teal.200' fontSize='7xl'>{formatGameCode(code)}</Heading>
           </Skeleton>
         </Flex>
         <Flex flex={1} align='center' bg='lightPink' direction='column'>
