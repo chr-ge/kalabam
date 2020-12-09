@@ -9,5 +9,6 @@
 ## Structure
 ```
 app/
+theme/
 website/
 ```
