@@ -14,7 +14,8 @@ import Joined from './pages/Joined'
 const config = {
   clientKey: '179761146c8708fdb1bb',
   cluster: 'mt1',
-  authEndpoint: process.env.REACT_APP_AUTH_ENDPOINT
+  authEndpoint: process.env.REACT_APP_AUTH_ENDPOINT,
+  triggerEndpoint: process.env.REACT_APP_TRIGGER_ENDPOINT
 }
 
 function App () {
