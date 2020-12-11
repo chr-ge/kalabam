@@ -34,13 +34,13 @@ export default async (req, res) => {
       return
     }
 
-    pusher.trigger('game-lobby', 'game', {
+    pusher.trigger(`game-${gameId}`, 'game:created', {
       gameCode
     })
 
     return res.status(201).json({
       success: true,
-      message: 'Lobby created'
+      data: gameCode
     })
   }
 

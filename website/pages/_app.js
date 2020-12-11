@@ -7,7 +7,8 @@ import theme from '@kalabam/theme'
 
 const config = {
   clientKey: '179761146c8708fdb1bb',
-  cluster: 'mt1'
+  cluster: 'mt1',
+  authEndpoint: '/api/pusher/auth'
 }
 
 const App = ({ Component, pageProps }) => {

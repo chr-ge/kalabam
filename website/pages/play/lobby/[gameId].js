@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { getSession } from 'next-auth/client'
-import { useChannel, useEvent } from '@harelpls/use-pusher'
 import { Box, Button, Flex, Heading, Icon, Skeleton, Tag } from '@chakra-ui/react'
 import { FaRegUserCircle, FaPlayCircle } from 'react-icons/fa'
-import Layout from '../../../components/Layout'
 import { useCreateLobby } from '../../../lib/api-hooks'
 import { formatGameCode } from '../../../util/gameCode'
+import Layout from '../../../components/Layout'
+import Players from '../../../components/Lobby/Players'
 
 function Play ({ gameId }) {
-  const [code, setCode] = useState('000000')
-  const [createLobby, { isLoading }] = useCreateLobby()
+  const [createLobby, { isLoading, data }] = useCreateLobby()
 
   useEffect(() => {
     const create = async () => {
@@ -21,11 +20,6 @@ function Play ({ gameId }) {
     }
     create()
   }, [])
-
-  const channel = useChannel('game-lobby')
-  useEvent(channel, 'game', ({ gameCode }) =>
-    setCode(gameCode)
-  )
 
   return (
     <Layout title='My Games'>
@@ -40,7 +34,9 @@ function Play ({ gameId }) {
             <Heading fontSize='4xl' color='blue.800'>play.kalabam.com</Heading>
           </Box>
           <Skeleton startColor='teal.100' endColor='teal.300' speed={0.7} isLoaded={!isLoading}>
-            <Heading h='28' px='8' py='3' bg='teal.200' fontSize='7xl'>{formatGameCode(code)}</Heading>
+            <Heading h='28' px='8' py='3' bg='teal.200' fontSize={{ base: '5xl', lg: '7xl' }}>
+              {data ? formatGameCode(data.data) : '000 000'}
+            </Heading>
           </Skeleton>
         </Flex>
         <Flex flex={1} align='center' bg='lightPink' direction='column'>
@@ -51,9 +47,12 @@ function Play ({ gameId }) {
             </Tag>
             <Button rightIcon={<FaPlayCircle />} colorScheme='green' isDisabled>Start</Button>
           </Flex>
-          <Heading mt='40' py='4' px='8' bg='white' rounded='md' boxShadow='2xl'>
-            Waiting for players...
-          </Heading>
+          {data
+            ? <Players gameCode={data.data} />
+            : (
+              <Heading mt='40' py='4' px='8' bg='white' rounded='md' boxShadow='2xl'>
+                Waiting for players...
+              </Heading>)}
         </Flex>
       </Flex>
     </Layout>
