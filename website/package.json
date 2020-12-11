@@ -33,9 +33,5 @@
   },
   "peerOptionalDependencies": {
     "mongodb": "^3.6.3"
-  },
-  "devDependencies": {
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3"
   }
 }
