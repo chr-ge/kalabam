@@ -3,8 +3,6 @@ import { getUserFromSession } from '../../../models/User'
 import { createLobby } from '../../../models/Lobby'
 import { generateGameCode } from '../../../util/gameCode'
 
-import { pusher } from '../pusher/auth'
-
 export default async (req, res) => {
   let user
   try {
@@ -33,10 +31,6 @@ export default async (req, res) => {
       res.status(500).json({ success: false, message: 'Unable to create lobby' })
       return
     }
-
-    pusher.trigger(`game-${gameId}`, 'game:created', {
-      gameCode
-    })
 
     return res.status(201).json({
       success: true,

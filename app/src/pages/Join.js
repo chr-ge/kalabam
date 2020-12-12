@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
-import { useTrigger } from '@harelpls/use-pusher'
+import { useChannel, useClientTrigger } from '@harelpls/use-pusher'
 import { Button, Heading, Input, VStack } from '@chakra-ui/react'
 import Layout from '../components/layouts/Layout'
 
@@ -15,10 +15,11 @@ const Join = () => {
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
-  const trigger = useTrigger(`private-lobby-${game}`)
+  const channel = useChannel(`presence-lobby-${game}`)
+  const trigger = useClientTrigger(channel)
 
   const handleClick = () => {
-    trigger('player-join', name)
+    trigger('client-player', name)
     history.push('/joined')
   }
 

@@ -1,13 +1,17 @@
 import { useState } from 'react'
-import { useChannel, useEvent } from '@harelpls/use-pusher'
+import { useEvent, usePresenceChannel } from '@harelpls/use-pusher'
 import { Heading, Tag } from '@chakra-ui/react'
 
 const Players = ({ gameCode }) => {
   const [players, setPlayers] = useState([])
 
-  const channel = useChannel(`private-lobby-${gameCode}`)
-  useEvent(channel, 'player-join', (data) => {
-    if (data) setPlayers(p => [...p, data])
+  const presenceChannel = usePresenceChannel(`presence-lobby-${gameCode}`)
+  useEvent(presenceChannel.channel, 'client-player', (data, metadata) => {
+    if (data) setPlayers(p => [...p, { id: metadata.user_id, name: data }])
+  })
+
+  useEvent(presenceChannel.channel, 'pusher:member_removed', (member) => {
+    setPlayers(players.filter(p => p.id !== member.id))
   })
 
   return players.length === 0
@@ -16,7 +20,9 @@ const Players = ({ gameCode }) => {
         Waiting for players...
       </Heading>
       )
-    : players.map((player, i) => <Tag key={i} size='lg' colorScheme='red' fontSize='5xl'>{player}</Tag>)
+    : players.map((player) =>
+      <Tag key={player.id} size='lg' colorScheme='red' fontSize='5xl'>{player.name}</Tag>
+    )
 }
 
 export default Players
