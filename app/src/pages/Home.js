@@ -38,7 +38,9 @@ const Home = () => {
             size='lg'
             focusBorderColor='teal.300'
             onChange={(val) => setGameCode(val)}
+            type="number"
             autoFocus
+            isRequired
           >
             <PinInputField />
             <PinInputField />
