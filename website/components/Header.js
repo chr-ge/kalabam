@@ -3,14 +3,15 @@ import { useRouter } from 'next/router'
 import {
   Avatar,
   Button,
+  Flex,
+  Heading,
+  Link,
   Menu,
   MenuButton,
   Box,
   MenuList,
   MenuDivider,
-  MenuItem,
-  Flex,
-  Heading
+  MenuItem
 } from '@chakra-ui/react'
 
 const Header = () => {
@@ -32,8 +33,19 @@ const Header = () => {
         px='4'
       >
         <Heading color='blue.800'>Kalabam</Heading>
-        {!session && (
-          <Box>
+        <Box>
+          <Button
+            as={Link}
+            colorScheme='teal'
+            size='sm'
+            marginRight='2'
+            textDecoration='none !important'
+            href='https://play.kalabam.com'
+            isExternal
+          >
+            Play
+          </Button>
+          {!session && (
             <Button
               colorScheme='pink'
               color='white'
@@ -47,47 +59,47 @@ const Header = () => {
             >
               Sign in
             </Button>
-          </Box>
-        )}
-        {session && (
-          <Box>
-            <Button
-              marginRight='4'
-              colorScheme='pink'
-              color='white'
-              aria-label='Sign In'
-              size='sm'
-              isLoading={loading}
-              onClick={() => router.push('/games/create')}
-            >
-              Create
-            </Button>
-            <Menu>
-              <MenuButton
-                as={Avatar}
-                src={session.user.image}
-                name={session.user.name}
+          )}
+          {session && (
+            <>
+              <Button
+                marginRight='4'
+                colorScheme='pink'
+                color='white'
+                aria-label='Sign In'
                 size='sm'
-                cursor='pointer'
-              />
-              <MenuList borderColor='gray.300'>
-                <MenuItem onClick={() => router.push('/account')}>
-                  My Account
-                </MenuItem>
-                <MenuItem
-                  onClick={(e) => {
-                    e.preventDefault()
-                    signout()
-                  }}
-                >
-                  Logout
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem>Help</MenuItem>
-              </MenuList>
-            </Menu>
-          </Box>
-        )}
+                isLoading={loading}
+                onClick={() => router.push('/games/create')}
+              >
+                Create
+              </Button>
+              <Menu>
+                <MenuButton
+                  as={Avatar}
+                  src={session.user.image}
+                  name={session.user.name}
+                  size='sm'
+                  cursor='pointer'
+                />
+                <MenuList borderColor='gray.300'>
+                  <MenuItem onClick={() => router.push('/account')}>
+                    My Account
+                  </MenuItem>
+                  <MenuItem
+                    onClick={(e) => {
+                      e.preventDefault()
+                      signout()
+                    }}
+                  >
+                    Logout
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem>Help</MenuItem>
+                </MenuList>
+              </Menu>
+            </>
+          )}
+        </Box>
       </Flex>
     </nav>
   )
