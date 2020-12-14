@@ -7,8 +7,8 @@ import theme from '@kalabam/theme'
 
 // Pusher Config
 const config = {
-  clientKey: process.env.PUSHER_CLIENT_KEY,
-  cluster: process.env.PUSHER_CLUSTER,
+  clientKey: process.env.NEXT_PUBLIC_PUSHER_CLIENT_KEY,
+  cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
   authEndpoint: '/api/pusher/auth'
 }
 
