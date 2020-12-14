@@ -38,7 +38,7 @@ const Home = () => {
             size='lg'
             focusBorderColor='teal.300'
             onChange={(val) => setGameCode(val)}
-            type="number"
+            type='number'
             autoFocus
             isRequired
           >
@@ -53,6 +53,7 @@ const Home = () => {
         <Button
           py='6'
           colorScheme='pink'
+          aria-label='Join Game'
           isDisabled={gameCode.length < 6}
           onClick={handleClick}
           isLoading={loading}
