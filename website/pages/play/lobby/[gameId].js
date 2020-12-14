@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { Box, Button, Flex, Heading, Icon, Skeleton, Tag } from '@chakra-ui/react'
 import { FaRegUserCircle, FaPlayCircle } from 'react-icons/fa'
@@ -9,6 +9,7 @@ import Players from '../../../components/Lobby/Players'
 
 function Play ({ gameId }) {
   const [createLobby, { isLoading, data }] = useCreateLobby()
+  const [playerCount, setPlayerCount] = useState(0)
 
   useEffect(() => {
     const create = async () => {
@@ -43,12 +44,12 @@ function Play ({ gameId }) {
           <Flex p='4' justify='space-between' w='100%'>
             <Tag px='3' colorScheme='teal' fontSize='2xl'>
               <Icon as={FaRegUserCircle} mr='2' />
-              {0}
+              {playerCount}
             </Tag>
             <Button rightIcon={<FaPlayCircle />} colorScheme='green' isDisabled>Start</Button>
           </Flex>
           {data
-            ? <Players gameCode={data.data} />
+            ? <Players gameCode={data.data} setPlayerCount={setPlayerCount} />
             : (
               <Heading mt='40' py='4' px='8' bg='white' rounded='md' boxShadow='2xl'>
                 Waiting for players...
