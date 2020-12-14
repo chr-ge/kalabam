@@ -9,7 +9,7 @@ import theme from '@kalabam/theme'
 const config = {
   clientKey: process.env.PUSHER_CLIENT_KEY,
   cluster: process.env.PUSHER_CLUSTER,
-  authEndpoint: process.env.PUSHER_AUTH_ENDPOINT
+  authEndpoint: '/api/pusher/auth'
 }
 
 const App = ({ Component, pageProps }) => {
