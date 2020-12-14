@@ -26,7 +26,10 @@ function Play ({ gameId }) {
     <Layout title='My Games'>
       <Flex h='100%' direction='column'>
         <Flex
-          h='44' bg='purple.400' align='center' justify='center'
+          h='44'
+          bg='purple.400'
+          align='center'
+          justify='center'
           borderBottomColor='purple.500'
           borderBottomWidth='thick'
         >
@@ -46,7 +49,7 @@ function Play ({ gameId }) {
               <Icon as={FaRegUserCircle} mr='2' />
               {playerCount}
             </Tag>
-            <Button rightIcon={<FaPlayCircle />} colorScheme='green' isDisabled>Start</Button>
+            <Button rightIcon={<FaPlayCircle />} colorScheme='green' isDisabled={playerCount === 0}>Start</Button>
           </Flex>
           {data
             ? <Players gameCode={data.data} setPlayerCount={setPlayerCount} />

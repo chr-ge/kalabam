@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useEvent, usePresenceChannel } from '@harelpls/use-pusher'
-import { Heading, Tag } from '@chakra-ui/react'
+import { Grid, Heading, Tag } from '@chakra-ui/react'
 
-const COLORS = ['red', 'yellow', 'blue', 'purple', 'teal', 'orange']
+const COLORS = ['red', 'pink', 'yellow', 'blue', 'purple', 'teal', 'orange']
 
 const Players = ({ gameCode, setPlayerCount }) => {
   const [players, setPlayers] = useState([])
@@ -26,14 +26,21 @@ const Players = ({ gameCode, setPlayerCount }) => {
         Waiting for players...
       </Heading>
       )
-    : (players.map((player) => {
-        const color = COLORS[Math.floor(Math.random() * COLORS.length)]
-        return (
-          <Tag key={player.id} size='lg' colorScheme={color} fontSize='5xl'>
-            {player.name}
-          </Tag>
-        )
-      }))
+    : (
+      <Grid
+        gap={4} mx='12'
+        templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)', lg: 'repeat(5, 1fr)' }}
+      >
+        {players.map((player) => {
+          const color = COLORS[Math.floor(Math.random() * COLORS.length)]
+          return (
+            <Tag key={player.id} size='lg' colorScheme={color} fontSize={{ base: '2xl', md: '4xl' }} py='2'>
+              {player.name}
+            </Tag>
+          )
+        })}
+      </Grid>
+      )
 }
 
 export default Players
