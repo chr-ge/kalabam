@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
-import { useChannel, useClientTrigger } from '@harelpls/use-pusher'
 import { Button, Heading, Input, VStack } from '@chakra-ui/react'
 import Layout from '../components/layouts/Layout'
+import { useLobbyContext } from '../contexts/LobbyContext'
 
 const Join = () => {
   const history = useHistory()
   const [game] = useLocalStorage('game')
   const [name, setName] = useState('')
+  const { setPlayerName } = useLobbyContext()
 
   useEffect(() => {
-    if (!game) history.push('/')
+    if (!game) history.replace('/')
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
-  const channel = useChannel(`presence-lobby-${game}`)
-  const trigger = useClientTrigger(channel)
-
   const handleClick = () => {
-    trigger('client-player', name)
-    history.push('/joined')
+    setPlayerName(name)
+    history.replace('/joined')
   }
 
   return (
@@ -37,6 +35,7 @@ const Join = () => {
         <Button
           py='6'
           colorScheme='pink'
+          aria-label='Ready to Play'
           isDisabled={name.length < 2}
           onClick={handleClick}
           _disabled={{

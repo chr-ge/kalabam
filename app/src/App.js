@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
 import theme from '@kalabam/theme'
 import FontFace from './components/FontFace'
+import { LobbyProvider } from './contexts/LobbyContext'
 
 // Pages
 import Home from './pages/Home'
@@ -25,15 +26,11 @@ function App () {
         <PusherProvider {...config}>
           <Router>
             <Switch>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-              <Route exact path='/join'>
-                <Join />
-              </Route>
-              <Route exact path='/joined'>
-                <Joined />
-              </Route>
+              <Route exact path='/' component={Home} />
+              <LobbyProvider>
+                <Route path='/join' component={Join} />
+                <Route path='/joined' component={Joined} />
+              </LobbyProvider>
             </Switch>
           </Router>
         </PusherProvider>
