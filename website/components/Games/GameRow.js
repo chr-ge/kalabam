@@ -68,7 +68,7 @@ const GameRow = ({ game }) => {
             isLoading={isLoading}
           />
           <MenuList>
-            <MenuItem as={Link} href={`/games/${game._id}/edit`}>
+            <MenuItem as={Link} href={`/games/${game._id}/edit`} textDecoration='none !important'>
               Edit
             </MenuItem>
             <MenuItem onClick={handleDelete}>Delete</MenuItem>

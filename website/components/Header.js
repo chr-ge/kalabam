@@ -24,13 +24,13 @@ const Header = () => {
         <style>{'.nojs-show { opacity: 1; top: 0; }'}</style>
       </noscript>
       <Flex
+        py='1'
+        px='4'
         align='center'
         justify='space-between'
         backgroundColor='gray.200'
         borderBottomColor='gray.300'
         borderBottomWidth='thick'
-        py='1'
-        px='4'
       >
         <Heading color='blue.800'>Kalabam</Heading>
         <Box>
