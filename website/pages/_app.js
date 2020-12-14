@@ -5,10 +5,11 @@ import { GameProvider } from '../context/Game/GameContext'
 import FontFace from '../components/FontFace'
 import theme from '@kalabam/theme'
 
+// Pusher Config
 const config = {
-  clientKey: '179761146c8708fdb1bb',
-  cluster: 'mt1',
-  authEndpoint: '/api/pusher/auth'
+  clientKey: process.env.PUSHER_CLIENT_KEY,
+  cluster: process.env.PUSHER_CLUSTER,
+  authEndpoint: process.env.PUSHER_AUTH_ENDPOINT
 }
 
 const App = ({ Component, pageProps }) => {

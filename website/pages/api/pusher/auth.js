@@ -4,10 +4,10 @@ import { getLobbyByGameCode } from '../../../models/Lobby'
 import initMiddleware from '../../../lib/init-middleware'
 
 export const pusher = new Pusher({
-  appId: '1107416',
-  key: '179761146c8708fdb1bb',
-  secret: 'd1c1e2f60b59cd8ff5bc',
-  cluster: 'mt1',
+  appId: process.env.PUSHER_APP_ID,
+  key: process.env.PUSHER_CLIENT_KEY,
+  secret: process.env.PUSHER_SECRET,
+  cluster: process.env.PUSHER_CLUSTER,
   useTLS: true
 })
 
