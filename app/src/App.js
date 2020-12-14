@@ -13,8 +13,8 @@ import Joined from './pages/Joined'
 
 // Pusher Config
 const config = {
-  clientKey: '179761146c8708fdb1bb',
-  cluster: 'mt1',
+  clientKey: process.env.REACT_APP_PUSHER_CLIENT,
+  cluster: process.env.REACT_APP_PUSHER_CLUSTER,
   authEndpoint: process.env.REACT_APP_AUTH_ENDPOINT,
   triggerEndpoint: process.env.REACT_APP_TRIGGER_ENDPOINT
 }
