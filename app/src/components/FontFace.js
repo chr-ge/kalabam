@@ -1,5 +1,5 @@
 const FontFace = () => (
-  <style jsx global>
+  <style jsx='true' global='true'>
     {`
       @font-face {
         font-family: "Cera Pro";
