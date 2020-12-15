@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Link from 'next/link'
 import { providers, signIn } from 'next-auth/client'
 import {
   Button,
@@ -7,13 +6,13 @@ import {
   Center,
   Heading,
   Flex,
-  Link as A,
   Stack,
   Input,
   Text
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
+import { Link } from '../../components/Link'
 
 function SignUp ({ providers }) {
   const [email, setEmail] = useState('')
@@ -31,9 +30,7 @@ function SignUp ({ providers }) {
             pt='1'
           >
             Already Have An Account?{' '}
-            <Link href='/auth/signin'>
-              <A color='blue.900'>Login</A>
-            </Link>
+            <Link href='/auth/signin' variant='kalabam'>Login</Link>
           </Text>
           <Button
             leftIcon={<FaGoogle />}

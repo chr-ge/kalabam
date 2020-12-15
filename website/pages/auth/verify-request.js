@@ -1,6 +1,7 @@
-import { Center, Link, Icon, Stack, Text } from '@chakra-ui/react'
+import { Center, Icon, Stack, Text } from '@chakra-ui/react'
 import { RiMailCheckFill } from 'react-icons/ri'
 import Layout from '../../components/Layout'
+import { Link } from '../../components/Link'
 
 function VerifyRequest () {
   return (
@@ -12,9 +13,7 @@ function VerifyRequest () {
           <Text fontSize='xl' py='6'>
             A sign in link has been sent to your email address.
           </Text>
-          <Link href='/' color='blue.900'>
-            back home
-          </Link>
+          <Link href='/' variant='kalabam'>back home</Link>
         </Stack>
       </Center>
     </Layout>

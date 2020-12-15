@@ -20,5 +20,14 @@ module.exports = extendTheme({
       500: '#4285F4',
       600: '#427AF4'
     }
+  },
+  components: {
+    Link: {
+      variants: {
+        'kalabam': (props) => ({
+          color: props.colorMode === 'dark' ? 'blue.200' : 'blue.700'
+        })
+      }
+    }
   }
 })
