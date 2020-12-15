@@ -53,7 +53,7 @@ export const Link = forwardRef(
           {...chakraInternals}
         >
           {children}
-          {isExternal ? (<Icon as={FaExternalLinkAlt} className='link-external' />) : undefined}
+          {isExternal && <Icon as={FaExternalLinkAlt} className='link-external' />}
         </ChakraLink>
       </NextLink>
     )
