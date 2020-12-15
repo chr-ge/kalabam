@@ -22,6 +22,13 @@ module.exports = extendTheme({
     }
   },
   components: {
+    Heading: {
+      variants: {
+        'logo': (props) => ({
+          color: props.colorMode === 'dark' ? 'gray.300' : 'blue.800'
+        })
+      }
+    },
     Link: {
       variants: {
         'kalabam': (props) => ({

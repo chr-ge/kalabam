@@ -32,7 +32,7 @@ const Header = () => {
         borderBottomColor='gray.300'
         borderBottomWidth='thick'
       >
-        <Heading color='blue.800'>Kalabam</Heading>
+        <Heading variant='logo'>Kalabam</Heading>
         <Box>
           <Button
             as={Link}

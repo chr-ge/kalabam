@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <Layout>
       <Stack spacing={4}>
-        <Heading mb='2' fontSize='7xl' color='blue.800' textAlign='center'>Kalabam</Heading>
+        <Heading mb='2' fontSize='7xl' variant='logo' textAlign='center'>Kalabam</Heading>
         <Stack direction='row'>
           <PinInput
             size='lg'

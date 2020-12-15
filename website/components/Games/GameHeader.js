@@ -41,7 +41,7 @@ const GameHeader = ({ mode }) => {
         borderBottomColor='gray.300'
         borderBottomWidth='thick'
       >
-        <Heading color='blue.800'>Kalabam</Heading>
+        <Heading variant='logo'>Kalabam</Heading>
         <GameSettingsDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
         <Box>
           <Button
