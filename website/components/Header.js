@@ -41,7 +41,6 @@ const Header = () => {
             marginRight='2'
             textDecoration='none !important'
             href='https://play.kalabam.com'
-            isExternal
           >
             Play
           </Button>
