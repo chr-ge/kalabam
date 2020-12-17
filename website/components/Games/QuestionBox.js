@@ -8,7 +8,7 @@ import {
   useToast
 } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
-import { useGameContext } from '../../context/Game/GameContext'
+import { useGameContext } from '../../contexts/Game/GameContext'
 
 const TOAST_ID = 'cannot-delete'
 

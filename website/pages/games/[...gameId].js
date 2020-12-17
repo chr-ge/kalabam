@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { Button, Flex, Stack } from '@chakra-ui/react'
 import { Layout, GameLoading, Question, QuestionBox } from '../../components/Games'
-import { useGameContext } from '../../context/Game/GameContext'
+import { useGameContext } from '../../contexts/Game/GameContext'
 import { useGameById } from '../../lib/api-hooks'
 
 function Edit ({ gameId }) {

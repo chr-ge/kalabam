@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { Provider } from 'next-auth/client'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
-import { GameProvider } from '../context/Game/GameContext'
+import { GameProvider } from '../contexts/Game/GameContext'
 import FontFace from '../components/FontFace'
 import theme from '@kalabam/theme'
 

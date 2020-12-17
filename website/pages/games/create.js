@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/client'
 import { Button, Flex, Stack } from '@chakra-ui/react'
 import { Layout, Question, QuestionBox } from '../../components/Games'
-import { useGameContext } from '../../context/Game/GameContext'
+import { useGameContext } from '../../contexts/Game/GameContext'
 
 function Create () {
   const { questions, activeQuestion, addQuestion } = useGameContext()
