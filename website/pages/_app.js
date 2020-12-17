@@ -3,6 +3,7 @@ import { Provider } from 'next-auth/client'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
 import { GameProvider } from '../contexts/Game/GameContext'
+import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
 import FontFace from '../components/FontFace'
 import theme from '@kalabam/theme'
 
@@ -25,7 +26,9 @@ const App = ({ Component, pageProps }) => {
         <ChakraProvider theme={theme}>
           <PusherProvider {...config}>
             <GameProvider>
-              <Component {...pageProps} />
+              <LobbyProvider>
+                <Component {...pageProps} />
+              </LobbyProvider>
             </GameProvider>
           </PusherProvider>
         </ChakraProvider>
