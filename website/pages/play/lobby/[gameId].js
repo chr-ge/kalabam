@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { Box, Button, Flex, Heading, Icon, Skeleton, Tag } from '@chakra-ui/react'
@@ -7,16 +7,18 @@ import { useCreateLobby } from '../../../lib/api-hooks'
 import { formatGameCode } from '../../../util/gameCode'
 import Layout from '../../../components/Layout'
 import Players from '../../../components/Lobby/Players'
+import { useLobbyContext } from '../../../contexts/Lobby/LobbyContext'
 
 function Play ({ gameId }) {
   const router = useRouter()
   const [createLobby, { isLoading, data }] = useCreateLobby()
-  const [playerCount, setPlayerCount] = useState(0)
+  const { setGameCode, playerCount } = useLobbyContext()
 
   useEffect(() => {
     const create = async () => {
       try {
-        await createLobby({ gameId })
+        const { data } = await createLobby({ gameId })
+        setGameCode(data)
       } catch (err) {
         global.alert(err)
       }
@@ -65,11 +67,12 @@ function Play ({ gameId }) {
             </Button>
           </Flex>
           {data
-            ? <Players gameCode={data.data} setPlayerCount={setPlayerCount} />
+            ? <Players />
             : (
               <Heading mt='40' py='4' px='8' bg='white' rounded='md' boxShadow='2xl'>
                 Waiting for players...
-              </Heading>)}
+              </Heading>
+              )}
         </Flex>
       </Flex>
     </Layout>
