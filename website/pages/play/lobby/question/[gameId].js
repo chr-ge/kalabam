@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useSession } from 'next-auth/client'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Box, Center, Heading, Spinner } from '@chakra-ui/react'
 import { useGameById } from '../../../../lib/api-hooks'
@@ -27,22 +28,27 @@ const Question = () => {
   }
 
   return (
-    counter > 0
-      ? (
-        <Center h='100vh' bg='green.100'>
-          <Box align='center'>
-            <Heading fontSize='6xl'>The Game is Starting</Heading>
-            <Heading fontSize='8xl'>{counter}</Heading>
-          </Box>
-        </Center>
-        )
-      : (
-        <QuestionBlock
-          question={data.questions[questionIndex]}
-          questionIndex={questionIndex}
-          setQuestionIndex={setQuestionIndex}
-        />
-        )
+    <>
+      <Head>
+        <title>Live Game | Kalabam</title>
+      </Head>
+      {counter > 0
+        ? (
+          <Center h='100vh' bg='green.100'>
+            <Box align='center'>
+              <Heading fontSize='6xl'>The Game is Starting</Heading>
+              <Heading fontSize='8xl'>{counter}</Heading>
+            </Box>
+          </Center>
+          )
+        : (
+          <QuestionBlock
+            question={data.questions[questionIndex]}
+            questionIndex={questionIndex}
+            setQuestionIndex={setQuestionIndex}
+          />
+          )}
+    </>
   )
 }
 
