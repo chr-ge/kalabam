@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
 import { Box, Button, Flex, Heading, Icon, Skeleton, Tag } from '@chakra-ui/react'
 import { FaRegUserCircle, FaPlayCircle } from 'react-icons/fa'
 import { useCreateLobby } from '../../../lib/api-hooks'
@@ -8,6 +9,7 @@ import Layout from '../../../components/Layout'
 import Players from '../../../components/Lobby/Players'
 
 function Play ({ gameId }) {
+  const router = useRouter()
   const [createLobby, { isLoading, data }] = useCreateLobby()
   const [playerCount, setPlayerCount] = useState(0)
 
@@ -22,8 +24,12 @@ function Play ({ gameId }) {
     create()
   }, [])
 
+  const onStartClick = () => {
+    router.push(`/play/lobby/question/${gameId}`)
+  }
+
   return (
-    <Layout title='My Games'>
+    <Layout title='Play Game | Kalabam'>
       <Flex h='100%' direction='column'>
         <Flex
           h='44'
@@ -49,7 +55,14 @@ function Play ({ gameId }) {
               <Icon as={FaRegUserCircle} mr='2' />
               {playerCount}
             </Tag>
-            <Button rightIcon={<FaPlayCircle />} colorScheme='green' isDisabled={playerCount === 0}>Start</Button>
+            <Button
+              rightIcon={<FaPlayCircle />}
+              colorScheme='green'
+              onClick={onStartClick}
+              // isDisabled={playerCount === 0}
+            >
+              Start
+            </Button>
           </Flex>
           {data
             ? <Players gameCode={data.data} setPlayerCount={setPlayerCount} />
