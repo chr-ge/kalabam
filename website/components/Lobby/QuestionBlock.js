@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import { useEvent } from '@harelpls/use-pusher'
 import { Box, Button, Circle, Flex, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { useCounter } from '../../lib/hooks'
+import { useCountDown } from '../../lib/hooks'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
 
-const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
-  const [counter, setCounter] = useCounter(question.timeLimit)
-  const { presenceChannel, trigger } = useLobbyContext()
+const QuestionBlock = ({ question, questionCount }) => {
+  const { presenceChannel, trigger, questionIndex, setQuestionIndex } = useLobbyContext()
+  const count = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
 
   useEffect(() => {
@@ -18,10 +18,6 @@ const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
         answersCount: question.answers.length
       }
     })
-  }, [])
-
-  useEffect(() => {
-    setCounter(question.timeLimit)
   }, [question])
 
   useEvent(presenceChannel.channel, 'client-answer', (data, metadata) =>
@@ -29,11 +25,11 @@ const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
   )
 
   const handleSkipClick = () => {
-    setQuestionIndex(questionIndex + 1)
+    if (questionIndex < questionCount - 1) setQuestionIndex(questionIndex + 1)
   }
 
   const handleNextClick = () => {
-    setQuestionIndex(questionIndex + 1)
+    if (questionIndex < questionCount - 1) setQuestionIndex(questionIndex + 1)
   }
 
   return (
@@ -51,10 +47,10 @@ const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
       <Box flex={1} px='12' bg='lightPink'>
         <Flex my='20'>
           <Circle bg='teal.100' w='10%'>
-            <Text fontSize='3xl'>{counter}</Text>
+            <Text fontSize='3xl'>{count}</Text>
           </Circle>
           <Spacer />
-          {counter === 0
+          {count === 0
             ? (
               <Button
                 aria-label='Next'
