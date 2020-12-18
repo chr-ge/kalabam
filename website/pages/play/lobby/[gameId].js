@@ -27,7 +27,7 @@ function Play ({ gameId }) {
   }, [])
 
   const onStartClick = () => {
-    router.push(`/play/lobby/question/${gameId}`)
+    router.push(`/play/lobby/live/${gameId}`)
   }
 
   return (
@@ -61,7 +61,7 @@ function Play ({ gameId }) {
               rightIcon={<FaPlayCircle />}
               colorScheme='green'
               onClick={onStartClick}
-              // isDisabled={playerCount === 0}
+              sDisabled={playerCount === 0}
             >
               Start
             </Button>
