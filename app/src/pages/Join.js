@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Button, Heading, Input, VStack } from '@chakra-ui/react'
-import Layout from '../components/layouts/Layout'
+import Layout from '../components/Layouts/Layout'
 import { useLobbyContext } from '../contexts/LobbyContext'
 
 const Join = () => {
