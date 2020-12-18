@@ -13,7 +13,7 @@ import {
   Text
 } from '@chakra-ui/react'
 import AnswerInput from '../../components/Games/AnswerInput'
-import { useGameContext } from '../../context/Game/GameContext'
+import { useGameContext } from '../../contexts/Game/GameContext'
 
 const Question = ({ question }) => {
   const { updateQuestion } = useGameContext()

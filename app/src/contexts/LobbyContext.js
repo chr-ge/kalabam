@@ -12,6 +12,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_NAME':
       return {
+        ...state,
         name: action.payload
       }
     default:
@@ -23,7 +24,7 @@ export const LobbyProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [game] = useLocalStorage('game')
 
-  const channel = useChannel(`presence-lobby-${game}`)
+  const channel = useChannel(`presence-lobby-${game.code}`)
   const trigger = useClientTrigger(channel)
 
   const setPlayerName = (name) => {
@@ -38,6 +39,8 @@ export const LobbyProvider = ({ children }) => {
     <LobbyContext.Provider
       value={{
         ...state,
+        channel,
+        trigger,
         setPlayerName
       }}
     >

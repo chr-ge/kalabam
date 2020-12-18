@@ -2,14 +2,15 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
-import theme from '@kalabam/theme'
-import FontFace from './components/FontFace'
 import { LobbyProvider } from './contexts/LobbyContext'
+import FontFace from './components/FontFace'
+import theme from '@kalabam/theme'
 
 // Pages
 import Home from './pages/Home'
 import Join from './pages/Join'
 import Joined from './pages/Joined'
+import Live from './pages/Live'
 
 // Pusher Config
 const config = {
@@ -30,6 +31,7 @@ function App () {
               <LobbyProvider>
                 <Route path='/join' component={Join} />
                 <Route path='/joined' component={Joined} />
+                <Route path='/live' component={Live} />
               </LobbyProvider>
             </Switch>
           </Router>

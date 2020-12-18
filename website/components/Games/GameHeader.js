@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
-import { useGameContext } from '../../context/Game/GameContext'
+import { useGameContext } from '../../contexts/Game/GameContext'
 import { useAddGame, useEditGame } from '../../lib/api-hooks'
 import GameSettingsDrawer from './GameSettingsDrawer'
 

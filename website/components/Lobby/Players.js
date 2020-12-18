@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
-import { useEvent, usePresenceChannel } from '@harelpls/use-pusher'
+import { useEvent } from '@harelpls/use-pusher'
 import { Grid, Heading, Tag } from '@chakra-ui/react'
+import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 
 const COLORS = ['red', 'pink', 'yellow', 'blue', 'purple', 'teal', 'orange']
 
-const Players = ({ gameCode, setPlayerCount }) => {
+const Players = () => {
+  const { presenceChannel, setPlayerCount } = useLobbyContext()
   const [players, setPlayers] = useState([])
-  const presenceChannel = usePresenceChannel(`presence-lobby-${gameCode}`)
 
   useEvent(presenceChannel.channel, 'client-player', (data, metadata) => {
     if (data) setPlayers((p) => [...p, { id: metadata.user_id, name: data }])
