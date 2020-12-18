@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { writeStorage } from '@rehooks/local-storage'
 import { useHistory } from 'react-router-dom'
 import { Button, Heading, PinInput, PinInputField, Stack, useToast } from '@chakra-ui/react'
-import Layout from '../components/Layouts/Layout'
+import Layout from '../components/Layout'
 
 const Home = () => {
   const toast = useToast()

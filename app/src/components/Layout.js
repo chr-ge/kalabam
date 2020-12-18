@@ -1,7 +1,7 @@
 import React from 'react'
 import { Center, Flex } from '@chakra-ui/react'
-import ColorModeSwitcher from '../ColorModeSwitcher'
-import Footer from '../Footer'
+import ColorModeSwitcher from './ColorModeSwitcher'
+import Footer from './Footer'
 
 const Layout = ({ children }) => (
   <Flex h='100vh' direction='column' align='center'>
