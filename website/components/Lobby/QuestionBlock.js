@@ -2,10 +2,21 @@ import { useEffect } from 'react'
 import { Box, Button, Circle, Flex, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useCounter } from '../../lib/hooks'
+import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
 
 const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
   const [counter, setCounter] = useCounter(question.timeLimit)
+  const { trigger } = useLobbyContext()
+
+  useEffect(() => {
+    trigger('client-question', {
+      data: {
+        timeLimit: question.timeLimit,
+        answersCount: question.answers.length
+      }
+    })
+  }, [])
 
   useEffect(() => {
     setCounter(question.timeLimit)
@@ -32,7 +43,7 @@ const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
         {question.question}
       </Text>
       <Box flex={1} px='12' bg='lightPink'>
-        <Flex my='16'>
+        <Flex my='20'>
           <Circle bg='teal.100' w='10%'>
             <Text fontSize='3xl'>{counter}</Text>
           </Circle>
@@ -59,9 +70,11 @@ const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
         </SimpleGrid>
       </Box>
       <Flex py='4' px='12'>
-        <Text>{`${questionIndex + 1} of ${3}`}</Text>
+        <Text fontSize='xl'>{`${questionIndex + 1} of ${3}`}</Text>
         <Spacer />
-        <Text fontWeight='bold' color='blue.800'>Kalabam</Text>
+        <Text fontSize='xl'>{`${0} answered`}</Text>
+        <Spacer />
+        <Text fontSize='xl' fontWeight='bold' color='blue.800'>Kalabam</Text>
       </Flex>
     </Flex>
   )
