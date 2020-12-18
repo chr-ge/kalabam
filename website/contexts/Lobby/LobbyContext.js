@@ -4,7 +4,8 @@ import LobbyReducer from './LobbyReducer'
 
 const initialState = {
   gameCode: '',
-  playerCount: 0
+  playerCount: 0,
+  questionIndex: 0
 }
 
 const LobbyContext = createContext(initialState)
@@ -28,6 +29,13 @@ export const LobbyProvider = ({ children }) => {
     })
   }
 
+  const setQuestionIndex = (index) => {
+    dispatch({
+      type: 'SET_QUESTION_INDEX',
+      payload: index
+    })
+  }
+
   return (
     <LobbyContext.Provider
       value={{
@@ -35,7 +43,8 @@ export const LobbyProvider = ({ children }) => {
         presenceChannel,
         trigger,
         setGameCode,
-        setPlayerCount
+        setPlayerCount,
+        setQuestionIndex
       }}
     >
       {children}

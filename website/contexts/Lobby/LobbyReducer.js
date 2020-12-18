@@ -10,6 +10,11 @@ export default function reducer (state, action) {
         ...state,
         playerCount: action.payload
       }
+    case 'SET_QUESTION_INDEX':
+      return {
+        ...state,
+        questionIndex: action.payload
+      }
     default:
       throw new Error(`Unknown action: ${action.type}`)
   }
