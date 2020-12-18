@@ -17,8 +17,8 @@ const Live = () => {
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
-  const handleClick = (i) => {
-    trigger('client-answer', i)
+  const handleClick = (index) => {
+    trigger('client-answer', index.toString())
   }
 
   return (

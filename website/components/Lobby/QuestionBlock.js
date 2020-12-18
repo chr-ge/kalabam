@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useEvent } from '@harelpls/use-pusher'
 import { Box, Button, Circle, Flex, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useCounter } from '../../lib/hooks'
@@ -7,7 +8,8 @@ import Answer from './Answer'
 
 const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
   const [counter, setCounter] = useCounter(question.timeLimit)
-  const { trigger } = useLobbyContext()
+  const { presenceChannel, trigger } = useLobbyContext()
+  const [answers, setAnswers] = useState([])
 
   useEffect(() => {
     trigger('client-question', {
@@ -21,6 +23,10 @@ const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
   useEffect(() => {
     setCounter(question.timeLimit)
   }, [question])
+
+  useEvent(presenceChannel.channel, 'client-answer', (data, metadata) =>
+    setAnswers((a) => [...a, { id: metadata.user_id, answer: data }])
+  )
 
   const handleSkipClick = () => {
     setQuestionIndex(questionIndex + 1)
@@ -72,7 +78,7 @@ const QuestionBlock = ({ question, questionIndex, setQuestionIndex }) => {
       <Flex py='4' px='12'>
         <Text fontSize='xl'>{`${questionIndex + 1} of ${3}`}</Text>
         <Spacer />
-        <Text fontSize='xl'>{`${0} answered`}</Text>
+        <Text fontSize='xl'>{`${answers.length} answered`}</Text>
         <Spacer />
         <Text fontSize='xl' fontWeight='bold' color='blue.800'>Kalabam</Text>
       </Flex>
