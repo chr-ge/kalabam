@@ -40,6 +40,7 @@ export const LobbyProvider = ({ children }) => {
       value={{
         ...state,
         channel,
+        trigger,
         setPlayerName
       }}
     >

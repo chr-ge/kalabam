@@ -1,5 +1,5 @@
 import { useReducer, useContext, createContext } from 'react'
-import { usePresenceChannel } from '@harelpls/use-pusher'
+import { usePresenceChannel, useClientTrigger } from '@harelpls/use-pusher'
 import LobbyReducer from './LobbyReducer'
 
 const initialState = {
@@ -12,6 +12,7 @@ const LobbyContext = createContext(initialState)
 export const LobbyProvider = ({ children }) => {
   const [state, dispatch] = useReducer(LobbyReducer, initialState)
   const presenceChannel = usePresenceChannel(`presence-lobby-${state.gameCode}`)
+  const trigger = useClientTrigger(presenceChannel.channel)
 
   const setGameCode = (gameCode) => {
     dispatch({
@@ -32,6 +33,7 @@ export const LobbyProvider = ({ children }) => {
       value={{
         ...state,
         presenceChannel,
+        trigger,
         setGameCode,
         setPlayerCount
       }}
