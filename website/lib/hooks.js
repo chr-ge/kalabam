@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react'
 
-export const useCounter = (time) => {
-  const [counter, setCounter] = useState(time)
+export const useCountDown = (time) => {
+  const [count, setCount] = useState(time)
 
   useEffect(() => {
-    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000)
-  }, [counter])
+    setCount(time)
+  }, [time])
 
-  return [counter, setCounter]
+  useEffect(() => {
+    if (!count) return
+    const timeout = setTimeout(() => setCount(count - 1), 1000)
+
+    return () => clearTimeout(timeout)
+  }, [count])
+
+  return count
 }
