@@ -72,7 +72,7 @@ const QuestionBlock = ({ question, questionCount }) => {
         </SimpleGrid>
       </Box>
       <Flex py='4' px='12'>
-        <Text fontSize='xl'>{`${questionIndex + 1} of ${3}`}</Text>
+        <Text fontSize='xl'>{`${questionIndex + 1} of ${questionCount}`}</Text>
         <Spacer />
         <Text fontSize='xl'>{`${answers.length} answered`}</Text>
         <Spacer />
