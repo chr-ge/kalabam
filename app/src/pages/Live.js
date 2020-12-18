@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
+import { useEvent } from '@harelpls/use-pusher'
+import { useLocalStorage, writeStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Box, Button, Center, Flex, Text, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { useLobbyContext } from '../contexts/LobbyContext'
 import GameFooter from '../components/Game/GameFooter'
@@ -10,12 +11,23 @@ const COLORS = ['yellow', 'pink', 'purple', 'teal']
 const Live = () => {
   const history = useHistory()
   const [game] = useLocalStorage('game')
-  const { trigger } = useLobbyContext()
+  const { channel, trigger } = useLobbyContext()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (!game) history.replace('/')
     window.onbeforeunload = () => deleteFromStorage('game')
+  })
+
+  useEvent(channel, 'client-question', ({ data }) => {
+    writeStorage('game', {
+      ...game,
+      gameState: {
+        timeLimit: data.timeLimit,
+        answersCount: data.answersCount
+      }
+    })
+    setLoading(false)
   })
 
   const handleClick = (index) => {
