@@ -61,7 +61,7 @@ function Play ({ gameId }) {
               rightIcon={<FaPlayCircle />}
               colorScheme='green'
               onClick={onStartClick}
-              sDisabled={playerCount === 0}
+              isDisabled={playerCount === 0}
             >
               Start
             </Button>
