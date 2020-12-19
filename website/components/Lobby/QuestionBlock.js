@@ -5,15 +5,23 @@ import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useCountDown } from '../../lib/hooks'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
+import ResultsChart from './ResultsChart'
+
+const findCorrectAnswersIndex = (answers) => {
+  // eslint-disable-next-line no-sequences
+  return answers.reduce((acc, { isCorrect }, i) => (isCorrect && acc.push(i), acc), [])
+}
 
 const QuestionBlock = ({ question, questionCount }) => {
   const { presenceChannel, trigger, questionIndex, setQuestionIndex } = useLobbyContext()
   const count = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
+  const [showResults, setShowResults] = useState(false)
 
   useEffect(() => {
     trigger('client-question', {
       data: {
+        questionIndex: questionIndex + 1,
         timeLimit: question.timeLimit,
         answersCount: question.answers.length
       }
@@ -25,11 +33,17 @@ const QuestionBlock = ({ question, questionCount }) => {
   )
 
   const handleSkipClick = () => {
-    if (questionIndex < questionCount - 1) setQuestionIndex(questionIndex + 1)
+    if (questionIndex < questionCount - 1) {
+      setAnswers([])
+      setQuestionIndex(questionIndex + 1)
+    }
   }
 
   const handleNextClick = () => {
-    if (questionIndex < questionCount - 1) setQuestionIndex(questionIndex + 1)
+    if (questionIndex < questionCount - 1) {
+      setAnswers([])
+      setQuestionIndex(questionIndex + 1)
+    }
   }
 
   return (
@@ -45,7 +59,7 @@ const QuestionBlock = ({ question, questionCount }) => {
         {question.question}
       </Text>
       <Box flex={1} px='12' bg='lightPink'>
-        <Flex my='20'>
+        <Flex my='20' align='center'>
           <Circle bg='teal.100' w='10%'>
             <Text fontSize='3xl'>{count}</Text>
           </Circle>
@@ -55,7 +69,7 @@ const QuestionBlock = ({ question, questionCount }) => {
               <Button
                 aria-label='Next'
                 colorScheme='blue'
-                onClick={handleNextClick}
+                onClick={showResults ? handleNextClick : () => setShowResults(true)}
                 rightIcon={<ArrowForwardIcon />}
               >
                 Next
@@ -67,9 +81,20 @@ const QuestionBlock = ({ question, questionCount }) => {
               </Button>
               )}
         </Flex>
-        <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-          {question.answers.map(({ id, answer, color }) => <Answer key={id} answer={answer} color={color} />)}
-        </SimpleGrid>
+        {showResults
+          ? (
+            <>
+              <ResultsChart correct={findCorrectAnswersIndex(question.answers)} answers={answers} />
+              <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+                {question.answers.map(({ id, answer, color }) => <Answer key={id} answer={answer} color={color} />)}
+              </SimpleGrid>
+            </>
+            )
+          : (
+            <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+              {question.answers.map(({ id, answer, color }) => <Answer key={id} answer={answer} color={color} />)}
+            </SimpleGrid>
+            )}
       </Box>
       <Flex py='4' px='12'>
         <Text fontSize='xl'>{`${questionIndex + 1} of ${questionCount}`}</Text>
