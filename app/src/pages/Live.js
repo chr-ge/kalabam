@@ -23,6 +23,7 @@ const Live = () => {
     writeStorage('game', {
       ...game,
       gameState: {
+        questionIndex: data.questionIndex,
         timeLimit: data.timeLimit,
         answersCount: data.answersCount
       }
@@ -38,7 +39,9 @@ const Live = () => {
   return (
     <Flex h='100vh' direction='column' bg='lightPink'>
       <Box bg='white' w='100%'>
-        <Text px='12' py='3' fontSize='2xl'>{`${1} of ${3}`}</Text>
+        <Text px='12' py='3' fontSize='2xl'>
+          {`${game.gameState.questionIndex || 1} of ${3}`}
+        </Text>
       </Box>
       {loading
         ? (
