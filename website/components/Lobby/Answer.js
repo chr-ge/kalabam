@@ -7,21 +7,21 @@ const Answer = ({ answer, showResults }) => {
   return (
     <Flex
       p='1'
-      height='110px'
+      height='32'
       align='center'
       rounded='md'
       shadow='lg'
       bgColor='white'
     >
       <Box
-        width='15%'
+        width='20%'
         height='100%'
         bgColor={answer.color}
         rounded='md'
         opacity={opacity}
       />
       <Text
-        mx='2'
+        mx='5'
         fontSize='2xl'
         overflowWrap='break-word'
         wordBreak='break-word'
