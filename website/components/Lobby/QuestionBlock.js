@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useEvent } from '@harelpls/use-pusher'
 import { Box, Button, Circle, Flex, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
-import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { ImArrowRight2 } from 'react-icons/im'
 import { useCountDown } from '../../lib/hooks'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
@@ -19,16 +19,28 @@ const QuestionBlock = ({ question, questionCount }) => {
 
   const timesUp = count === 0
   const showResults = timesUp || answers.length === playerCount
+  const correctAnswerIndex = findCorrectAnswersIndex(question.answers)
 
   useEffect(() => {
     trigger('client-question', {
       data: {
+        totalQuestions: questionCount,
         questionIndex: questionIndex + 1,
         timeLimit: question.timeLimit,
         answersCount: question.answers.length
       }
     })
   }, [question])
+
+  useEffect(() => {
+    if(showResults) {
+      trigger('client-question-results', {
+        data: {
+          correctAnswerIndex
+        }
+      })
+    }
+  }, [showResults])
 
   useEvent(presenceChannel.channel, 'client-answer', (data, metadata) =>
     setAnswers((a) => [...a, { id: metadata.user_id, answer: data }])
@@ -67,17 +79,17 @@ const QuestionBlock = ({ question, questionCount }) => {
           </Circle>
           <Spacer />
           <Button
-            aria-label={timesUp ? 'Next' : 'Skip'}
+            aria-label={`${timesUp ? 'Next' : 'Skip'} Question`}
             colorScheme='blue'
             onClick={timesUp ? handleNextClick : handleSkipClick}
-            rightIcon={timesUp && <ArrowForwardIcon />}
+            rightIcon={timesUp && <ImArrowRight2 />}
           >
             {timesUp ? 'Next' : 'Skip'}
           </Button>
         </Flex>
         {showResults && (
           <ResultsChart
-            correct={findCorrectAnswersIndex(question.answers)}
+            correct={correctAnswerIndex}
             answers={answers}
             answersCount={question.answers.length}
           />
