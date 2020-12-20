@@ -13,10 +13,12 @@ const findCorrectAnswersIndex = (answers) => {
 }
 
 const QuestionBlock = ({ question, questionCount }) => {
-  const { presenceChannel, trigger, questionIndex, setQuestionIndex } = useLobbyContext()
+  const { presenceChannel, trigger, playerCount, questionIndex, setQuestionIndex } = useLobbyContext()
   const count = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
-  const [showResults, setShowResults] = useState(false)
+
+  const timesUp = count === 0
+  const showResults = timesUp || answers.length === playerCount
 
   useEffect(() => {
     trigger('client-question', {
@@ -33,7 +35,6 @@ const QuestionBlock = ({ question, questionCount }) => {
   )
 
   const handleSkipClick = () => {
-    setShowResults(false)
     if (questionIndex < questionCount - 1) {
       setAnswers([])
       setQuestionIndex(questionIndex + 1)
@@ -41,7 +42,6 @@ const QuestionBlock = ({ question, questionCount }) => {
   }
 
   const handleNextClick = () => {
-    setShowResults(false)
     if (questionIndex < questionCount - 1) {
       setAnswers([])
       setQuestionIndex(questionIndex + 1)
@@ -66,37 +66,25 @@ const QuestionBlock = ({ question, questionCount }) => {
             <Text fontSize='3xl'>{count}</Text>
           </Circle>
           <Spacer />
-          {count === 0
-            ? (
-              <Button
-                aria-label='Next'
-                colorScheme='blue'
-                onClick={showResults ? handleNextClick : () => setShowResults(true)}
-                rightIcon={<ArrowForwardIcon />}
-              >
-                Next
-              </Button>
-              )
-            : (
-              <Button aria-label='Skip' colorScheme='blue' onClick={handleSkipClick}>
-                Skip
-              </Button>
-              )}
+          <Button
+            aria-label={timesUp ? 'Next' : 'Skip'}
+            colorScheme='blue'
+            onClick={timesUp ? handleNextClick : handleSkipClick}
+            rightIcon={timesUp && <ArrowForwardIcon />}
+          >
+            {timesUp ? 'Next' : 'Skip'}
+          </Button>
         </Flex>
-        {showResults
-          ? (
-            <>
-              <ResultsChart correct={findCorrectAnswersIndex(question.answers)} answers={answers} />
-              <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-                {question.answers.map((a) => <Answer key={a.id} answer={a} showResults={showResults} />)}
-              </SimpleGrid>
-            </>
-            )
-          : (
-            <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-              {question.answers.map((a) => <Answer key={a.id} answer={a} />)}
-            </SimpleGrid>
-            )}
+        {showResults && (
+          <ResultsChart
+            correct={findCorrectAnswersIndex(question.answers)}
+            answers={answers}
+            answersCount={question.answers.length}
+          />
+        )}
+        <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+          {question.answers.map((a) => <Answer key={a.id} answer={a} showResults={showResults} />)}
+        </SimpleGrid>
       </Box>
       <Flex py='4' px='12'>
         <Text fontSize='xl'>{`${questionIndex + 1} of ${questionCount}`}</Text>
