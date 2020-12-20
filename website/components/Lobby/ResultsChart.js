@@ -5,7 +5,7 @@ const calculateMostAnswers = (data) => data.reduce((acc, { answers }) => {
   return answers > acc ? answers : acc
 }, 0)
 
-const ResultsChart = ({ correct, answers }) => {
+const ResultsChart = ({ correct, answers, answersCount }) => {
   const VALUES = answers.reduce((acc, { answer }) => {
     return ((acc[answer] = (acc[answer] || 0) + 1), acc)
   }, {}
@@ -23,7 +23,7 @@ const ResultsChart = ({ correct, answers }) => {
 
   return (
     <Flex h={height} maxW='2xl' mx='auto' mb='16' justify='space-between'>
-      {data.map(({ color, answers }, i) => (
+      {data.filter((_, i) => i < answersCount).map(({ color, answers }, i) => (
         <Flex key={color} direction='column' justify='end' align='center'>
           <Flex align='center' justify='center'>
             {correct.includes(i) && <Icon as={ImCheckmark} color={color} mr='2' boxSize={6} />}
