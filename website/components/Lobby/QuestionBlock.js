@@ -33,6 +33,7 @@ const QuestionBlock = ({ question, questionCount }) => {
   )
 
   const handleSkipClick = () => {
+    setShowResults(false)
     if (questionIndex < questionCount - 1) {
       setAnswers([])
       setQuestionIndex(questionIndex + 1)
@@ -40,6 +41,7 @@ const QuestionBlock = ({ question, questionCount }) => {
   }
 
   const handleNextClick = () => {
+    setShowResults(false)
     if (questionIndex < questionCount - 1) {
       setAnswers([])
       setQuestionIndex(questionIndex + 1)
@@ -86,13 +88,13 @@ const QuestionBlock = ({ question, questionCount }) => {
             <>
               <ResultsChart correct={findCorrectAnswersIndex(question.answers)} answers={answers} />
               <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-                {question.answers.map(({ id, answer, color }) => <Answer key={id} answer={answer} color={color} />)}
+                {question.answers.map((a) => <Answer key={a.id} answer={a} showResults={showResults} />)}
               </SimpleGrid>
             </>
             )
           : (
             <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-              {question.answers.map(({ id, answer, color }) => <Answer key={id} answer={answer} color={color} />)}
+              {question.answers.map((a) => <Answer key={a.id} answer={a} />)}
             </SimpleGrid>
             )}
       </Box>
