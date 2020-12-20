@@ -66,23 +66,23 @@ const Live = () => {
           </Center>
           )
         : status === 'RESULTS'
-        ? (
-          <Center flex={1} bg={isRightAnswer ? 'green.400' : 'red.400'}>
-            <Box align='center'>
-              <Text fontSize='2xl' color='white'>
-                {isRightAnswer ? 'You got it right!' : 'Wrong Answer!'}
-              </Text>
-              <Icon mt='4' as={isRightAnswer ? ImCheckmark : ImCross} boxSize='10' color='white' />
-            </Box>
-          </Center>
-          )
-        : (
-          <SimpleGrid flex={1} p='6' columns={2} spacing={6}>
-            {[...Array(game.gameState.answersCount)].map((_, i) => (
-              <Button key={COLORS[i]} colorScheme={COLORS[i]} h='100%' onClick={() => handleClick(i)} />
-            ))}
-          </SimpleGrid>
-          )}
+          ? (
+            <Center flex={1} bg={isRightAnswer ? 'green.400' : 'red.400'}>
+              <Box align='center'>
+                <Text fontSize='2xl' color='white'>
+                  {isRightAnswer ? 'You got it right!' : 'Wrong Answer!'}
+                </Text>
+                <Icon mt='4' as={isRightAnswer ? ImCheckmark : ImCross} boxSize='10' color='white' />
+              </Box>
+            </Center>
+            )
+          : (
+            <SimpleGrid flex={1} p='6' columns={2} spacing={6}>
+              {[...Array(game.gameState.answersCount)].map((_, i) => (
+                <Button key={COLORS[i]} colorScheme={COLORS[i]} h='100%' onClick={() => handleClick(i)} />
+              ))}
+            </SimpleGrid>
+            )}
       <GameFooter />
     </Flex>
   )

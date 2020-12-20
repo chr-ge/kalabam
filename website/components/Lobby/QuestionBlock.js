@@ -33,7 +33,7 @@ const QuestionBlock = ({ question, questionCount }) => {
   }, [question])
 
   useEffect(() => {
-    if(showResults) {
+    if (showResults) {
       trigger('client-question-results', {
         data: {
           correctAnswerIndex
