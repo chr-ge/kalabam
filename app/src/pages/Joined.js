@@ -19,7 +19,9 @@ const Joined = () => {
   useEvent(channel, 'client-question', ({ data }) => {
     writeStorage('game', {
       ...game,
+      totalQuestions: data.totalQuestions,
       gameState: {
+        questionIndex: data.questionIndex,
         timeLimit: data.timeLimit,
         answersCount: data.answersCount
       }
