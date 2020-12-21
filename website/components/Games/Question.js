@@ -15,6 +15,8 @@ import {
 import AnswerInput from '../../components/Games/AnswerInput'
 import { useGameContext } from '../../contexts/Game/GameContext'
 
+const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
+
 const Question = ({ question }) => {
   const { updateQuestion } = useGameContext()
   const [q, setQ] = useState(question)
@@ -98,8 +100,8 @@ const Question = ({ question }) => {
         </Center>
       </Flex>
       <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-        {q.answers.map((a) => (
-          <AnswerInput key={a.id} answer={a} />
+        {q.answers.map((a, i) => (
+          <AnswerInput key={a.id} answer={a} color={COLORS[i]} />
         ))}
       </SimpleGrid>
     </Box>

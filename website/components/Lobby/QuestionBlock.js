@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useEvent } from '@harelpls/use-pusher'
 import { Box, Button, Circle, Flex, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
-import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { ImArrowRight2 } from 'react-icons/im'
 import { useCountDown } from '../../lib/hooks'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
 import ResultsChart from './ResultsChart'
+
+const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
 
 const findCorrectAnswersIndex = (answers) => {
   // eslint-disable-next-line no-sequences
@@ -13,14 +15,18 @@ const findCorrectAnswersIndex = (answers) => {
 }
 
 const QuestionBlock = ({ question, questionCount }) => {
-  const { presenceChannel, trigger, questionIndex, setQuestionIndex } = useLobbyContext()
-  const count = useCountDown(question.timeLimit)
+  const { presenceChannel, trigger, playerCount, questionIndex, setQuestionIndex } = useLobbyContext()
+  const [count, setCount] = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
-  const [showResults, setShowResults] = useState(false)
+
+  const timesUp = count === 0
+  const showResults = timesUp || answers.length === playerCount
+  const correctAnswerIndex = findCorrectAnswersIndex(question.answers)
 
   useEffect(() => {
     trigger('client-question', {
       data: {
+        totalQuestions: questionCount,
         questionIndex: questionIndex + 1,
         timeLimit: question.timeLimit,
         answersCount: question.answers.length
@@ -28,12 +34,22 @@ const QuestionBlock = ({ question, questionCount }) => {
     })
   }, [question])
 
+  useEffect(() => {
+    if (showResults) {
+      setCount(0)
+      trigger('client-question-results', {
+        data: {
+          correctAnswerIndex
+        }
+      })
+    }
+  }, [showResults])
+
   useEvent(presenceChannel.channel, 'client-answer', (data, metadata) =>
     setAnswers((a) => [...a, { id: metadata.user_id, answer: data }])
   )
 
   const handleSkipClick = () => {
-    setShowResults(false)
     if (questionIndex < questionCount - 1) {
       setAnswers([])
       setQuestionIndex(questionIndex + 1)
@@ -41,7 +57,6 @@ const QuestionBlock = ({ question, questionCount }) => {
   }
 
   const handleNextClick = () => {
-    setShowResults(false)
     if (questionIndex < questionCount - 1) {
       setAnswers([])
       setQuestionIndex(questionIndex + 1)
@@ -61,42 +76,30 @@ const QuestionBlock = ({ question, questionCount }) => {
         {question.question}
       </Text>
       <Box flex={1} px='12' bg='lightPink'>
-        <Flex my='20' align='center'>
+        <Flex mt='20' pb='10' align='center'>
           <Circle bg='teal.100' w='10%'>
             <Text fontSize='3xl'>{count}</Text>
           </Circle>
           <Spacer />
-          {count === 0
-            ? (
-              <Button
-                aria-label='Next'
-                colorScheme='blue'
-                onClick={showResults ? handleNextClick : () => setShowResults(true)}
-                rightIcon={<ArrowForwardIcon />}
-              >
-                Next
-              </Button>
-              )
-            : (
-              <Button aria-label='Skip' colorScheme='blue' onClick={handleSkipClick}>
-                Skip
-              </Button>
-              )}
+          <Button
+            aria-label={`${timesUp ? 'Next' : 'Skip'} Question`}
+            colorScheme='blue'
+            onClick={timesUp ? handleNextClick : handleSkipClick}
+            rightIcon={timesUp && <ImArrowRight2 />}
+          >
+            {timesUp ? 'Next' : 'Skip'}
+          </Button>
         </Flex>
-        {showResults
-          ? (
-            <>
-              <ResultsChart correct={findCorrectAnswersIndex(question.answers)} answers={answers} />
-              <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-                {question.answers.map((a) => <Answer key={a.id} answer={a} showResults={showResults} />)}
-              </SimpleGrid>
-            </>
-            )
-          : (
-            <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-              {question.answers.map((a) => <Answer key={a.id} answer={a} />)}
-            </SimpleGrid>
-            )}
+        {showResults && (
+          <ResultsChart
+            correct={correctAnswerIndex}
+            answers={answers}
+            answersCount={question.answers.length}
+          />
+        )}
+        <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+          {question.answers.map((a, i) => <Answer key={a.id} answer={a} color={COLORS[i]} showResults={showResults} />)}
+        </SimpleGrid>
       </Box>
       <Flex py='4' px='12'>
         <Text fontSize='xl'>{`${questionIndex + 1} of ${questionCount}`}</Text>

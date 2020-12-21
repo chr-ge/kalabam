@@ -12,7 +12,7 @@ const Question = () => {
   const [session, loading] = useSession()
   const { data } = useGameById(router.query.gameId)
   const { questionIndex } = useLobbyContext()
-  const count = useCountDown(10)
+  const [count] = useCountDown(10)
 
   if (!loading && !session) router.push('/auth/signin')
 

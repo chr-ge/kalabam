@@ -14,5 +14,5 @@ export const useCountDown = (time) => {
     return () => clearTimeout(timeout)
   }, [count])
 
-  return count
+  return [count, setCount]
 }

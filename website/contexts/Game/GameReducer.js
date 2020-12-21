@@ -8,10 +8,10 @@ const initialState = {
       timeLimit: 20,
       points: 1000,
       answers: [
-        { id: 1, answer: '', color: 'tomato', isCorrect: false },
-        { id: 2, answer: '', color: 'pink.400', isCorrect: false },
-        { id: 3, answer: '', color: 'purple.400', isCorrect: false },
-        { id: 4, answer: '', color: 'teal.400', isCorrect: false }
+        { id: 1, answer: '', isCorrect: false },
+        { id: 2, answer: '', isCorrect: false },
+        { id: 3, answer: '', isCorrect: false },
+        { id: 4, answer: '', isCorrect: false }
       ]
     }
   ],
@@ -21,10 +21,10 @@ const initialState = {
     timeLimit: 20,
     points: 1000,
     answers: [
-      { id: 1, answer: '', color: 'tomato', isCorrect: false },
-      { id: 2, answer: '', color: 'pink.400', isCorrect: false },
-      { id: 3, answer: '', color: 'purple.400', isCorrect: false },
-      { id: 4, answer: '', color: 'teal.400', isCorrect: false }
+      { id: 1, answer: '', isCorrect: false },
+      { id: 2, answer: '', isCorrect: false },
+      { id: 3, answer: '', isCorrect: false },
+      { id: 4, answer: '', isCorrect: false }
     ]
   }
 }

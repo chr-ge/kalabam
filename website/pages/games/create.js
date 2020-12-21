@@ -30,7 +30,7 @@ function Create () {
             boxShadow='md'
             aria-label='Add Question'
             size='lg'
-            colorScheme='yellow'
+            colorScheme='teal'
             onClick={addQuestion}
           >
             Add Question
