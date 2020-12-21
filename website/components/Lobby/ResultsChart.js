@@ -12,10 +12,10 @@ const ResultsChart = ({ correct, answers, answersCount }) => {
   )
 
   const data = [
-    { color: 'yellow.500', answers: VALUES[0] || 0 },
-    { color: 'purple.500', answers: VALUES[1] || 0 },
-    { color: 'pink.500', answers: VALUES[2] || 0 },
-    { color: 'teal.500', answers: VALUES[3] || 0 }
+    { color: 'yellow.400', answers: VALUES[0] || 0 },
+    { color: 'pink.400', answers: VALUES[1] || 0 },
+    { color: 'purple.400', answers: VALUES[2] || 0 },
+    { color: 'teal.400', answers: VALUES[3] || 0 }
   ]
 
   const mostAnswers = calculateMostAnswers(data)

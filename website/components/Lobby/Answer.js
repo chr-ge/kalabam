@@ -1,7 +1,7 @@
 import { Box, Flex, Icon, Spacer, Text } from '@chakra-ui/react'
 import { ImCheckmark, ImCross } from 'react-icons/im'
 
-const Answer = ({ answer, showResults }) => {
+const Answer = ({ answer, color, showResults }) => {
   const opacity = showResults && (!answer.isCorrect && 0.5)
 
   return (
@@ -16,7 +16,7 @@ const Answer = ({ answer, showResults }) => {
       <Box
         width='20%'
         height='100%'
-        bgColor={answer.color}
+        bgColor={color}
         rounded='md'
         opacity={opacity}
       />

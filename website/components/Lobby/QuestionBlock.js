@@ -7,6 +7,8 @@ import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
 import ResultsChart from './ResultsChart'
 
+const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
+
 const findCorrectAnswersIndex = (answers) => {
   // eslint-disable-next-line no-sequences
   return answers.reduce((acc, { isCorrect }, i) => (isCorrect && acc.push(i), acc), [])
@@ -96,7 +98,7 @@ const QuestionBlock = ({ question, questionCount }) => {
           />
         )}
         <SimpleGrid columns={[1, 1, 2]} spacing={4}>
-          {question.answers.map((a) => <Answer key={a.id} answer={a} showResults={showResults} />)}
+          {question.answers.map((a, i) => <Answer key={a.id} answer={a} color={COLORS[i]} showResults={showResults} />)}
         </SimpleGrid>
       </Box>
       <Flex py='4' px='12'>

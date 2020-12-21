@@ -13,7 +13,7 @@ const bounceTransition = {
   }
 }
 
-const AnswerInput = ({ answer }) => {
+const AnswerInput = ({ answer, color }) => {
   const [chars, setChars] = useState(0)
   const [toggle, setToggle] = useState(answer.isCorrect)
 
@@ -37,7 +37,7 @@ const AnswerInput = ({ answer }) => {
       shadow='lg'
       bgColor='white'
     >
-      <Center width='15%' height='100%' bgColor={answer.color} rounded='md'>
+      <Center width='15%' height='100%' bgColor={color} rounded='md'>
         <MotionIconButton
           aria-label='Toggle Correct Answer'
           icon={<CheckCircleIcon h='8' w='8' />}
