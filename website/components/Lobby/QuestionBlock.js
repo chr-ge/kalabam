@@ -14,7 +14,7 @@ const findCorrectAnswersIndex = (answers) => {
 
 const QuestionBlock = ({ question, questionCount }) => {
   const { presenceChannel, trigger, playerCount, questionIndex, setQuestionIndex } = useLobbyContext()
-  const count = useCountDown(question.timeLimit)
+  const [count, setCount] = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
 
   const timesUp = count === 0
@@ -34,6 +34,7 @@ const QuestionBlock = ({ question, questionCount }) => {
 
   useEffect(() => {
     if (showResults) {
+      setCount(0)
       trigger('client-question-results', {
         data: {
           correctAnswerIndex
@@ -73,7 +74,7 @@ const QuestionBlock = ({ question, questionCount }) => {
         {question.question}
       </Text>
       <Box flex={1} px='12' bg='lightPink'>
-        <Flex my='20' align='center'>
+        <Flex mt='20' pb='10' align='center'>
           <Circle bg='teal.100' w='10%'>
             <Text fontSize='3xl'>{count}</Text>
           </Circle>
