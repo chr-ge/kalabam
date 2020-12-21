@@ -19,7 +19,7 @@ const ResultsChart = ({ correct, answers, answersCount }) => {
   ]
 
   const mostAnswers = calculateMostAnswers(data)
-  const height = mostAnswers === 0 ? '24' : (Math.ceil(mostAnswers / 4) * 4) * 8
+  const height = mostAnswers === 0 ? '36' : (Math.ceil(mostAnswers / 4) * 4) * 12
 
   return (
     <Flex h={height} maxW='2xl' mx='auto' mb='16' justify='space-between'>
@@ -27,7 +27,7 @@ const ResultsChart = ({ correct, answers, answersCount }) => {
         <Flex key={color} direction='column' justify='end' align='center'>
           <Flex align='center' justify='center'>
             {correct.includes(i) && <Icon as={ImCheckmark} color={color} mr='2' boxSize={6} />}
-            <Text color={color} align='center' fontSize='3xl'>{answers}</Text>
+            <Text color={color} align='center' fontSize='5xl'>{answers}</Text>
           </Flex>
           <Box height={`${answers * 4}%`} bg={color} w='32' mt='2' _hover={{ opacity: 0.8 }} />
           <Box bg={color} h='6' w='32' mt='1' rounded='md' />
