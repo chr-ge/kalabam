@@ -10,11 +10,19 @@ const Join = () => {
   const [game] = useLocalStorage('game')
   const [name, setName] = useState('')
   const { setPlayerName } = useLobbyContext()
+  const validName = name.length >= 2
 
   useEffect(() => {
     if (!game) history.replace('/')
     window.onbeforeunload = () => deleteFromStorage('game')
   })
+
+  const handleEnterKeyPress = (e) => {
+    if (e.key === 'Enter' && validName) {
+      setPlayerName(name)
+      history.replace('/joined')
+    }
+  }
 
   const handleClick = () => {
     setPlayerName(name)
@@ -27,16 +35,19 @@ const Join = () => {
         <Heading mb='2' fontSize='7xl' variant='logo' textAlign='center'>Kalabam</Heading>
         <Input
           size='lg'
+          aria-label='Enter a Nickname'
           placeholder='Nickname'
           focusBorderColor='teal.300'
           onChange={(e) => setName(e.target.value)}
+          onKeyPress={handleEnterKeyPress}
+          isRequired
           autoFocus
         />
         <Button
           py='6'
           colorScheme='pink'
           aria-label='Ready to Play'
-          isDisabled={name.length < 2}
+          isDisabled={!validName}
           onClick={handleClick}
           _disabled={{
             opacity: 0.7,
