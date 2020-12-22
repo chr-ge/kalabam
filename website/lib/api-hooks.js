@@ -83,19 +83,18 @@ export function useCreateLobby () {
   })
 }
 
-export function useCloseLobby () {
-  let code
-  const closeLobby = (gameCode) => {
-    code = gameCode
+export function useSaveLobby (gameCode) {
+  const saveLobby = (body) => {
     return defaultQueryFn(`/api/play/lobby/${gameCode}`, {
-      method: 'DELETE'
+      method: 'PUT',
+      body: JSON.stringify(body)
     })
   }
 
-  return useMutation(closeLobby, {
+  return useMutation(saveLobby, {
     throwOnError: true,
-    onSuccess () {
-      queryCache.invalidateQueries(`/api/play/lobby/${code}`)
+    onSuccess: () => {
+      queryCache.invalidateQueries(`/api/play/lobby/${gameCode}`)
       queryCache.invalidateQueries('/api/play/lobby')
     }
   })

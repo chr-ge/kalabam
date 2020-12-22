@@ -2,7 +2,18 @@ import { getSession } from 'next-auth/client'
 import { Box, Flex, Heading, Skeleton, Stack, Text } from '@chakra-ui/react'
 import { useGames } from '../lib/api-hooks'
 import Layout from '../components/Layout'
-import { GameRow } from '../components/Games'
+import { GameRow, NoGames } from '../components/Games'
+
+const news = [
+  {
+    title: '✏️ Try the New Edit Feature',
+    description: 'You can now edit your Kalabam games.'
+  },
+  {
+    title: '✅ Kalabam is Now in Alpha',
+    description: 'Try the Alpha release of Kalabam and leave us Feedback!'
+  }
+]
 
 function Index () {
   const { isLoading, data } = useGames()
@@ -11,31 +22,31 @@ function Index () {
     <Layout title='My Games | Kalabam' bg='gray.100'>
       <Flex
         my='6'
-        mx={{ base: '2', sm: '12', md: '24' }}
-        direction={{ base: 'column-reverse', md: 'row' }}
+        mx={{ base: '2', sm: '12', lg: '24' }}
+        direction={{ base: 'column-reverse', lg: 'row' }}
         justify='center'
       >
-        <Box mt={{ base: '4', md: '0' }}>
-          <Box w={{ md: '80' }} p='2' rounded='md' bg='white' boxShadow='md'>
+        <Box mt={{ base: '6', lg: '0' }}>
+          <Box w={{ lg: '80' }} p='2' rounded='md' bg='white' boxShadow='md'>
             <Heading as='h3' pl='2' py='2' fontSize='xl' bg='pink.100'>What's New</Heading>
             <Stack>
-              <Box mt='2' p='2' border='1px' borderColor='pink.100'>
-                <Text mb='1' fontWeight='bold'>✏️ Try the New Edit Feature</Text>
-                <Text>You can now edit your Kalabam games.</Text>
-              </Box>
-              <Box mt='2' p='2' border='1px' borderColor='pink.100'>
-                <Text mb='1' fontWeight='bold'>✅ Kalabam is Now in Alpha</Text>
-                <Text>Try the Alpha release of Kalabam and leave us Feedback!</Text>
-              </Box>
+              {news.map(({ title, description }, i) => (
+                <Box key={i} mt='2' p='2' border='1px' borderColor='pink.100'>
+                  <Text mb='1' fontWeight='bold'>{title}</Text>
+                  <Text>{description}</Text>
+                </Box>
+              ))}
             </Stack>
           </Box>
         </Box>
-        <Box w='100%' ml={{ md: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
+        <Box w='100%' ml={{ lg: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
           <Heading as='h3' pl='2' py='2' fontSize='xl' bg='teal.100'>My Games</Heading>
           <Stack>
             {isLoading
               ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='128px' />)
-              : data.map((game) => <GameRow key={game._id} game={game} />)}
+              : data.length
+                ? data.map((game) => <GameRow key={game._id} game={game} />)
+                : <NoGames />}
           </Stack>
         </Box>
       </Flex>

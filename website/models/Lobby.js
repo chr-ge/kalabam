@@ -2,22 +2,44 @@ import { connectToDatabase } from '../db/mongodb'
 
 export const getLobbyByGameCode = async (gameCode) => {
   const { db } = await connectToDatabase()
-  return await db.collection('lobbies').findOne({ gameCode: gameCode })
+  return await db.collection('lobbies').findOne({ gameCode })
 }
 
 export const createLobby = async (newLobby) => {
-  const dateNow = new Date()
-
   const lobby = {
     ...newLobby,
-    players: [],
-    created: dateNow
+    questions: [],
+    created: new Date()
   }
 
   const { db } = await connectToDatabase()
   const collection = db.collection('lobbies')
 
   return await collection.insertOne(lobby)
+}
+
+export async function updateLobbyByGameCode (gameCode, updates) {
+  const { db } = await connectToDatabase()
+  const collection = db.collection('lobbies')
+
+  const { changes, ...newUpdates } = updates
+
+  return await collection.findOneAndUpdate({ gameCode }, {
+    $set: {
+      ...newUpdates
+    }
+  })
+}
+
+export async function addQuestionToLobby (gameCode, question) {
+  const { db } = await connectToDatabase()
+  const collection = db.collection('lobbies')
+
+  return await collection.findOneAndUpdate({ gameCode }, {
+    $push: {
+      questions: question
+    }
+  })
 }
 
 export async function closeLobby (gameCode) {

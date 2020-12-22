@@ -42,7 +42,11 @@ const Question = () => {
           </Center>
           )
         : (
-          <QuestionBlock question={data.questions[questionIndex]} questionCount={data.questions.length} />
+          <QuestionBlock
+            question={data.questions[questionIndex]}
+            questionCount={data.questions.length}
+            started={new Date()}
+          />
           )}
     </>
   )
