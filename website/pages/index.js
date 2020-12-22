@@ -11,12 +11,12 @@ function Index () {
     <Layout title='My Games | Kalabam' bg='gray.100'>
       <Flex
         my='6'
-        mx={{ base: '2', sm: '12', md: '24' }}
-        direction={{ base: 'column-reverse', md: 'row' }}
+        mx={{ base: '2', sm: '12', lg: '24' }}
+        direction={{ base: 'column-reverse', lg: 'row' }}
         justify='center'
       >
-        <Box mt={{ base: '4', md: '0' }}>
-          <Box w={{ md: '80' }} p='2' rounded='md' bg='white' boxShadow='md'>
+        <Box mt={{ base: '6', lg: '0' }}>
+          <Box w={{ lg: '80' }} p='2' rounded='md' bg='white' boxShadow='md'>
             <Heading as='h3' pl='2' py='2' fontSize='xl' bg='pink.100'>What's New</Heading>
             <Stack>
               <Box mt='2' p='2' border='1px' borderColor='pink.100'>
@@ -30,7 +30,7 @@ function Index () {
             </Stack>
           </Box>
         </Box>
-        <Box w='100%' ml={{ md: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
+        <Box w='100%' ml={{ lg: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
           <Heading as='h3' pl='2' py='2' fontSize='xl' bg='teal.100'>My Games</Heading>
           <Stack>
             {isLoading
