@@ -94,7 +94,7 @@ export function useSaveLobby (gameCode) {
   return useMutation(saveLobby, {
     throwOnError: true,
     onSuccess: () => {
-      queryCache.invalidateQueries(`/api/play/lobby/${gameCode}`),
+      queryCache.invalidateQueries(`/api/play/lobby/${gameCode}`)
       queryCache.invalidateQueries('/api/play/lobby')
     }
   })
