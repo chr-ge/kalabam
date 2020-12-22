@@ -2,15 +2,15 @@ import { getSession } from 'next-auth/client'
 import { Box, Flex, Heading, Skeleton, Stack, Text } from '@chakra-ui/react'
 import { useGames } from '../lib/api-hooks'
 import Layout from '../components/Layout'
-import { GameRow } from '../components/Games'
+import { GameRow, NoGames } from '../components/Games'
 
 const news = [
   {
-    title: '✏️ Try the New Edit Feature', 
+    title: '✏️ Try the New Edit Feature',
     description: 'You can now edit your Kalabam games.'
   },
-  { 
-    title: '✅ Kalabam is Now in Alpha', 
+  {
+    title: '✅ Kalabam is Now in Alpha',
     description: 'Try the Alpha release of Kalabam and leave us Feedback!'
   }
 ]
@@ -44,7 +44,9 @@ function Index () {
           <Stack>
             {isLoading
               ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='128px' />)
-              : data.map((game) => <GameRow key={game._id} game={game} />)}
+              : data.length
+                ? data.map((game) => <GameRow key={game._id} game={game} />)
+                : <NoGames />}
           </Stack>
         </Box>
       </Flex>
