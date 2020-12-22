@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { useEvent } from '@harelpls/use-pusher'
 import { Box, Button, Circle, Flex, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useCountDown } from '../../lib/hooks'
+import { useSaveLobby } from '../../lib/api-hooks'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
 import ResultsChart from './ResultsChart'
@@ -14,10 +16,12 @@ const findCorrectAnswersIndex = (answers) => {
   return answers.reduce((acc, { isCorrect }, i) => (isCorrect && acc.push(i), acc), [])
 }
 
-const QuestionBlock = ({ question, questionCount }) => {
-  const { presenceChannel, trigger, playerCount, questionIndex, setQuestionIndex } = useLobbyContext()
+const QuestionBlock = ({ question, questionCount, started }) => {
+  const { presenceChannel, trigger, gameCode, playerCount, questionIndex, setQuestionIndex } = useLobbyContext()
   const [count, setCount] = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
+  const router = useRouter()
+  const [saveLobby] = useSaveLobby(gameCode)
 
   const timesUp = count === 0
   const showResults = timesUp || answers.length === playerCount
@@ -34,32 +38,48 @@ const QuestionBlock = ({ question, questionCount }) => {
     })
   }, [question])
 
-  useEffect(() => {
+  useEffect(async () => {
     if (showResults) {
       setCount(0)
+
       trigger('client-question-results', {
         data: {
           correctAnswerIndex
         }
       })
+
+      const save = async () => {
+        try {
+          await saveLobby({
+            question: {
+              _id: question.id,
+              question: question.question,
+              answers
+            }
+          })
+        } catch (err) {
+          global.alert(err)
+        }
+      }
+      save()
     }
   }, [showResults])
 
   useEvent(presenceChannel.channel, 'client-answer', (data, metadata) =>
-    setAnswers((a) => [...a, { id: metadata.user_id, answer: data }])
+    setAnswers((a) => [...a, { id: metadata.user_id, answer: data, isCorrect: correctAnswerIndex.includes(data) }])
   )
 
-  const handleSkipClick = () => {
+  const handleClick = async () => {
     if (questionIndex < questionCount - 1) {
       setAnswers([])
       setQuestionIndex(questionIndex + 1)
-    }
-  }
-
-  const handleNextClick = () => {
-    if (questionIndex < questionCount - 1) {
-      setAnswers([])
-      setQuestionIndex(questionIndex + 1)
+    } else {
+      try {
+        await saveLobby({ started, ended: new Date() })
+      } catch (err) {
+        global.alert(err)
+      }
+      router.push('/')
     }
   }
 
@@ -76,15 +96,15 @@ const QuestionBlock = ({ question, questionCount }) => {
         {question.question}
       </Text>
       <Box flex={1} px='12' bg='lightPink'>
-        <Flex mt='20' pb='10' align='center'>
-          <Circle bg='teal.100' w='10%'>
-            <Text fontSize='3xl'>{count}</Text>
+        <Flex mt='14' mb='8' align='center'>
+          <Circle bg='teal.100'>
+            <Text fontSize='4xl' px='5' py='1'>{count}</Text>
           </Circle>
           <Spacer />
           <Button
             aria-label={`${timesUp ? 'Next' : 'Skip'} Question`}
             colorScheme='blue'
-            onClick={timesUp ? handleNextClick : handleSkipClick}
+            onClick={handleClick}
             rightIcon={timesUp && <ImArrowRight2 />}
           >
             {timesUp ? 'Next' : 'Skip'}
@@ -97,7 +117,7 @@ const QuestionBlock = ({ question, questionCount }) => {
             answersCount={question.answers.length}
           />
         )}
-        <SimpleGrid columns={[1, 1, 2]} spacing={4}>
+        <SimpleGrid columns={[1, 1, 2]} spacing={6}>
           {question.answers.map((a, i) => <Answer key={a.id} answer={a} color={COLORS[i]} showResults={showResults} />)}
         </SimpleGrid>
       </Box>
@@ -106,7 +126,7 @@ const QuestionBlock = ({ question, questionCount }) => {
         <Spacer />
         <Text fontSize='xl'>{`${answers.length} answered`}</Text>
         <Spacer />
-        <Text fontSize='xl' fontWeight='bold' color='blue.800'>Kalabam</Text>
+        <Text fontSize='xl' fontWeight='bold' color='blue.800'>{gameCode}</Text>
       </Flex>
     </Flex>
   )
