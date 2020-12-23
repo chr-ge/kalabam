@@ -99,3 +99,7 @@ export function useSaveLobby (gameCode) {
     }
   })
 }
+
+export function useReports () {
+  return useQuery('/api/reports', defaultQueryFn)
+}
