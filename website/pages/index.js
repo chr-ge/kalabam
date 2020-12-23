@@ -20,8 +20,6 @@ function Index () {
   const { isLoading: isLoadingGames, data: gamesData } = useGames()
   const { isLoading: isLoadingReports, data: reportsData } = useReports()
 
-  console.log(reportsData)
-
   return (
     <Layout title='My Games | Kalabam' bg='gray.100'>
       <Flex
@@ -44,11 +42,15 @@ function Index () {
           </Box>
           <Box w={{ lg: '80' }} mt='8' p='2' rounded='md' bg='white' boxShadow='md'>
             <Heading as='h3' pl='2' py='2' fontSize='xl' bg='purple.100'>My Reports</Heading>
-            <Stack align='center'>
+            <Stack>
               {isLoadingReports
-                ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='128px' />)
-                : reportsData.map((r) => <ReportRow key={r._id} report={r} />)}
-              <Link color='gray.600'>See all (15)</Link>
+                ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='70px' />)
+                : (
+                  <>
+                    {reportsData.map((r) => <ReportRow key={r._id} report={r} />)}
+                    <Link color='gray.600' textAlign='center'>See all ({reportsData.length})</Link>
+                  </>
+                  )}
             </Stack>
           </Box>
         </Box>
