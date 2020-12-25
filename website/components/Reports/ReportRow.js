@@ -15,7 +15,7 @@ const ReportRow = ({ report }) => (
     <Flex align='center'>
       <Text mb='1' fontSize='lg' fontWeight='bold'>{dayjs(report.created).format('D MMMM YYYY')}</Text>
       <Spacer />
-      {report.ended && <CheckCircleIcon color='green.600' boxSize='5' />}
+      {report.ended && <CheckCircleIcon color='green.600' boxSize='5' mt='-1' />}
     </Flex>
     <Text>{report.game.title}</Text>
   </Link>
