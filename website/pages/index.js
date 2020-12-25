@@ -46,14 +46,20 @@ function Index () {
             <Stack>
               {isLoadingReports
                 ? [1, 2].map((n) => <Skeleton key={n} mt='2' h='70px' />)
-                : (
-                  <>
-                    {reportsData[0].reports.map((r) => <ReportRow key={r._id} report={r} />)}
-                    <Link href='/reports' color='gray.600' textAlign='center'>
-                      See all ({reportsData[0].count[0].count})
-                    </Link>
-                  </>
-                  )}
+                : reportsData[0].reports.length
+                  ? (
+                    <>
+                      {reportsData[0].reports.map((r) => <ReportRow key={r._id} report={r} />)}
+                      <Link href='/reports' color='gray.600' textAlign='center'>
+                        See all ({reportsData[0].count[0].count})
+                      </Link>
+                    </>
+                    )
+                  : (
+                    <Box w='100%' mt='2' p='2' border='1px' borderColor='purple.100'>
+                      <Text align='center'>You have no reports yet.</Text>
+                    </Box>
+                    )}
             </Stack>
           </Box>
         </Box>
