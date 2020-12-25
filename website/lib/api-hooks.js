@@ -103,3 +103,9 @@ export function useSaveLobby (gameCode) {
 export function useReports () {
   return useQuery('/api/reports', defaultQueryFn)
 }
+
+export function useReportById (lobbyId) {
+  return useQuery(`/api/reports/${lobbyId}`, defaultQueryFn, {
+    enabled: lobbyId != null
+  })
+}

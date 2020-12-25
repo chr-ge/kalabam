@@ -22,7 +22,7 @@ export default async (req, res) => {
     const updates = JSON.parse(req.body);
     ['_id', 'createdBy', 'created'].forEach((key) => delete updates[key])
 
-    return res.status(200).json('questions' in updates
+    return res.status(200).json('question' in updates
       ? await addQuestionToLobby(gameCode, updates.question)
       : await updateLobbyByGameCode(gameCode, updates)
     )

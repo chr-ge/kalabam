@@ -1,9 +1,10 @@
 import { getSession } from 'next-auth/client'
-import { Box, Flex, Heading, Link, Skeleton, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Skeleton, Stack, Text } from '@chakra-ui/react'
 import { useGames, useReports } from '../lib/api-hooks'
 import Layout from '../components/Layout'
 import { GameRow, NoGames } from '../components/Games'
 import { ReportRow } from '../components/Reports'
+import { Link } from '../components/Link'
 
 const news = [
   {
@@ -44,11 +45,13 @@ function Index () {
             <Heading as='h3' pl='2' py='2' fontSize='xl' bg='purple.100'>My Reports</Heading>
             <Stack>
               {isLoadingReports
-                ? [1, 2, 3].map((n) => <Skeleton key={n} mt='2' h='70px' />)
+                ? [1, 2].map((n) => <Skeleton key={n} mt='2' h='70px' />)
                 : (
                   <>
-                    {reportsData.map((r) => <ReportRow key={r._id} report={r} />)}
-                    <Link color='gray.600' textAlign='center'>See all ({reportsData.length})</Link>
+                    {reportsData[0].reports.map((r) => <ReportRow key={r._id} report={r} />)}
+                    <Link href='/reports' color='gray.600' textAlign='center'>
+                      See all ({reportsData[0].count[0].count})
+                    </Link>
                   </>
                   )}
             </Stack>
