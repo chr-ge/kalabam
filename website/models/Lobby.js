@@ -2,7 +2,7 @@ import { connectToDatabase } from '../db/mongodb'
 
 export const getLobbyByGameCode = async (gameCode) => {
   const { db } = await connectToDatabase()
-  return await db.collection('lobbies').findOne({ gameCode })
+  return await db.collection('lobbies').findOne({ gameCode, ended: { $exists: false } })
 }
 
 export const createLobby = async (newLobby) => {
