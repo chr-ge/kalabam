@@ -109,3 +109,19 @@ export function useReportById (lobbyId) {
     enabled: lobbyId != null
   })
 }
+
+export function useDeleteReport (lobbyId) {
+  const deleteReport = () => {
+    return defaultQueryFn(`/api/reports/${lobbyId}`, {
+      method: 'DELETE'
+    })
+  }
+
+  return useMutation(deleteReport, {
+    throwOnError: true,
+    onSuccess () {
+      queryCache.invalidateQueries(`/api/reports/${lobbyId}`)
+      queryCache.invalidateQueries('/api/reports')
+    }
+  })
+}

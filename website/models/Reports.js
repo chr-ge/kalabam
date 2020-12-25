@@ -26,7 +26,7 @@ export async function getUserReports (userId) {
   const { db } = await connectToDatabase()
   const collection = db.collection('lobbies')
 
-  const games = await collection
+  const reports = await collection
     .aggregate([
       {
         $match: {
@@ -34,9 +34,43 @@ export async function getUserReports (userId) {
         }
       },
       ...populateCreatedByAggregateStages,
-      { $sort: { _id: -1 } }
+      {
+        $facet: {
+          count: [{ $count: 'count' }],
+          reports: [
+            { $sort: { _id: -1 } },
+            { $limit: 3 }
+          ]
+        }
+      }
     ])
     .toArray()
 
-  return games
+  return reports
+}
+
+export async function getReportById (lobbyId) {
+  const { db } = await connectToDatabase()
+  const collection = db.collection('lobbies')
+
+  const report = await collection
+    .aggregate([
+      {
+        $match: {
+          _id: new ObjectId(lobbyId)
+        }
+      },
+      ...populateCreatedByAggregateStages
+    ])
+    .toArray()
+
+  return report[0]
+}
+
+export async function deleteReport (lobbyId) {
+  const { db } = await connectToDatabase()
+  const collection = db.collection('lobbies')
+
+  const response = await collection.deleteOne({ _id: new ObjectId(lobbyId) })
+  return response.result.ok === 1
 }

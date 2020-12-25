@@ -1,4 +1,4 @@
-import { getReportById } from '../../../models/Reports'
+import { getReportById, deleteReport } from '../../../models/Reports'
 import { getUserFromSession } from '../../../models/User'
 
 export default async (req, res) => {
@@ -13,10 +13,14 @@ export default async (req, res) => {
   const lobbyId = req.query.lobbyId
   const lobby = await getReportById(lobbyId)
 
-  if (req.method === 'GET') {
-    if (user.id.toString() !== lobby.createdBy.toString()) return res.status(403).end()
+  if (user.id.toString() !== lobby.createdBy.toString()) return res.status(403).end()
 
+  if (req.method === 'GET') {
     return res.status(200).json(lobby)
+  }
+
+  if (req.method === 'DELETE') {
+    return res.status(200).json(await deleteReport(lobbyId))
   }
 
   res.end()

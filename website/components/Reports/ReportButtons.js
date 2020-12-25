@@ -2,9 +2,17 @@ import { useRouter } from 'next/router'
 import { Flex, IconButton, Spacer, Tooltip } from '@chakra-ui/react'
 import { ViewIcon, DeleteIcon } from '@chakra-ui/icons'
 import { ImPrinter } from 'react-icons/im'
+import { useDeleteReport } from '../../lib/api-hooks'
 
-const ReportButtons = ({ gameId, isDisabled }) => {
+const ReportButtons = ({ lobbyId, gameId, isDisabled }) => {
   const router = useRouter()
+  const [deleteReport, { isLoading }] = useDeleteReport(lobbyId)
+
+  const handleDelete = async () => {
+    if (!global.confirm('Are you sure?')) return
+    const result = await deleteReport()
+    if (result) router.push('/')
+  }
 
   return (
     <Flex direction='column' ml='5'>
@@ -59,7 +67,9 @@ const ReportButtons = ({ gameId, isDisabled }) => {
           aria-label='Delete Report'
           colorScheme='red'
           icon={<DeleteIcon />}
+          onClick={handleDelete}
           isDisabled={isDisabled}
+          isLoading={isLoading}
         />
       </Tooltip>
     </Flex>
