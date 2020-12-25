@@ -11,14 +11,14 @@ import Layout from '../../components/Layout'
 const calculateCorrectPercent = (answers) => {
   // eslint-disable-next-line no-sequences
   const data = answers.reduce((acc, { isCorrect }) => ((acc[isCorrect] = (acc[isCorrect] || 0) + 1), acc), {})
-  return (100 * data.true || 0) / answers.length
+  return Math.round((100 * data.true || 0) / answers.length)
 }
 
 const Report = ({ lobbyId, name }) => {
   const { isLoading, data } = useReportById(lobbyId)
   const startTime = !isLoading && dayjs(data.started)
   const endTime = !isLoading && dayjs(data.ended)
-  
+
   return (
     <Layout title={`${data ? data.game.title : 'Game'} Report | Kalabam`} bg='lightPink'>
       <Box h='100%' p='8'>
@@ -31,7 +31,7 @@ const Report = ({ lobbyId, name }) => {
               <Icon as={MdTimer} ml='1' boxSize='6' color='orange.500' />
               {isLoading
                 ? <Spinner ml='2' size='xs' label='Loading...' speed='1s' />
-                : <Text fontSize='lg'>: {endTime.diff(startTime)}</Text>}
+                : <Text fontSize='lg'>: {endTime.diff(startTime, 'second')}s</Text>}
             </Flex>
           </Box>
           <Spacer />
@@ -47,7 +47,7 @@ const Report = ({ lobbyId, name }) => {
                 <Text mt='2' fontSize='lg'>Hosted by {name}</Text>
               </Flex>
             </Box>
-            <ReportButtons gameId={data && data.game._id} isDisabled={isLoading} />
+            <ReportButtons lobbyId={lobbyId} gameId={data && data.game._id} isDisabled={isLoading} />
           </Flex>
         </Flex>
         <Flex mt='8' direction={{ base: 'column', lg: 'row' }}>
@@ -58,9 +58,9 @@ const Report = ({ lobbyId, name }) => {
               <Icon as={ImUsers} boxSize='6' color='purple.800' />
             </Flex>
             <SimpleGrid w='100%' px='2' py='1' columns={3} bg='purple.200' mt='0 !important'>
-              <Text fontSize='sm' casing='uppercase'>Name</Text>
-              <Text fontSize='sm' casing='uppercase' align='center'>Correct Answers</Text>
-              <Text fontSize='sm' casing='uppercase' align='right'>Final Score</Text>
+              <Text fontSize='sm' casing='uppercase' color='purple.900'>Name</Text>
+              <Text fontSize='sm' casing='uppercase' color='purple.900' align='center'>Correct Answers</Text>
+              <Text fontSize='sm' casing='uppercase' color='purple.900' align='right'>Final Score</Text>
             </SimpleGrid>
             <Stack>
               {isLoading
@@ -75,8 +75,8 @@ const Report = ({ lobbyId, name }) => {
                     borderColor='purple.100'
                   >
                     <Text>{q.question}</Text>
-                    <Text align='center'>Quiz</Text>
-                    <Text align='right'>50%</Text>
+                    <Text align='center'>75%</Text>
+                    <Text align='right'>950</Text>
                   </SimpleGrid>
                 ))}
             </Stack>
@@ -97,9 +97,9 @@ const Report = ({ lobbyId, name }) => {
               <Icon as={FaQuestionCircle} boxSize='6' color='teal.800' />
             </Flex>
             <SimpleGrid w='100%' px='2' py='1' columns={3} bg='teal.200' mt='0 !important'>
-              <Text fontSize='sm' casing='uppercase'>Question</Text>
-              <Text fontSize='sm' casing='uppercase' align='center'>Type</Text>
-              <Text fontSize='sm' casing='uppercase' align='right'>Answered Correctly</Text>
+              <Text fontSize='sm' casing='uppercase' color='teal.900'>Question</Text>
+              <Text fontSize='sm' casing='uppercase' color='teal.900' align='center'>Type</Text>
+              <Text fontSize='sm' casing='uppercase' color='teal.900' align='right'>Answered Correctly</Text>
             </SimpleGrid>
             <Stack>
               {isLoading
