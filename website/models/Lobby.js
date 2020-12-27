@@ -8,6 +8,7 @@ export const getLobbyByGameCode = async (gameCode) => {
 export const createLobby = async (newLobby) => {
   const lobby = {
     ...newLobby,
+    players: [],
     questions: [],
     created: new Date()
   }

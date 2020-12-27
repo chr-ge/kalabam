@@ -65,18 +65,18 @@ const Report = ({ lobbyId, name }) => {
             <Stack>
               {isLoading
                 ? [1, 2, 3, 4, 5].map((n) => <Skeleton key={n} mt='2' h='10' />)
-                : data.questions.map((q) => (
+                : data.players.map((p) => (
                   <SimpleGrid
-                    key={q._id}
+                    key={p.id}
                     p='2'
                     mt='2'
                     columns={3}
                     border='1px'
                     borderColor='purple.100'
                   >
-                    <Text>{q.question}</Text>
+                    <Text>{p.name}</Text>
                     <Text align='center'>75%</Text>
-                    <Text align='right'>950</Text>
+                    <Text align='right'>- - -</Text>
                   </SimpleGrid>
                 ))}
             </Stack>

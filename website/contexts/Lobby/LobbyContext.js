@@ -4,6 +4,7 @@ import LobbyReducer from './LobbyReducer'
 
 const initialState = {
   gameCode: '',
+  players: [],
   playerCount: 0,
   questionIndex: 0
 }
@@ -22,6 +23,20 @@ export const LobbyProvider = ({ children }) => {
     })
   }
 
+  const addPlayer = (player) => {
+    dispatch({
+      type: 'ADD_PLAYER',
+      payload: player
+    })
+  }
+
+  const removePlayer = (memberId) => {
+    dispatch({
+      type: 'REMOVE_PLAYER',
+      payload: memberId
+    })
+  }
+
   const setPlayerCount = (count) => {
     dispatch({
       type: 'SET_PLAYER_COUNT',
@@ -36,6 +51,13 @@ export const LobbyProvider = ({ children }) => {
     })
   }
 
+  const reset = () => {
+    dispatch({
+      type: 'RESET',
+      payload: initialState
+    })
+  }
+
   return (
     <LobbyContext.Provider
       value={{
@@ -43,8 +65,11 @@ export const LobbyProvider = ({ children }) => {
         presenceChannel,
         trigger,
         setGameCode,
+        addPlayer,
+        removePlayer,
         setPlayerCount,
-        setQuestionIndex
+        setQuestionIndex,
+        reset
       }}
     >
       {children}
