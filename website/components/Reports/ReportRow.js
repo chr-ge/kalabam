@@ -1,5 +1,4 @@
-import { Flex, Link, Spacer, Text } from '@chakra-ui/react'
-import { CheckCircleIcon } from '@chakra-ui/icons'
+import { Badge, Flex, Link, Spacer, Text } from '@chakra-ui/react'
 import dayjs from 'dayjs'
 
 const ReportRow = ({ report }) => (
@@ -15,7 +14,7 @@ const ReportRow = ({ report }) => (
     <Flex align='center'>
       <Text mb='1' fontSize='lg' fontWeight='bold'>{dayjs(report.created).format('D MMMM YYYY')}</Text>
       <Spacer />
-      {report.ended && <CheckCircleIcon color='green.600' boxSize='5' mt='-1' />}
+      {report.ended && <Badge variant='outline' colorScheme='green'>Completed</Badge>}
     </Flex>
     <Text>{report.game.title}</Text>
   </Link>
