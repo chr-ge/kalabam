@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { getSession } from 'next-auth/client'
 import { getUserReports } from '../models/Reports'
+import { useRouter } from 'next/router'
 import { Badge, Container, Flex, Heading, Input, Spacer, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react'
 import dayjs from 'dayjs'
 import Layout from '../components/Layout'
 
 const Reports = ({ reports }) => {
+  const router = useRouter()
   const [filter, setFilter] = useState('')
 
   return (
@@ -25,7 +27,7 @@ const Reports = ({ reports }) => {
         </Flex>
         <Table colorScheme='purple'>
           <Thead>
-            <Tr>
+            <Tr bg='purple.100'>
               <Th fontSize='md' color='purple.600'>Name</Th>
               <Th />
               <Th fontSize='md' color='purple.600'>Date</Th>
@@ -38,7 +40,12 @@ const Reports = ({ reports }) => {
             {reports
               .filter((report) => report.game.title.toLowerCase().includes(filter.toLowerCase()))
               .map((report) => (
-                <Tr key={report._id} _hover={{ bg: 'purple.50' }}>
+                <Tr
+                  key={report._id}
+                  onClick={() => router.push(`/reports/${report._id}`)}
+                  cursor='pointer'
+                  _hover={{ bg: 'purple.50' }}
+                >
                   <Td>{report.game.title}</Td>
                   <Td isNumeric>{report.ended && <Badge variant='outline' colorScheme='green'>Completed</Badge>}</Td>
                   <Td>{dayjs(report.created).format('MMM D YYYY, h:mm a')}</Td>
