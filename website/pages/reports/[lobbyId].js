@@ -52,6 +52,7 @@ const Report = ({ lobbyId, name }) => {
           <Stack w={{ base: '100%', lg: '50%' }} p='4' mr='4' h='100%' boxShadow='md' rounded='md' bg='white'>
             <Flex w='100%' p='2' align='center' bg='purple.100'>
               <Text fontSize='xl'>Players</Text>
+              <Text ml='2' fontSize='lg'>{!isLoading && `(${data.players.length})`}</Text>
               <Spacer />
               <Icon as={ImUsers} boxSize='6' color='purple.800' />
             </Flex>
