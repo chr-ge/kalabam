@@ -17,7 +17,9 @@ const Report = ({ lobbyId, name }) => {
         <Flex direction={{ base: 'column', sm: 'row' }}>
           <Box>
             <Text fontSize='xl'>Report</Text>
-            <Text fontSize='4xl'>Cool Beans Man!</Text>
+            {isLoading
+              ? <Skeleton my='2' h='40px' w='350px' />
+              : <Text fontSize='4xl'>{data.game.title}</Text>}
             <Flex align='center'>
               <Text fontSize='lg'>Time</Text>
               <Icon as={MdTimer} ml='1' boxSize='6' color='orange.500' />
