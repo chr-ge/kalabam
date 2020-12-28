@@ -8,12 +8,6 @@ import { useReportById } from '../../lib/api-hooks'
 import { ReportButtons } from '../../components/Reports'
 import Layout from '../../components/Layout'
 
-const calculateCorrectPercent = (answers) => {
-  // eslint-disable-next-line no-sequences
-  const data = answers.reduce((acc, { isCorrect }) => ((acc[isCorrect] = (acc[isCorrect] || 0) + 1), acc), {})
-  return Math.round((100 * data.true || 0) / answers.length)
-}
-
 const Report = ({ lobbyId, name }) => {
   const { isLoading, data } = useReportById(lobbyId)
 
@@ -75,7 +69,7 @@ const Report = ({ lobbyId, name }) => {
                   >
                     <Text>{p.name}</Text>
                     <Text align='center'>75%</Text>
-                    <Text align='right'>- - -</Text>
+                    <Text align='right'>0</Text>
                   </SimpleGrid>
                 ))}
             </Stack>
@@ -114,7 +108,7 @@ const Report = ({ lobbyId, name }) => {
                   >
                     <Text>{q.question}</Text>
                     <Text align='center'>Quiz</Text>
-                    <Text align='right'>{calculateCorrectPercent(q.answers) + '%'}</Text>
+                    <Text align='right'>{q.averageAccuracy * 100 + '%'}</Text>
                   </SimpleGrid>
                 ))}
             </Stack>
