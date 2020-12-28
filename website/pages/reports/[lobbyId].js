@@ -68,7 +68,7 @@ const Report = ({ lobbyId, name }) => {
                     borderColor='purple.100'
                   >
                     <Text>{p.name}</Text>
-                    <Text align='center'>75%</Text>
+                    <Text align='center'>{p.averageAccuracy * 100 + '%'}</Text>
                     <Text align='right'>0</Text>
                   </SimpleGrid>
                 ))}
