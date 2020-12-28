@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb'
 import { getUserFromSession } from '../../../models/User'
 import { createLobby } from '../../../models/Lobby'
-import { generateGameCode } from '../../../util/gameCode'
+import { generateGameCode } from '../../../utils/gameCode'
 
 export default async (req, res) => {
   let user

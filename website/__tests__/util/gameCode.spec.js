@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { generateGameCode, formatGameCode } from '../../util/gameCode'
+import { generateGameCode, formatGameCode } from '../../utils/gameCode'
 
 describe('generateGameCode', () => {
   test('Generates 6 digit number', () => {
