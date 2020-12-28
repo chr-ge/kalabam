@@ -22,9 +22,21 @@ const populateCreatedByAggregateStages = [
   }
 ]
 
-export async function getUserReports (userId) {
+export async function getUserReports (userId, limit = false) {
   const { db } = await connectToDatabase()
   const collection = db.collection('lobbies')
+
+  const controlResults = limit
+    ? {
+        $facet: {
+          count: [{ $count: 'count' }],
+          reports: [
+            { $sort: { _id: -1 } },
+            { $limit: 3 }
+          ]
+        }
+      }
+    : { $sort: { _id: -1 } }
 
   const reports = await collection
     .aggregate([
@@ -34,15 +46,7 @@ export async function getUserReports (userId) {
         }
       },
       ...populateCreatedByAggregateStages,
-      {
-        $facet: {
-          count: [{ $count: 'count' }],
-          reports: [
-            { $sort: { _id: -1 } },
-            { $limit: 3 }
-          ]
-        }
-      }
+      controlResults
     ])
     .toArray()
 

@@ -11,7 +11,7 @@ export default async (req, res) => {
   }
 
   if (req.method === 'GET') {
-    return res.status(200).json(await getUserReports(user.id))
+    return res.status(200).json(await getUserReports(user.id, true))
   }
 
   res.end()
