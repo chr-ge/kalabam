@@ -74,8 +74,10 @@ const options = {
      * @param  {string} baseUrl  Default base URL of site (can be used as fallback)
      * @return {string}          URL the client will be redirect to
      */
-    redirect: async (_, baseUrl) => {
-      return Promise.resolve(baseUrl)
+    redirect: async (url, baseUrl) => {
+      return url.startsWith(baseUrl)
+        ? Promise.resolve(url)
+        : Promise.resolve(baseUrl)
     },
 
     /**

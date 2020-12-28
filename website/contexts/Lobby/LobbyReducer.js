@@ -5,6 +5,16 @@ export default function reducer (state, action) {
         ...state,
         gameCode: action.payload
       }
+    case 'ADD_PLAYER':
+      return {
+        ...state,
+        players: [...state.players, action.payload]
+      }
+    case 'REMOVE_PLAYER':
+      return {
+        ...state,
+        players: state.players.filter((p) => p.id !== action.payload)
+      }
     case 'SET_PLAYER_COUNT':
       return {
         ...state,
@@ -15,6 +25,8 @@ export default function reducer (state, action) {
         ...state,
         questionIndex: action.payload
       }
+    case 'RESET':
+      return action.payload
     default:
       throw new Error(`Unknown action: ${action.type}`)
   }

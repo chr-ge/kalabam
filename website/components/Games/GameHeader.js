@@ -23,7 +23,7 @@ const GameHeader = ({ mode }) => {
           await editGame({ title, description, questions })
         }
         resetContext()
-        router.push('/')
+        router.push('/dashboard')
       } catch (err) {
         global.alert('An error has occurred')
       }

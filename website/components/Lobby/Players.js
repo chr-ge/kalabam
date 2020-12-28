@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useEvent } from '@harelpls/use-pusher'
 import { Grid, Heading, Tag } from '@chakra-ui/react'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
@@ -6,15 +6,14 @@ import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 const COLORS = ['red', 'pink', 'yellow', 'blue', 'purple', 'teal', 'orange']
 
 const Players = () => {
-  const { presenceChannel, setPlayerCount } = useLobbyContext()
-  const [players, setPlayers] = useState([])
+  const { presenceChannel, players, addPlayer, removePlayer, setPlayerCount } = useLobbyContext()
 
   useEvent(presenceChannel.channel, 'client-player', (data, metadata) => {
-    if (data) setPlayers((p) => [...p, { id: metadata.user_id, name: data }])
+    if (data) addPlayer({ id: metadata.user_id, name: data })
   })
 
   useEvent(presenceChannel.channel, 'pusher:member_removed', (member) => {
-    setPlayers(players.filter((p) => p.id !== member.id))
+    removePlayer(member.id)
   })
 
   useEffect(() => {

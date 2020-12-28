@@ -17,7 +17,9 @@ const findCorrectAnswersIndex = (answers) => {
 }
 
 const QuestionBlock = ({ question, questionCount, started }) => {
-  const { presenceChannel, trigger, gameCode, playerCount, questionIndex, setQuestionIndex } = useLobbyContext()
+  const {
+    presenceChannel, trigger, gameCode, players, playerCount, questionIndex, setQuestionIndex, reset
+  } = useLobbyContext()
   const [count, setCount] = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
   const router = useRouter()
@@ -75,11 +77,12 @@ const QuestionBlock = ({ question, questionCount, started }) => {
       setQuestionIndex(questionIndex + 1)
     } else {
       try {
-        await saveLobby({ started, ended: new Date() })
+        await saveLobby({ players, started, ended: new Date() })
+        reset()
       } catch (err) {
         global.alert(err)
       }
-      router.push('/')
+      router.push('/dashboard')
     }
   }
 
