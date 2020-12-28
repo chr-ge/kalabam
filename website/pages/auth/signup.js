@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { providers, signIn } from 'next-auth/client'
+import { providers, signIn, getSession } from 'next-auth/client'
 import {
   Button,
   Divider,
@@ -73,9 +73,21 @@ function SignUp ({ providers }) {
 }
 
 export async function getServerSideProps (context) {
+  const session = await getSession(context)
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false
+      }
+    }
+  }
+
   return {
     props: {
-      providers: await providers(context)
+      providers: await providers(context),
+      error: context.query.error || null
     }
   }
 }
