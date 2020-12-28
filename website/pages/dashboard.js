@@ -43,7 +43,7 @@ const Dashboard = () => {
             </Stack>
           </Box>
           <Box w={{ lg: '80' }} mt='8' p='2' rounded='md' bg='white' boxShadow='md'>
-            <Heading as='h3' pl='2' py='2' fontSize='xl' bg='purple.100'>My Reports</Heading>
+            <Heading as='h3' pl='2' py='2' fontSize='xl' bg='purple.100'>Latest Reports</Heading>
             <Stack>
               {isLoadingReports
                 ? [1, 2].map((n) => <Skeleton key={n} mt='2' h='70px' />)

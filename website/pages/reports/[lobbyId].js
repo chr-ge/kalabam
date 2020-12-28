@@ -3,7 +3,7 @@ import { Box, Divider, Flex, Icon, SimpleGrid, Skeleton, Spacer, Spinner, Stack,
 import { ImUsers } from 'react-icons/im'
 import { FaQuestionCircle } from 'react-icons/fa'
 import { MdTimer } from 'react-icons/md'
-import dayjs from 'dayjs'
+import { formatDateTime, formatDiffDuration } from '../../utils/format'
 import { useReportById } from '../../lib/api-hooks'
 import { ReportButtons } from '../../components/Reports'
 import Layout from '../../components/Layout'
@@ -16,8 +16,6 @@ const calculateCorrectPercent = (answers) => {
 
 const Report = ({ lobbyId, name }) => {
   const { isLoading, data } = useReportById(lobbyId)
-  const startTime = !isLoading && dayjs(data.started)
-  const endTime = !isLoading && dayjs(data.ended)
 
   return (
     <Layout title={`${data ? data.game.title : 'Game'} Report | Kalabam`} bg='lightPink'>
@@ -31,7 +29,7 @@ const Report = ({ lobbyId, name }) => {
               <Icon as={MdTimer} ml='1' boxSize='6' color='orange.500' />
               {isLoading
                 ? <Spinner ml='2' size='xs' label='Loading...' speed='1s' />
-                : <Text fontSize='lg'>: {endTime.diff(startTime, 'second')}s</Text>}
+                : <Text fontSize='lg'>: {formatDiffDuration(data.started, data.ended)}</Text>}
             </Flex>
           </Box>
           <Spacer />
@@ -42,7 +40,7 @@ const Report = ({ lobbyId, name }) => {
                 <Divider />
                 {isLoading
                   ? <Skeleton h='27px' my='2' />
-                  : <Text my='2' fontSize='lg'>{dayjs(data.created).format('MMM D YYYY, h:mm a')}</Text>}
+                  : <Text my='2' fontSize='lg'>{formatDateTime(data.created)}</Text>}
                 <Divider />
                 <Text mt='2' fontSize='lg'>Hosted by {name}</Text>
               </Flex>

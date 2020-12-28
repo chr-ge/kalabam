@@ -1,5 +1,5 @@
 import { Badge, Flex, Link, Spacer, Text } from '@chakra-ui/react'
-import dayjs from 'dayjs'
+import { formatDateTime } from '../../utils/format'
 
 const ReportRow = ({ report }) => (
   <Link
@@ -12,7 +12,7 @@ const ReportRow = ({ report }) => (
     _hover={{ bg: 'purple.50', borderColor: 'purple.200' }}
   >
     <Flex align='center'>
-      <Text mb='1' fontSize='lg' fontWeight='bold'>{dayjs(report.created).format('D MMMM YYYY')}</Text>
+      <Text mb='1' fontSize='lg' fontWeight='bold'>{formatDateTime(report.created)}</Text>
       <Spacer />
       {report.ended && <Badge variant='outline' colorScheme='green'>Completed</Badge>}
     </Flex>
