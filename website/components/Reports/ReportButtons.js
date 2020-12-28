@@ -11,7 +11,7 @@ const ReportButtons = ({ lobbyId, gameId, isDisabled }) => {
   const handleDelete = async () => {
     if (!global.confirm('Are you sure?')) return
     const result = await deleteReport()
-    if (result) router.push('/')
+    if (result) router.push('/dashboard')
   }
 
   return (

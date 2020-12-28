@@ -82,7 +82,7 @@ const QuestionBlock = ({ question, questionCount, started }) => {
       } catch (err) {
         global.alert(err)
       }
-      router.push('/')
+      router.push('/dashboard')
     }
   }
 
