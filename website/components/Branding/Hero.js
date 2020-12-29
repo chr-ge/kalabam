@@ -40,7 +40,7 @@ const Hero = () => {
         </Flex>
       </Box>
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140'>
-        <path fill='#FAF089' fill-opacity='1' d='M0,128L288,128L576,64L864,64L1152,32L1440,128L1440,0L1152,0L864,0L576,0L288,0L0,0Z' />
+        <path fill='#FAF089' fillOpacity='1' d='M0,128L288,128L576,64L864,64L1152,32L1440,128L1440,0L1152,0L864,0L576,0L288,0L0,0Z' />
       </svg>
     </Box>
   )
