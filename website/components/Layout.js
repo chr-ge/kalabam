@@ -15,7 +15,7 @@ const Layout = ({ title, bg, children }) => {
           <Box flex={1} bg={bg}>
             {children}
           </Box>
-          
+
         </Box>
         <Footer />
       </Box>
