@@ -3,7 +3,7 @@ import { Link } from '../Link'
 
 const Footer = () => (
   <Box bg='gray.600' color='white'>
-    <Container my='10' maxW='3xl'>
+    <Container py='10' maxW='3xl'>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Flex direction='column'>
           <Heading mb='1'>Kalabam</Heading>
