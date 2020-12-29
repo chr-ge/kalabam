@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "@kalabam/theme": "^1.0.0",
-    "@chakra-ui/react": "1.0.4",
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.0.0",
+    "@chakra-ui/react": "1.1.0",
+    "@emotion/react": "11.1.4",
+    "@emotion/styled": "11.0.0",
     "@harelpls/use-pusher": "^7.1.0",
     "framer-motion": "3.0.0",
     "react": "^17.0.1",
