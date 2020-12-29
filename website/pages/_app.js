@@ -4,7 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
 import { GameProvider } from '../contexts/Game/GameContext'
 import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
-import FontFace from '../components/FontFace'
+import Fonts from '../components/Fonts'
 import theme from '@kalabam/theme'
 
 // Pusher Config
@@ -24,6 +24,7 @@ const App = ({ Component, pageProps }) => {
       </Head>
       <Provider session={pageProps.session}>
         <ChakraProvider theme={theme}>
+          <Fonts />
           <PusherProvider {...config}>
             <GameProvider>
               <LobbyProvider>
@@ -32,7 +33,6 @@ const App = ({ Component, pageProps }) => {
             </GameProvider>
           </PusherProvider>
         </ChakraProvider>
-        <FontFace />
       </Provider>
     </>
   )
