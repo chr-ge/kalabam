@@ -15,7 +15,7 @@ const Privacy = () => (
           Personal Information Protection and Electronic Documents Act.
         </Text>
         <Stack mb='10'>
-          <Heading mb='4' fontSize='3xl'>Table of Contents</Heading>
+          <Heading mb='4' fontSize='2xl'>Table of Contents</Heading>
           <Link href='#introduction' fontSize='lg' variant='kalabam' textTransform='uppercase'>1. Introduction</Link>
           <Link href='#identifying-purposes' fontSize='lg' variant='kalabam' textTransform='uppercase'>2. Identifying Purposes</Link>
           <Link href='#consent' fontSize='lg' variant='kalabam' textTransform='uppercase'>3. Consent</Link>
