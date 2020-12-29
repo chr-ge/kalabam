@@ -125,3 +125,14 @@ export function useDeleteReport (lobbyId) {
     }
   })
 }
+
+export function useSaveEmail () {
+  const saveEmail = (body) => {
+    return defaultQueryFn('/api/early-access', {
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+  }
+
+  return useMutation(saveEmail, { throwOnError: true })
+}
