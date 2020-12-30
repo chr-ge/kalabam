@@ -17,10 +17,10 @@ const EarlyAccess = () => {
   }
 
   return (
-    <Box>
+    <Box mt='24'>
       <Flex
         maxW='5xl'
-        mx={{ base: '2', md: '8', lg: 'auto' }}
+        mx={{ base: '4', md: '8', lg: 'auto' }}
         direction={{ base: 'column', md: 'row' }}
         rounded='md'
         boxShadow='md'
