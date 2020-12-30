@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client'
-import { Box, Divider, Flex, Icon, SimpleGrid, Skeleton, Spacer, Spinner, Stack, Text } from '@chakra-ui/react'
+import { Badge, Box, Divider, Flex, Icon, SimpleGrid, Skeleton, Spacer, Spinner, Stack, Text } from '@chakra-ui/react'
 import { ImUsers } from 'react-icons/im'
 import { FaQuestionCircle } from 'react-icons/fa'
 import { MdTimer } from 'react-icons/md'
@@ -16,7 +16,7 @@ const Report = ({ lobbyId, name }) => {
       <Box h='100%' p='8'>
         <Flex direction={{ base: 'column', sm: 'row' }}>
           <Box>
-            <Text fontSize='xl'>Report</Text>
+            <Badge fontSize='md' variant='outline'>Report</Badge>
             {isLoading
               ? <Skeleton my='2' h='40px' w='350px' />
               : <Text fontSize='4xl'>{data.game.title}</Text>}
