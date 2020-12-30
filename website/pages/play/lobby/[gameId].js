@@ -31,7 +31,7 @@ function Play ({ gameId }) {
   }
 
   return (
-    <Layout title='Play Game | Kalabam'>
+    <Layout title='Play Game | Kalabam' bg='lightPink'>
       <Flex h='100%' direction='column'>
         <Flex
           h='44'
@@ -51,7 +51,7 @@ function Play ({ gameId }) {
             </Heading>
           </Skeleton>
         </Flex>
-        <Flex flex={1} align='center' bg='lightPink' direction='column'>
+        <Flex flex={1} align='center' direction='column'>
           <Flex p='4' justify='space-between' w='100%'>
             <Tag px='3' colorScheme='teal' fontSize='2xl'>
               <Icon as={FaRegUserCircle} mr='2' />
