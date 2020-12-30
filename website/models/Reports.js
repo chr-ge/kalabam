@@ -42,7 +42,8 @@ export async function getUserReports (userId, limit = false) {
     .aggregate([
       {
         $match: {
-          createdBy: new ObjectId(userId)
+          createdBy: new ObjectId(userId),
+          started: { $exists: true }
         }
       },
       ...populateCreatedByAggregateStages,
