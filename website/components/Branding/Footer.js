@@ -19,8 +19,8 @@ const Footer = () => (
         <Spacer />
         <Flex direction='column'>
           <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>Community</Text>
-          <Link href='#' isExternal>Reddit</Link>
-          <Link href='#' isExternal>Github Discussions</Link>
+          <Link href='https://www.reddit.com' isExternal>Reddit</Link>
+          <Link href='https://github.com/chr-ge' isExternal>Github Discussions</Link>
         </Flex>
         <Spacer />
         <Flex direction='column'>
