@@ -1,6 +1,5 @@
-import { forwardRef, Link as ChakraLink, Icon } from '@chakra-ui/react'
+import { Link as ChakraLink, forwardRef } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { FaExternalLinkAlt } from 'react-icons/fa'
 
 export const Link = forwardRef(
   (
@@ -53,7 +52,6 @@ export const Link = forwardRef(
           {...chakraInternals}
         >
           {children}
-          {isExternal && <Icon as={FaExternalLinkAlt} className='link-external' />}
         </ChakraLink>
       </NextLink>
     )

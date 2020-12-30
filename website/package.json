@@ -18,7 +18,7 @@
     "lint-fix": "standard --fix"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^1.0.0",
+    "@chakra-ui/icons": "1.0.2",
     "cors": "^2.8.5",
     "dayjs": "^1.9.6",
     "mongodb": "^3.6.3",
