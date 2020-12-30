@@ -64,7 +64,7 @@ const Dashboard = () => {
             </Stack>
           </Box>
         </Box>
-        <Box w='100%' ml={{ lg: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
+        <Box w='100%' h='100%' ml={{ lg: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
           <Heading as='h3' pl='2' py='2' fontSize='xl' bg='teal.100'>My Games</Heading>
           <Stack>
             {isLoadingGames
