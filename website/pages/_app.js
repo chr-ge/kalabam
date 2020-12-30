@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { Provider } from 'next-auth/client'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
@@ -6,6 +7,10 @@ import { GameProvider } from '../contexts/Game/GameContext'
 import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
 import Fonts from '../components/Fonts'
 import theme from '@kalabam/theme'
+
+const CrispWithNoSSR = dynamic(
+  () => import('../components/Crisp'), { ssr: false }
+)
 
 // Pusher Config
 const config = {
@@ -25,6 +30,7 @@ const App = ({ Component, pageProps }) => {
       <Provider session={pageProps.session}>
         <ChakraProvider theme={theme}>
           <Fonts />
+          <CrispWithNoSSR />
           <PusherProvider {...config}>
             <GameProvider>
               <LobbyProvider>
