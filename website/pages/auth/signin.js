@@ -75,6 +75,10 @@ function SignIn ({ providers, error }) {
           <Button colorScheme='pink' onClick={() => signIn('email', { email })}>
             Sign in with Email
           </Button>
+          <Text pt='3' fontSize='xs'>
+            I accept the site <Link href='/tos' variant='kalabam'>Terms of Service</Link> and agree to the{' '}
+            <Link href='/privacy' variant='kalabam'>Privacy Policy</Link>.
+          </Text>
         </Stack>
       </Center>
     </Layout>
