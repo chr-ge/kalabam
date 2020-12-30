@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/chr-ge/kalabam/compare/@kalabam/theme@1.1.0...@kalabam/theme@1.2.0) (2020-12-30)
+
+
+### Features
+
+* create custom heading variant ([937eb7f](https://github.com/chr-ge/kalabam/commit/937eb7f27da03b13da4d419b5ec518bf6d7beab4))
+* create custom link variant ([f3d8f8c](https://github.com/chr-ge/kalabam/commit/f3d8f8c290444eac1d18da64d5e06aa4bda502f3))
+
+
+
+
+
 # 1.1.0 (2020-12-08)
 
 
