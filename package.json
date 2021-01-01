@@ -14,6 +14,7 @@
   "description": "Multiplayer Games for Class Activities or Interactive Presentations",
   "homepage": "https://github.com/chr-ge/kalabam#readme",
   "scripts": {
+    "build": "lerna run build --ignore @kalabam/theme --stream",
     "lint": "lerna run lint --stream",
     "test": "lerna run test --stream",
     "clean": "lerna clean --yes && rm -rf node_modules",
