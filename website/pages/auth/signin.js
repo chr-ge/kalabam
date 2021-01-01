@@ -68,6 +68,7 @@ function SignIn ({ providers, error }) {
           <Input
             aria-label='Email Input'
             placeholder='Email Address'
+            type='email'
             size='lg'
             borderColor='gray.400'
             onChange={(e) => setEmail(e.target.value)}
