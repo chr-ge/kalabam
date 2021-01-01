@@ -1,10 +1,11 @@
 import { createEmail } from '../../models/Emails'
+import { isEmail } from '../../utils/validate'
 
 export default async (req, res) => {
   if (req.method === 'POST') {
     const { email } = JSON.parse(req.body)
 
-    if (!email) return res.status(400).json({ success: false, message: 'Malformed content' })
+    if (!email || !isEmail(email)) return res.status(400).json({ success: false, message: 'Malformed content' })
 
     const { result } = await createEmail({
       email: email.trim(),

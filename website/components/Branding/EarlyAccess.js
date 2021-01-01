@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import { Box, Flex, Heading, Icon, Image, InputGroup, Input, InputLeftElement, Button, Text, Spacer } from '@chakra-ui/react'
-import { HiOutlineMail } from 'react-icons/hi'
+import { Box, Button, Circle, Flex, Heading, Icon, Image, Input, InputGroup, InputLeftElement, Text, Spacer } from '@chakra-ui/react'
+import { HiOutlineMail, HiCheckCircle } from 'react-icons/hi'
 import { useSaveEmail } from '../../lib/api-hooks'
 import { Link } from '../Link'
 
 const EarlyAccess = () => {
   const [email, setEmail] = useState('')
-  const [saveEmail, { isLoading }] = useSaveEmail()
+  const [saveEmail, { isLoading, isError, isSuccess }] = useSaveEmail()
 
-  const handleClick = () => {
+  const handleClick = async () => {
     try {
-      saveEmail({ email })
+      await saveEmail({ email })
     } catch (err) {
-      console.error(err)
+      console.error(err.status)
     }
   }
 
@@ -33,7 +33,9 @@ const EarlyAccess = () => {
           </Text>
           <InputGroup mt='4' mb='3'>
             <InputLeftElement pointerEvents='none'>
-              <Icon as={HiOutlineMail} color='white' />
+              <Circle bg={isSuccess && 'white'}>
+                <Icon as={isSuccess ? HiCheckCircle : HiOutlineMail} color={isSuccess ? 'green.500' : 'white'} />
+              </Circle>
             </InputLeftElement>
             <Input
               w='50%'
@@ -43,6 +45,7 @@ const EarlyAccess = () => {
               borderTopRightRadius='0'
               borderBottomRightRadius='0'
               onChange={(e) => setEmail(e.target.value)}
+              isInvalid={isError}
               _placeholder={{ color: 'white' }}
             />
             <Button
