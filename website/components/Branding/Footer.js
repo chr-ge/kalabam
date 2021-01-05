@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Text, Spacer } from '@chakra-ui/react'
+import { Box, Container, Flex, Heading, Text, Spacer, chakra } from '@chakra-ui/react'
 import { Link } from '../Link'
 
 const Footer = () => (
@@ -25,8 +25,16 @@ const Footer = () => (
         <Spacer />
         <Flex direction='column'>
           <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>Help</Text>
-          <Link href='/contact'>Contact</Link>
-          <Link href='/support'>Get Support</Link>
+          <Link href='mailto:hello@kalabam.com'>Contact</Link>
+          <chakra.a
+            onClick={() => $crisp.push(['do', 'chat:open'])}
+            _hover={{
+              cursor: 'pointer',
+              textDecoration: 'underline'
+            }}
+          >
+            Get Support
+          </chakra.a>
           <Link href='/tos'>Terms of Service</Link>
           <Link href='/privacy'>Privacy Policy</Link>
         </Flex>
