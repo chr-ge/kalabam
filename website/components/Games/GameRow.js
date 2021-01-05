@@ -16,7 +16,6 @@ import {
 import { HiDotsVertical } from 'react-icons/hi'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { Link } from '../Link'
 import { useDeleteGame } from '../../lib/api-hooks'
 
 dayjs.extend(relativeTime)
@@ -68,9 +67,7 @@ const GameRow = ({ game }) => {
             isLoading={isLoading}
           />
           <MenuList>
-            <MenuItem as={Link} href={`/games/${game._id}/edit`} textDecoration='none !important'>
-              Edit
-            </MenuItem>
+            <MenuItem onClick={() => router.push(`/games/${game._id}/edit`)}>Edit</MenuItem>
             <MenuItem onClick={handleDelete}>Delete</MenuItem>
           </MenuList>
         </Menu>
