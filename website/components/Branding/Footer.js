@@ -27,6 +27,7 @@ const Footer = () => (
           <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>Help</Text>
           <Link href='mailto:hello@kalabam.com'>Contact</Link>
           <chakra.a
+            /* eslint-disable no-undef */
             onClick={() => $crisp.push(['do', 'chat:open'])}
             _hover={{
               cursor: 'pointer',
