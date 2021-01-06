@@ -1,5 +1,5 @@
 import NextImage from 'next/image'
-import { Box, Flex, Heading, Button, forwardRef } from '@chakra-ui/react'
+import { Box, Flex, Heading, Button, forwardRef, chakra } from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { motion, isValidMotionProp } from 'framer-motion'
 import { Link } from '../Link'
@@ -34,7 +34,8 @@ const Hero = () => {
                 visible: { scale: 1, opacity: 1, transition: { delay: 0.2 } }
               }}
             >
-              Make your presentations fun.
+              Make your presentations
+              <chakra.span bgClip='text' bgGradient='linear(to-l, #7928CA,#FF0080)'>fun</chakra.span>.
             </HeroHeading>
             <Button
               as={Link}
@@ -50,7 +51,13 @@ const Hero = () => {
               Sign up free
             </Button>
           </Flex>
-          <Flex w={{ md: '50%' }} h={{ base: '72', md: 'auto' }} mt={{ base: '2', md: '6' }} justify='flex-end' pos='relative'>
+          <Flex
+            w={{ md: '50%' }}
+            h={{ base: '72', md: 'auto' }}
+            mt={{ base: '2', md: '6' }}
+            justify='flex-end'
+            pos='relative'
+          >
             <NextImage
               alt='Presentation'
               src='/images/presentation.svg'
@@ -63,7 +70,6 @@ const Hero = () => {
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140'>
         <path fill='#FAF089' fillOpacity='1' d='M0,128L288,128L576,64L864,64L1152,32L1440,128L1440,0L1152,0L864,0L576,0L288,0L0,0Z' />
       </svg>
-      {/* <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'><path fill='#FAF089' fill-opacity='1' d='M0,96L60,96C120,96,240,96,360,90.7C480,85,600,75,720,69.3C840,64,960,64,1080,80C1200,96,1320,128,1380,144L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z' /></svg> */}
     </Box>
   )
 }

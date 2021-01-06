@@ -22,8 +22,8 @@ const HowItWorks = () => (
         whileHover={{ y: 50, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
       >
         <NextImage src='/images/designer.svg' height={250} width={250} />
-        <Heading mb='2' bgGradient='linear(to-l, #F6E05E,#ED8936)' bgClip='text'>Create</Heading>
-        <Text p='4' bg='white' borderWidth='thin' borderColor='gray.100'>
+        <Heading mb='3' bgGradient='linear(to-l, #F6E05E,#ED8936)' bgClip='text'>Create</Heading>
+        <Text p='4' bg='white' borderWidth='thin' borderColor='gray.100' color='gray.600'>
           Build a game with multiple questions and answers. Make a quiz about anything in minutes.
         </Text>
       </AnimatedBox>
@@ -35,8 +35,8 @@ const HowItWorks = () => (
         whileHover={{ y: -25, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
       >
         <NextImage src='/images/team.svg' height={250} width={250} />
-        <Heading mb='2' bgGradient='linear(to-l, #7928CA,#FF0080)' bgClip='text'>Host</Heading>
-        <Text p='4' bg='white' borderWidth='thin' borderColor='gray.100'>
+        <Heading mb='3' bgGradient='linear(to-l, #7928CA,#FF0080)' bgClip='text'>Host</Heading>
+        <Text p='4' bg='white' borderWidth='thin' borderColor='gray.100' color='gray.600'>
           Host a live game by sharing your screen or displaying the questions for everyone to see.
         </Text>
       </AnimatedBox>
@@ -47,8 +47,8 @@ const HowItWorks = () => (
         whileHover={{ y: 50, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
       >
         <NextImage src='/images/winner.svg' height={250} width={250} />
-        <Heading mb='2' bgGradient='linear(to-l, #0BC5EA,#4FD1C5)' bgClip='text'>Play</Heading>
-        <Text p='4' bg='white' borderWidth='thin' borderColor='gray.100'>
+        <Heading mb='3' bgGradient='linear(to-l, #0BC5EA,#4FD1C5)' bgClip='text'>Play</Heading>
+        <Text p='4' bg='white' borderWidth='thin' borderColor='gray.100' color='gray.600'>
           Ready! Join a game with a code provided by the host and answer questions on your device.
         </Text>
       </AnimatedBox>

@@ -2,7 +2,7 @@ import { Box, Circle, Heading, Icon, SimpleGrid, Text } from '@chakra-ui/react'
 import { FcGraduationCap, FcBusinessman, FcBusinesswoman } from 'react-icons/fc'
 
 const Accounts = () => (
-  <Box mt='4'>
+  <Box mt='6'>
     <SimpleGrid columns={[1, 1, 3]} spacing={8} maxW='5xl' mx={{ base: '4', md: '8', lg: 'auto' }}>
       <Box bg='teal.200' p='6' rounded='md' align='center' _hover={{ boxShadow: '0px 5px #234E52 inset' }}>
         <Heading color='teal.800' fontSize='2xl'>Students and Teachers</Heading>
