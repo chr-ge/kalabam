@@ -34,7 +34,7 @@ const Hero = () => {
                 visible: { scale: 1, opacity: 1, transition: { delay: 0.2 } }
               }}
             >
-              Make your presentations
+              Make your presentations{' '}
               <chakra.span bgClip='text' bgGradient='linear(to-l, #7928CA,#FF0080)'>fun</chakra.span>.
             </HeroHeading>
             <Button
