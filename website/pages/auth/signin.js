@@ -31,7 +31,7 @@ function SignIn ({ providers, error }) {
               {error}
             </Alert>
           )}
-          <Heading align='center'>Sign In To Kalabam</Heading>
+          <Heading align='center' fontSize='4xl'>Sign In To Kalabam</Heading>
           <Text
             mb='10'
             fontSize='sm'
