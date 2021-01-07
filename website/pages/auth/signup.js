@@ -21,7 +21,7 @@ function SignUp ({ providers }) {
     <Layout title='Sign Up | Kalabam'>
       <Center m='16'>
         <Stack spacing={3}>
-          <Heading>Sign Up To Kalabam</Heading>
+          <Heading align='center'>Sign Up To Kalabam</Heading>
           <Text
             mb='10'
             fontSize='sm'
