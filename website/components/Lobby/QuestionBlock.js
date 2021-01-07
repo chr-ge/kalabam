@@ -83,6 +83,7 @@ const QuestionBlock = ({ question, questionCount, started }) => {
     } else {
       try {
         await saveLobby({ players, started, ended: new Date() })
+        trigger('client-game-over', {})
         reset()
       } catch (err) {
         global.alert(err)

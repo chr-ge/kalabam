@@ -54,6 +54,11 @@ const Live = () => {
     setStatus('RESULTS')
   })
 
+  useEvent(channel, 'client-game-over', () => {
+    deleteFromStorage('game')
+    history.replace('/')
+  })
+
   const handleClick = (index) => {
     trigger('client-answer', index.toString())
     setAnswer(index)
