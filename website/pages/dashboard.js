@@ -51,7 +51,12 @@ const Dashboard = () => {
                   ? (
                     <>
                       {reportsData[0].reports.map((r) => <ReportRow key={r._id} report={r} />)}
-                      <Link href='/reports' color='gray.600' textAlign='center'>
+                      <Link
+                        href='/reports'
+                        color='gray.600'
+                        textAlign='center'
+                        _focus={{ boxShadow: '0 0 0 3px rgba(159, 122, 234, 0.6)' }}
+                      >
                         See all ({reportsData[0].count[0].count})
                       </Link>
                     </>

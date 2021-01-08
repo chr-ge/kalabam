@@ -10,6 +10,7 @@ const ReportRow = ({ report }) => (
     borderColor='purple.100'
     href={`/reports/${report._id}`}
     _hover={{ bg: 'purple.50', borderColor: 'purple.200' }}
+    _focus={{ boxShadow: '0 0 0 3px rgba(159, 122, 234, 0.6)' }}
   >
     <Flex align='center'>
       <Text mb='1' fontSize='lg' fontWeight='bold'>{formatDateTime(report.created)}</Text>
