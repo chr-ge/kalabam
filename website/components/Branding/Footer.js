@@ -8,7 +8,7 @@ const Footer = () => (
         <Flex direction='column'>
           <Heading mb='1'>Kalabam</Heading>
           <Text flex={1}>Montreal, Canada 🍁</Text>
-          <Text>© 2020 Kalabam </Text>
+          <Text>© 2021 Kalabam</Text>
         </Flex>
         <Spacer />
         <Flex direction='column'>
