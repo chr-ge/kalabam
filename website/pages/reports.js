@@ -11,12 +11,13 @@ const Reports = ({ reports }) => {
   const [filter, setFilter] = useState('')
 
   return (
-    <Layout title='My Reports | Kalabam'>
+    <Layout title='My Reports | Kalabam' bg='gray.100'>
       <Container my='8' mx='auto' maxW='6xl'>
         <Flex align='center' mb='8' direction={{ base: 'column', md: 'row' }}>
           <Heading fontSize='3xl' alignSelf='start'>My Reports</Heading>
           <Spacer />
           <Input
+            bg='white'
             mt={{ base: 2, md: 0 }}
             w={{ base: '100%', md: '25%' }}
             aria-label='Filter by Name'
@@ -36,7 +37,7 @@ const Reports = ({ reports }) => {
               {/* isNumeric: Aligns the cell content to the right */}
             </Tr>
           </Thead>
-          <Tbody>
+          <Tbody bg='white'>
             {reports
               .filter((report) => report.game.title.toLowerCase().includes(filter.toLowerCase()))
               .map((report) => (
