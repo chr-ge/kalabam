@@ -42,17 +42,17 @@ const GameRow = ({ game }) => {
 
   return (
     <Flex mt='2' p='1' border='1px' borderColor='blue.100'>
-      <Image width={128} height={128} src={game.image || '/images/game.png'} />
+      <Image width={128} height={128} src={game.image || '/images/game.png'} layout='fixed' />
       <Flex flex={1} p='2' direction='column'>
         <Text fontSize='lg'>{game.title}</Text>
-        <Text fontSize='sm' pr='5' color='gray.600' noOfLines={2} isTruncated>
+        <Text fontSize='sm' pr={{ sm: '5' }} color='gray.600' noOfLines={2} isTruncated>
           {game.description}
         </Text>
         <Spacer />
-        <Flex>
+        <Flex direction={{ base: 'column', sm: 'row' }}>
           <Tag colorScheme='purple'>
-            {game.questionCount}{' '}
-            {game.questionCount === 1 ? 'question' : 'questions'}
+            {game.questionCount}
+            {game.questionCount === 1 ? ' question' : ' questions'}
           </Tag>
           <Text ml='1' fontSize='sm'>
             • Created {dayjs(game.created).fromNow()}
