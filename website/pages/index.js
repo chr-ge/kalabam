@@ -12,7 +12,7 @@ const Index = () => {
         <AspectRatio mt='24' w='100%' ratio={{ base: 1.5, md: 2, lg: 6, xl: 8 }}>
           <iframe
             src='https://my.spline.design/untitled-f690fd5cd94766dfb1ce8e3db5c9d91d/'
-            frameborder='0'
+            frameBorder='0'
           />
         </AspectRatio>
         <EarlyAccess />

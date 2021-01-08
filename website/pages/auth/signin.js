@@ -22,7 +22,7 @@ function SignIn ({ providers, error }) {
 
   return (
     <Layout title='Sign In | Kalabam'>
-      <Center m='16'>
+      <Center m={{ base: '10', md: '16' }}>
         <Stack spacing={3}>
           {error && (
             <Alert status='error'>
@@ -31,32 +31,29 @@ function SignIn ({ providers, error }) {
               {error}
             </Alert>
           )}
-          <Heading align='center' fontSize='4xl'>Sign In To Kalabam</Heading>
-          <Text
+          <Heading
             mb='10'
-            fontSize='sm'
-            textAlign='center'
-            color='gray.500'
-            pt='1'
+            align='center'
+            fontSize='4xl'
+            bgGradient='linear(to-l, #7928CA,#FF0080)' bgClip='text'
           >
-            Need an account?{' '}
-            <Link href='/auth/signup' variant='kalabam'>Sign Up</Link>
-          </Text>
+            Welcome To Kalabam
+          </Heading>
           <Button
-            leftIcon={<FaGoogle />}
             size='lg'
             colorScheme='googleBlue'
             onClick={() => signIn(providers.google.id)}
+            leftIcon={<FaGoogle />}
           >
-            Sign in with Google
+            Continue with Google
           </Button>
           <Button
-            leftIcon={<FaApple />}
             size='lg'
             colorScheme='black'
             onClick={() => signIn(providers.apple.id)}
+            leftIcon={<FaApple />}
           >
-            Sign in with Apple
+            Continue with Apple
           </Button>
           <Flex align='center'>
             <Divider color='gray.400' />
@@ -74,9 +71,9 @@ function SignIn ({ providers, error }) {
             onChange={(e) => setEmail(e.target.value)}
           />
           <Button colorScheme='pink' onClick={() => signIn('email', { email })}>
-            Sign in with Email
+            Continue using Email
           </Button>
-          <Text pt='3' fontSize='xs'>
+          <Text pt='3' fontSize='xs' align='center'>
             I accept the site <Link href='/tos' variant='kalabam'>Terms of Service</Link> and agree to the{' '}
             <Link href='/privacy' variant='kalabam'>Privacy Policy</Link>.
           </Text>
