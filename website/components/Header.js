@@ -1,18 +1,7 @@
 import { signin, signout, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import {
-  chakra,
-  Avatar,
-  Button,
-  Flex,
-  Heading,
-  Menu,
-  MenuButton,
-  Box,
-  MenuList,
-  MenuDivider,
-  MenuItem,
-  Spacer
+  chakra, Avatar, Button, Flex, Heading, Menu, MenuButton, Box, MenuList, MenuDivider, MenuItem, Spacer
 } from '@chakra-ui/react'
 import { Link } from './Link'
 

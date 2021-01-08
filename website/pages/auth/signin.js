@@ -1,17 +1,7 @@
 import { useState } from 'react'
 import { providers, signIn, getSession } from 'next-auth/client'
 import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  Button,
-  Center,
-  Divider,
-  Heading,
-  Flex,
-  Stack,
-  Input,
-  Text
+  Alert, AlertIcon, AlertTitle, Button, Center, Divider, Heading, Flex, Stack, Input, Text
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
