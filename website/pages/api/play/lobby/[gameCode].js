@@ -21,14 +21,16 @@ export default async (req, res) => {
     const updates = JSON.parse(req.body);
     ['_id', 'createdBy', 'created'].forEach((key) => delete updates[key])
 
-    if ('question' in updates) updates.question.averageAccuracy = calculateAverageAccuracy(updates.question.answers)
+    const hasQuestion = 'question' in updates
+    if (hasQuestion) updates.question.averageAccuracy = calculateAverageAccuracy(updates.question.answers)
+
     if ('players' in updates) {
       updates.players.forEach((player) => {
         player.averageAccuracy = calculateAveragePlayerAccuracy(lobby.questions, player.id)
       })
     }
 
-    const result = 'question' in updates
+    const result = hasQuestion
       ? await addQuestionToLobby(gameCode, updates.question)
       : await updateLobbyByGameCode(gameCode, updates)
 

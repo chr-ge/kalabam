@@ -9,7 +9,12 @@ import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 import Answer from './Answer'
 import ResultsChart from './ResultsChart'
 
-const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
+const CHOICES = [
+  { color: 'yellow.400', image: '/images/cylinder.png' },
+  { color: 'pink.400', image: '/images/cube.png' },
+  { color: 'purple.400', image: '/images/pyramid.png' },
+  { color: 'teal.400', image: '/images/torus.png' }
+]
 
 const findCorrectAnswersIndex = (answers) => {
   // eslint-disable-next-line no-sequences
@@ -78,6 +83,7 @@ const QuestionBlock = ({ question, questionCount, started }) => {
     } else {
       try {
         await saveLobby({ players, started, ended: new Date() })
+        trigger('client-game-over', {})
         reset()
       } catch (err) {
         global.alert(err)
@@ -121,7 +127,15 @@ const QuestionBlock = ({ question, questionCount, started }) => {
           />
         )}
         <SimpleGrid columns={[1, 1, 2]} spacing={6}>
-          {question.answers.map((a, i) => <Answer key={a.id} answer={a} color={COLORS[i]} showResults={showResults} />)}
+          {question.answers.map((a, i) =>
+            <Answer
+              key={a.id}
+              answer={a}
+              color={CHOICES[i].color}
+              image={CHOICES[i].image}
+              showResults={showResults}
+            />
+          )}
         </SimpleGrid>
       </Box>
       <Flex py='4' px='12'>
