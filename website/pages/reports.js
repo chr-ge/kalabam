@@ -2,7 +2,10 @@ import { useState } from 'react'
 import { getSession } from 'next-auth/client'
 import { getUserReports } from '../models/Reports'
 import { useRouter } from 'next/router'
-import { Badge, Container, Flex, Heading, Input, Spacer, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react'
+import {
+  Badge, Container, Flex, Heading, Input, InputGroup, InputLeftElement, Spacer, Table, Thead, Tbody, Tr, Th, Td
+} from '@chakra-ui/react'
+import { Search2Icon } from '@chakra-ui/icons'
 import dayjs from 'dayjs'
 import Layout from '../components/Layout'
 
@@ -11,19 +14,23 @@ const Reports = ({ reports }) => {
   const [filter, setFilter] = useState('')
 
   return (
-    <Layout title='My Reports | Kalabam'>
+    <Layout title='My Reports | Kalabam' bg='gray.100'>
       <Container my='8' mx='auto' maxW='6xl'>
         <Flex align='center' mb='8' direction={{ base: 'column', md: 'row' }}>
-          <Heading fontSize='3xl' alignSelf='start'>My Reports</Heading>
+          <Heading fontSize='3xl' alignSelf='start' color='purple.600'>My Reports</Heading>
           <Spacer />
-          <Input
-            mt={{ base: 2, md: 0 }}
-            w={{ base: '100%', md: '25%' }}
-            aria-label='Filter by Name'
-            placeholder='Filter by Name'
-            focusBorderColor='teal.300'
-            onChange={(e) => setFilter(e.target.value)}
-          />
+          <InputGroup mt={{ base: 2, md: 0 }} w={{ base: '100%', md: '25%' }}>
+            <InputLeftElement pointerEvents='none'>
+              <Search2Icon color='gray.300' />
+            </InputLeftElement>
+            <Input
+              bg='white'
+              aria-label='Filter by Name'
+              placeholder='Filter by Name'
+              focusBorderColor='teal.300'
+              onChange={(e) => setFilter(e.target.value)}
+            />
+          </InputGroup>
         </Flex>
         <Table colorScheme='purple'>
           <Thead>
@@ -36,7 +43,7 @@ const Reports = ({ reports }) => {
               {/* isNumeric: Aligns the cell content to the right */}
             </Tr>
           </Thead>
-          <Tbody>
+          <Tbody bg='white'>
             {reports
               .filter((report) => report.game.title.toLowerCase().includes(filter.toLowerCase()))
               .map((report) => (
