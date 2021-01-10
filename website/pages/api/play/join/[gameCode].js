@@ -4,7 +4,8 @@ import initMiddleware from '../../../../lib/init-middleware'
 
 const cors = initMiddleware(
   Cors({
-    methods: ['GET']
+    origin: process.env.CORS_ORIGIN,
+    methods: 'GET'
   })
 )
 
@@ -15,10 +16,9 @@ export default async (req, res) => {
   if (req.method === 'GET') {
     const lobby = await getLobbyByGameCode(gameCode)
 
-    if (!lobby) {
-      res.status(404).json({ success: false })
-      return
-    }
+    if (!lobby) return res.status(404).json({ success: false })
+
+    if (lobby.locked) return res.status(401).json({ success: false, message: 'The lobby is locked.' })
 
     return res.status(200).json({ success: true })
   }
