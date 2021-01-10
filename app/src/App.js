@@ -24,18 +24,18 @@ function App () {
   return (
     <>
       <ChakraProvider theme={theme}>
-        <PusherProvider {...config}>
-          <Router>
-            <Switch>
-              <Route exact path='/' component={Home} />
+        <Router>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <PusherProvider {...config}>
               <LobbyProvider>
                 <Route path='/join' component={Join} />
                 <Route path='/joined' component={Joined} />
                 <Route path='/live' component={Live} />
               </LobbyProvider>
-            </Switch>
-          </Router>
-        </PusherProvider>
+            </PusherProvider>
+          </Switch>
+        </Router>
       </ChakraProvider>
       <FontFace />
     </>

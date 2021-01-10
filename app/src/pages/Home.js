@@ -14,12 +14,21 @@ const Home = () => {
     setLoading(true)
     const res = await global.fetch(process.env.REACT_APP_JOIN_ENDPOINT + '/' + gameCode)
     setLoading(false)
-    if (res.status >= 300) {
+    if (res.status >= 300 && res.status !== 401) {
       toast({
         position: 'bottom',
         title: 'We did not recognize that game code.',
         description: 'Please try again.',
         status: 'error',
+        duration: 9000,
+        isClosable: true
+      })
+    } else if (res.status === 401) {
+      toast({
+        position: 'bottom',
+        title: 'The game is locked by the host.',
+        description: 'Please ask for the game to be unlocked.',
+        status: 'info',
         duration: 9000,
         isClosable: true
       })
