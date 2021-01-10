@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/chr-ge/kalabam/compare/@kalabam/website@0.3.0...@kalabam/website@0.4.0) (2021-01-10)
+
+
+### Bug Fixes
+
+* **reports:** redirect to reports after delete ([ad473c2](https://github.com/chr-ge/kalabam/commit/ad473c2ede93b1b2b8f1c5103e6c2100f61188e9))
+* $crisp is not defined ([58026ff](https://github.com/chr-ge/kalabam/commit/58026ff63f12e5e3b68f28b0525559254035f578))
+* background color ([d1036d5](https://github.com/chr-ge/kalabam/commit/d1036d5233d5746eecd612d5937a707ead2944e2))
+* hero word spacing ([e8d529a](https://github.com/chr-ge/kalabam/commit/e8d529a378515ff4ad65836156610bcb6997e502))
+* **auth:** add email type to signin input ([4fb3c4f](https://github.com/chr-ge/kalabam/commit/4fb3c4f9e9844e920629764b54f917c10f813f71))
+* my games height ([4516bd4](https://github.com/chr-ge/kalabam/commit/4516bd448a86bd422340f83c42d5ae2525f605ff))
+
+
+### Features
+
+* add origin to cors ([941fb15](https://github.com/chr-ge/kalabam/commit/941fb154a417ba275b26cd7a87ac3de44a466b3b))
+* lock / unlock lobbies ([12bba9b](https://github.com/chr-ge/kalabam/commit/12bba9bc78503dfb6251f8d1e7008f47635749de))
+* **app:** return to index when game over ([f60cbdb](https://github.com/chr-ge/kalabam/commit/f60cbdbf6a507c30813c2e8e315dafac2bdfdb4b))
+* **early-access:** email validation ([5baca5b](https://github.com/chr-ge/kalabam/commit/5baca5bd08cc32ea98b2121f5d409064ae975876))
+* **footer:** update help links ([e21d4bc](https://github.com/chr-ge/kalabam/commit/e21d4bcec86ab99999d1bb33e07dd8357d915ad8))
+* **index:** add accounts hover boxShadow ([fec47ca](https://github.com/chr-ge/kalabam/commit/fec47ca2df17e9bf429205960d21f832b2ace622))
+* **index:** create HowItWorks component ([44c7e63](https://github.com/chr-ge/kalabam/commit/44c7e636652575c105d92671d37c90d650e5c395))
+* **index:** display HowItWorks and iFrame ([cff79c4](https://github.com/chr-ge/kalabam/commit/cff79c4b4efb8eb200f878ead252217d7bcbb463))
+* **reports:** add search icon to filter input ([22b23e7](https://github.com/chr-ge/kalabam/commit/22b23e74984a9e6991f1ec2440180fbd49eac13f))
+* add heading animation ([a83430b](https://github.com/chr-ge/kalabam/commit/a83430b4b4517b80f2c09be831ea60979cc18217))
+* add images to answer choices ([057caee](https://github.com/chr-ge/kalabam/commit/057caeef2d702401285fe63b8039d49b632989eb))
+* responsive headers links ([f3663b7](https://github.com/chr-ge/kalabam/commit/f3663b7d35780caf4615f77470faf19aa2a3fea7))
+
+
+
+
+
 # [0.3.0](https://github.com/chr-ge/kalabam/compare/@kalabam/website@0.2.1...@kalabam/website@0.3.0) (2020-12-30)
 
 

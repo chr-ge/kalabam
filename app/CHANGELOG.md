@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/chr-ge/kalabam/compare/@kalabam/app@0.3.0...@kalabam/app@0.4.0) (2021-01-10)
+
+
+### Features
+
+* lock / unlock lobbies ([12bba9b](https://github.com/chr-ge/kalabam/commit/12bba9bc78503dfb6251f8d1e7008f47635749de))
+* **app:** return to index when game over ([f60cbdb](https://github.com/chr-ge/kalabam/commit/f60cbdbf6a507c30813c2e8e315dafac2bdfdb4b))
+* add images to answer choices ([057caee](https://github.com/chr-ge/kalabam/commit/057caeef2d702401285fe63b8039d49b632989eb))
+
+
+
+
+
 # [0.3.0](https://github.com/chr-ge/kalabam/compare/@kalabam/app@0.2.1...@kalabam/app@0.3.0) (2020-12-30)
 
 
