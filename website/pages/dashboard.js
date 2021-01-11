@@ -32,7 +32,7 @@ const Dashboard = () => {
       >
         <Box mt={{ base: '8', lg: '0' }}>
           <Box w={{ lg: '80' }} p='2' rounded='md' bg='white' boxShadow='md'>
-            <Heading as='h3' pl='2' py='2' fontSize='xl' bg='pink.100'>What's New</Heading>
+            <Heading as='h3' pl='2' py='2' fontSize='xl' bg='pink.100' color='pink.800'>What's New</Heading>
             <Stack>
               {news.map(({ title, description }, i) => (
                 <Box key={i} mt='2' p='2' border='1px' borderColor='pink.100'>
@@ -43,7 +43,7 @@ const Dashboard = () => {
             </Stack>
           </Box>
           <Box w={{ lg: '80' }} mt='8' p='2' rounded='md' bg='white' boxShadow='md'>
-            <Heading as='h3' pl='2' py='2' fontSize='xl' bg='purple.100'>Latest Reports</Heading>
+            <Heading as='h3' pl='2' py='2' fontSize='xl' bg='purple.100' color='purple.800'>Latest Reports</Heading>
             <Stack>
               {isLoadingReports
                 ? [1, 2].map((n) => <Skeleton key={n} mt='2' h='70px' />)
@@ -70,7 +70,7 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box w='100%' h='100%' ml={{ lg: '8' }} p='2' rounded='md' bg='white' boxShadow='md'>
-          <Heading as='h3' pl='2' py='2' fontSize='xl' bg='teal.100'>My Games</Heading>
+          <Heading as='h3' pl='2' py='2' fontSize='xl' bg='teal.100' color='teal.800'>My Games</Heading>
           <Stack>
             {isLoadingGames
               ? [1, 2, 3, 4].map((n) => <Skeleton key={n} mt='2' h='128px' />)
