@@ -86,7 +86,7 @@ const ImageUpload = ({ question, setQuestion }) => {
       {...borderColor}
       {...getRootProps()}
     >
-      {!loading
+      {loading
         ? <Spinner label='Loading...' color='purple.500' size='lg' thickness='3px' />
         : previewFile
           ? (
