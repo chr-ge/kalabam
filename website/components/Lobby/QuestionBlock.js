@@ -127,7 +127,9 @@ const QuestionBlock = ({ question, questionCount, started }) => {
           />
         )}
         {!showResults && question.image && (
-          <Image src={question.image} />
+          <Flex justify='center'>
+            <Image src={question.image} />
+          </Flex>
         )}
         <SimpleGrid columns={[1, 1, 2]} spacing={6}>
           {question.answers.map((a, i) =>
