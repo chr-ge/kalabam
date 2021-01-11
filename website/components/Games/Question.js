@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import {
   Box,
-  Center,
   Input,
   Flex,
   SimpleGrid,
@@ -12,7 +11,7 @@ import {
   SliderThumb,
   Text
 } from '@chakra-ui/react'
-import AnswerInput from '../../components/Games/AnswerInput'
+import { AnswerInput, ImageUpload } from '../../components/Games'
 import { useGameContext } from '../../contexts/Game/GameContext'
 
 const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
@@ -88,16 +87,7 @@ const Question = ({ question }) => {
             </Slider>
           </Box>
         </Stack>
-        <Center
-          w={{ base: '50%', xl: '30%' }}
-          border='1px'
-          borderColor='gray.400'
-          borderStyle='dashed'
-          height='250px'
-          rounded='md'
-        >
-          <Text align='center'>Drag and drop image from your computer</Text>
-        </Center>
+        <ImageUpload question={q} setQuestion={setQ} />
       </Flex>
       <SimpleGrid columns={[1, 1, 2]} spacing={4}>
         {q.answers.map((a, i) => (

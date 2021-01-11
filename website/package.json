@@ -19,12 +19,14 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "1.0.2",
+    "aws-sdk": "^2.824.0",
     "cors": "^2.8.5",
     "dayjs": "^1.9.6",
     "mongodb": "^3.6.3",
     "next": "latest",
     "next-auth": "^3.1.0",
     "pusher": "^4.0.2",
+    "react-dropzone": "^11.2.4",
     "react-query": "^2.26.2",
     "uniqid": "^5.2.0"
   },

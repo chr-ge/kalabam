@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useEvent } from '@harelpls/use-pusher'
-import { Box, Button, Circle, Flex, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
+import { Box, Button, Circle, Flex, Image, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useCountDown } from '../../lib/hooks'
 import { useSaveLobby } from '../../lib/api-hooks'
@@ -125,6 +125,9 @@ const QuestionBlock = ({ question, questionCount, started }) => {
             answers={answers}
             answersCount={question.answers.length}
           />
+        )}
+        {!showResults && question.image && (
+          <Image src={question.image} />
         )}
         <SimpleGrid columns={[1, 1, 2]} spacing={6}>
           {question.answers.map((a, i) =>
