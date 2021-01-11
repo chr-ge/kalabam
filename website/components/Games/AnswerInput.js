@@ -7,7 +7,8 @@ const MotionIconButton = motion.custom(IconButton)
 const bounceTransition = {
   y: {
     duration: 0.3,
-    yoyo: 2,
+    repeat: 2,
+    repeatType: 'mirror',
     ease: 'easeOut',
     delay: 10
   }
