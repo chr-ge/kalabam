@@ -20,7 +20,7 @@ export default async function handler (req, res) {
   }
 
   const imageKey = `img-${uniqid()}.${req.query.file.split('.').pop().toLowerCase()}`
-  const imageUrl = `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.REGION}.amazonaws.com/${imageKey}`
+  const imageUrl = `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/${imageKey}`
 
   const post = await s3.createPresignedPost({
     Bucket: process.env.S3_BUCKET_NAME,
