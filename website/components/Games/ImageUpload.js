@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Center, IconButton, Image, Text } from '@chakra-ui/react'
+import { Center, IconButton, Image, Text, Spinner, useToast } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
 
 const ImageUpload = ({ question, setQuestion }) => {
+  const toast = useToast()
+  const [loading, setLoading] = useState(false)
   const [previewFile, setPreviewFile] = useState()
 
   const onDrop = useCallback(async (acceptedFiles) => {
@@ -12,6 +14,8 @@ const ImageUpload = ({ question, setQuestion }) => {
     setPreviewFile(Object.assign(file, { preview: URL.createObjectURL(file) }))
 
     const filename = encodeURIComponent(file.name)
+    setLoading(true)
+
     const res = await global.fetch(`/api/upload-url?file=${filename}`)
     const { post: { url, fields }, imageUrl } = await res.json()
 
@@ -24,11 +28,21 @@ const ImageUpload = ({ question, setQuestion }) => {
     const upload = await global.fetch(url, { method: 'POST', body: formData })
 
     if (upload.ok) {
-      console.log('Uploaded successfully!')
+      console.info('Image uploaded successfully!')
       setQuestion({ ...question, image: imageUrl })
     } else {
-      console.error('Upload failed.')
+      console.error('Image upload failed.')
+      toast({
+        position: 'bottom-right',
+        title: 'The image was not accepted.',
+        description: 'Please try another image.',
+        status: 'error',
+        duration: 9000,
+        isClosable: true
+      })
+      setPreviewFile()
     }
+    setLoading(false)
   }, [])
 
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
@@ -47,10 +61,8 @@ const ImageUpload = ({ question, setQuestion }) => {
     setPreviewFile()
     const q = question
     delete q.image
-    setQuestion({ ...q })
+    setQuestion(q)
   }
-
-  console.log(question)
 
   useEffect(() => () => {
     // revoke the data uri to avoid memory leak
@@ -74,31 +86,33 @@ const ImageUpload = ({ question, setQuestion }) => {
       {...borderColor}
       {...getRootProps()}
     >
-      {previewFile
-        ? (
-          <>
-            <Image src={previewFile.preview} h='100%' objectFit='contain' alt={previewFile.name} />
-            <IconButton
-              aria-label='Delete question image'
-              pos='absolute'
-              right='0'
-              bottom='0'
-              m='2'
-              colorScheme='red'
-              size='xs'
-              onClick={handleDelete}
-              icon={<DeleteIcon />}
-            />
-          </>
-          )
-        : (
-          <>
-            <input {...getInputProps()} />
-            <Text p='2' align='center'>
-              {isDragActive ? 'Drop the image here ...' : "Drag 'n' drop an image here, or click to select one."}
-            </Text>
-          </>
-          )}
+      {!loading
+        ? <Spinner label='Loading...' color='purple.500' size='lg' thickness='3px' />
+        : previewFile
+          ? (
+            <>
+              <Image src={previewFile.preview} h='100%' objectFit='contain' alt={previewFile.name} />
+              <IconButton
+                aria-label='Delete question image'
+                pos='absolute'
+                right='0'
+                bottom='0'
+                m='2'
+                colorScheme='red'
+                size='xs'
+                onClick={handleDelete}
+                icon={<DeleteIcon />}
+              />
+            </>
+            )
+          : (
+            <>
+              <input {...getInputProps()} />
+              <Text p='2' align='center'>
+                {isDragActive ? 'Drop the image here ...' : "Drag 'n' drop an image here, or click to select one."}
+              </Text>
+            </>
+            )}
     </Center>
   )
 }
