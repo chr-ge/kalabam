@@ -16,6 +16,7 @@
   "scripts": {
     "build": "lerna run build --ignore @kalabam/theme --stream",
     "lint": "lerna run lint --stream",
+    "lint-fix": "lerna run lint-fix --stream",
     "test": "lerna run test --stream",
     "clean": "lerna clean --yes && rm -rf node_modules",
     "dedup": "yarn-deduplicate --strategy highest yarn.lock"
