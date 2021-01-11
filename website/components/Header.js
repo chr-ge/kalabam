@@ -117,7 +117,12 @@ const Header = () => {
                     Logout
                   </MenuItem>
                   <MenuDivider />
-                  <MenuItem>Help</MenuItem>
+                  <MenuItem
+                    /* eslint-disable no-undef */
+                    onClick={() => $crisp.push(['do', 'chat:open'])}
+                  >
+                    Help
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </>
