@@ -47,6 +47,7 @@ const Question = ({ question }) => {
           <Box mb='5'>
             <Text id='time_limit' mb='2'>Time Limit</Text>
             <Slider
+              id='time-slider'
               value={q.timeLimit}
               aria-labelledby='time_limit'
               onChange={(val) => setQ({ ...q, timeLimit: val })}
@@ -69,6 +70,7 @@ const Question = ({ question }) => {
               Points
             </Text>
             <Slider
+              id='points-slider'
               value={q.points}
               aria-labelledby='points'
               onChange={(val) => setQ({ ...q, points: val })}
