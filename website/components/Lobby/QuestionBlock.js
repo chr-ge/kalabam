@@ -36,24 +36,17 @@ const QuestionBlock = ({ question, questionCount, started }) => {
 
   useEffect(() => {
     trigger('client-question', {
-      data: {
-        totalQuestions: questionCount,
-        questionIndex: questionIndex + 1,
-        timeLimit: question.timeLimit,
-        answersCount: question.answers.length
-      }
+      totalQuestions: questionCount,
+      questionIndex: questionIndex + 1,
+      timeLimit: question.timeLimit,
+      answersCount: question.answers.length
     })
   }, [question])
 
   useEffect(async () => {
     if (showResults) {
       setCount(0)
-
-      trigger('client-question-results', {
-        data: {
-          correctAnswerIndex
-        }
-      })
+      trigger('client-question-results', { correctAnswerIndex })
 
       const save = async () => {
         try {
