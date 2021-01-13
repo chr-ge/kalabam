@@ -1,9 +1,10 @@
 import React from 'react'
 import { Flex, Tag, Text, Spacer } from '@chakra-ui/react'
 import { useLocalStorage } from '@rehooks/local-storage'
+import { GameInterface } from '../../contexts/LobbyContext'
 
 const GameLayout = () => {
-  const [game] = useLocalStorage<{ name: string }>('game')
+  const [game] = useLocalStorage<GameInterface>('game')
 
   return (
     <Flex bg='white' w='100%'>
