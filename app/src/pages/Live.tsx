@@ -13,7 +13,7 @@ import cube from '../images/cube.png'
 import pyramid from '../images/pyramid.png'
 import torus from '../images/torus.png'
 
-type Status = 'PLAY' | 'RESULTS' | 'WAITING' 
+type Status = 'PLAY' | 'RESULTS' | 'WAITING'
 
 const CHOICES = [
   { color: 'yellow', image: cylinder, alt: 'cylinder' },

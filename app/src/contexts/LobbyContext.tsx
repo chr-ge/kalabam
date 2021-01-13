@@ -1,7 +1,7 @@
 import { useContext, createContext, ReactNode } from 'react'
 import { useLocalStorage } from '@rehooks/local-storage'
 import { useChannel, useClientTrigger } from '@harelpls/use-pusher'
-import { Channel, PresenceChannel } from "pusher-js";
+import { Channel, PresenceChannel } from 'pusher-js';
 
 export interface GameStateInterface {
   questionIndex: string;
