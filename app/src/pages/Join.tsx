@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, KeyboardEvent } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
+import { useLocalStorage, writeStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Button, Heading, Input, VStack } from '@chakra-ui/react'
 import Layout from '../components/Layout'
-import { useLobbyContext } from '../contexts/LobbyContext'
+import { useLobbyContext, GameInterface } from '../contexts/LobbyContext'
 
 const Join = () => {
   const history = useHistory()
-  const [game] = useLocalStorage('game')
+  const [game] = useLocalStorage<GameInterface>('game')
   const [name, setName] = useState('')
-  const { setPlayerName } = useLobbyContext()
+  const { trigger } = useLobbyContext()
   const validName = name.length >= 2
 
   useEffect(() => {
@@ -17,16 +17,16 @@ const Join = () => {
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
-  const handleEnterKeyPress = (e) => {
-    if (e.key === 'Enter' && validName) {
-      setPlayerName(name)
-      history.replace('/joined')
-    }
+  const triggerName = (name: string) => {
+    writeStorage('game', { ...game, name })
+    trigger('client-player', name)
+    history.replace('/joined')
   }
 
-  const handleClick = () => {
-    setPlayerName(name)
-    history.replace('/joined')
+  const handleEnterKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && validName) {
+      triggerName(name)
+    }
   }
 
   return (
@@ -48,7 +48,7 @@ const Join = () => {
           colorScheme='pink'
           aria-label='Ready to Play'
           isDisabled={!validName}
-          onClick={handleClick}
+          onClick={() => triggerName(name)}
           _disabled={{
             opacity: 0.7,
             cursor: 'not-allowed',

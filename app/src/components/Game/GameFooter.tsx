@@ -1,13 +1,13 @@
 import React from 'react'
 import { Flex, Tag, Text, Spacer } from '@chakra-ui/react'
-import { useLobbyContext } from '../../contexts/LobbyContext'
+import { useLocalStorage } from '@rehooks/local-storage'
 
 const GameLayout = () => {
-  const { name } = useLobbyContext()
+  const [game] = useLocalStorage<{ name: string }>('game')
 
   return (
     <Flex bg='white' w='100%'>
-      <Text px='12' py='4' fontSize='2xl'>{name}</Text>
+      <Text px='12' py='4' fontSize='2xl'>{game?.name}</Text>
       <Spacer />
       <Tag colorScheme='gray' mx='12' my='4' fontSize='2xl'>1000</Tag>
     </Flex>
