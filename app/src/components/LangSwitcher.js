@@ -3,12 +3,18 @@ import { Button, Icon, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/r
 import { FaGlobeAmericas, FaCheck } from 'react-icons/fa'
 import { i18n } from '@lingui/core'
 import { useLingui } from '@lingui/react'
+import { en, fr } from 'make-plural/plurals'
 import { t } from '@lingui/macro'
 
 const locales = {
   en: 'English',
-  fr: 'French'
+  fr: 'Français'
 }
+
+i18n.loadLocaleData({
+  en: { plurals: en },
+  fr: { plurals: fr }
+})
 
 const dynamicActivate = async (locale) => {
   const { messages } = await import(`../locales/${locale}/messages`)
