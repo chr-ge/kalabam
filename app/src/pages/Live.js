@@ -4,6 +4,7 @@ import { useEvent } from '@harelpls/use-pusher'
 import { useLocalStorage, writeStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Box, Button, Center, Flex, Icon, Image, Text, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { ImCheckmark, ImCross } from 'react-icons/im'
+import { t, Trans } from '@lingui/macro'
 import { useLobbyContext } from '../contexts/LobbyContext'
 import GameFooter from '../components/Game/GameFooter'
 
@@ -77,7 +78,9 @@ const Live = () => {
           <Center flex={1}>
             <Box align='center'>
               <Spinner label='Loading' color='pink.500' size='xl' speed='1s' thickness='6px' />
-              <Text mt='3' fontSize='xl'>Think you got it right?</Text>
+              <Text mt='3' fontSize='xl'>
+                <Trans>Think you got it right?</Trans>
+              </Text>
             </Box>
           </Center>
           )
@@ -86,7 +89,7 @@ const Live = () => {
             <Center flex={1} bg={isRightAnswer ? 'green.400' : 'red.400'}>
               <Box align='center'>
                 <Text fontSize='2xl' color='white'>
-                  {isRightAnswer ? 'You got it right!' : 'Wrong Answer!'}
+                  {isRightAnswer ? t`You got it right!` : t`Wrong Answer!`}
                 </Text>
                 <Icon mt='4' as={isRightAnswer ? ImCheckmark : ImCross} boxSize='10' color='white' />
               </Box>
@@ -99,6 +102,7 @@ const Live = () => {
                   key={CHOICES[i].color}
                   h='100%'
                   pos='relative'
+                  aria-label={t`Choice ${i + 1}`}
                   colorScheme={CHOICES[i].color}
                   onClick={() => handleClick(i)}
                 >

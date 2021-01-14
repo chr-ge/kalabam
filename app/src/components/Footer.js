@@ -1,10 +1,11 @@
 import React from 'react'
 import { Box, Text, Link } from '@chakra-ui/react'
+import { Trans } from '@lingui/macro'
 
 const Footer = () => (
   <Box my='6' align='center'>
     <Text mb='2' fontSize='sm'>
-      Create your own game for FREE at{' '}
+      <Trans>Create your own game for FREE at </Trans>
       <Link href='https://kalabam.com' variant='kalabam'>
         kalabam.com
       </Link>

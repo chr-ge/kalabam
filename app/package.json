@@ -14,9 +14,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "standard",
-    "lint-fix": "standard --fix"
+    "lint-fix": "standard --fix",
+    "extract": "lingui extract",
+    "compile": "lingui compile"
   },
   "dependencies": {
+    "@lingui/react": "^3.4.0",
     "@rehooks/local-storage": "^2.4.0",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.2.1",
@@ -39,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@lingui/cli": "^3.4.0",
+    "@lingui/macro": "^3.4.0"
   }
 }
