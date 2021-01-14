@@ -7,7 +7,7 @@ import GameSettingsDrawer from './GameSettingsDrawer'
 const GameHeader = ({ mode }) => {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { _id, title, description, questions, resetContext } = useGameContext()
+  const { _id, title, description, visibility, questions, resetContext } = useGameContext()
 
   const [addGame, { isLoading: addIsLoading }] = useAddGame()
   const [editGame, { isLoading: editIsLoading }] = useEditGame(_id)
@@ -18,9 +18,9 @@ const GameHeader = ({ mode }) => {
     } else {
       try {
         if (mode === 'create') {
-          await addGame({ title, description, questions })
+          await addGame({ title, description, visibility, questions })
         } else {
-          await editGame({ title, description, questions })
+          await editGame({ title, description, visibility, questions })
         }
         resetContext()
         router.push('/dashboard')

@@ -11,9 +11,11 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Stack,
   FormLabel,
   Input,
+  Radio,
+  RadioGroup,
+  Stack,
   Tag,
   Textarea
 } from '@chakra-ui/react'
@@ -22,19 +24,20 @@ import { useGameContext } from '../../contexts/Game/GameContext'
 
 const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
   const titleField = useRef()
-  const { title, description, updateGameSettings } = useGameContext()
-  const [settings, setSettings] = useState({ title, description })
+  const { title, description, visibility, updateGameSettings } = useGameContext()
+  const [settings, setSettings] = useState({ title, description, visibility })
 
   useEffect(() => {
     if (title) {
-      setSettings({ title, description })
+      setSettings({ title, description, visibility })
     }
   }, [title])
 
   const handleDone = () => {
     updateGameSettings({
       title: settings.title,
-      description: settings.description
+      description: settings.description,
+      visibility: settings.visibility
     })
     onClose()
   }
@@ -87,12 +90,10 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader borderBottomWidth='1px' borderColor='gray.200'>
-              <Tag fontSize='2xl' px='2' py='1' colorScheme='teal'>
-                Game Settings
-              </Tag>
+              <Tag fontSize='2xl' px='2' py='1' colorScheme='teal'>Game Settings</Tag>
             </DrawerHeader>
             <DrawerBody>
-              <Stack spacing='24px'>
+              <Stack spacing={6}>
                 <Box>
                   <FormLabel htmlFor='title'>Title</FormLabel>
                   <Input
@@ -102,8 +103,7 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                     placeholder='Enter game title...'
                     borderColor='gray.200'
                     focusBorderColor='teal.200'
-                    onChange={(e) =>
-                      setSettings({ ...settings, title: e.target.value })}
+                    onChange={(e) => setSettings({ ...settings, title: e.target.value })}
                   />
                 </Box>
                 <Box>
@@ -120,9 +120,20 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                     borderColor='gray.200'
                     focusBorderColor='teal.200'
                     value={settings.description}
-                    onChange={(e) =>
-                      setSettings({ ...settings, description: e.target.value })}
+                    onChange={(e) => setSettings({ ...settings, description: e.target.value })}
                   />
+                </Box>
+                <Box>
+                  <FormLabel htmlFor='description'>Visibility</FormLabel>
+                  <RadioGroup
+                    onChange={(e) => setSettings({ ...settings, visibility: e })}
+                    value={settings.visibility}
+                  >
+                    <Stack direction='row' spacing={4}>
+                      <Radio colorScheme='teal' value='0'>Private</Radio>
+                      <Radio colorScheme='purple' value='1'>Public</Radio>
+                    </Stack>
+                  </RadioGroup>
                 </Box>
               </Stack>
             </DrawerBody>

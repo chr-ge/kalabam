@@ -29,7 +29,7 @@ export default async (req, res) => {
       delete updates[key]
     })
 
-    const missingValue = ['title', 'description', 'questions'].some(
+    const missingValue = ['title', 'description', 'visibility', 'questions'].some(
       (key) => key == null
     )
 

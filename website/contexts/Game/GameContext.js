@@ -5,6 +5,7 @@ import uniqid from 'uniqid'
 const initialState = {
   title: '',
   description: '',
+  visibility: '0',
   questions: [
     {
       id: 1,
@@ -45,10 +46,10 @@ export const GameProvider = ({ children }) => {
     })
   }
 
-  const updateGameSettings = ({ title, description }) => {
+  const updateGameSettings = ({ title, description, visibility }) => {
     dispatch({
       type: 'UPDATE_GAME_SETTINGS',
-      payload: { title, description }
+      payload: { title, description, visibility }
     })
   }
 
