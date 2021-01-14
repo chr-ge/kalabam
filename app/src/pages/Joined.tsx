@@ -3,12 +3,16 @@ import { useHistory } from 'react-router-dom'
 import { useEvent } from '@harelpls/use-pusher'
 import { useLocalStorage, writeStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Box, Center, Flex, Text, Tag } from '@chakra-ui/react'
-import { useLobbyContext } from '../contexts/LobbyContext'
+import { useLobbyContext, GameInterface, GameStateInterface } from '../contexts/LobbyContext'
 import GameFooter from '../components/Game/GameFooter'
+
+interface QuestionDataInterface extends GameStateInterface {
+  totalQuestions: string;
+}
 
 const Joined = () => {
   const history = useHistory()
-  const [game] = useLocalStorage('game')
+  const [game] = useLocalStorage<GameInterface>('game')
   const { channel } = useLobbyContext()
 
   useEffect(() => {
@@ -16,14 +20,14 @@ const Joined = () => {
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
-  useEvent(channel, 'client-question', ({ data }) => {
+  useEvent(channel, 'client-question', (data?: QuestionDataInterface) => {
     writeStorage('game', {
       ...game,
-      totalQuestions: data.totalQuestions,
+      totalQuestions: data!.totalQuestions,
       gameState: {
-        questionIndex: data.questionIndex,
-        timeLimit: data.timeLimit,
-        answersCount: data.answersCount
+        questionIndex: data!.questionIndex,
+        timeLimit: data!.timeLimit,
+        answersCount: data!.answersCount
       }
     })
     history.push('/live')

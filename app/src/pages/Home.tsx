@@ -49,14 +49,13 @@ const Home = () => {
             onChange={(val) => setGameCode(val)}
             type='number'
             autoFocus
-            isRequired
           >
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
-            <PinInputField />
+            <PinInputField isRequired />
+            <PinInputField isRequired />
+            <PinInputField isRequired />
+            <PinInputField isRequired />
+            <PinInputField isRequired />
+            <PinInputField isRequired />
           </PinInput>
         </Stack>
         <Button

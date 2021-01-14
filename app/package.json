@@ -23,6 +23,7 @@
     "@testing-library/user-event": "^12.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "typescript": "^4.1.3",
     "web-vitals": "^0.2.2"
   },
   "eslintConfig": {
@@ -39,5 +40,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7"
   }
 }

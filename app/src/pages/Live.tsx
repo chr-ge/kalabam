@@ -4,7 +4,7 @@ import { useEvent } from '@harelpls/use-pusher'
 import { useLocalStorage, writeStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Box, Button, Center, Flex, Icon, Image, Text, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { ImCheckmark, ImCross } from 'react-icons/im'
-import { useLobbyContext } from '../contexts/LobbyContext'
+import { useLobbyContext, GameInterface, GameStateInterface } from '../contexts/LobbyContext'
 import GameFooter from '../components/Game/GameFooter'
 
 // answer options images
@@ -12,6 +12,8 @@ import cylinder from '../images/cylinder.png'
 import cube from '../images/cube.png'
 import pyramid from '../images/pyramid.png'
 import torus from '../images/torus.png'
+
+type Status = 'PLAY' | 'RESULTS' | 'WAITING'
 
 const CHOICES = [
   { color: 'yellow', image: cylinder, alt: 'cylinder' },
@@ -22,11 +24,11 @@ const CHOICES = [
 
 const Live = () => {
   const history = useHistory()
-  const [game] = useLocalStorage('game')
+  const [game] = useLocalStorage<GameInterface>('game')
   const { channel, trigger } = useLobbyContext()
-  const [status, setStatus] = useState('PLAY')
-  const [answer, setAnswer] = useState()
-  const [correctAnswers, setCorrectAnswers] = useState([])
+  const [status, setStatus] = useState<Status>('PLAY')
+  const [answer, setAnswer] = useState<any | undefined>()
+  const [correctAnswers, setCorrectAnswers] = useState<any[]>([])
 
   const isRightAnswer = correctAnswers.includes(answer)
 
@@ -35,22 +37,22 @@ const Live = () => {
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
-  useEvent(channel, 'client-question', ({ data }) => {
+  useEvent(channel, 'client-question', (data?: GameStateInterface) => {
     writeStorage('game', {
       ...game,
       gameState: {
-        questionIndex: data.questionIndex,
-        timeLimit: data.timeLimit,
-        answersCount: data.answersCount
+        questionIndex: data!.questionIndex,
+        timeLimit: data!.timeLimit,
+        answersCount: data!.answersCount
       }
     })
-    setAnswer(null)
+    setAnswer(undefined)
     setCorrectAnswers([])
     setStatus('PLAY')
   })
 
-  useEvent(channel, 'client-question-results', ({ data }) => {
-    setCorrectAnswers(data.correctAnswerIndex)
+  useEvent(channel, 'client-question-results', (data?: { correctAnswerIndex: any; }) => {
+    setCorrectAnswers(data!.correctAnswerIndex)
     setStatus('RESULTS')
   })
 
@@ -59,7 +61,7 @@ const Live = () => {
     history.replace('/')
   })
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     trigger('client-answer', index.toString())
     setAnswer(index)
     setStatus('WAITING')
@@ -69,7 +71,7 @@ const Live = () => {
     <Flex h='100vh' direction='column' bg='lightPink'>
       <Box bg='white' w='100%'>
         <Text px='12' py='3' fontSize='2xl'>
-          {`${game.gameState.questionIndex} of ${game.totalQuestions}`}
+          {`${game!.gameState.questionIndex} of ${game!.totalQuestions}`}
         </Text>
       </Box>
       {status === 'WAITING'
@@ -94,7 +96,7 @@ const Live = () => {
             )
           : (
             <SimpleGrid flex={1} p='6' columns={2} spacing={6}>
-              {[...Array(game.gameState.answersCount)].map((_, i) => (
+              {[...Array(game!.gameState.answersCount)].map((_, i) => (
                 <Button
                   key={CHOICES[i].color}
                   h='100%'

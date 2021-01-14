@@ -22,23 +22,21 @@ const config = {
 
 function App () {
   return (
-    <>
-      <ChakraProvider theme={theme}>
-        <Router>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <PusherProvider {...config}>
-              <LobbyProvider>
-                <Route path='/join' component={Join} />
-                <Route path='/joined' component={Joined} />
-                <Route path='/live' component={Live} />
-              </LobbyProvider>
-            </PusherProvider>
-          </Switch>
-        </Router>
-      </ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <PusherProvider {...config}>
+            <LobbyProvider>
+              <Route path='/join' component={Join} />
+              <Route path='/joined' component={Joined} />
+              <Route path='/live' component={Live} />
+            </LobbyProvider>
+          </PusherProvider>
+        </Switch>
+      </Router>
       <FontFace />
-    </>
+    </ChakraProvider>
   )
 }
 
