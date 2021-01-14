@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/LangSwitcher.js:28
+#: src/components/LangSwitcher.js:34
 msgid "Change language"
 msgstr "Change language"
 
