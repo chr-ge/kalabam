@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { writeStorage } from '@rehooks/local-storage'
 import { useHistory } from 'react-router-dom'
 import { Button, Heading, PinInput, PinInputField, Stack, useToast } from '@chakra-ui/react'
+import { t, Trans } from '@lingui/macro'
 import Layout from '../components/Layout'
 
 const Home = () => {
@@ -17,8 +18,8 @@ const Home = () => {
     if (res.status >= 300 && res.status !== 401) {
       toast({
         position: 'bottom',
-        title: 'We did not recognize that game code.',
-        description: 'Please try again.',
+        title: t`We did not recognize that game code.`,
+        description: t`Please try again.`,
         status: 'error',
         duration: 9000,
         isClosable: true
@@ -26,8 +27,8 @@ const Home = () => {
     } else if (res.status === 401) {
       toast({
         position: 'bottom',
-        title: 'The game is locked by the host.',
-        description: 'Please ask for the game to be unlocked.',
+        title: t`The game is locked by the host.`,
+        description: t`Please ask for the game to be unlocked.`,
         status: 'info',
         duration: 9000,
         isClosable: true
@@ -62,7 +63,7 @@ const Home = () => {
         <Button
           py='6'
           colorScheme='pink'
-          aria-label='Join Game'
+          aria-label={t`Join Game`}
           isDisabled={gameCode.length < 6}
           onClick={handleClick}
           isLoading={loading}
@@ -72,7 +73,7 @@ const Home = () => {
             boxShadow: 'none'
           }}
         >
-          Join Game
+          <Trans>Join Game</Trans>
         </Button>
       </Stack>
     </Layout>
