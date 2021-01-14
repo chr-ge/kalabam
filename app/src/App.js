@@ -2,6 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
+import { i18n } from '@lingui/core'
+import { I18nProvider } from '@lingui/react'
+import { messages } from './locales/en/messages'
 import { LobbyProvider } from './contexts/LobbyContext'
 import FontFace from './components/FontFace'
 import theme from '@kalabam/theme'
@@ -20,22 +23,27 @@ const config = {
   triggerEndpoint: process.env.REACT_APP_TRIGGER_ENDPOINT
 }
 
+i18n.load('en', messages)
+i18n.activate('en')
+
 function App () {
   return (
     <>
       <ChakraProvider theme={theme}>
-        <Router>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <PusherProvider {...config}>
-              <LobbyProvider>
-                <Route path='/join' component={Join} />
-                <Route path='/joined' component={Joined} />
-                <Route path='/live' component={Live} />
-              </LobbyProvider>
-            </PusherProvider>
-          </Switch>
-        </Router>
+        <I18nProvider i18n={i18n}>
+          <Router>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <PusherProvider {...config}>
+                <LobbyProvider>
+                  <Route path='/join' component={Join} />
+                  <Route path='/joined' component={Joined} />
+                  <Route path='/live' component={Live} />
+                </LobbyProvider>
+              </PusherProvider>
+            </Switch>
+          </Router>
+        </I18nProvider>
       </ChakraProvider>
       <FontFace />
     </>
