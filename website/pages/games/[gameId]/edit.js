@@ -1,17 +1,20 @@
 import { useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { Button, Flex, Stack } from '@chakra-ui/react'
-import { Layout, GameLoading, Question, QuestionBox } from '../../components/Games'
-import { useGameContext } from '../../contexts/Game/GameContext'
-import { useGameById } from '../../lib/api-hooks'
+import { Layout, GameLoading, Question, QuestionBox } from '../../../components/Games'
+import { useGameContext } from '../../../contexts/Game/GameContext'
+import { useGameById } from '../../../lib/api-hooks'
+import Custom404 from '../../404'
 
-function Edit ({ gameId }) {
+const Edit = ({ gameId }) => {
   const { setGame, questions, activeQuestion, addQuestion } = useGameContext()
-  const { isLoading, data } = useGameById(gameId)
+  const { isLoading, data, error } = useGameById(gameId)
 
   useEffect(() => {
-    if (!isLoading) setGame(data)
-  }, [gameId, isLoading])
+    if (!isLoading && !error) setGame(data)
+  }, [isLoading])
+
+  if (error === 404) return <Custom404 statusCode={404} />
 
   return (
     <Layout title='Edit Game | Kalabam' mode='edit'>
@@ -66,7 +69,7 @@ export async function getServerSideProps (context) {
 
   return {
     props: {
-      gameId: context.query.gameId[0]
+      gameId: context.query.gameId
     }
   }
 }
