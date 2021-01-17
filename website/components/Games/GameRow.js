@@ -1,19 +1,10 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import {
-  Button,
-  Flex,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Tag,
-  Text,
-  Spacer,
-  useToast
+  Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Tag, Text, Spacer, useToast
 } from '@chakra-ui/react'
 import { HiDotsVertical } from 'react-icons/hi'
+import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useDeleteGame } from '../../lib/api-hooks'
@@ -67,8 +58,12 @@ const GameRow = ({ game }) => {
             isLoading={isLoading}
           />
           <MenuList>
-            <MenuItem onClick={() => router.push(`/games/${game._id}/edit`)}>Edit</MenuItem>
-            <MenuItem onClick={handleDelete}>Delete</MenuItem>
+            <MenuItem onClick={() => router.push(`/games/${game._id}/edit`)}>
+              <EditIcon mr='2' />Edit
+            </MenuItem>
+            <MenuItem onClick={handleDelete}>
+              <DeleteIcon mr='2' />Delete
+            </MenuItem>
           </MenuList>
         </Menu>
         <Button
