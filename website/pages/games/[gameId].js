@@ -73,13 +73,17 @@ const Game = ({ game, userId }) => {
 export async function getServerSideProps (context) {
   const game = await getGameById(context.query.gameId)
   if (!game) return { notFound: true }
-  const gameData = JSON.parse(JSON.stringify(game))
   const session = await getSession(context)
 
   if (game.visibility === '0' && (!session || (game.createdBy.toString() !== session.user.id))) {
     return { notFound: true }
   } else {
-    return { props: { game: gameData, userId: session.user.id } }
+    return {
+      props: {
+        game: JSON.parse(JSON.stringify(game)),
+        userId: session.user.id
+      }
+    }
   }
 }
 
