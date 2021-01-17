@@ -3,7 +3,7 @@ import { useQuery, useMutation, queryCache } from 'react-query'
 const defaultQueryFn = async (input, init) => {
   const res = await global.fetch(input, init)
   if (res.status >= 300) {
-    throw res.json()
+    throw res.status
   }
   return await res.json()
 }
