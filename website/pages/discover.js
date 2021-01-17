@@ -75,7 +75,7 @@ const Discover = ({ games }) => {
 }
 
 export async function getServerSideProps (context) {
-  const sortBy = context.query.sortBy === 'desc' ? -1 : 1
+  const sortBy = context.query.sortBy === 'desc' ? 1 : -1
 
   return {
     props: {
