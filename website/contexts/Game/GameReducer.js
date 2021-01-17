@@ -1,6 +1,7 @@
 const initialState = {
   title: '',
   description: '',
+  visibility: '0',
   questions: [
     {
       id: 1,
@@ -40,7 +41,8 @@ export default function reducer (state, action) {
       return {
         ...state,
         title: action.payload.title,
-        description: action.payload.description
+        description: action.payload.description,
+        visibility: action.payload.visibility
       }
     case 'ADD_QUESTION':
       return {

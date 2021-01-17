@@ -12,6 +12,7 @@ export default async (req, res) => {
 
   const gameId = req.query.gameId
   const game = await getGameById(gameId)
+  if (!game) return res.status(404).end()
 
   if (req.method === 'GET') {
     return res.status(200).json(game)
@@ -19,19 +20,13 @@ export default async (req, res) => {
 
   if (req.method === 'PUT') {
     if (user.id.toString() !== game.createdBy.toString()) {
-      res.status(403).end()
-      return
+      return res.status(403).end()
     }
 
     const updates = JSON.parse(req.body);
 
-    ['_id', 'createdBy', 'created'].forEach((key) => {
-      delete updates[key]
-    })
-
-    const missingValue = ['title', 'description', 'questions'].some(
-      (key) => key == null
-    )
+    ['_id', 'createdBy', 'created'].forEach((key) => { delete updates[key] })
+    const missingValue = ['title', 'description', 'visibility', 'questions'].some((key) => key == null)
 
     if (missingValue) {
       res.status(400).json({ success: false, message: 'missing required value' })
@@ -44,8 +39,7 @@ export default async (req, res) => {
 
   if (req.method === 'DELETE') {
     if (user.id.toString() !== game.createdBy.toString()) {
-      res.status(403).end()
-      return
+      return res.status(403).end()
     }
 
     return res.status(200).json(await deleteGame(gameId))

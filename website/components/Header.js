@@ -45,7 +45,7 @@ const Header = () => {
           <>
             <SkewLink href='/dashboard'>Dashboard</SkewLink>
             <SkewLink href='/reports'>Reports</SkewLink>
-            <SkewLink href='/dashboard'>Discover</SkewLink>
+            <SkewLink href='/discover'>Discover</SkewLink>
             <Spacer />
           </>
         )}

@@ -39,7 +39,7 @@ const Hero = () => {
             </HeroHeading>
             <Button
               as={Link}
-              href='/auth/signup'
+              href='/auth/signin'
               mb={{ base: '4', md: '0' }}
               w={{ base: '75%', md: '33%' }}
               textDecoration='none !important'

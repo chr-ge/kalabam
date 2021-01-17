@@ -25,6 +25,13 @@ const populateCreatedByAggregateStages = [
   }
 ]
 
+export async function getPublicGames (sortBy) {
+  const { db } = await connectToDatabase()
+  const collection = db.collection('games')
+
+  return await collection.find({ visibility: '1' }).sort({ created: sortBy }).toArray()
+}
+
 export async function getGamesCreatedByUser (userId) {
   const { db } = await connectToDatabase()
   const collection = db.collection('games')

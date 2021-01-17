@@ -16,23 +16,22 @@ export default async (req, res) => {
   }
 
   if (req.method === 'POST') {
-    const { title, description, questions } = JSON.parse(req.body)
+    const { title, description, visibility, questions } = JSON.parse(req.body)
 
-    if (!title || !questions) {
-      res.status(400).json({ success: false, message: 'Malformed content' })
-      return
+    if (!title || !questions || !visibility) {
+      return res.status(400).json({ success: false, message: 'Malformed content' })
     }
 
     const { result } = await createGame({
       title,
       description,
+      visibility,
       questions,
       createdBy: new ObjectId(user.id)
     })
 
     if (!result.ok) {
-      res.status(500).json({ success: false, message: 'Unable to create game' })
-      return
+      return res.status(500).json({ success: false, message: 'Unable to create game' })
     }
 
     return res.status(201).json({ success: true, message: 'Game created' })

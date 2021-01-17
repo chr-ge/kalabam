@@ -44,22 +44,33 @@ const Reports = ({ reports }) => {
             </Tr>
           </Thead>
           <Tbody bg='white'>
-            {reports
-              .filter((report) => report.game.title.toLowerCase().includes(filter.toLowerCase()))
-              .map((report) => (
-                <Tr
-                  key={report._id}
-                  onClick={() => router.push(`/reports/${report._id}`)}
-                  cursor='pointer'
-                  _hover={{ bg: 'purple.50' }}
-                >
-                  <Td>{report.game.title}</Td>
-                  <Td isNumeric>{report.ended && <Badge variant='outline' colorScheme='green'>Completed</Badge>}</Td>
-                  <Td>{dayjs(report.created).format('MMM D YYYY, h:mm a')}</Td>
-                  <Td>Live</Td>
-                  <Td isNumeric>{report.players.length}</Td>
+            {reports.length
+              ? (reports
+                  .filter((report) => report.game.title.toLowerCase().includes(filter.toLowerCase()))
+                  .map((report) => (
+                    <Tr
+                      key={report._id}
+                      onClick={() => router.push(`/reports/${report._id}`)}
+                      cursor='pointer'
+                      _hover={{ bg: 'purple.50' }}
+                    >
+                      <Td>{report.game.title}</Td>
+                      <Td isNumeric>
+                        {report.ended && <Badge variant='outline' colorScheme='green'>Completed</Badge>}
+                      </Td>
+                      <Td>{dayjs(report.created).format('MMM D YYYY, h:mm a')}</Td>
+                      <Td>Live</Td>
+                      <Td isNumeric>{report.players.length}</Td>
+                    </Tr>
+                  ))
+                )
+              : (
+                <Tr>
+                  <Td colspan={5}>
+                    <Flex justify='center'>You have no reports yet.</Flex>
+                  </Td>
                 </Tr>
-              ))}
+                )}
           </Tbody>
         </Table>
       </Container>
