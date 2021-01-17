@@ -1,4 +1,4 @@
-const { extendTheme } = require('@chakra-ui/react') 
+const { extendTheme } = require('@chakra-ui/react')
 
 module.exports = extendTheme({
   fonts: {
@@ -21,17 +21,20 @@ module.exports = extendTheme({
       600: '#427AF4'
     }
   },
+  shadows: {
+    purple: '0 0 0 3px rgba(159, 122, 234, 0.6)'
+  },
   components: {
     Heading: {
       variants: {
-        'logo': (props) => ({
+        logo: (props) => ({
           color: props.colorMode === 'dark' ? 'gray.300' : 'blue.800'
         })
       }
     },
     Link: {
       variants: {
-        'kalabam': (props) => ({
+        kalabam: (props) => ({
           color: props.colorMode === 'dark' ? 'blue.200' : 'blue.700'
         })
       }
