@@ -1,4 +1,4 @@
-import { createEmail } from '../../models/Emails'
+import { createEmail } from '../../models/Email'
 import { isEmail } from '../../utils/validate'
 
 export default async (req, res) => {
