@@ -4,7 +4,11 @@ module.exports = {
     locale: 'en-US'
   },
   images: {
-    domains: ['kalabam-staging.s3.us-east-2.amazonaws.com', 'kalabam-images.s3.us-east-2.amazonaws.com']
+    domains: [
+      'kalabam-staging.s3.us-east-2.amazonaws.com',
+      'kalabam-images.s3.us-east-2.amazonaws.com',
+      'images.unsplash.com'
+    ]
   },
   reactStrictMode: true
 }

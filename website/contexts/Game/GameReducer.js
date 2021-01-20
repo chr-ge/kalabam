@@ -2,6 +2,7 @@ const initialState = {
   title: '',
   description: '',
   visibility: '0',
+  image: { src: '', alt: '' },
   questions: [
     {
       id: 1,
@@ -44,6 +45,11 @@ export default function reducer (state, action) {
         description: action.payload.description,
         visibility: action.payload.visibility
       }
+    case 'SET_GAME_IMAGE':
+      return {
+        ...state,
+        image: action.payload
+      }
     case 'ADD_QUESTION':
       return {
         ...state,
@@ -55,9 +61,7 @@ export default function reducer (state, action) {
         activeQuestion: action.payload
       }
     case 'UPDATE_QUESTION': {
-      const index = state.questions.findIndex(
-        (question) => question.id === action.payload.id
-      )
+      const index = state.questions.findIndex((question) => question.id === action.payload.id)
       state.questions[index] = action.payload
       return {
         ...state

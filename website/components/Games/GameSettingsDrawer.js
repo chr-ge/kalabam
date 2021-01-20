@@ -12,6 +12,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
   FormLabel,
+  Image,
   Input,
   Radio,
   RadioGroup,
@@ -21,16 +22,15 @@ import {
 } from '@chakra-ui/react'
 import { IoMdSettings, IoIosCheckmarkCircle } from 'react-icons/io'
 import { useGameContext } from '../../contexts/Game/GameContext'
+import { FindImage } from './Files'
 
 const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
   const titleField = useRef()
-  const { title, description, visibility, updateGameSettings } = useGameContext()
+  const { title, description, visibility, image, updateGameSettings } = useGameContext()
   const [settings, setSettings] = useState({ title, description, visibility })
 
   useEffect(() => {
-    if (title) {
-      setSettings({ title, description, visibility })
-    }
+    if (title) setSettings({ title, description, visibility })
   }, [title])
 
   const handleDone = () => {
@@ -108,10 +108,8 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                 </Box>
                 <Box>
                   <FormLabel htmlFor='description'>
-                    Description{' '}
-                    <Box as='span' ml='1' fontWeight='normal' color='gray.500'>
-                      (Optional)
-                    </Box>
+                    Description
+                    <Box as='span' ml='2' fontWeight='normal' color='gray.500'>(Optional)</Box>
                   </FormLabel>
                   <Textarea
                     minH='150px'
@@ -124,7 +122,7 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                   />
                 </Box>
                 <Box>
-                  <FormLabel htmlFor='description'>Visibility</FormLabel>
+                  <FormLabel htmlFor='visibility'>Visibility</FormLabel>
                   <RadioGroup
                     onChange={(e) => setSettings({ ...settings, visibility: e })}
                     value={settings.visibility}
@@ -135,6 +133,18 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                     </Stack>
                   </RadioGroup>
                 </Box>
+                <Box>
+                  <FormLabel htmlFor='image'>Game Image</FormLabel>
+                  <Box d='flex' p='2' borderColor='gray.200' borderWidth='thin' rounded='md'>
+                    <Box w='50%'>
+                      <FindImage />
+                      <Button colorScheme='blue'>Upload</Button>
+                    </Box>
+                    <Box w='50%'>
+                      {image.src && <Image src={image.src} alt={image.alt} w='100%' />}
+                    </Box>
+                  </Box>
+                </Box>
               </Stack>
             </DrawerBody>
             <DrawerFooter
@@ -142,13 +152,14 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
               borderColor='gray.200'
               justifyContent='center'
             >
-              <Button variant='outline' mr={3} onClick={onClose}>
+              <Button mr={3} aria-label='Cancel' variant='outline' onClick={onClose}>
                 Cancel
               </Button>
               <Button
-                rightIcon={<IoIosCheckmarkCircle size='20' />}
+                aria-label='Done'
                 colorScheme='green'
                 onClick={handleDone}
+                rightIcon={<IoIosCheckmarkCircle size='20' />}
               >
                 Done
               </Button>

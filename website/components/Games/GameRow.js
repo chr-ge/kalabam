@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import {
-  Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Tag, Text, Spacer, useToast
+  Box, Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Tag, Text, Spacer, useToast
 } from '@chakra-ui/react'
 import { HiDotsVertical } from 'react-icons/hi'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
@@ -33,7 +33,14 @@ const GameRow = ({ game }) => {
 
   return (
     <Flex mt='2' p='1' border='1px' borderColor='blue.100'>
-      <Image width={128} height={128} src={game.image || '/images/game.png'} layout='fixed' />
+      <Box width='32' height='32' pos='relative'>
+        <Image
+          layout='fill'
+          objectFit='cover'
+          src={game.image.src || '/images/game.png'}
+          alt={game.image.alt}
+        />
+      </Box>
       <Flex flex={1} p='2' direction='column'>
         <Text fontSize='lg'>{game.title}</Text>
         <Text fontSize='sm' pr={{ sm: '5' }} color='gray.600' noOfLines={2} isTruncated>
@@ -45,15 +52,14 @@ const GameRow = ({ game }) => {
             {game.questionCount}
             {game.questionCount === 1 ? ' question' : ' questions'}
           </Tag>
-          <Text ml='1' fontSize='sm'>
-            • Created {dayjs(game.created).fromNow()}
-          </Text>
+          <Text ml='1' fontSize='sm'>• Created {dayjs(game.created).fromNow()}</Text>
         </Flex>
       </Flex>
       <Flex direction='column' justify='space-between'>
         <Menu>
           <MenuButton
             as={IconButton}
+            aria-label='Toggle game options'
             icon={<HiDotsVertical />}
             isLoading={isLoading}
           />

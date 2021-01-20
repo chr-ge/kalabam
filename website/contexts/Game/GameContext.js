@@ -6,6 +6,7 @@ const initialState = {
   title: '',
   description: '',
   visibility: '0',
+  image: { src: '', alt: '' },
   questions: [
     {
       id: 1,
@@ -50,6 +51,13 @@ export const GameProvider = ({ children }) => {
     dispatch({
       type: 'UPDATE_GAME_SETTINGS',
       payload: { title, description, visibility }
+    })
+  }
+
+  const setGameImage = ({ src, alt }) => {
+    dispatch({
+      type: 'SET_GAME_IMAGE',
+      payload: { src, alt }
     })
   }
 
@@ -104,6 +112,7 @@ export const GameProvider = ({ children }) => {
         ...state,
         setGame,
         updateGameSettings,
+        setGameImage,
         addQuestion,
         setActiveQuestion,
         updateQuestion,
