@@ -28,7 +28,8 @@
     "pusher": "^4.0.2",
     "react-dropzone": "^11.2.4",
     "react-query": "^2.26.2",
-    "uniqid": "^5.2.0"
+    "uniqid": "^5.2.0",
+    "unsplash-js": "^7.0.2"
   },
   "resolutions": {
     "typeorm": "0.2.28"

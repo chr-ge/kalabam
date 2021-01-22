@@ -49,7 +49,7 @@ const Discover = ({ games }) => {
             )}
           </Menu>
         </Flex>
-        <SimpleGrid columns={{ base: 2, sm: 3, md: 5 }} spacing={8}>
+        <SimpleGrid columns={{ base: 2, sm: 3, md: 5 }} spacing={6}>
           {games.map((g) => (
             <Link
               key={g._id}
@@ -60,11 +60,18 @@ const Discover = ({ games }) => {
               textDecoration='none !important'
               rounded='sm'
               boxShadow='lg'
-              _hover={{ transform: 'scale(1.03)' }}
+              _hover={{ transform: 'scale(1.03)', boxShadow: 'xl' }}
               _focus={{ boxShadow: 'purple' }}
               isExternal
             >
-              <NextImage src={g.image || '/images/game.png'} height={200} width={200} alt={g.title} />
+              <Box h='44' w='100%' pos='relative'>
+                <NextImage
+                  layout='fill'
+                  objectFit='cover'
+                  src={g.image.src || '/images/game.png'}
+                  alt={g.image.alt}
+                />
+              </Box>
               <Text fontSize='lg' p='3'>{g.title}</Text>
             </Link>
           ))}

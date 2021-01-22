@@ -16,7 +16,7 @@ export default async (req, res) => {
   }
 
   if (req.method === 'POST') {
-    const { title, description, visibility, questions } = JSON.parse(req.body)
+    const { title, description, visibility, image, questions } = JSON.parse(req.body)
 
     if (!title || !questions || !visibility) {
       return res.status(400).json({ success: false, message: 'Malformed content' })
@@ -26,6 +26,7 @@ export default async (req, res) => {
       title,
       description,
       visibility,
+      image,
       questions,
       createdBy: new ObjectId(user.id)
     })

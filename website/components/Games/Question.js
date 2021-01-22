@@ -11,7 +11,8 @@ import {
   SliderThumb,
   Text
 } from '@chakra-ui/react'
-import { AnswerInput, ImageUpload } from '../../components/Games'
+import { AnswerInput } from '../../components/Games'
+import { ImageUpload } from './Files'
 import { useGameContext } from '../../contexts/Game/GameContext'
 
 const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
@@ -89,7 +90,7 @@ const Question = ({ question }) => {
             </Slider>
           </Box>
         </Stack>
-        <ImageUpload question={q} setQuestion={setQ} />
+        <ImageUpload question={q} />
       </Flex>
       <SimpleGrid columns={[1, 1, 2]} spacing={4}>
         {q.answers.map((a, i) => (
