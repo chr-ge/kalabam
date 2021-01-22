@@ -2,11 +2,13 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Center, IconButton, Image, Text, Spinner, useToast } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
+import { useGameContext } from '../../../contexts/Game/GameContext'
 
-const ImageUpload = ({ question, setQuestion }) => {
+const ImageUpload = ({ question }) => {
   const toast = useToast()
   const [loading, setLoading] = useState(false)
   const [previewFile, setPreviewFile] = useState()
+  const { updateQuestion } = useGameContext()
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0]
@@ -20,16 +22,13 @@ const ImageUpload = ({ question, setQuestion }) => {
     const { post: { url, fields }, imageUrl } = await res.json()
 
     const formData = new global.FormData()
-
-    Object.entries({ ...fields, file }).forEach(([key, value]) => {
-      formData.append(key, value)
-    })
+    Object.entries({ ...fields, file }).forEach(([key, value]) => { formData.append(key, value) })
 
     const upload = await global.fetch(url, { method: 'POST', body: formData })
 
     if (upload.ok) {
       console.info('Image uploaded successfully!')
-      setQuestion({ ...question, image: imageUrl })
+      updateQuestion({ ...question, image: imageUrl })
     } else {
       console.error('Image upload failed.')
       toast({
@@ -43,7 +42,7 @@ const ImageUpload = ({ question, setQuestion }) => {
       setPreviewFile()
     }
     setLoading(false)
-  }, [])
+  }, [question])
 
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     onDrop,
@@ -61,7 +60,7 @@ const ImageUpload = ({ question, setQuestion }) => {
     setPreviewFile()
     const q = question
     delete q.image
-    setQuestion(q)
+    updateQuestion(q)
   }
 
   useEffect(() => () => {

@@ -89,7 +89,7 @@ const Question = ({ question }) => {
             </Slider>
           </Box>
         </Stack>
-        <ImageUpload question={q} setQuestion={setQ} />
+        <ImageUpload question={q} />
       </Flex>
       <SimpleGrid columns={[1, 1, 2]} spacing={4}>
         {q.answers.map((a, i) => (
