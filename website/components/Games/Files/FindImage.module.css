@@ -1,0 +1,11 @@
+.masonryGridColumn {
+  background-clip: padding-box;
+}
+
+.unsplashLink {
+  visibility: hidden;
+}
+
+.unsplashContainer:hover .unsplashLink {
+  visibility: visible;
+}

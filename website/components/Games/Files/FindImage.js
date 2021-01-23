@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react'
 import {
-  Button, Flex, Image, Input, InputLeftElement, InputGroup, Modal, ModalOverlay, ModalContent, ModalHeader,
-  ModalBody, ModalCloseButton, Stack, SimpleGrid, useDisclosure, useRadioGroup
+  Box, Button, Flex, Image, Input, InputLeftElement, InputGroup, Link, Modal, ModalOverlay, ModalContent,
+  ModalHeader, ModalBody, ModalCloseButton, Stack, Skeleton, useBreakpointValue, useDisclosure, useRadioGroup, chakra
 } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
+import Masonry from 'react-masonry-css'
 import { useGameContext } from '../../../contexts/Game/GameContext'
 import RadioBox from './RadioBox'
+import styles from './FindImage.module.css'
 
 const CATEGORIES = [
   'Animals', 'Business', 'Cars', 'Cryptocurrency', 'Food', 'Landscape', 'School', 'Sports', 'Weather', 'Work'
 ]
 const ORIENTATIONS = ['landscape', 'squarish', 'portrait']
+
+const ChakraMasonry = chakra(Masonry)
 
 const FindImage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -18,6 +22,7 @@ const FindImage = () => {
   const [category, setCategory] = useState('game')
   const [orientation, setOrientation] = useState('landscape')
   const { setGameImage } = useGameContext()
+  const masonryColumns = useBreakpointValue({ base: 2, sm: 3, xl: 4 })
 
   useEffect(() => {
     const getImages = async () => {
@@ -80,18 +85,44 @@ const FindImage = () => {
                   <Button key={c} onClick={() => setCategory(c)} isFullWidth>{c}</Button>
                 ))}
               </Stack>
-              <SimpleGrid columns={{ base: '3', xl: '4' }} overflowY='scroll' h='2xl'>
+              {!images.length && (
+                <Box as='p' w='100%'>No Images Found.</Box>
+              )}
+              <ChakraMasonry
+                h={images.length && '2xl'}
+                w='100%'
+                d='flex'
+                overflowY='scroll'
+                breakpointCols={masonryColumns}
+                columnClassName={styles.masonryGridColumn}
+              >
                 {images.map((image) => (
-                  <Image
-                    key={image.id}
-                    src={image.urls.small}
-                    onClick={() => handleClick(image)}
-                    alt={image.alt_description}
-                    title={`Photo by ${image.user.name}`}
-                    _hover={{ opacity: 0.8, cursor: 'pointer' }}
-                  />
+                  <Box key={image.id} className={styles.unsplashContainer} pos='relative'>
+                    <Image
+                      src={image.urls.small}
+                      fallback={<Skeleton h='56' w='100%' />}
+                      onClick={() => handleClick(image)}
+                      alt={image.alt_description}
+                      _hover={{ opacity: 0.8, cursor: 'pointer' }}
+                    />
+                    <Link
+                      p='1'
+                      className={styles.unsplashLink}
+                      href={`https://unsplash.com/@${image.user.username}?utm_source=kalabam&utm_medium=referral`}
+                      pos='absolute'
+                      bg='gray.600'
+                      opacity='0.8'
+                      fontSize='sm'
+                      bottom='0'
+                      right='0'
+                      _hover={{ color: 'gray.400', textDecoration: 'underline' }}
+                      isExternal
+                    >
+                      {image.user.name}
+                    </Link>
+                  </Box>
                 ))}
-              </SimpleGrid>
+              </ChakraMasonry>
             </Flex>
           </ModalBody>
         </ModalContent>
