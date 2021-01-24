@@ -4,7 +4,7 @@ import {
   Box, Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Tag, Text, Spacer, useToast
 } from '@chakra-ui/react'
 import { HiDotsVertical } from 'react-icons/hi'
-import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
+import { InfoOutlineIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useDeleteGame } from '../../lib/api-hooks'
@@ -64,6 +64,9 @@ const GameRow = ({ game }) => {
             isLoading={isLoading}
           />
           <MenuList>
+            <MenuItem onClick={() => router.push(`/games/${game._id}`)}>
+              <InfoOutlineIcon mr='2' />View
+            </MenuItem>
             <MenuItem onClick={() => router.push(`/games/${game._id}/edit`)}>
               <EditIcon mr='2' />Edit
             </MenuItem>
