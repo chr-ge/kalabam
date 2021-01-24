@@ -11,7 +11,7 @@
 - [kalabam.com](https://kalabam.com)
 - [play.kalabam.com](https://play.kalabam.com)
 
-## Structure 
+## Structure
 ```
 app/          -> React Play Game Site
 theme/        -> Chakra-UI Theme Shared By App & Website
