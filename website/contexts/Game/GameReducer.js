@@ -72,6 +72,11 @@ export default function reducer (state, action) {
         ...state,
         questions: state.questions.filter((q) => q.id !== action.payload)
       }
+    case 'REORDER_QUESTIONS':
+      return {
+        ...state,
+        questions: action.payload
+      }
     case 'RESET':
       return initialState
     default:

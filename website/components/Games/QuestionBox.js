@@ -8,6 +8,7 @@ import {
   useToast
 } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
+import { Draggable } from 'react-beautiful-dnd'
 import { useGameContext } from '../../contexts/Game/GameContext'
 
 const TOAST_ID = 'cannot-delete'
@@ -24,8 +25,7 @@ const QuestionBox = ({ question, index }) => {
       toast({
         id: TOAST_ID,
         title: "Can't delete the only question",
-        description:
-          'To make the game engaging, we recommend adding at least one question.',
+        description: 'To make the game engaging, we recommend adding at least one question.',
         status: 'info',
         position: 'bottom',
         duration: 3000,
@@ -34,52 +34,56 @@ const QuestionBox = ({ question, index }) => {
     }
   }
 
-  const handleClick = () => {
-    setActiveQuestion(question)
-  }
-
   return (
-    <Flex
-      direction='column'
-      p='2'
-      minH='32'
-      w={{ base: '48', xl: '52' }}
-      bgColor={activeQuestion === question ? 'gray.400' : 'gray.300'}
-    >
-      <Flex>
-        <Text>{index}. quiz</Text>
-        <Spacer />
-        <Tooltip
-          hasArrow
-          label='Delete Question'
-          aria-label='Delete Question'
-          openDelay={400}
+    <Draggable draggableId={question.id.toString()} index={index}>
+      {(provided) => (
+        <Flex
+          direction='column'
+          p='2'
+          h='32'
+          minH='32'
+          minW={{ base: '40', xl: '44' }}
+          bgColor={activeQuestion === question ? 'gray.400' : 'gray.300'}
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
         >
-          <IconButton
-            size='xs'
-            variant='ghost'
-            colorScheme='red'
-            aria-label='Delete Question'
-            icon={<DeleteIcon />}
-            onClick={handleDelete}
-          />
-        </Tooltip>
-      </Flex>
-      <Button
-        flex='1'
-        p='1'
-        mt='1'
-        bgColor='white'
-        rounded='md'
-        onClick={handleClick}
-        boxShadow='inner'
-        display='block'
-        overflow='hidden'
-        whiteSpace='normal'
-      >
-        {question.question}
-      </Button>
-    </Flex>
+          <Flex>
+            <Text>{index + 1}. quiz</Text>
+            <Spacer />
+            <Tooltip
+              hasArrow
+              label='Delete Question'
+              aria-label='Delete Question'
+              openDelay={400}
+            >
+              <IconButton
+                size='xs'
+                variant='ghost'
+                colorScheme='red'
+                aria-label='Delete Question'
+                icon={<DeleteIcon />}
+                onClick={handleDelete}
+              />
+            </Tooltip>
+          </Flex>
+          <Button
+            flex='1'
+            p='1'
+            mt='1'
+            bgColor='white'
+            rounded='md'
+            onClick={() => setActiveQuestion(question)}
+            boxShadow='inner'
+            display='block'
+            overflow='hidden'
+            whiteSpace='normal'
+          >
+            {question.question}
+          </Button>
+        </Flex>
+      )}
+    </Draggable>
   )
 }
 
