@@ -100,6 +100,13 @@ export const GameProvider = ({ children }) => {
     })
   }
 
+  const reorderQuestions = (questions) => {
+    dispatch({
+      type: 'REORDER_QUESTIONS',
+      payload: questions
+    })
+  }
+
   const resetContext = () => {
     dispatch({
       type: 'RESET'
@@ -117,6 +124,7 @@ export const GameProvider = ({ children }) => {
         setActiveQuestion,
         updateQuestion,
         deleteQuestion,
+        reorderQuestions,
         resetContext
       }}
     >
