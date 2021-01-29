@@ -12,7 +12,7 @@ const Game = ({ game, userId }) => {
 
   return (
     <Layout title={`${game.title} | Kalabam`} bg='lightPink'>
-      <Flex h='calc(100vh - 3.5rem)' direction={{ base: 'column', sm: 'row' }}>
+      <Flex minH='calc(100vh - 3.5rem)' direction={{ base: 'column', sm: 'row' }}>
         <Box w={{ base: '100%', sm: '40%' }}>
           <Box h='72' w='100%' pos='relative'>
             <NextImage
