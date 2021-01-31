@@ -33,6 +33,7 @@ const QuestionRow = ({ question, index }) => {
               objectFit='cover'
               objectPosition='right center'
               alt={question.question}
+              draggable='false'
               unoptimized
             />
           )}

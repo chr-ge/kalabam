@@ -18,6 +18,7 @@ const Game = ({ game, userId }) => {
             <NextImage
               layout='fill'
               objectFit='cover'
+              draggable='false'
               src={game.image.src || '/images/game.png'}
               alt={game.image.alt}
             />
@@ -44,7 +45,7 @@ const Game = ({ game, userId }) => {
           </Flex>
           <Text p='4' color='gray.600'>{game.description}</Text>
           <Flex mt='2' px='4' py='2' alignItems='center'>
-            <Avatar name={game.user.name} src={game.user.image} size='sm' />
+            <Avatar name={game.user.name} src={game.user.image} size='sm' pointerEvents='none' />
             <Box ml='2'>
               <Text>{game.user.name}</Text>
               <Text fontSize='sm'>{formatDateTime(game.created)}</Text>

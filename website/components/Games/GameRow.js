@@ -37,6 +37,7 @@ const GameRow = ({ game }) => {
         <Image
           layout='fill'
           objectFit='cover'
+          draggable='false'
           src={game.image.src || '/images/game.png'}
           alt={game.image.alt}
         />
