@@ -5,7 +5,11 @@ import {
   Box, Button, Flex, Heading, Icon, Menu, MenuButton, MenuList, MenuItem, SimpleGrid, Text, chakra
 } from '@chakra-ui/react'
 import { FaChevronDown, FaChevronUp, FaCheck } from 'react-icons/fa'
+<<<<<<< HEAD
 import Tilt from 'react-parallax-tilt'
+=======
+import Tilt from 'react-tilt'
+>>>>>>> 2730cae161ed16aa2448ec91c5122feaf7e26f8d
 import Layout from '../components/Layout'
 import { Link } from '../components/Link'
 
@@ -54,7 +58,11 @@ const Discover = ({ games }) => {
         </Flex>
         <SimpleGrid columns={{ base: 2, sm: 3, md: 5 }} spacing={6}>
           {games.map((game) => (
+<<<<<<< HEAD
             <ChakraTilt key={game._id} scale={1.03} tiltMaxAngleX={10} tiltMaxAngleY={10} d='flex'>
+=======
+            <ChakraTilt key={game._id} options={{ max: 25, scale: 1.03 }} d='flex'>
+>>>>>>> 2730cae161ed16aa2448ec91c5122feaf7e26f8d
               <Link
                 w='100%'
                 bg='white'
