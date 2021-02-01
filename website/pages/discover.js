@@ -2,11 +2,14 @@ import { getPublicGames } from '../models/Game'
 import NextImage from 'next/image'
 import { useRouter } from 'next/router'
 import {
-  Box, Button, Flex, Heading, Icon, Menu, MenuButton, MenuList, MenuItem, SimpleGrid, Text
+  Box, Button, Flex, Heading, Icon, Menu, MenuButton, MenuList, MenuItem, SimpleGrid, Text, chakra
 } from '@chakra-ui/react'
 import { FaChevronDown, FaChevronUp, FaCheck } from 'react-icons/fa'
+import Tilt from 'react-parallax-tilt'
 import Layout from '../components/Layout'
 import { Link } from '../components/Link'
+
+const ChakraTilt = chakra(Tilt)
 
 const Discover = ({ games }) => {
   const router = useRouter()
@@ -50,30 +53,31 @@ const Discover = ({ games }) => {
           </Menu>
         </Flex>
         <SimpleGrid columns={{ base: 2, sm: 3, md: 5 }} spacing={6}>
-          {games.map((g) => (
-            <Link
-              key={g._id}
-              bg='white'
-              href={`/games/${g._id}`}
-              borderWidth='thin'
-              borderColor='purple.200'
-              textDecoration='none !important'
-              rounded='sm'
-              boxShadow='lg'
-              _hover={{ transform: 'scale(1.03)', boxShadow: 'xl' }}
-              _focus={{ boxShadow: 'purple' }}
-              isExternal
-            >
-              <Box h='44' w='100%' pos='relative'>
-                <NextImage
-                  layout='fill'
-                  objectFit='cover'
-                  src={g.image.src || '/images/game.png'}
-                  alt={g.image.alt}
-                />
-              </Box>
-              <Text fontSize='lg' p='3'>{g.title}</Text>
-            </Link>
+          {games.map((game) => (
+            <ChakraTilt key={game._id} scale={1.03} tiltMaxAngleX={10} tiltMaxAngleY={10} d='flex'>
+              <Link
+                w='100%'
+                bg='white'
+                href={`/games/${game._id}`}
+                borderWidth='thin'
+                borderColor='purple.200'
+                textDecoration='none !important'
+                rounded='sm'
+                boxShadow='lg'
+                _focus={{ boxShadow: 'purple' }}
+                isExternal
+              >
+                <Box h='44' w='100%' pos='relative'>
+                  <NextImage
+                    layout='fill'
+                    objectFit='cover'
+                    src={game.image.src || '/images/game.png'}
+                    alt={game.image.alt}
+                  />
+                </Box>
+                <Text fontSize='lg' p='3'>{game.title}</Text>
+              </Link>
+            </ChakraTilt>
           ))}
         </SimpleGrid>
       </Box>
