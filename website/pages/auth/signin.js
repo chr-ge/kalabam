@@ -61,7 +61,7 @@ function SignIn ({ providers, error }) {
             onChange={(e) => setEmail(e.target.value)}
           />
           <Button colorScheme='pink' onClick={() => signIn('email', { email })}>
-            Continue using Email
+            Continue using Email (SSO)
           </Button>
           <Text pt='3' fontSize='xs' align='center'>
             I accept the site <Link href='/tos' variant='kalabam'>Terms of Service</Link> and agree to the{' '}
