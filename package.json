@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/chr-ge/kalabam.git"
   },
-  "author": "chr-ge",
+  "author": "chr-ge <george@chr-ge.com> (https://chr-ge.com/)",
   "description": "Multiplayer Games for Class Activities or Interactive Presentations",
   "homepage": "https://github.com/chr-ge/kalabam#readme",
   "scripts": {
