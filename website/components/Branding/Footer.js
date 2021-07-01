@@ -8,7 +8,7 @@ const Footer = () => (
         <Flex direction='column'>
           <Heading mb='1'>Kalabam</Heading>
           <Text flex={1}>Montreal, Canada 🍁</Text>
-          <Text>© 2021 Kalabam</Text>
+          <Text>© {new Date().getFullYear()} Kalabam</Text>
         </Flex>
         <Spacer />
         <Flex direction='column'>
