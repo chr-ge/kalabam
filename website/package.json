@@ -2,7 +2,7 @@
   "name": "@kalabam/website",
   "version": "0.4.0",
   "private": true,
-  "author": "chr-ge",
+  "author": "chr-ge <george@chr-ge.com> (https://chr-ge.com/)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chr-ge/kalabam.git",
