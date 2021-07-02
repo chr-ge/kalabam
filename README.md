@@ -17,3 +17,7 @@ app/          -> React Play Game Site
 theme/        -> Chakra-UI Theme Shared By App & Website
 website/      -> NextJs Website and API
 ```
+
+## License
+
+Distributed under the MIT license. See `LICENSE` for more information.
