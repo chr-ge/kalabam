@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
 import { i18n } from '@lingui/core'
@@ -31,18 +31,16 @@ function App() {
     <>
       <ChakraProvider theme={theme}>
         <I18nProvider i18n={i18n}>
-          <Router>
-            <Routes>
-              <Route exact path='/' element={<Home />} />
-              <PusherProvider {...config}>
-                <LobbyProvider>
-                  <Route path='/join' element={<Join />} />
-                  <Route path='/joined' element={<Joined />} />
-                  <Route path='/live' element={<Live />} />
-                </LobbyProvider>
-              </PusherProvider>
-            </Routes>
-          </Router>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <PusherProvider {...config}>
+              <LobbyProvider>
+                <Route path='/join' element={<Join />} />
+                <Route path='/joined' element={<Joined />} />
+                <Route path='/live' element={<Live />} />
+              </LobbyProvider>
+            </PusherProvider>
+          </Routes>
         </I18nProvider>
       </ChakraProvider>
       <FontFace />

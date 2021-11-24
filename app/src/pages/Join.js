@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Button, Heading, Input, VStack } from '@chakra-ui/react'
 import { t, Trans } from '@lingui/macro'
@@ -7,33 +7,35 @@ import Layout from '../components/Layout'
 import { useLobbyContext } from '../contexts/LobbyContext'
 
 const Join = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [game] = useLocalStorage('game')
   const [name, setName] = useState('')
   const { setPlayerName } = useLobbyContext()
   const validName = name.length >= 2
 
   useEffect(() => {
-    if (!game) history.replace('/')
+    if (!game) navigate('/', { replace: true })
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
   const handleEnterKeyPress = (e) => {
     if (e.key === 'Enter' && validName) {
       setPlayerName(name)
-      history.replace('/joined')
+      navigate('/joined', { replace: true })
     }
   }
 
   const handleClick = () => {
     setPlayerName(name)
-    history.replace('/joined')
+    navigate('/joined', { replace: true })
   }
 
   return (
     <Layout>
       <VStack spacing={4}>
-        <Heading mb='2' fontSize='7xl' variant='logo' textAlign='center'>Kalabam</Heading>
+        <Heading mb='2' fontSize='7xl' variant='logo' textAlign='center'>
+          Kalabam
+        </Heading>
         <Input
           size='lg'
           aria-label={t`Enter a Nickname`}
@@ -53,7 +55,7 @@ const Join = () => {
           _disabled={{
             opacity: 0.7,
             cursor: 'not-allowed',
-            boxShadow: 'none'
+            boxShadow: 'none',
           }}
           isFullWidth
         >

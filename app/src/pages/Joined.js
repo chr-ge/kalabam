@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEvent } from '@harelpls/use-pusher'
-import { useLocalStorage, writeStorage, deleteFromStorage } from '@rehooks/local-storage'
+import {
+  useLocalStorage,
+  writeStorage,
+  deleteFromStorage,
+} from '@rehooks/local-storage'
 import { Box, Center, Flex, Text, Tag } from '@chakra-ui/react'
 import { Trans } from '@lingui/macro'
 import { useLobbyContext } from '../contexts/LobbyContext'
 import GameFooter from '../components/Game/GameFooter'
 
 const Joined = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [game] = useLocalStorage('game')
   const { channel } = useLobbyContext()
 
   useEffect(() => {
-    if (!game) history.replace('/')
+    if (!game) navigate('/', { replace: true })
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
@@ -24,10 +28,10 @@ const Joined = () => {
       gameState: {
         questionIndex: data.questionIndex,
         timeLimit: data.timeLimit,
-        answersCount: data.answersCount
-      }
+        answersCount: data.answersCount,
+      },
     })
-    history.push('/live')
+    navigate('/live')
   })
 
   return (
