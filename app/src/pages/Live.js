@@ -46,7 +46,7 @@ const Live = () => {
   const isRightAnswer = correctAnswers.includes(answer)
 
   useEffect(() => {
-    if (!game) history.replace('/')
+    if (!game) navigate('/', { replace: true })
     window.onbeforeunload = () => deleteFromStorage('game')
   })
 
@@ -71,7 +71,7 @@ const Live = () => {
 
   useEvent(channel, 'client-game-over', () => {
     deleteFromStorage('game')
-    history.replace('/')
+    navigate('/', { replace: true })
   })
 
   const handleClick = (index) => {
