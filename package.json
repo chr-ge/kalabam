@@ -19,7 +19,8 @@
     "lint-fix": "lerna run lint-fix --stream",
     "test": "lerna run test --stream",
     "clean": "lerna clean --yes && rm -rf node_modules",
-    "dedup": "yarn-deduplicate --strategy highest yarn.lock"
+    "dedup": "yarn-deduplicate --strategy highest yarn.lock",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@kalabam/theme": "^1.0.0",
@@ -33,10 +34,10 @@
     "react-icons": "4.3.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "11.0.0",
-    "@commitlint/config-conventional": "11.0.0",
+    "@commitlint/cli": "15.0.0",
+    "@commitlint/config-conventional": "15.0.0",
     "babel-jest": "26.6.0",
-    "husky": "4.3.0",
+    "husky": "7.0.0",
     "jest": "26.6.0",
     "lerna": "3.22.1",
     "lint-staged": "10.5.3",
