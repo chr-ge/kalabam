@@ -4,7 +4,7 @@ import { useEvent } from '@harelpls/use-pusher'
 import {
   useLocalStorage,
   writeStorage,
-  deleteFromStorage,
+  deleteFromStorage
 } from '@rehooks/local-storage'
 import {
   Box,
@@ -15,7 +15,7 @@ import {
   Image,
   Text,
   SimpleGrid,
-  Spinner,
+  Spinner
 } from '@chakra-ui/react'
 import { ImCheckmark, ImCross } from 'react-icons/im'
 import { t, Trans } from '@lingui/macro'
@@ -32,7 +32,7 @@ const CHOICES = [
   { color: 'yellow', image: cylinder, alt: 'cylinder' },
   { color: 'pink', image: cube, alt: 'cube' },
   { color: 'purple', image: pyramid, alt: 'pyramid' },
-  { color: 'teal', image: torus, alt: 'torus' },
+  { color: 'teal', image: torus, alt: 'torus' }
 ]
 
 const Live = () => {
@@ -56,8 +56,8 @@ const Live = () => {
       gameState: {
         questionIndex: data.questionIndex,
         timeLimit: data.timeLimit,
-        answersCount: data.answersCount,
-      },
+        answersCount: data.answersCount
+      }
     })
     setAnswer(null)
     setCorrectAnswers([])

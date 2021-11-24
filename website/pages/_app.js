@@ -25,10 +25,10 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => {
     splitbee.init({
       scriptUrl: '/bee.js',
-      apiUrl: '/_hive',
+      apiUrl: '/_hive'
     })
   }, [])
-  
+
   return (
     <>
       <Head>

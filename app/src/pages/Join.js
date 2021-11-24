@@ -55,7 +55,7 @@ const Join = () => {
           _disabled={{
             opacity: 0.7,
             cursor: 'not-allowed',
-            boxShadow: 'none',
+            boxShadow: 'none'
           }}
           isFullWidth
         >

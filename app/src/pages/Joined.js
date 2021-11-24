@@ -4,7 +4,7 @@ import { useEvent } from '@harelpls/use-pusher'
 import {
   useLocalStorage,
   writeStorage,
-  deleteFromStorage,
+  deleteFromStorage
 } from '@rehooks/local-storage'
 import { Box, Center, Flex, Text, Tag } from '@chakra-ui/react'
 import { Trans } from '@lingui/macro'
@@ -28,8 +28,8 @@ const Joined = () => {
       gameState: {
         questionIndex: data.questionIndex,
         timeLimit: data.timeLimit,
-        answersCount: data.answersCount,
-      },
+        answersCount: data.answersCount
+      }
     })
     navigate('/live')
   })
