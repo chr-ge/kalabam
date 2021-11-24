@@ -1,8 +1,10 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { Provider } from 'next-auth/client'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
+import splitbee from '@splitbee/web'
 import { GameProvider } from '../contexts/Game/GameContext'
 import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
 import Fonts from '../components/Fonts'
@@ -20,6 +22,13 @@ const config = {
 }
 
 const App = ({ Component, pageProps }) => {
+  useEffect(() => {
+    splitbee.init({
+      scriptUrl: '/bee.js',
+      apiUrl: '/_hive',
+    })
+  }, [])
+  
   return (
     <>
       <Head>

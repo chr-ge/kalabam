@@ -15,11 +15,11 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "standard",
-    "lint-fix": "standard --fix",
-    "prepare": "husky install"
+    "lint-fix": "standard --fix"
   },
   "dependencies": {
     "@chakra-ui/icons": "1.1.1",
+    "@splitbee/web": "0.3.0",
     "aws-sdk": "2.1035.0",
     "cors": "2.8.5",
     "dayjs": "1.10.7",
