@@ -17,7 +17,7 @@ const EarlyAccess = () => {
   }
 
   return (
-    <Box mt='24'>
+    <Box as='section' mt='24'>
       <Flex
         maxW='5xl'
         mx={{ base: '4', md: '8', lg: 'auto' }}
@@ -77,6 +77,7 @@ const EarlyAccess = () => {
             inset='auto 0 0% auto'
             objectFit='cover'
             visibility={{ base: 'hidden', md: 'visible' }}
+            draggable='false'
           />
         </Box>
       </Flex>

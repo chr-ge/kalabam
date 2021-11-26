@@ -1,8 +1,16 @@
-import { Box, Container, Flex, Heading, Text, Spacer, chakra } from '@chakra-ui/react'
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  Spacer,
+  chakra
+} from '@chakra-ui/react'
 import { Link } from '../Link'
 
 const Footer = () => (
-  <Box bg='gray.600' color='white'>
+  <Box as='footer' bg='gray.600' color='white'>
     <Container py='12' maxW='3xl'>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Flex direction='column'>
@@ -12,19 +20,29 @@ const Footer = () => (
         </Flex>
         <Spacer />
         <Flex direction='column'>
-          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>Company</Text>
+          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>
+            Company
+          </Text>
           <Link href='/about'>About Us</Link>
           <Link href='/team'>Team</Link>
         </Flex>
         <Spacer />
         <Flex direction='column'>
-          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>Community</Text>
-          <Link href='https://www.reddit.com' isExternal>Reddit</Link>
-          <Link href='https://github.com/chr-ge/kalabam' isExternal>Github</Link>
+          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>
+            Community
+          </Text>
+          <Link href='https://www.reddit.com' isExternal>
+            Reddit
+          </Link>
+          <Link href='https://github.com/chr-ge/kalabam' isExternal>
+            Github
+          </Link>
         </Flex>
         <Spacer />
         <Flex direction='column'>
-          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>Help</Text>
+          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>
+            Help
+          </Text>
           <Link href='mailto:hello@kalabam.com'>Contact</Link>
           <chakra.a
             /* eslint-disable no-undef */

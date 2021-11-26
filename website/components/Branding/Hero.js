@@ -1,12 +1,21 @@
 import NextImage from 'next/image'
-import { Box, Flex, Heading, Button, forwardRef, chakra } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Heading,
+  Button,
+  forwardRef,
+  chakra
+} from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { motion, isValidMotionProp } from 'framer-motion'
 import { Link } from '../Link'
 
 const HeroHeading = motion.custom(
   forwardRef((props, ref) => {
-    const chakraProps = Object.fromEntries(Object.entries(props).filter(([key]) => !isValidMotionProp(key)))
+    const chakraProps = Object.fromEntries(
+      Object.entries(props).filter(([key]) => !isValidMotionProp(key))
+    )
     return <Heading ref={ref} {...chakraProps} />
   })
 )
@@ -22,10 +31,10 @@ const Hero = () => (
       >
         <Flex pt={{ base: '2', md: '16' }} w={{ md: '50%' }} direction='column'>
           <HeroHeading
+            as='h1'
             mb='6'
             fontSize={{ base: '5xl', md: '7xl' }}
             color='purple.600'
-            // animation:
             initial='hidden'
             animate='visible'
             variants={{
@@ -34,7 +43,13 @@ const Hero = () => (
             }}
           >
             Make your presentations{' '}
-            <chakra.span bgClip='text' bgGradient='linear(to-l, #7928CA,#FF0080)'>fun</chakra.span>.
+            <chakra.span
+              bgClip='text'
+              bgGradient='linear(to-l, #7928CA,#FF0080)'
+            >
+              fun
+            </chakra.span>
+            .
           </HeroHeading>
           <Button
             as={Link}
@@ -67,7 +82,11 @@ const Hero = () => (
       </Flex>
     </Box>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140'>
-      <path fill='#FAF089' fillOpacity='1' d='M0,128L288,128L576,64L864,64L1152,32L1440,128L1440,0L1152,0L864,0L576,0L288,0L0,0Z' />
+      <path
+        fill='#FAF089'
+        fillOpacity='1'
+        d='M0,128L288,128L576,64L864,64L1152,32L1440,128L1440,0L1152,0L864,0L576,0L288,0L0,0Z'
+      />
     </svg>
   </Box>
 )
