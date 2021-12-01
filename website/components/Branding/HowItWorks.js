@@ -22,8 +22,9 @@ const HowItWorks = () => (
     >
       How Kalabam works
     </Heading>
-    <Stack mt='16' mb='4' direction={{ base: 'column', sm: 'row' }}>
+    <Stack spacing='4' mt='16' mb='4' direction={{ base: 'column', sm: 'row' }}>
       <AnimatedBox
+        flex={1}
         pos='relative'
         align='center'
         bg='gray.100'
@@ -33,7 +34,12 @@ const HowItWorks = () => (
             '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
         }}
       >
-        <NextImage src='/images/designer.svg' height={250} width={250} />
+        <NextImage
+          src='/images/designer.svg'
+          alt='person designing with a computer screen'
+          height={250}
+          width={250}
+        />
         <Heading
           mb='3'
           bgGradient='linear(to-l, #F6E05E,#ED8936)'
@@ -53,6 +59,7 @@ const HowItWorks = () => (
         </Text>
       </AnimatedBox>
       <AnimatedBox
+        flex={1}
         pos='relative'
         align='center'
         bg='gray.100'
@@ -63,7 +70,12 @@ const HowItWorks = () => (
             '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
         }}
       >
-        <NextImage src='/images/team.svg' height={250} width={250} />
+        <NextImage
+          src='/images/team.svg'
+          alt='two people presenting'
+          height={250}
+          width={250}
+        />
         <Heading
           mb='3'
           bgGradient='linear(to-l, #7928CA,#FF0080)'
@@ -83,6 +95,7 @@ const HowItWorks = () => (
         </Text>
       </AnimatedBox>
       <AnimatedBox
+        flex={1}
         pos='relative'
         align='center'
         bg='gray.100'
@@ -92,7 +105,12 @@ const HowItWorks = () => (
             '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
         }}
       >
-        <NextImage src='/images/winner.svg' height={250} width={250} />
+        <NextImage
+          src='/images/winner.svg'
+          alt='Game winner'
+          height={250}
+          width={250}
+        />
         <Heading
           mb='3'
           bgGradient='linear(to-l, #0BC5EA,#4FD1C5)'

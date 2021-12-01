@@ -9,8 +9,13 @@ const Index = () => {
         <Hero />
         <Accounts />
         <HowItWorks />
-        <AspectRatio mt='24' w='100%' ratio={{ base: 1.5, md: 2, lg: 6, xl: 8 }}>
+        <AspectRatio
+          mt='24'
+          w='100%'
+          ratio={{ base: 1.5, md: 2, lg: 6, xl: 8 }}
+        >
           <iframe
+            title='Kalabam shapes'
             src='https://my.spline.design/untitled-f690fd5cd94766dfb1ce8e3db5c9d91d/'
             frameBorder='0'
           />

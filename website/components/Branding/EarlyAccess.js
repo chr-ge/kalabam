@@ -42,6 +42,7 @@ const EarlyAccess = () => {
               color='white'
               type='email'
               placeholder='Your email'
+              autoComplete="email"
               borderTopRightRadius='0'
               borderBottomRightRadius='0'
               onChange={(e) => setEmail(e.target.value)}

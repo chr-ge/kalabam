@@ -1,7 +1,18 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import {
-  Box, Button, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Tag, Text, Spacer, useToast
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Tag,
+  Text,
+  Spacer,
+  useToast
 } from '@chakra-ui/react'
 import { HiDotsVertical } from 'react-icons/hi'
 import { InfoOutlineIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons'
@@ -40,11 +51,18 @@ const GameRow = ({ game }) => {
           draggable='false'
           src={game.image.src || '/images/game.png'}
           alt={game.image.alt}
+          quality={50}
         />
       </Box>
       <Flex flex={1} p='2' direction='column'>
         <Text fontSize='lg'>{game.title}</Text>
-        <Text fontSize='sm' pr={{ sm: '5' }} color='gray.600' noOfLines={2} isTruncated>
+        <Text
+          fontSize='sm'
+          pr={{ sm: '5' }}
+          color='gray.600'
+          noOfLines={2}
+          isTruncated
+        >
           {game.description}
         </Text>
         <Spacer />
@@ -53,7 +71,9 @@ const GameRow = ({ game }) => {
             {game.questionCount}
             {game.questionCount === 1 ? ' question' : ' questions'}
           </Tag>
-          <Text ml='1' fontSize='sm'>• Created {dayjs(game.created).fromNow()}</Text>
+          <Text ml='1' fontSize='sm'>
+            • Created {dayjs(game.created).fromNow()}
+          </Text>
         </Flex>
       </Flex>
       <Flex direction='column' justify='space-between'>
@@ -66,13 +86,16 @@ const GameRow = ({ game }) => {
           />
           <MenuList>
             <MenuItem onClick={() => router.push(`/games/${game._id}`)}>
-              <InfoOutlineIcon mr='2' />View
+              <InfoOutlineIcon mr='2' />
+              View
             </MenuItem>
             <MenuItem onClick={() => router.push(`/games/${game._id}/edit`)}>
-              <EditIcon mr='2' />Edit
+              <EditIcon mr='2' />
+              Edit
             </MenuItem>
             <MenuItem onClick={handleDelete}>
-              <DeleteIcon mr='2' />Delete
+              <DeleteIcon mr='2' />
+              Delete
             </MenuItem>
           </MenuList>
         </Menu>

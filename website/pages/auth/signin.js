@@ -59,6 +59,7 @@ function SignIn ({ providers, error }) {
             size='lg'
             borderColor='gray.400'
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete='email'
           />
           <Button colorScheme='pink' onClick={() => signIn('email', { email })}>
             Continue using Email (SSO)
