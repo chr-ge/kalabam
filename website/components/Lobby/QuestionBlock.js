@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useEvent } from '@harelpls/use-pusher'
-import { Box, Button, Circle, Flex, Image, Text, SimpleGrid, Spacer } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Circle,
+  Flex,
+  Image,
+  Text,
+  SimpleGrid,
+  Spacer,
+} from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useCountDown } from '../../lib/hooks'
 import { useSaveLobby } from '../../lib/api-hooks'
@@ -13,17 +22,27 @@ const CHOICES = [
   { color: 'yellow.400', image: '/images/cylinder.png' },
   { color: 'pink.400', image: '/images/cube.png' },
   { color: 'purple.400', image: '/images/pyramid.png' },
-  { color: 'teal.400', image: '/images/torus.png' }
+  { color: 'teal.400', image: '/images/torus.png' },
 ]
 
 const findCorrectAnswersIndex = (answers) => {
   // eslint-disable-next-line no-sequences
-  return answers.reduce((acc, { isCorrect }, i) => (isCorrect && acc.push(i), acc), [])
+  return answers.reduce(
+    (acc, { isCorrect }, i) => (isCorrect && acc.push(i), acc),
+    []
+  )
 }
 
 const QuestionBlock = ({ question, questionCount, started }) => {
   const {
-    presenceChannel, trigger, gameCode, players, playerCount, questionIndex, setQuestionIndex, reset
+    presenceChannel,
+    trigger,
+    gameCode,
+    players,
+    playerCount,
+    questionIndex,
+    setQuestionIndex,
+    reset,
   } = useLobbyContext()
   const [count, setCount] = useCountDown(question.timeLimit)
   const [answers, setAnswers] = useState([])
@@ -40,8 +59,8 @@ const QuestionBlock = ({ question, questionCount, started }) => {
         totalQuestions: questionCount,
         questionIndex: questionIndex + 1,
         timeLimit: question.timeLimit,
-        answersCount: question.answers.length
-      }
+        answersCount: question.answers.length,
+      },
     })
   }, [question])
 
@@ -51,8 +70,8 @@ const QuestionBlock = ({ question, questionCount, started }) => {
 
       trigger('client-question-results', {
         data: {
-          correctAnswerIndex
-        }
+          correctAnswerIndex,
+        },
       })
 
       const save = async () => {
@@ -61,8 +80,8 @@ const QuestionBlock = ({ question, questionCount, started }) => {
             question: {
               _id: question.id,
               question: question.question,
-              answers
-            }
+              answers,
+            },
           })
         } catch (err) {
           global.alert(err)
@@ -73,7 +92,14 @@ const QuestionBlock = ({ question, questionCount, started }) => {
   }, [showResults])
 
   useEvent(presenceChannel.channel, 'client-answer', (data, metadata) =>
-    setAnswers((a) => [...a, { id: metadata.user_id, answer: data, isCorrect: correctAnswerIndex.includes(data) }])
+    setAnswers((a) => [
+      ...a,
+      {
+        id: metadata.user_id,
+        answer: data,
+        isCorrect: correctAnswerIndex.includes(data),
+      },
+    ])
   )
 
   const handleClick = async () => {
@@ -107,7 +133,9 @@ const QuestionBlock = ({ question, questionCount, started }) => {
       <Box flex={1} px='12' bg='lightPink'>
         <Flex mt='14' mb='8' align='center'>
           <Circle bg='teal.100'>
-            <Text fontSize='4xl' px='5' py='1'>{count}</Text>
+            <Text fontSize='4xl' px='5' py='1'>
+              {count}
+            </Text>
           </Circle>
           <Spacer />
           <Button
@@ -128,11 +156,11 @@ const QuestionBlock = ({ question, questionCount, started }) => {
         )}
         {!showResults && question.image && (
           <Flex justify='center'>
-            <Image src={question.image} />
+            <Image src={question.image} alt={question} />
           </Flex>
         )}
         <SimpleGrid columns={[1, 1, 2]} spacing={6}>
-          {question.answers.map((a, i) =>
+          {question.answers.map((a, i) => (
             <Answer
               key={a.id}
               answer={a}
@@ -140,7 +168,7 @@ const QuestionBlock = ({ question, questionCount, started }) => {
               image={CHOICES[i].image}
               showResults={showResults}
             />
-          )}
+          ))}
         </SimpleGrid>
       </Box>
       <Flex py='4' px='12'>
@@ -148,7 +176,9 @@ const QuestionBlock = ({ question, questionCount, started }) => {
         <Spacer />
         <Text fontSize='xl'>{`${answers.length} answered`}</Text>
         <Spacer />
-        <Text fontSize='xl' fontWeight='bold' color='blue.800'>{gameCode}</Text>
+        <Text fontSize='xl' fontWeight='bold' color='blue.800'>
+          {gameCode}
+        </Text>
       </Flex>
     </Flex>
   )

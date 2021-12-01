@@ -4,7 +4,7 @@ const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY
 })
 
-export default async (req, res) => {
+export default handler =  async (req, res) => {
   if (req.method === 'GET') {
     const category = req.query.category || 'game'
     const orientation = req.query.orientation || 'landscape'

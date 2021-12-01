@@ -3,7 +3,7 @@ import { RiMailCheckFill } from 'react-icons/ri'
 import Layout from '../../components/Layout'
 import { Link } from '../../components/Link'
 
-function VerifyRequest () {
+function VerifyRequest() {
   return (
     <Layout>
       <Center m='24'>
@@ -13,7 +13,9 @@ function VerifyRequest () {
           <Text fontSize='xl' py='6'>
             A sign in link has been sent to your email address.
           </Text>
-          <Link href='/' variant='kalabam'>back home</Link>
+          <Link href='/' variant='kalabam'>
+            back home
+          </Link>
         </Stack>
       </Center>
     </Layout>

@@ -4,7 +4,7 @@ import { useEvent } from '@harelpls/use-pusher'
 import {
   useLocalStorage,
   writeStorage,
-  deleteFromStorage
+  deleteFromStorage,
 } from '@rehooks/local-storage'
 import { Box, Center, Flex, Text, Tag } from '@chakra-ui/react'
 import { Trans } from '@lingui/macro'
@@ -19,7 +19,7 @@ const Joined = () => {
   useEffect(() => {
     if (!game) navigate('/', { replace: true })
     window.onbeforeunload = () => deleteFromStorage('game')
-  })
+  }, [game])
 
   useEvent(channel, 'client-question', ({ data }) => {
     writeStorage('game', {
@@ -28,8 +28,8 @@ const Joined = () => {
       gameState: {
         questionIndex: data.questionIndex,
         timeLimit: data.timeLimit,
-        answersCount: data.answersCount
-      }
+        answersCount: data.answersCount,
+      },
     })
     navigate('/live')
   })

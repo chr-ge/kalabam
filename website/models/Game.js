@@ -7,32 +7,35 @@ const populateCreatedByAggregateStages = [
       from: 'users',
       foreignField: '_id',
       localField: 'createdBy',
-      as: 'createdBy_user'
-    }
+      as: 'createdBy_user',
+    },
   },
   {
     $addFields: {
       user: { $arrayElemAt: ['$createdBy_user', 0] },
       questionCount: {
-        $size: '$questions'
-      }
-    }
+        $size: '$questions',
+      },
+    },
   },
   {
     $project: {
-      createdBy_user: 0
-    }
-  }
+      createdBy_user: 0,
+    },
+  },
 ]
 
-export async function getPublicGames (sortBy) {
+export async function getPublicGames(sortBy) {
   const { db } = await connectToDatabase()
   const collection = db.collection('games')
 
-  return await collection.find({ visibility: '1' }).sort({ created: sortBy }).toArray()
+  return await collection
+    .find({ visibility: '1' })
+    .sort({ created: sortBy })
+    .toArray()
 }
 
-export async function getGamesCreatedByUser (userId) {
+export async function getGamesCreatedByUser(userId) {
   const { db } = await connectToDatabase()
   const collection = db.collection('games')
 
@@ -40,18 +43,18 @@ export async function getGamesCreatedByUser (userId) {
     .aggregate([
       {
         $match: {
-          createdBy: new ObjectId(userId)
-        }
+          createdBy: new ObjectId(userId),
+        },
       },
       ...populateCreatedByAggregateStages,
-      { $sort: { _id: -1 } }
+      { $sort: { _id: -1 } },
     ])
     .toArray()
 
   return games
 }
 
-export async function getGameById (gameId) {
+export async function getGameById(gameId) {
   const { db } = await connectToDatabase()
   const collection = db.collection('games')
 
@@ -59,23 +62,23 @@ export async function getGameById (gameId) {
     .aggregate([
       {
         $match: {
-          _id: new ObjectId(gameId)
-        }
+          _id: new ObjectId(gameId),
+        },
       },
-      ...populateCreatedByAggregateStages
+      ...populateCreatedByAggregateStages,
     ])
     .toArray()
 
   return game[0]
 }
 
-export async function createGame (newGame) {
+export async function createGame(newGame) {
   const dateNow = new Date()
 
   const game = {
     ...newGame,
     created: dateNow,
-    updated: dateNow
+    updated: dateNow,
   }
 
   const { db } = await connectToDatabase()
@@ -84,7 +87,7 @@ export async function createGame (newGame) {
   return await collection.insertOne(game)
 }
 
-export async function deleteGame (id) {
+export async function deleteGame(id) {
   const { db } = await connectToDatabase()
   const collection = db.collection('games')
 
@@ -92,7 +95,7 @@ export async function deleteGame (id) {
   return response.result.ok === 1
 }
 
-export async function updateGameById (gameId, updates) {
+export async function updateGameById(gameId, updates) {
   const gameObjectId = new ObjectId(gameId)
 
   const { db } = await connectToDatabase()
@@ -102,8 +105,8 @@ export async function updateGameById (gameId, updates) {
 
   const queryUpdates = {
     $set: {
-      ...newUpdates
-    }
+      ...newUpdates,
+    },
   }
 
   return await collection.findOneAndUpdate({ _id: gameObjectId }, queryUpdates)

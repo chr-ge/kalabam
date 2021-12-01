@@ -17,9 +17,9 @@ const initialState = {
         { id: 1, answer: '', isCorrect: false },
         { id: 2, answer: '', isCorrect: false },
         { id: 3, answer: '', isCorrect: false },
-        { id: 4, answer: '', isCorrect: false }
-      ]
-    }
+        { id: 4, answer: '', isCorrect: false },
+      ],
+    },
   ],
   activeQuestion: {
     id: 1,
@@ -30,9 +30,9 @@ const initialState = {
       { id: 1, answer: '', isCorrect: false },
       { id: 2, answer: '', isCorrect: false },
       { id: 3, answer: '', isCorrect: false },
-      { id: 4, answer: '', isCorrect: false }
-    ]
-  }
+      { id: 4, answer: '', isCorrect: false },
+    ],
+  },
 }
 
 const GameContext = createContext(initialState)
@@ -43,21 +43,21 @@ export const GameProvider = ({ children }) => {
   const setGame = (game) => {
     dispatch({
       type: 'SET_GAME',
-      payload: game
+      payload: game,
     })
   }
 
   const updateGameSettings = ({ title, description, visibility }) => {
     dispatch({
       type: 'UPDATE_GAME_SETTINGS',
-      payload: { title, description, visibility }
+      payload: { title, description, visibility },
     })
   }
 
   const setGameImage = ({ src, alt }) => {
     dispatch({
       type: 'SET_GAME_IMAGE',
-      payload: { src, alt }
+      payload: { src, alt },
     })
   }
 
@@ -73,43 +73,43 @@ export const GameProvider = ({ children }) => {
           { id: 1, answer: '', isCorrect: false },
           { id: 2, answer: '', isCorrect: false },
           { id: 3, answer: '', isCorrect: false },
-          { id: 4, answer: '', isCorrect: false }
-        ]
-      }
+          { id: 4, answer: '', isCorrect: false },
+        ],
+      },
     })
   }
 
   const setActiveQuestion = (question) => {
     dispatch({
       type: 'SET_ACTIVE_QUESTION',
-      payload: question
+      payload: question,
     })
   }
 
   const updateQuestion = (question) => {
     dispatch({
       type: 'UPDATE_QUESTION',
-      payload: question
+      payload: question,
     })
   }
 
   const deleteQuestion = (questionId) => {
     dispatch({
       type: 'DELETE_QUESTION',
-      payload: questionId
+      payload: questionId,
     })
   }
 
   const reorderQuestions = (questions) => {
     dispatch({
       type: 'REORDER_QUESTIONS',
-      payload: questions
+      payload: questions,
     })
   }
 
   const resetContext = () => {
     dispatch({
-      type: 'RESET'
+      type: 'RESET',
     })
   }
 
@@ -125,7 +125,7 @@ export const GameProvider = ({ children }) => {
         updateQuestion,
         deleteQuestion,
         reorderQuestions,
-        resetContext
+        resetContext,
       }}
     >
       {children}

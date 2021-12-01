@@ -21,7 +21,13 @@ const Question = () => {
       <Center h='100vh' bg='green.100'>
         <Box align='center'>
           <Heading>Get Ready!</Heading>
-          <Spinner label='Loading' mt='5' size='xl' color='pink.500' thickness='6px' />
+          <Spinner
+            label='Loading'
+            mt='5'
+            size='xl'
+            color='pink.500'
+            thickness='6px'
+          />
         </Box>
       </Center>
     )
@@ -32,22 +38,20 @@ const Question = () => {
       <Head>
         <title>Live Game | Kalabam</title>
       </Head>
-      {count > 0 || !data
-        ? (
-          <Center h='100vh' bg='green.100'>
-            <Box align='center'>
-              <Heading fontSize='6xl'>The Game is Starting</Heading>
-              <Heading fontSize='8xl'>{count}</Heading>
-            </Box>
-          </Center>
-          )
-        : (
-          <QuestionBlock
-            question={data.questions[questionIndex]}
-            questionCount={data.questions.length}
-            started={new Date()}
-          />
-          )}
+      {count > 0 || !data ? (
+        <Center h='100vh' bg='green.100'>
+          <Box align='center'>
+            <Heading fontSize='6xl'>The Game is Starting</Heading>
+            <Heading fontSize='8xl'>{count}</Heading>
+          </Box>
+        </Center>
+      ) : (
+        <QuestionBlock
+          question={data.questions[questionIndex]}
+          questionCount={data.questions.length}
+          started={new Date()}
+        />
+      )}
     </>
   )
 }

@@ -13,8 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "standard",
-    "lint-fix": "standard --fix",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "extract": "lingui extract",
     "compile": "lingui compile"
   },
@@ -45,6 +45,11 @@
   },
   "devDependencies": {
     "@lingui/cli": "^3.4.0",
-    "@lingui/macro": "^3.4.0"
+    "@lingui/macro": "^3.4.0",
+    "eslint": "8.3.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.27.1",
+    "prettier": "2.5.0"
   }
 }

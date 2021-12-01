@@ -3,7 +3,7 @@ import { Box, Flex, Icon, Spacer, Text } from '@chakra-ui/react'
 import { ImCheckmark, ImCross } from 'react-icons/im'
 
 const Answer = ({ answer, color, image, showResults }) => {
-  const opacity = showResults && (!answer.isCorrect && 0.5)
+  const opacity = showResults && !answer.isCorrect && 0.5
 
   return (
     <Flex
@@ -36,11 +36,12 @@ const Answer = ({ answer, color, image, showResults }) => {
         {answer.answer}
       </Text>
       <Spacer />
-      {showResults && (
-        answer.isCorrect
-          ? <Icon as={ImCheckmark} boxSize='12' color='green.500' mr='4' />
-          : <Icon as={ImCross} boxSize='10' color='red.500' mr='4' />
-      )}
+      {showResults &&
+        (answer.isCorrect ? (
+          <Icon as={ImCheckmark} boxSize='12' color='green.500' mr='4' />
+        ) : (
+          <Icon as={ImCross} boxSize='10' color='red.500' mr='4' />
+        ))}
     </Flex>
   )
 }

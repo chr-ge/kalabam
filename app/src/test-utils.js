@@ -11,19 +11,17 @@ import { messages as frMessages } from './locales/fr/messages'
 
 i18n.load({
   en: messages,
-  fr: frMessages
+  fr: frMessages,
 })
 i18n.loadLocaleData({
   en: { plurals: en },
-  fr: { plurals: fr }
+  fr: { plurals: fr },
 })
 
 const AllProviders = ({ children }) => (
   <ChakraProvider theme={theme}>
     <I18nProvider i18n={i18n}>
-      <MemoryRouter>
-        {children}
-      </MemoryRouter>
+      <MemoryRouter>{children}</MemoryRouter>
     </I18nProvider>
   </ChakraProvider>
 )

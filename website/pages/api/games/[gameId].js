@@ -1,7 +1,7 @@
 import { getGameById, updateGameById, deleteGame } from '../../../models/Game'
 import { getUserFromSession } from '../../../models/User'
 
-export default async (req, res) => {
+export default handler = async (req, res) => {
   let user
   try {
     user = await getUserFromSession({ req })
@@ -23,13 +23,22 @@ export default async (req, res) => {
       return res.status(403).end()
     }
 
-    const updates = JSON.parse(req.body);
+    const updates = JSON.parse(req.body)
 
-    ['_id', 'createdBy', 'created'].forEach((key) => { delete updates[key] })
-    const missingValue = ['title', 'description', 'visibility', 'questions'].some((key) => key == null)
+    ;['_id', 'createdBy', 'created'].forEach((key) => {
+      delete updates[key]
+    })
+    const missingValue = [
+      'title',
+      'description',
+      'visibility',
+      'questions',
+    ].some((key) => key == null)
 
     if (missingValue) {
-      res.status(400).json({ success: false, message: 'missing required value' })
+      res
+        .status(400)
+        .json({ success: false, message: 'missing required value' })
     }
 
     updates.updated = new Date()

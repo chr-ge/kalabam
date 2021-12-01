@@ -4,11 +4,11 @@ import initMiddleware from '../../lib/init-middleware'
 
 const cors = initMiddleware(
   Cors({
-    methods: ['POST']
+    methods: ['POST'],
   })
 )
 
-export default async (req, res) => {
+export default handler = async (req, res) => {
   await cors(req, res)
   const { channelName, eventName, data } = JSON.parse(req.body)
   pusher.trigger(channelName, eventName, data)

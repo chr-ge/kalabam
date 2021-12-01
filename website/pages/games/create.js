@@ -5,8 +5,9 @@ import { Layout, Question, QuestionBox } from '../../components/Games'
 import { useGameContext } from '../../contexts/Game/GameContext'
 import { reorder } from '../../utils/sort'
 
-function Create () {
-  const { questions, activeQuestion, addQuestion, reorderQuestions } = useGameContext()
+function Create() {
+  const { questions, activeQuestion, addQuestion, reorderQuestions } =
+    useGameContext()
 
   const onDragEnd = (result) => {
     if (!result.destination) return
@@ -41,7 +42,9 @@ function Create () {
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
-                  {questions.map((q, i) => <QuestionBox key={q.id} index={i} question={q} />)}
+                  {questions.map((q, i) => (
+                    <QuestionBox key={q.id} index={i} question={q} />
+                  ))}
                   {provided.placeholder}
                 </Stack>
               )}
@@ -64,19 +67,19 @@ function Create () {
   )
 }
 
-export async function getServerSideProps (context) {
+export async function getServerSideProps(context) {
   const session = await getSession(context)
   if (!session) {
     return {
       redirect: {
         destination: '/auth/signin',
-        permanent: false
-      }
+        permanent: false,
+      },
     }
   }
 
   return {
-    props: {}
+    props: {},
   }
 }
 

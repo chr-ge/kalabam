@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { writeStorage } from '@rehooks/local-storage'
 import { useNavigate } from 'react-router-dom'
 import {
   Button,
@@ -7,7 +6,7 @@ import {
   PinInput,
   PinInputField,
   Stack,
-  useToast
+  useToast,
 } from '@chakra-ui/react'
 import { t, Trans } from '@lingui/macro'
 import Layout from '../components/Layout'
@@ -31,7 +30,7 @@ const Home = () => {
         description: t`Please try again.`,
         status: 'error',
         duration: 9000,
-        isClosable: true
+        isClosable: true,
       })
     } else if (res.status === 401) {
       toast({
@@ -40,10 +39,10 @@ const Home = () => {
         description: t`Please ask for the game to be unlocked.`,
         status: 'info',
         duration: 9000,
-        isClosable: true
+        isClosable: true,
       })
     } else {
-      writeStorage('game', { code: gameCode })
+      window.localStorage.setItem('game', JSON.stringify({ code: gameCode }))
       navigate('/join')
     }
   }
@@ -81,7 +80,7 @@ const Home = () => {
           _disabled={{
             opacity: 0.7,
             cursor: 'not-allowed',
-            boxShadow: 'none'
+            boxShadow: 'none',
           }}
         >
           <Trans>Join Game</Trans>

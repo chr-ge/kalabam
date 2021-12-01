@@ -8,16 +8,16 @@ export const pusher = new Pusher({
   key: process.env.NEXT_PUBLIC_PUSHER_CLIENT_KEY,
   secret: process.env.PUSHER_SECRET,
   cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
-  useTLS: true
+  useTLS: true,
 })
 
 const cors = initMiddleware(
   Cors({
-    methods: ['GET']
+    methods: ['GET'],
   })
 )
 
-export default async (req, res) => {
+export default handler = async (req, res) => {
   await cors(req, res)
   try {
     const socketId = req.body.socket_id
@@ -27,7 +27,7 @@ export default async (req, res) => {
     const game = await getLobbyByGameCode(gameCode)
     if (game) {
       const auth = pusher.authenticate(socketId, channelName, {
-        user_id: `player-${new Date().toISOString()}`
+        user_id: `player-${new Date().toISOString()}`,
       })
       return res.send(auth)
     }

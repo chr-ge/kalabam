@@ -8,21 +8,21 @@ const defaultQueryFn = async (input, init) => {
   return await res.json()
 }
 
-export function useGames () {
+export function useGames() {
   return useQuery('/api/games', defaultQueryFn)
 }
 
-export function useGameById (gameId) {
+export function useGameById(gameId) {
   return useQuery(`/api/games/${gameId}`, defaultQueryFn, {
-    enabled: gameId != null
+    enabled: gameId != null,
   })
 }
 
-export function useAddGame () {
+export function useAddGame() {
   const addGame = (body) => {
     return defaultQueryFn('/api/games', {
       method: 'POST',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
   }
 
@@ -30,48 +30,48 @@ export function useAddGame () {
     throwOnError: true,
     onSuccess: () => {
       queryCache.invalidateQueries('/api/games')
-    }
+    },
   })
 }
 
-export function useEditGame (gameId) {
+export function useEditGame(gameId) {
   const editGame = (body) => {
     return defaultQueryFn(`/api/games/${gameId}`, {
       method: 'PUT',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
   }
 
   return useMutation(editGame, {
     throwOnError: true,
-    onSuccess () {
+    onSuccess() {
       queryCache.invalidateQueries(`/api/games/${gameId}`)
       queryCache.invalidateQueries('/api/games')
-    }
+    },
   })
 }
 
-export function useDeleteGame (gameId) {
+export function useDeleteGame(gameId) {
   const deleteGame = () => {
     return defaultQueryFn(`/api/games/${gameId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
   }
 
   return useMutation(deleteGame, {
     throwOnError: true,
-    onSuccess () {
+    onSuccess() {
       queryCache.invalidateQueries(`/api/games/${gameId}`)
       queryCache.invalidateQueries('/api/games')
-    }
+    },
   })
 }
 
-export function useCreateLobby () {
+export function useCreateLobby() {
   const createLobby = (body) => {
     return defaultQueryFn('/api/play/lobby', {
       method: 'POST',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
   }
 
@@ -79,15 +79,15 @@ export function useCreateLobby () {
     throwOnError: true,
     onSuccess: () => {
       queryCache.invalidateQueries('/api/play/lobby')
-    }
+    },
   })
 }
 
-export function useSaveLobby (gameCode) {
+export function useSaveLobby(gameCode) {
   const saveLobby = (body) => {
     return defaultQueryFn(`/api/play/lobby/${gameCode}`, {
       method: 'PUT',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
   }
 
@@ -96,41 +96,41 @@ export function useSaveLobby (gameCode) {
     onSuccess: () => {
       queryCache.invalidateQueries(`/api/play/lobby/${gameCode}`)
       queryCache.invalidateQueries('/api/play/lobby')
-    }
+    },
   })
 }
 
-export function useReports () {
+export function useReports() {
   return useQuery('/api/reports', defaultQueryFn)
 }
 
-export function useReportById (lobbyId) {
+export function useReportById(lobbyId) {
   return useQuery(`/api/reports/${lobbyId}`, defaultQueryFn, {
-    enabled: lobbyId != null
+    enabled: lobbyId != null,
   })
 }
 
-export function useDeleteReport (lobbyId) {
+export function useDeleteReport(lobbyId) {
   const deleteReport = () => {
     return defaultQueryFn(`/api/reports/${lobbyId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
   }
 
   return useMutation(deleteReport, {
     throwOnError: true,
-    onSuccess () {
+    onSuccess() {
       queryCache.invalidateQueries(`/api/reports/${lobbyId}`)
       queryCache.invalidateQueries('/api/reports')
-    }
+    },
   })
 }
 
-export function useSaveEmail () {
+export function useSaveEmail() {
   const saveEmail = (body) => {
     return defaultQueryFn('/api/early-access', {
       method: 'POST',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
   }
 

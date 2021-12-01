@@ -45,7 +45,7 @@ export const Link = forwardRef(
                 }${
                   // don't give SEO "juice"
                   isExternalNoFollow ? ' nofollow' : ''
-                }`.trim()
+                }`.trim(),
               }
             : {})}
           // eslint-disable-next-line react/jsx-props-no-spreading

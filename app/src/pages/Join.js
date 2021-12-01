@@ -16,9 +16,9 @@ const Join = () => {
   useEffect(() => {
     if (!game) navigate('/', { replace: true })
     window.onbeforeunload = () => deleteFromStorage('game')
-  })
+  }, [game])
 
-  const handleEnterKeyPress = (e) => {
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter' && validName) {
       setPlayerName(name)
       navigate('/joined', { replace: true })
@@ -42,7 +42,7 @@ const Join = () => {
           placeholder={t`Nickname`}
           focusBorderColor='teal.300'
           onChange={(e) => setName(e.target.value)}
-          onKeyPress={handleEnterKeyPress}
+          onKeyPress={handleKeyPress}
           isRequired
           autoFocus
         />
@@ -55,7 +55,7 @@ const Join = () => {
           _disabled={{
             opacity: 0.7,
             cursor: 'not-allowed',
-            boxShadow: 'none'
+            boxShadow: 'none',
           }}
           isFullWidth
         >

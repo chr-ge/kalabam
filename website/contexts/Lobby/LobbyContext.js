@@ -6,7 +6,7 @@ const initialState = {
   gameCode: '',
   players: [],
   playerCount: 0,
-  questionIndex: 0
+  questionIndex: 0,
 }
 
 const LobbyContext = createContext(initialState)
@@ -19,42 +19,42 @@ export const LobbyProvider = ({ children }) => {
   const setGameCode = (gameCode) => {
     dispatch({
       type: 'SET_GAME_CODE',
-      payload: gameCode
+      payload: gameCode,
     })
   }
 
   const addPlayer = (player) => {
     dispatch({
       type: 'ADD_PLAYER',
-      payload: player
+      payload: player,
     })
   }
 
   const removePlayer = (memberId) => {
     dispatch({
       type: 'REMOVE_PLAYER',
-      payload: memberId
+      payload: memberId,
     })
   }
 
   const setPlayerCount = (count) => {
     dispatch({
       type: 'SET_PLAYER_COUNT',
-      payload: count
+      payload: count,
     })
   }
 
   const setQuestionIndex = (index) => {
     dispatch({
       type: 'SET_QUESTION_INDEX',
-      payload: index
+      payload: index,
     })
   }
 
   const reset = () => {
     dispatch({
       type: 'RESET',
-      payload: initialState
+      payload: initialState,
     })
   }
 
@@ -69,7 +69,7 @@ export const LobbyProvider = ({ children }) => {
         removePlayer,
         setPlayerCount,
         setQuestionIndex,
-        reset
+        reset,
       }}
     >
       {children}

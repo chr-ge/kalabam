@@ -7,22 +7,22 @@ const populateCreatedByAggregateStages = [
       from: 'games',
       foreignField: '_id',
       localField: 'gameId',
-      as: 'lobby_game'
-    }
+      as: 'lobby_game',
+    },
   },
   {
     $addFields: {
-      game: { $arrayElemAt: ['$lobby_game', 0] }
-    }
+      game: { $arrayElemAt: ['$lobby_game', 0] },
+    },
   },
   {
     $project: {
-      lobby_game: 0
-    }
-  }
+      lobby_game: 0,
+    },
+  },
 ]
 
-export async function getUserReports (userId, limit = false) {
+export async function getUserReports(userId, limit = false) {
   const { db } = await connectToDatabase()
   const collection = db.collection('lobbies')
 
@@ -30,11 +30,8 @@ export async function getUserReports (userId, limit = false) {
     ? {
         $facet: {
           count: [{ $count: 'count' }],
-          reports: [
-            { $sort: { _id: -1 } },
-            { $limit: 3 }
-          ]
-        }
+          reports: [{ $sort: { _id: -1 } }, { $limit: 3 }],
+        },
       }
     : { $sort: { _id: -1 } }
 
@@ -43,18 +40,18 @@ export async function getUserReports (userId, limit = false) {
       {
         $match: {
           createdBy: new ObjectId(userId),
-          started: { $exists: true }
-        }
+          started: { $exists: true },
+        },
       },
       ...populateCreatedByAggregateStages,
-      controlResults
+      controlResults,
     ])
     .toArray()
 
   return reports
 }
 
-export async function getReportById (lobbyId) {
+export async function getReportById(lobbyId) {
   const { db } = await connectToDatabase()
   const collection = db.collection('lobbies')
 
@@ -62,17 +59,17 @@ export async function getReportById (lobbyId) {
     .aggregate([
       {
         $match: {
-          _id: new ObjectId(lobbyId)
-        }
+          _id: new ObjectId(lobbyId),
+        },
       },
-      ...populateCreatedByAggregateStages
+      ...populateCreatedByAggregateStages,
     ])
     .toArray()
 
   return report[0]
 }
 
-export async function deleteReport (lobbyId) {
+export async function deleteReport(lobbyId) {
   const { db } = await connectToDatabase()
   const collection = db.collection('lobbies')
 

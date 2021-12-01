@@ -2,7 +2,7 @@ import { getSession } from 'next-auth/client'
 import { connectToDatabase } from '../db/mongodb'
 import { ObjectId } from 'mongodb'
 
-export async function getUserFromSession ({ req }) {
+export async function getUserFromSession({ req }) {
   const session = await getSession({ req })
 
   if (!session) {
@@ -12,7 +12,7 @@ export async function getUserFromSession ({ req }) {
   return getUserFromId(session.user.id)
 }
 
-export async function getUserFromId (userId) {
+export async function getUserFromId(userId) {
   const { db } = await connectToDatabase()
 
   const user = await db

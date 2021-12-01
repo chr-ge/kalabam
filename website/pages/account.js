@@ -2,20 +2,30 @@ import { getSession } from 'next-auth/client'
 import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react'
 import Layout from '../components/Layout'
 
-function Account ({ session }) {
+function Account({ session }) {
   return (
     <Layout title='My Account | Kalabam' bg='gray.100'>
       <Container mt='6'>
-        <Heading mb='6' textAlign='center'>My Account</Heading>
+        <Heading mb='6' textAlign='center'>
+          My Account
+        </Heading>
         <Flex direction='column'>
           <Box p='2' bg='white' rounded='md' shadow='md'>
             <Box mb='6'>
-              <Text fontWeight='bold' fontSize='xl' bg='yellow.300' pl='4'>Name</Text>
-              <Text mt='2' pl='4' fontSize='lg'>{session.user.name}</Text>
+              <Text fontWeight='bold' fontSize='xl' bg='yellow.300' pl='4'>
+                Name
+              </Text>
+              <Text mt='2' pl='4' fontSize='lg'>
+                {session.user.name}
+              </Text>
             </Box>
             <Box mb='4'>
-              <Text fontWeight='bold' fontSize='xl' bg='orange.300' pl='4'>Email</Text>
-              <Text mt='2' pl='4' fontSize='lg'>{session.user.email}</Text>
+              <Text fontWeight='bold' fontSize='xl' bg='orange.300' pl='4'>
+                Email
+              </Text>
+              <Text mt='2' pl='4' fontSize='lg'>
+                {session.user.email}
+              </Text>
             </Box>
           </Box>
           <Box mt='8'>
@@ -29,8 +39,15 @@ function Account ({ session }) {
               justify='space-between'
               align='center'
             >
-              <Text pl='2' fontWeight='bold'>Advanced</Text>
-              <Button aria-label='Delete account' colorScheme='red' size='sm' fontWeight='light'>
+              <Text pl='2' fontWeight='bold'>
+                Advanced
+              </Text>
+              <Button
+                aria-label='Delete account'
+                colorScheme='red'
+                size='sm'
+                fontWeight='light'
+              >
                 Delete account
               </Button>
             </Flex>
@@ -41,21 +58,21 @@ function Account ({ session }) {
   )
 }
 
-export async function getServerSideProps (context) {
+export async function getServerSideProps(context) {
   const session = await getSession(context)
   if (!session) {
     return {
       redirect: {
         destination: '/auth/signin',
-        permanent: false
-      }
+        permanent: false,
+      },
     }
   }
 
   return {
     props: {
-      session
-    }
+      session,
+    },
   }
 }
 

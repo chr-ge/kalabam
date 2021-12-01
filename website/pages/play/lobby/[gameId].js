@@ -1,7 +1,17 @@
 import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
-import { Button, ButtonGroup, Flex, Heading, Icon, IconButton, Skeleton, Tag, Tooltip } from '@chakra-ui/react'
+import {
+  Button,
+  ButtonGroup,
+  Flex,
+  Heading,
+  Icon,
+  IconButton,
+  Skeleton,
+  Tag,
+  Tooltip,
+} from '@chakra-ui/react'
 import { LockIcon, UnlockIcon } from '@chakra-ui/icons'
 import { FaRegUserCircle, FaPlayCircle } from 'react-icons/fa'
 import { useCreateLobby, useSaveLobby } from '../../../lib/api-hooks'
@@ -10,10 +20,12 @@ import Layout from '../../../components/Layout'
 import Players from '../../../components/Lobby/Players'
 import { useLobbyContext } from '../../../contexts/Lobby/LobbyContext'
 
-function Play ({ gameId }) {
+function Play({ gameId }) {
   const router = useRouter()
   const [createLobby, { isLoading: lobbyIsLoading, data }] = useCreateLobby()
-  const [saveLobby, { isLoading: lockIsLoading }] = useSaveLobby(data && data.data)
+  const [saveLobby, { isLoading: lockIsLoading }] = useSaveLobby(
+    data && data.data
+  )
   const [locked, setLocked] = useState(false)
   const { setGameCode, playerCount } = useLobbyContext()
 
@@ -59,9 +71,19 @@ function Play ({ gameId }) {
           borderBottomWidth='thick'
           direction={{ base: 'column', md: 'row' }}
         >
-          <Flex h='100%' px='4' pt='1' pb='2' direction='column' justify='center' bg='yellow.100'>
+          <Flex
+            h='100%'
+            px='4'
+            pt='1'
+            pb='2'
+            direction='column'
+            justify='center'
+            bg='yellow.100'
+          >
             <Heading fontSize='4xl'>Join at</Heading>
-            <Heading fontSize='4xl' color='blue.800'>play.kalabam.com</Heading>
+            <Heading fontSize='4xl' color='blue.800'>
+              play.kalabam.com
+            </Heading>
           </Flex>
           <Skeleton
             h='100%'
@@ -71,20 +93,21 @@ function Play ({ gameId }) {
             isLoaded={!lobbyIsLoading}
           >
             <Flex px='8' h='100%' bg='teal.200' align='center' justify='center'>
-              {locked
-                ? <LockIcon mx='8' fontSize={{ base: '4xl', lg: '5xl' }} />
-                : (
-                  <Heading fontSize={{ base: '5xl', lg: '7xl' }}>
-                    {data ? formatGameCode(data.data) : '000 000'}
-                  </Heading>
-                  )}
+              {locked ? (
+                <LockIcon mx='8' fontSize={{ base: '4xl', lg: '5xl' }} />
+              ) : (
+                <Heading fontSize={{ base: '5xl', lg: '7xl' }}>
+                  {data ? formatGameCode(data.data) : '000 000'}
+                </Heading>
+              )}
             </Flex>
           </Skeleton>
         </Flex>
         <Flex flex={1} align='center' direction='column'>
           <Flex p='4' justify='space-between' w='100%'>
             <Tag px='3' colorScheme='teal' fontSize='2xl'>
-              <Icon as={FaRegUserCircle} mr='2' />{playerCount}
+              <Icon as={FaRegUserCircle} mr='2' />
+              {playerCount}
             </Tag>
             <ButtonGroup>
               <Tooltip
@@ -113,34 +136,41 @@ function Play ({ gameId }) {
               </Button>
             </ButtonGroup>
           </Flex>
-          {data
-            ? <Players />
-            : (
-              <Heading mt='40' py='4' px='8' bg='white' rounded='md' boxShadow='2xl'>
-                Waiting for players...
-              </Heading>
-              )}
+          {data ? (
+            <Players />
+          ) : (
+            <Heading
+              mt='40'
+              py='4'
+              px='8'
+              bg='white'
+              rounded='md'
+              boxShadow='2xl'
+            >
+              Waiting for players...
+            </Heading>
+          )}
         </Flex>
       </Flex>
     </Layout>
   )
 }
 
-export async function getServerSideProps (context) {
+export async function getServerSideProps(context) {
   const session = await getSession(context)
   if (!session) {
     return {
       redirect: {
         destination: '/auth/signin',
-        permanent: false
-      }
+        permanent: false,
+      },
     }
   }
 
   return {
     props: {
-      gameId: context.query.gameId
-    }
+      gameId: context.query.gameId,
+    },
   }
 }
 

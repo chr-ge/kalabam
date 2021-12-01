@@ -10,22 +10,22 @@ import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
 import Fonts from '../components/Fonts'
 import theme from '@kalabam/theme'
 
-const CrispWithNoSSR = dynamic(
-  () => import('../components/Crisp'), { ssr: false }
-)
+const CrispWithNoSSR = dynamic(() => import('../components/Crisp'), {
+  ssr: false,
+})
 
 // Pusher Config
 const config = {
   clientKey: process.env.NEXT_PUBLIC_PUSHER_CLIENT_KEY,
   cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
-  authEndpoint: '/api/pusher/auth'
+  authEndpoint: '/api/pusher/auth',
 }
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     splitbee.init({
       scriptUrl: '/bee.js',
-      apiUrl: '/_hive'
+      apiUrl: '/_hive',
     })
   }, [])
 

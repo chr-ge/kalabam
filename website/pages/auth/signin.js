@@ -1,13 +1,23 @@
 import { useState } from 'react'
 import { providers, signIn, getSession } from 'next-auth/client'
 import {
-  Alert, AlertIcon, AlertTitle, Button, Center, Divider, Heading, Flex, Stack, Input, Text
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  Button,
+  Center,
+  Divider,
+  Heading,
+  Flex,
+  Stack,
+  Input,
+  Text,
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import Layout from '../../components/Layout'
 import { Link } from '../../components/Link'
 
-function SignIn ({ providers, error }) {
+function SignIn({ providers, error }) {
   const [email, setEmail] = useState('')
 
   return (
@@ -25,7 +35,8 @@ function SignIn ({ providers, error }) {
             mb='10'
             align='center'
             fontSize='4xl'
-            bgGradient='linear(to-l, #7928CA,#FF0080)' bgClip='text'
+            bgGradient='linear(to-l, #7928CA,#FF0080)'
+            bgClip='text'
           >
             Welcome To Kalabam
           </Heading>
@@ -65,8 +76,15 @@ function SignIn ({ providers, error }) {
             Continue using Email (SSO)
           </Button>
           <Text pt='3' fontSize='xs' align='center'>
-            I accept the site <Link href='/tos' variant='kalabam'>Terms of Service</Link> and agree to the{' '}
-            <Link href='/privacy' variant='kalabam'>Privacy Policy</Link>.
+            I accept the site{' '}
+            <Link href='/tos' variant='kalabam'>
+              Terms of Service
+            </Link>{' '}
+            and agree to the{' '}
+            <Link href='/privacy' variant='kalabam'>
+              Privacy Policy
+            </Link>
+            .
           </Text>
         </Stack>
       </Center>
@@ -74,23 +92,23 @@ function SignIn ({ providers, error }) {
   )
 }
 
-export async function getServerSideProps (context) {
+export async function getServerSideProps(context) {
   const session = await getSession(context)
 
   if (session) {
     return {
       redirect: {
         destination: '/dashboard',
-        permanent: false
-      }
+        permanent: false,
+      },
     }
   }
 
   return {
     props: {
       providers: await providers(context),
-      error: context.query.error || null
-    }
+      error: context.query.error || null,
+    },
   }
 }
 

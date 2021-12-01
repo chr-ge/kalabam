@@ -3,7 +3,7 @@ import { getUserFromSession } from '../../../models/User'
 import { createLobby } from '../../../models/Lobby'
 import { generateGameCode } from '../../../utils/gameCode'
 
-export default async (req, res) => {
+export default handler = async (req, res) => {
   let user
   try {
     user = await getUserFromSession({ req })
@@ -24,17 +24,19 @@ export default async (req, res) => {
     const { result } = await createLobby({
       gameCode,
       gameId: new ObjectId(gameId),
-      createdBy: new ObjectId(user.id)
+      createdBy: new ObjectId(user.id),
     })
 
     if (!result.ok) {
-      res.status(500).json({ success: false, message: 'Unable to create lobby' })
+      res
+        .status(500)
+        .json({ success: false, message: 'Unable to create lobby' })
       return
     }
 
     return res.status(201).json({
       success: true,
-      data: gameCode
+      data: gameCode,
     })
   }
 

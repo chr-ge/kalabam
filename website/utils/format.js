@@ -10,6 +10,7 @@ export const formatDateTime = (date) => {
 }
 
 export const formatDiffDuration = (start, end) => {
-  const started = dayjs(start); const ended = dayjs(end)
+  const started = dayjs(start)
+  const ended = dayjs(end)
   return dayjs.duration(ended.diff(started)).humanize()
 }

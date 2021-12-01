@@ -3,7 +3,7 @@ import { useLocalStorage } from '@rehooks/local-storage'
 import { useChannel, useClientTrigger } from '@harelpls/use-pusher'
 
 const initialState = {
-  name: ''
+  name: '',
 }
 
 const LobbyContext = createContext(initialState)
@@ -13,7 +13,7 @@ const reducer = (state, action) => {
     case 'SET_NAME':
       return {
         ...state,
-        name: action.payload
+        name: action.payload,
       }
     default:
       throw new Error(`Unknown action: ${action.type}`)
@@ -31,7 +31,7 @@ export const LobbyProvider = ({ children }) => {
     trigger('client-player', name)
     dispatch({
       type: 'SET_NAME',
-      payload: name
+      payload: name,
     })
   }
 
@@ -41,7 +41,7 @@ export const LobbyProvider = ({ children }) => {
         ...state,
         channel,
         trigger,
-        setPlayerName
+        setPlayerName,
       }}
     >
       {children}

@@ -12,7 +12,8 @@ const Footer = () => (
     </Text>
     <Link href='https://kalabam.com/tos' variant='kalabam' fontSize='sm'>
       Terms
-    </Link>{' | '}
+    </Link>
+    {' | '}
     <Link href='https://kalabam.com/privacy' variant='kalabam' fontSize='sm'>
       Privacy
     </Link>

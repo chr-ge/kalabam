@@ -10,13 +10,13 @@ const { NEXTAUTH_DATABASE_URL, MONGODB_DB } = process.env
 let cached = global.mongo
 if (!cached) cached = global.mongo = {}
 
-export async function connectToDatabase () {
+export async function connectToDatabase() {
   if (cached.conn) return cached.conn
   if (!cached.promise) {
     const conn = {}
     const opts = {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     }
     cached.promise = MongoClient.connect(NEXTAUTH_DATABASE_URL, opts)
       .then((client) => {

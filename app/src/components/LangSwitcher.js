@@ -1,5 +1,12 @@
 import React from 'react'
-import { Button, Icon, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
+import {
+  Button,
+  Icon,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react'
 import { FaGlobeAmericas, FaCheck } from 'react-icons/fa'
 import { i18n } from '@lingui/core'
 import { useLingui } from '@lingui/react'
@@ -8,12 +15,12 @@ import { t } from '@lingui/macro'
 
 const locales = {
   en: 'English',
-  fr: 'Français'
+  fr: 'Français',
 }
 
 i18n.loadLocaleData({
   en: { plurals: en },
-  fr: { plurals: fr }
+  fr: { plurals: fr },
 })
 
 const dynamicActivate = async (locale) => {

@@ -13,9 +13,15 @@ const ReportRow = ({ report }) => (
     _focus={{ boxShadow: 'purple' }}
   >
     <Flex align='center'>
-      <Text mb='1' fontSize='lg' fontWeight='bold'>{formatDateTime(report.created)}</Text>
+      <Text mb='1' fontSize='lg' fontWeight='bold'>
+        {formatDateTime(report.created)}
+      </Text>
       <Spacer />
-      {report.ended && <Badge variant='outline' colorScheme='green'>Completed</Badge>}
+      {report.ended && (
+        <Badge variant='outline' colorScheme='green'>
+          Completed
+        </Badge>
+      )}
     </Flex>
     <Text>{report.game.title}</Text>
   </Link>
