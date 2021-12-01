@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
 import { i18n } from '@lingui/core'
@@ -20,26 +20,32 @@ const config = {
   clientKey: process.env.REACT_APP_PUSHER_CLIENT,
   cluster: process.env.REACT_APP_PUSHER_CLUSTER,
   authEndpoint: process.env.REACT_APP_AUTH_ENDPOINT,
-  triggerEndpoint: process.env.REACT_APP_TRIGGER_ENDPOINT
+  triggerEndpoint: process.env.REACT_APP_TRIGGER_ENDPOINT,
 }
 
 i18n.load('en', messages)
 i18n.activate('en')
 
-function App () {
+function App() {
   return (
     <>
       <ChakraProvider theme={theme}>
         <I18nProvider i18n={i18n}>
           <Routes>
             <Route exact path='/' element={<Home />} />
-            <PusherProvider {...config}>
-              <LobbyProvider>
-                <Route path='/join' element={<Join />} />
-                <Route path='/joined' element={<Joined />} />
-                <Route path='/live' element={<Live />} />
-              </LobbyProvider>
-            </PusherProvider>
+            <Route
+              element={
+                <PusherProvider {...config}>
+                  <LobbyProvider>
+                    <Outlet />
+                  </LobbyProvider>
+                </PusherProvider>
+              }
+            >
+              <Route path='/join' element={<Join />} />
+              <Route path='/joined' element={<Joined />} />
+              <Route path='/live' element={<Live />} />
+            </Route>
           </Routes>
         </I18nProvider>
       </ChakraProvider>
