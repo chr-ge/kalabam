@@ -1,6 +1,7 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
     "react-hooks/exhaustive-deps": "off",
     "react/no-unescaped-entities": "warn"
   }
