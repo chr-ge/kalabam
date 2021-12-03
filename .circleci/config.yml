@@ -16,7 +16,7 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Run Standard
+          name: Run Eslint
           command: yarn lint
       - run:
           name: Run Tests

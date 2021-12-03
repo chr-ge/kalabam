@@ -7,7 +7,15 @@ import GameSettingsDrawer from './GameSettingsDrawer'
 const GameHeader = ({ mode }) => {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { _id, title, description, visibility, image, questions, resetContext } = useGameContext()
+  const {
+    _id,
+    title,
+    description,
+    visibility,
+    image,
+    questions,
+    resetContext,
+  } = useGameContext()
 
   const [addGame, { isLoading: addIsLoading }] = useAddGame()
   const [editGame, { isLoading: editIsLoading }] = useEditGame(_id)

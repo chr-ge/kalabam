@@ -5,7 +5,7 @@ import {
   Heading,
   Text,
   Spacer,
-  chakra
+  chakra,
 } from '@chakra-ui/react'
 import { Link } from '../Link'
 
@@ -49,7 +49,7 @@ const Footer = () => (
             onClick={() => $crisp.push(['do', 'chat:open'])}
             _hover={{
               cursor: 'pointer',
-              textDecoration: 'underline'
+              textDecoration: 'underline',
             }}
           >
             Get Support

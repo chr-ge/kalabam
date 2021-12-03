@@ -31,7 +31,7 @@ const HowItWorks = () => (
         whileHover={{
           y: 50,
           boxShadow:
-            '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
         }}
       >
         <NextImage
@@ -67,7 +67,7 @@ const HowItWorks = () => (
         whileHover={{
           y: -25,
           boxShadow:
-            '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
         }}
       >
         <NextImage
@@ -102,7 +102,7 @@ const HowItWorks = () => (
         whileHover={{
           y: 50,
           boxShadow:
-            '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
         }}
       >
         <NextImage

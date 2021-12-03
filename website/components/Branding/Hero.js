@@ -5,7 +5,7 @@ import {
   Heading,
   Button,
   forwardRef,
-  chakra
+  chakra,
 } from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { motion, isValidMotionProp } from 'framer-motion'
@@ -39,7 +39,7 @@ const Hero = () => (
             animate='visible'
             variants={{
               hidden: { scale: 0.8, opacity: 0 },
-              visible: { scale: 1, opacity: 1, transition: { delay: 0.2 } }
+              visible: { scale: 1, opacity: 1, transition: { delay: 0.2 } },
             }}
           >
             Make your presentations{' '}

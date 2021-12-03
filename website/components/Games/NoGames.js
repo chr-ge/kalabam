@@ -3,12 +3,7 @@ import { BiAnalyse } from 'react-icons/bi'
 import { Link } from '../Link'
 
 const NoGames = () => (
-  <VStack
-    mt='2'
-    py='8'
-    border='1px'
-    borderColor='blue.100'
-  >
+  <VStack mt='2' py='8' border='1px' borderColor='blue.100'>
     <Icon as={BiAnalyse} boxSize='10' />
     <Text fontSize='xl'>You have no games yet.</Text>
     <Text fontSize='md' mb='6' color='gray.600'>

@@ -1,5 +1,6 @@
 {
   "extends": "next/core-web-vitals",
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
     "react-hooks/exhaustive-deps": "off",

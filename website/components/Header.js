@@ -1,7 +1,18 @@
 import { signin, signout, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import {
-  chakra, Avatar, Box, Button, Flex, Heading, Menu, MenuButton, MenuList, MenuDivider, MenuItem, Spacer
+  chakra,
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuDivider,
+  MenuItem,
+  Spacer,
 } from '@chakra-ui/react'
 import { Link } from './Link'
 
@@ -18,9 +29,9 @@ const SkewLink = chakra(Link, {
     _hover: {
       borderLeftWidth: 'thick',
       borderColor: 'teal.500',
-      transition: '0.1s'
-    }
-  }
+      transition: '0.1s',
+    },
+  },
 })
 
 const Header = () => {
@@ -39,7 +50,9 @@ const Header = () => {
         borderBottomColor='gray.300'
         borderBottomWidth='thick'
       >
-        <Heading py='1' variant='logo' fontSize='4xl'>Kalabam</Heading>
+        <Heading py='1' variant='logo' fontSize='4xl'>
+          Kalabam
+        </Heading>
         <Spacer />
         {session && (
           <>
@@ -98,10 +111,16 @@ const Header = () => {
                   cursor='pointer'
                 />
                 <MenuList borderColor='gray.300'>
-                  <MenuItem onClick={() => router.push('/dashboard')} display={{ base: 'flex', md: 'none' }}>
+                  <MenuItem
+                    onClick={() => router.push('/dashboard')}
+                    display={{ base: 'flex', md: 'none' }}
+                  >
                     Dashboard
                   </MenuItem>
-                  <MenuItem onClick={() => router.push('/reports')} display={{ base: 'flex', md: 'none' }}>
+                  <MenuItem
+                    onClick={() => router.push('/reports')}
+                    display={{ base: 'flex', md: 'none' }}
+                  >
                     Reports
                   </MenuItem>
                   <MenuDivider display={{ base: 'flex', md: 'none' }} />

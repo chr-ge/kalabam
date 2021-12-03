@@ -9,9 +9,7 @@ const Layout = ({ title, mode, children }) => (
     </Head>
     <Flex direction='column' h='100%'>
       <GameHeader mode={mode} />
-      <Box flex={1}>
-        {children}
-      </Box>
+      <Box flex={1}>{children}</Box>
     </Flex>
   </>
 )

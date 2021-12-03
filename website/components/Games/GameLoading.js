@@ -1,11 +1,7 @@
 import { Box, Flex, SimpleGrid, Stack, Skeleton } from '@chakra-ui/react'
 
 const GameLoading = () => (
-  <Flex
-    direction={{ base: 'column', md: 'row' }}
-    bgColor='lightPink'
-    h='100%'
-  >
+  <Flex direction={{ base: 'column', md: 'row' }} bgColor='lightPink' h='100%'>
     <Flex direction='column' h='100%' bgColor='gray.100'>
       <Stack
         w={{ base: '100%', md: '48', xl: '52' }}

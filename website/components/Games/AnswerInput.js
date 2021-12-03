@@ -10,8 +10,8 @@ const bounceTransition = {
     repeat: 2,
     repeatType: 'mirror',
     ease: 'easeOut',
-    delay: 10
-  }
+    delay: 10,
+  },
 }
 
 const AnswerInput = ({ answer, color }) => {
@@ -49,11 +49,11 @@ const AnswerInput = ({ answer, color }) => {
           variant='ghost'
           isRound
           _hover={{
-            bgColor: hoverStyle
+            bgColor: hoverStyle,
           }}
           transition={bounceTransition}
           animate={{
-            y: ['5%', '-5%']
+            y: ['5%', '-5%'],
           }}
         />
       </Center>

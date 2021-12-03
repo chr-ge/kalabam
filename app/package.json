@@ -45,9 +45,6 @@
     "@lingui/cli": "^3.4.0",
     "@lingui/macro": "^3.4.0",
     "eslint": "8.3.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "7.27.1",
-    "prettier": "^2.5.0"
+    "eslint-plugin-react": "7.27.1"
   }
 }

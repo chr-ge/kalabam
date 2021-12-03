@@ -21,7 +21,9 @@ const QuestionRow = ({ question, index }) => {
         <Flex flex={1} px='4' pt='4' pb='3' direction='column'>
           <Flex mb='2' align='center'>
             <Text mr='2'>{`${index}. Quiz`}</Text>
-            <Tag colorScheme='pink' size='sm'>{question.timeLimit + 's'}</Tag>
+            <Tag colorScheme='pink' size='sm'>
+              {question.timeLimit + 's'}
+            </Tag>
           </Flex>
           <Text fontSize='xl'>{question.question}</Text>
         </Flex>
@@ -50,7 +52,10 @@ const QuestionRow = ({ question, index }) => {
                   <Text ml='3'>{answer}</Text>
                 </Flex>
                 <Spacer />
-                <Icon as={isCorrect ? ImCheckmark : ImCross} color={isCorrect ? 'green.400' : 'red.400'} />
+                <Icon
+                  as={isCorrect ? ImCheckmark : ImCross}
+                  color={isCorrect ? 'green.400' : 'red.400'}
+                />
               </Flex>
             ))}
           </Box>

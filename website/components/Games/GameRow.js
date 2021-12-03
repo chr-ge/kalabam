@@ -12,7 +12,7 @@ import {
   Tag,
   Text,
   Spacer,
-  useToast
+  useToast,
 } from '@chakra-ui/react'
 import { HiDotsVertical } from 'react-icons/hi'
 import { InfoOutlineIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons'
@@ -37,7 +37,7 @@ const GameRow = ({ game }) => {
         description: 'Your game was deleted successfully.',
         status: 'success',
         duration: 9000,
-        isClosable: true
+        isClosable: true,
       })
     }
   }

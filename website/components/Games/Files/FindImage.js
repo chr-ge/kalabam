@@ -1,7 +1,25 @@
 import { useState, useEffect } from 'react'
 import {
-  Box, Button, Flex, Image, Input, InputLeftElement, InputGroup, Link, Modal, ModalOverlay, ModalContent,
-  ModalHeader, ModalBody, ModalCloseButton, Stack, Skeleton, useBreakpointValue, useDisclosure, useRadioGroup, chakra
+  Box,
+  Button,
+  Flex,
+  Image,
+  Input,
+  InputLeftElement,
+  InputGroup,
+  Link,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  Stack,
+  Skeleton,
+  useBreakpointValue,
+  useDisclosure,
+  useRadioGroup,
+  chakra,
 } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
 import Masonry from 'react-masonry-css'
@@ -10,7 +28,16 @@ import RadioBox from './RadioBox'
 import styles from './FindImage.module.css'
 
 const CATEGORIES = [
-  'Animals', 'Business', 'Cars', 'Cryptocurrency', 'Food', 'Landscape', 'School', 'Sports', 'Weather', 'Work'
+  'Animals',
+  'Business',
+  'Cars',
+  'Cryptocurrency',
+  'Food',
+  'Landscape',
+  'School',
+  'Sports',
+  'Weather',
+  'Work',
 ]
 const ORIENTATIONS = ['landscape', 'squarish', 'portrait']
 
@@ -26,8 +53,12 @@ const FindImage = () => {
 
   useEffect(() => {
     const getImages = async () => {
-      const unsplash = await global.fetch(`/api/unsplash?category=${category}&orientation=${orientation}`)
-      const { response: { results } } = await unsplash.json()
+      const unsplash = await global.fetch(
+        `/api/unsplash?category=${category}&orientation=${orientation}`
+      )
+      const {
+        response: { results },
+      } = await unsplash.json()
       setImages(results)
     }
     getImages()
@@ -36,7 +67,7 @@ const FindImage = () => {
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'orientation',
     defaultValue: 'landscape',
-    onChange: setOrientation
+    onChange: setOrientation,
   })
 
   const handleSearch = (e) => {
@@ -46,21 +77,27 @@ const FindImage = () => {
   const handleClick = (image) => {
     setGameImage({
       src: image.urls.regular,
-      alt: image.alt_description
+      alt: image.alt_description,
     })
     onClose()
   }
 
   return (
     <>
-      <Button mr='2' colorScheme='pink' onClick={onOpen}>Find</Button>
+      <Button mr='2' colorScheme='pink' onClick={onOpen}>
+        Find
+      </Button>
       <Modal isOpen={isOpen} onClose={onClose} size='full'>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Find a Game Image | Images by Unsplash</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Flex align='center' mb='6' direction={{ base: 'column', sm: 'row' }}>
+            <Flex
+              align='center'
+              mb='6'
+              direction={{ base: 'column', sm: 'row' }}
+            >
               <InputGroup>
                 <InputLeftElement pointerEvents='none'>
                   <Search2Icon color='gray.300' />
@@ -72,21 +109,34 @@ const FindImage = () => {
                   onKeyPress={handleSearch}
                 />
               </InputGroup>
-              <Stack ml={{ sm: '4' }} mt={{ base: '4', sm: '0' }} direction='row' {...getRootProps()}>
+              <Stack
+                ml={{ sm: '4' }}
+                mt={{ base: '4', sm: '0' }}
+                direction='row'
+                {...getRootProps()}
+              >
                 {ORIENTATIONS.map((value) => {
                   const radio = getRadioProps({ value })
-                  return <RadioBox key={value} {...radio}>{value}</RadioBox>
+                  return (
+                    <RadioBox key={value} {...radio}>
+                      {value}
+                    </RadioBox>
+                  )
                 })}
               </Stack>
             </Flex>
             <Flex>
               <Stack w='64' mr='6' display={{ base: 'none', sm: 'flex' }}>
                 {CATEGORIES.map((c) => (
-                  <Button key={c} onClick={() => setCategory(c)} isFullWidth>{c}</Button>
+                  <Button key={c} onClick={() => setCategory(c)} isFullWidth>
+                    {c}
+                  </Button>
                 ))}
               </Stack>
               {!images.length && (
-                <Box as='p' w='100%'>No Images Found.</Box>
+                <Box as='p' w='100%'>
+                  No Images Found.
+                </Box>
               )}
               <ChakraMasonry
                 h={images.length && '2xl'}
@@ -97,7 +147,11 @@ const FindImage = () => {
                 columnClassName={styles.masonryGridColumn}
               >
                 {images.map((image) => (
-                  <Box key={image.id} className={styles.unsplashContainer} pos='relative'>
+                  <Box
+                    key={image.id}
+                    className={styles.unsplashContainer}
+                    pos='relative'
+                  >
                     <Image
                       src={image.urls.small}
                       fallback={<Skeleton h='56' w='100%' />}
@@ -115,7 +169,10 @@ const FindImage = () => {
                       fontSize='sm'
                       bottom='0'
                       right='0'
-                      _hover={{ color: 'gray.400', textDecoration: 'underline' }}
+                      _hover={{
+                        color: 'gray.400',
+                        textDecoration: 'underline',
+                      }}
                       isExternal
                     >
                       {image.user.name}

@@ -1,5 +1,18 @@
 import { useState } from 'react'
-import { Box, Button, Circle, Flex, Heading, Icon, Image, Input, InputGroup, InputLeftElement, Text, Spacer } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Circle,
+  Flex,
+  Heading,
+  Icon,
+  Image,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text,
+  Spacer,
+} from '@chakra-ui/react'
 import { HiOutlineMail, HiCheckCircle } from 'react-icons/hi'
 import { useSaveEmail } from '../../lib/api-hooks'
 import { Link } from '../Link'
@@ -27,14 +40,19 @@ const EarlyAccess = () => {
         bgGradient='linear(to-l, #FF0080, #7928CA)'
       >
         <Box w={{ base: '100%', md: '50%' }} p='8'>
-          <Heading fontSize='3xl' mb='2' color='white'>Get early access to Kalabam</Heading>
+          <Heading fontSize='3xl' mb='2' color='white'>
+            Get early access to Kalabam
+          </Heading>
           <Text color='gray.100' fontSize='sm'>
             Join the waitlist and be one of the first to try Kalabam.
           </Text>
           <InputGroup mt='4' mb='3'>
             <InputLeftElement pointerEvents='none'>
               <Circle bg={isSuccess && 'white'}>
-                <Icon as={isSuccess ? HiCheckCircle : HiOutlineMail} color={isSuccess ? 'green.500' : 'white'} />
+                <Icon
+                  as={isSuccess ? HiCheckCircle : HiOutlineMail}
+                  color={isSuccess ? 'green.500' : 'white'}
+                />
               </Circle>
             </InputLeftElement>
             <Input
@@ -42,7 +60,7 @@ const EarlyAccess = () => {
               color='white'
               type='email'
               placeholder='Your email'
-              autoComplete="email"
+              autoComplete='email'
               borderTopRightRadius='0'
               borderBottomRightRadius='0'
               onChange={(e) => setEmail(e.target.value)}
@@ -65,7 +83,10 @@ const EarlyAccess = () => {
           </InputGroup>
           <Text mr='1' fontSize='xs' color='gray.100'>
             We care about protecting your data. Here's our
-            <Link href='/privacy' fontSize='xs' color='purple.200'> Privacy Policy.</Link>
+            <Link href='/privacy' fontSize='xs' color='purple.200'>
+              {' '}
+              Privacy Policy.
+            </Link>
           </Text>
         </Box>
         <Spacer />

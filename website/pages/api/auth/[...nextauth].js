@@ -6,11 +6,11 @@ const options = {
   providers: [
     Providers.Email({
       server: process.env.NEXTAUTH_EMAIL_SERVER,
-      from: process.env.NEXTAUTH_EMAIL_FROM
+      from: process.env.NEXTAUTH_EMAIL_FROM,
     }),
     Providers.Google({
       clientId: process.env.NEXTAUTH_GOOGLE_ID,
-      clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET
+      clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET,
     }),
     Providers.Apple({
       clientId: process.env.NEXTAUTH_APPLE_ID,
@@ -18,9 +18,9 @@ const options = {
         appleId: process.env.NEXTAUTH_APPLE_ID,
         teamId: process.env.NEXTAUTH_APPLE_TEAM_ID,
         privateKey: process.env.NEXTAUTH_APPLE_PRIVATE_KEY,
-        keyId: process.env.NEXTAUTH_APPLE_KEY_ID
-      }
-    })
+        keyId: process.env.NEXTAUTH_APPLE_KEY_ID,
+      },
+    }),
   ],
 
   // @link https://next-auth.js.org/configuration/databases
@@ -90,11 +90,11 @@ const options = {
     session: async (session, user) => {
       const sessionUser = {
         ...session.user,
-        id: user.id
+        id: user.id,
       }
       return Promise.resolve({
         ...session,
-        user: sessionUser
+        user: sessionUser,
       })
     },
 
@@ -112,7 +112,7 @@ const options = {
       // Add auth_time to token on signin in
       // if (isSignIn) { token.auth_time = Math.floor(Date.now() / 1000) }
       return Promise.resolve(token)
-    }
+    },
   },
 
   // @link https://next-auth.js.org/configuration/pages
@@ -120,13 +120,13 @@ const options = {
     signIn: '/auth/signin',
     // signOut: '/api/auth/signout',
     error: '/auth/signin', // Error code passed in query string as ?error=
-    verifyRequest: '/auth/verify-request' // (used for check email message)
+    verifyRequest: '/auth/verify-request', // (used for check email message)
     // newUser: null // If set, new users will be directed here on first sign in
   },
 
   // Additional options
   secret: process.env.NEXTAUTH_SECRET,
-  debug: false // Use this option to enable debug messages in the console
+  debug: false, // Use this option to enable debug messages in the console
 }
 
 const Auth = (req, res) => NextAuth(req, res, options)

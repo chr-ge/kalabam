@@ -18,7 +18,7 @@ import {
   RadioGroup,
   Stack,
   Tag,
-  Textarea
+  Textarea,
 } from '@chakra-ui/react'
 import { IoMdSettings, IoIosCheckmarkCircle } from 'react-icons/io'
 import { useGameContext } from '../../contexts/Game/GameContext'
@@ -26,7 +26,8 @@ import { FindImage } from './Files'
 
 const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
   const titleField = useRef()
-  const { title, description, visibility, image, updateGameSettings } = useGameContext()
+  const { title, description, visibility, image, updateGameSettings } =
+    useGameContext()
   const [settings, setSettings] = useState({ title, description, visibility })
 
   useEffect(() => {
@@ -37,48 +38,46 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
     updateGameSettings({
       title: settings.title,
       description: settings.description,
-      visibility: settings.visibility
+      visibility: settings.visibility,
     })
     onClose()
   }
 
   return (
     <>
-      {title
-        ? (
-          <ButtonGroup size='sm' isAttached colorScheme='pink'>
-            <Box
-              d='flex'
-              alignItems='center'
-              mr='-px'
-              px='4'
-              verticalAlign='middle'
-              borderLeftRadius='md'
-              border='1px'
-              borderColor='pink.500'
-              bgColor='white'
-            >
-              {title}
-            </Box>
-            <IconButton
-              aria-label='Open Game Settings'
-              borderLeftRadius='0'
-              icon={<IoMdSettings size='18' />}
-              onClick={onOpen}
-            />
-          </ButtonGroup>
-          )
-        : (
-          <Button
-            leftIcon={<IoMdSettings size='18' />}
-            colorScheme='pink'
-            onClick={onOpen}
-            size='sm'
-            px='5'
+      {title ? (
+        <ButtonGroup size='sm' isAttached colorScheme='pink'>
+          <Box
+            d='flex'
+            alignItems='center'
+            mr='-px'
+            px='4'
+            verticalAlign='middle'
+            borderLeftRadius='md'
+            border='1px'
+            borderColor='pink.500'
+            bgColor='white'
           >
-            Game Settings
-          </Button>
-          )}
+            {title}
+          </Box>
+          <IconButton
+            aria-label='Open Game Settings'
+            borderLeftRadius='0'
+            icon={<IoMdSettings size='18' />}
+            onClick={onOpen}
+          />
+        </ButtonGroup>
+      ) : (
+        <Button
+          leftIcon={<IoMdSettings size='18' />}
+          colorScheme='pink'
+          onClick={onOpen}
+          size='sm'
+          px='5'
+        >
+          Game Settings
+        </Button>
+      )}
       <Drawer
         isOpen={isOpen}
         placement='right'
@@ -90,7 +89,9 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader borderBottomWidth='1px' borderColor='gray.200'>
-              <Tag fontSize='2xl' px='2' py='1' colorScheme='teal'>Game Settings</Tag>
+              <Tag fontSize='2xl' px='2' py='1' colorScheme='teal'>
+                Game Settings
+              </Tag>
             </DrawerHeader>
             <DrawerBody>
               <Stack spacing={6}>
@@ -103,13 +104,17 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                     placeholder='Enter game title...'
                     borderColor='gray.200'
                     focusBorderColor='teal.200'
-                    onChange={(e) => setSettings({ ...settings, title: e.target.value })}
+                    onChange={(e) =>
+                      setSettings({ ...settings, title: e.target.value })
+                    }
                   />
                 </Box>
                 <Box>
                   <FormLabel htmlFor='description'>
                     Description
-                    <Box as='span' ml='2' fontWeight='normal' color='gray.500'>(Optional)</Box>
+                    <Box as='span' ml='2' fontWeight='normal' color='gray.500'>
+                      (Optional)
+                    </Box>
                   </FormLabel>
                   <Textarea
                     minH='150px'
@@ -118,30 +123,46 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                     borderColor='gray.200'
                     focusBorderColor='teal.200'
                     value={settings.description}
-                    onChange={(e) => setSettings({ ...settings, description: e.target.value })}
+                    onChange={(e) =>
+                      setSettings({ ...settings, description: e.target.value })
+                    }
                   />
                 </Box>
                 <Box>
                   <FormLabel htmlFor='visibility'>Visibility</FormLabel>
                   <RadioGroup
-                    onChange={(e) => setSettings({ ...settings, visibility: e })}
+                    onChange={(e) =>
+                      setSettings({ ...settings, visibility: e })
+                    }
                     value={settings.visibility}
                   >
                     <Stack direction='row' spacing={4}>
-                      <Radio colorScheme='teal' value='0'>Private</Radio>
-                      <Radio colorScheme='purple' value='1'>Public</Radio>
+                      <Radio colorScheme='teal' value='0'>
+                        Private
+                      </Radio>
+                      <Radio colorScheme='purple' value='1'>
+                        Public
+                      </Radio>
                     </Stack>
                   </RadioGroup>
                 </Box>
                 <Box>
                   <FormLabel htmlFor='image'>Game Image</FormLabel>
-                  <Box d='flex' p='2' borderColor='gray.200' borderWidth='thin' rounded='md'>
+                  <Box
+                    d='flex'
+                    p='2'
+                    borderColor='gray.200'
+                    borderWidth='thin'
+                    rounded='md'
+                  >
                     <Box w='50%'>
                       <FindImage />
                       <Button colorScheme='blue'>Upload</Button>
                     </Box>
                     <Box w='50%'>
-                      {image.src && <Image src={image.src} alt={image.alt} w='100%' />}
+                      {image.src && (
+                        <Image src={image.src} alt={image.alt} w='100%' />
+                      )}
                     </Box>
                   </Box>
                 </Box>
@@ -152,7 +173,12 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
               borderColor='gray.200'
               justifyContent='center'
             >
-              <Button mr={3} aria-label='Cancel' variant='outline' onClick={onClose}>
+              <Button
+                mr={3}
+                aria-label='Cancel'
+                variant='outline'
+                onClick={onClose}
+              >
                 Cancel
               </Button>
               <Button

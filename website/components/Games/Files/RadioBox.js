@@ -17,10 +17,10 @@ const RadioBox = (props) => {
         _checked={{
           bg: 'teal.400',
           color: 'white',
-          borderColor: 'teal.200'
+          borderColor: 'teal.200',
         }}
         _focus={{
-          boxShadow: 'outline'
+          boxShadow: 'outline',
         }}
         px={3}
         py={2}

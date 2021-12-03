@@ -9,7 +9,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  Text
+  Text,
 } from '@chakra-ui/react'
 import { AnswerInput } from '../../components/Games'
 import { ImageUpload } from './Files'
@@ -46,7 +46,9 @@ const Question = ({ question }) => {
       <Flex py='16' justify='space-evenly'>
         <Stack w='40%' justify='center'>
           <Box mb='5'>
-            <Text id='time_limit' mb='2'>Time Limit</Text>
+            <Text id='time_limit' mb='2'>
+              Time Limit
+            </Text>
             <Slider
               id='time-slider'
               value={q.timeLimit}

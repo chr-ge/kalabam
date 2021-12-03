@@ -5,7 +5,7 @@ import {
   Text,
   Tooltip,
   Spacer,
-  useToast
+  useToast,
 } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Draggable } from 'react-beautiful-dnd'
@@ -14,7 +14,8 @@ import { useGameContext } from '../../contexts/Game/GameContext'
 const TOAST_ID = 'cannot-delete'
 
 const QuestionBox = ({ question, index }) => {
-  const { questions, activeQuestion, setActiveQuestion, deleteQuestion } = useGameContext()
+  const { questions, activeQuestion, setActiveQuestion, deleteQuestion } =
+    useGameContext()
   const toast = useToast()
 
   const handleDelete = () => {
@@ -25,11 +26,12 @@ const QuestionBox = ({ question, index }) => {
       toast({
         id: TOAST_ID,
         title: "Can't delete the only question",
-        description: 'To make the game engaging, we recommend adding at least one question.',
+        description:
+          'To make the game engaging, we recommend adding at least one question.',
         status: 'info',
         position: 'bottom',
         duration: 3000,
-        isClosable: true
+        isClosable: true,
       })
     }
   }
