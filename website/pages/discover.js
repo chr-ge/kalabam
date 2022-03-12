@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react'
 import { FaChevronDown, FaChevronUp, FaCheck } from 'react-icons/fa'
 import Tilt from 'react-parallax-tilt'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 import { Link } from '../components/Link'
 
 const ChakraTilt = chakra(Tilt)

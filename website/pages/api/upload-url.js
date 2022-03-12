@@ -11,7 +11,7 @@ aws.config.update({
 
 const s3 = new aws.S3()
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   let user
   try {
     user = await getUserFromSession({ req })
@@ -41,3 +41,5 @@ export default handler = async (req, res) => {
 
   res.status(200).json({ post, imageUrl })
 }
+
+export default handler

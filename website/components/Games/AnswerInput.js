@@ -3,7 +3,7 @@ import { Center, Flex, IconButton, Text, Textarea } from '@chakra-ui/react'
 import { CheckCircleIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 
-const MotionIconButton = motion.custom(IconButton)
+const MotionIconButton = motion(IconButton)
 const bounceTransition = {
   y: {
     duration: 0.3,
@@ -14,7 +14,7 @@ const bounceTransition = {
   },
 }
 
-const AnswerInput = ({ answer, color }) => {
+export const AnswerInput = ({ answer, color }) => {
   const [chars, setChars] = useState(0)
   const [toggle, setToggle] = useState(answer.isCorrect)
 
@@ -82,5 +82,3 @@ const AnswerInput = ({ answer, color }) => {
     </Flex>
   )
 }
-
-export default AnswerInput

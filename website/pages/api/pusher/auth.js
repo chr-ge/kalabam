@@ -17,7 +17,7 @@ const cors = initMiddleware(
   })
 )
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   await cors(req, res)
   try {
     const socketId = req.body.socket_id
@@ -37,3 +37,5 @@ export default handler = async (req, res) => {
     res.status(403).end()
   }
 }
+
+export default handler

@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { Box, Flex } from '@chakra-ui/react'
-import GameHeader from './GameHeader'
+import { GameHeader } from './GameHeader'
 
-const Layout = ({ title, mode, children }) => (
+export const Layout = ({ title, mode, children }) => (
   <>
     <Head>
       <title>{title}</title>
@@ -13,5 +13,3 @@ const Layout = ({ title, mode, children }) => (
     </Flex>
   </>
 )
-
-export default Layout

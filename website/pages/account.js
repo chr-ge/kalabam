@@ -1,8 +1,8 @@
 import { getSession } from 'next-auth/client'
 import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 
-function Account({ session }) {
+const Account = ({ session }) => {
   return (
     <Layout title='My Account | Kalabam' bg='gray.100'>
       <Container mt='6'>

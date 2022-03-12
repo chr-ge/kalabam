@@ -14,7 +14,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
-import Layout from '../../components/Layout'
+import { Layout } from '../../components/Layout'
 import { Link } from '../../components/Link'
 
 function SignIn({ providers, error }) {

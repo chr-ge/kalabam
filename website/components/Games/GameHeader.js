@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 import { useGameContext } from '../../contexts/Game/GameContext'
 import { useAddGame, useEditGame } from '../../lib/api-hooks'
-import GameSettingsDrawer from './GameSettingsDrawer'
+import { GameSettingsDrawer } from './GameSettingsDrawer'
 
-const GameHeader = ({ mode }) => {
+export const GameHeader = ({ mode }) => {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const {
@@ -83,5 +83,3 @@ const GameHeader = ({ mode }) => {
     </nav>
   )
 }
-
-export default GameHeader

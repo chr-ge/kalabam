@@ -1,26 +1,12 @@
 import NextImage from 'next/image'
-import {
-  Box,
-  Flex,
-  Heading,
-  Button,
-  forwardRef,
-  chakra,
-} from '@chakra-ui/react'
+import { Box, Flex, Heading, Button, chakra } from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
-import { motion, isValidMotionProp } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Link } from '../Link'
 
-const HeroHeading = motion.custom(
-  forwardRef((props, ref) => {
-    const chakraProps = Object.fromEntries(
-      Object.entries(props).filter(([key]) => !isValidMotionProp(key))
-    )
-    return <Heading ref={ref} {...chakraProps} />
-  })
-)
+const HeroHeading = motion(Heading)
 
-const Hero = () => (
+export const Hero = () => (
   <Box>
     <Box bg='yellow.200'>
       <Flex
@@ -90,5 +76,3 @@ const Hero = () => (
     </svg>
   </Box>
 )
-
-export default Hero

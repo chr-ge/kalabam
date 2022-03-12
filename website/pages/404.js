@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { Flex, Text } from '@chakra-ui/react'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 
-export default function Custom404() {
+const Custom404 = () => {
   return (
     <Layout title='404 - Kalabam'>
       <Flex mt='16' align='center' direction='column'>
@@ -19,3 +19,5 @@ export default function Custom404() {
     </Layout>
   )
 }
+
+export default Custom404

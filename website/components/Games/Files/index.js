@@ -1,3 +1,3 @@
-export { default as FindImage } from './FindImage'
-export { default as ImageUpload } from './ImageUpload'
-export { default as RadioBox } from './RadioBox'
+export * from './FindImage'
+export * from './ImageUpload'
+export * from './RadioBox'

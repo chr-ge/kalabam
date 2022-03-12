@@ -1,7 +1,7 @@
 import { getUserFromSession } from '../../models/User'
 import { getUserReports } from '../../models/Reports'
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   let user
   try {
     user = await getUserFromSession({ req })
@@ -16,3 +16,5 @@ export default handler = async (req, res) => {
 
   res.end()
 }
+
+export default handler

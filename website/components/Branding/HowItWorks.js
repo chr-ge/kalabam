@@ -1,17 +1,10 @@
 import NextImage from 'next/image'
-import { Box, Heading, Stack, Text, forwardRef } from '@chakra-ui/react'
-import { motion, isValidMotionProp } from 'framer-motion'
+import { Box, Heading, Stack, Text } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 
-const AnimatedBox = motion.custom(
-  forwardRef((props, ref) => {
-    const chakraProps = Object.fromEntries(
-      Object.entries(props).filter(([key]) => !isValidMotionProp(key))
-    )
-    return <Box ref={ref} {...chakraProps} />
-  })
-)
+const AnimatedBox = motion(Box)
 
-const HowItWorks = () => (
+export const HowItWorks = () => (
   <Box as='section' mt='24' maxW='5xl' mx={{ base: '4', md: '8', lg: 'auto' }}>
     <Heading
       as='h3'
@@ -39,6 +32,7 @@ const HowItWorks = () => (
           alt='person designing with a computer screen'
           height={250}
           width={250}
+          draggable='false'
         />
         <Heading
           mb='3'
@@ -75,6 +69,7 @@ const HowItWorks = () => (
           alt='two people presenting'
           height={250}
           width={250}
+          draggable='false'
         />
         <Heading
           mb='3'
@@ -110,6 +105,7 @@ const HowItWorks = () => (
           alt='Game winner'
           height={250}
           width={250}
+          draggable='false'
         />
         <Heading
           mb='3'
@@ -132,5 +128,3 @@ const HowItWorks = () => (
     </Stack>
   </Box>
 )
-
-export default HowItWorks

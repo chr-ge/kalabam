@@ -1,9 +1,9 @@
 import { Center, Icon, Stack, Text } from '@chakra-ui/react'
 import { RiMailCheckFill } from 'react-icons/ri'
-import Layout from '../../components/Layout'
+import { Layout } from '../../components/Layout'
 import { Link } from '../../components/Link'
 
-function VerifyRequest() {
+const VerifyRequest = () => {
   return (
     <Layout>
       <Center m='24'>

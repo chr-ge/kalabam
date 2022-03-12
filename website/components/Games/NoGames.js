@@ -2,7 +2,7 @@ import { Button, Icon, VStack, Text } from '@chakra-ui/react'
 import { BiAnalyse } from 'react-icons/bi'
 import { Link } from '../Link'
 
-const NoGames = () => (
+export const NoGames = () => (
   <VStack mt='2' py='8' border='1px' borderColor='blue.100'>
     <Icon as={BiAnalyse} boxSize='10' />
     <Text fontSize='xl'>You have no games yet.</Text>
@@ -21,5 +21,3 @@ const NoGames = () => (
     </Button>
   </VStack>
 )
-
-export default NoGames

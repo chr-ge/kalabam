@@ -4,7 +4,7 @@ import { ViewIcon, DeleteIcon } from '@chakra-ui/icons'
 import { ImPrinter } from 'react-icons/im'
 import { useDeleteReport } from '../../lib/api-hooks'
 
-const ReportButtons = ({ lobbyId, gameId, isDisabled }) => {
+export const ReportButtons = ({ lobbyId, gameId, isDisabled }) => {
   const router = useRouter()
   const [deleteReport, { isLoading }] = useDeleteReport(lobbyId)
 
@@ -75,5 +75,3 @@ const ReportButtons = ({ lobbyId, gameId, isDisabled }) => {
     </Flex>
   )
 }
-
-export default ReportButtons

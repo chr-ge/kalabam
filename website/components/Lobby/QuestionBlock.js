@@ -15,8 +15,8 @@ import { ImArrowRight2 } from 'react-icons/im'
 import { useCountDown } from '../../lib/hooks'
 import { useSaveLobby } from '../../lib/api-hooks'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
-import Answer from './Answer'
-import ResultsChart from './ResultsChart'
+import { Answer } from './Answer'
+import { ResultsChart } from './ResultsChart'
 
 const CHOICES = [
   { color: 'yellow.400', image: '/images/cylinder.png' },
@@ -33,7 +33,7 @@ const findCorrectAnswersIndex = (answers) => {
   )
 }
 
-const QuestionBlock = ({ question, questionCount, started }) => {
+export const QuestionBlock = ({ question, questionCount, started }) => {
   const {
     presenceChannel,
     trigger,
@@ -183,5 +183,3 @@ const QuestionBlock = ({ question, questionCount, started }) => {
     </Flex>
   )
 }
-
-export default QuestionBlock

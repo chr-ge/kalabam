@@ -8,9 +8,11 @@ const cors = initMiddleware(
   })
 )
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   await cors(req, res)
   const { channelName, eventName, data } = JSON.parse(req.body)
   pusher.trigger(channelName, eventName, data)
   return res.status(200).end()
 }
+
+export default handler

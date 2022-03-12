@@ -22,7 +22,7 @@ import { useDeleteGame } from '../../lib/api-hooks'
 
 dayjs.extend(relativeTime)
 
-const GameRow = ({ game }) => {
+export const GameRow = ({ game }) => {
   const toast = useToast()
   const router = useRouter()
   const [deleteGame, { isLoading }] = useDeleteGame(game._id.toString())
@@ -109,5 +109,3 @@ const GameRow = ({ game }) => {
     </Flex>
   )
 }
-
-export default GameRow

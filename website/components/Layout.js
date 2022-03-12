@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { Box } from '@chakra-ui/react'
-import Header from './Header'
+import { Header } from './Header'
 import { Footer } from './Branding'
 
-const Layout = ({ title, bg, children }) => {
+export const Layout = ({ title, bg, children }) => {
   return (
     <>
       <Head>
@@ -21,5 +21,3 @@ const Layout = ({ title, bg, children }) => {
     </>
   )
 }
-
-export default Layout

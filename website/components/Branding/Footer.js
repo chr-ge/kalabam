@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { Link } from '../Link'
 
-const Footer = () => (
+export const Footer = () => (
   <Box as='footer' bg='gray.600' color='white'>
     <Container py='12' maxW='3xl'>
       <Flex direction={{ base: 'column', sm: 'row' }}>
@@ -61,5 +61,3 @@ const Footer = () => (
     </Container>
   </Box>
 )
-
-export default Footer

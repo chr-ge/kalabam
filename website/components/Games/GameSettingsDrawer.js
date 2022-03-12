@@ -24,7 +24,7 @@ import { IoMdSettings, IoIosCheckmarkCircle } from 'react-icons/io'
 import { useGameContext } from '../../contexts/Game/GameContext'
 import { FindImage } from './Files'
 
-const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
+export const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
   const titleField = useRef()
   const { title, description, visibility, image, updateGameSettings } =
     useGameContext()
@@ -196,5 +196,3 @@ const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
     </>
   )
 }
-
-export default GameSettingsDrawer

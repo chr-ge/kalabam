@@ -18,7 +18,7 @@ import { MdTimer } from 'react-icons/md'
 import { formatDateTime, formatDiffDuration } from '../../utils/format'
 import { useReportById } from '../../lib/api-hooks'
 import { ReportButtons } from '../../components/Reports'
-import Layout from '../../components/Layout'
+import { Layout } from '../../components/Layout'
 
 const Report = ({ lobbyId, name }) => {
   const { isLoading, data } = useReportById(lobbyId)

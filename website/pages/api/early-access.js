@@ -1,7 +1,7 @@
 import { createEmail } from '../../models/Email'
 import { isEmail } from '../../utils/validate'
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   if (req.method === 'POST') {
     const { email } = JSON.parse(req.body)
 
@@ -21,3 +21,5 @@ export default handler = async (req, res) => {
   }
   res.end()
 }
+
+export default handler

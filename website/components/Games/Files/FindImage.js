@@ -24,7 +24,7 @@ import {
 import { Search2Icon } from '@chakra-ui/icons'
 import Masonry from 'react-masonry-css'
 import { useGameContext } from '../../../contexts/Game/GameContext'
-import RadioBox from './RadioBox'
+import { RadioBox } from './RadioBox'
 import styles from './FindImage.module.css'
 
 const CATEGORIES = [
@@ -43,7 +43,7 @@ const ORIENTATIONS = ['landscape', 'squarish', 'portrait']
 
 const ChakraMasonry = chakra(Masonry)
 
-const FindImage = () => {
+export const FindImage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [images, setImages] = useState([])
   const [category, setCategory] = useState('game')
@@ -187,5 +187,3 @@ const FindImage = () => {
     </>
   )
 }
-
-export default FindImage

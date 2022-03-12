@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Text, Link } from '@chakra-ui/react'
 import { Trans } from '@lingui/macro'
 
-const Footer = () => (
+export const Footer = () => (
   <Box my='6' align='center'>
     <Text mb='2' fontSize='sm'>
       <Trans>Create your own game for FREE at </Trans>
@@ -19,5 +19,3 @@ const Footer = () => (
     </Link>
   </Box>
 )
-
-export default Footer

@@ -1,7 +1,7 @@
 import { Badge, Flex, Link, Spacer, Text } from '@chakra-ui/react'
 import { formatDateTime } from '../../utils/format'
 
-const ReportRow = ({ report }) => (
+export const ReportRow = ({ report }) => (
   <Link
     w='100%'
     mt='2'
@@ -26,5 +26,3 @@ const ReportRow = ({ report }) => (
     <Text>{report.game.title}</Text>
   </Link>
 )
-
-export default ReportRow

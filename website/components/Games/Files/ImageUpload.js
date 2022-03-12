@@ -11,7 +11,7 @@ import {
 import { DeleteIcon } from '@chakra-ui/icons'
 import { useGameContext } from '../../../contexts/Game/GameContext'
 
-const ImageUpload = ({ question }) => {
+export const ImageUpload = ({ question }) => {
   const toast = useToast()
   const [loading, setLoading] = useState(false)
   const [previewFile, setPreviewFile] = useState()
@@ -154,5 +154,3 @@ const ImageUpload = ({ question }) => {
     </Center>
   )
 }
-
-export default ImageUpload

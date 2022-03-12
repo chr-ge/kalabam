@@ -6,7 +6,7 @@ const calculateMostAnswers = (data) =>
     return answers > acc ? answers : acc
   }, 0)
 
-const ResultsChart = ({ correct, answers, answersCount }) => {
+export const ResultsChart = ({ correct, answers, answersCount }) => {
   const VALUES = answers.reduce((acc, { answer }) => {
     return (acc[answer] = (acc[answer] || 0) + 1), acc
   }, {})
@@ -48,5 +48,3 @@ const ResultsChart = ({ correct, answers, answersCount }) => {
     </Flex>
   )
 }
-
-export default ResultsChart

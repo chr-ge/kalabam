@@ -9,7 +9,7 @@ import {
   useToast,
 } from '@chakra-ui/react'
 import { t, Trans } from '@lingui/macro'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 
 const Home = () => {
   const toast = useToast()

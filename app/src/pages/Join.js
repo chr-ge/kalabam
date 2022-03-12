@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useLocalStorage, deleteFromStorage } from '@rehooks/local-storage'
 import { Button, Heading, Input, VStack } from '@chakra-ui/react'
 import { t, Trans } from '@lingui/macro'
-import Layout from '../components/Layout'
 import { useLobbyContext } from '../contexts/LobbyContext'
+import { Layout } from '../components/Layout'
 
 const Join = () => {
   const navigate = useNavigate()

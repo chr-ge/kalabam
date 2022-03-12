@@ -9,7 +9,7 @@ const cors = initMiddleware(
   })
 )
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   await cors(req, res)
   const gameCode = req.query.gameCode
 
@@ -28,3 +28,5 @@ export default handler = async (req, res) => {
 
   res.end()
 }
+
+export default handler

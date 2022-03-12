@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
 import dayjs from 'dayjs'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 
 const Reports = ({ reports }) => {
   const router = useRouter()

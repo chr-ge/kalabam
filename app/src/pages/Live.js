@@ -20,7 +20,7 @@ import {
 import { ImCheckmark, ImCross } from 'react-icons/im'
 import { t, Trans } from '@lingui/macro'
 import { useLobbyContext } from '../contexts/LobbyContext'
-import GameFooter from '../components/Game/GameFooter'
+import { GameFooter } from '../components/Game/GameFooter'
 
 // answer options images
 import cylinder from '../images/cylinder.png'
@@ -28,12 +28,12 @@ import cube from '../images/cube.png'
 import pyramid from '../images/pyramid.png'
 import torus from '../images/torus.png'
 
-const CHOICES = [
+const CHOICES = Object.freeze([
   { color: 'yellow', image: cylinder, alt: 'cylinder' },
   { color: 'pink', image: cube, alt: 'cube' },
   { color: 'purple', image: pyramid, alt: 'pyramid' },
   { color: 'teal', image: torus, alt: 'torus' },
-]
+])
 
 const Live = () => {
   const navigate = useNavigate()

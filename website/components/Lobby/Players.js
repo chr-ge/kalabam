@@ -5,7 +5,7 @@ import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
 
 const COLORS = ['red', 'pink', 'yellow', 'blue', 'purple', 'teal', 'orange']
 
-const Players = () => {
+export const Players = () => {
   const { presenceChannel, players, addPlayer, removePlayer, setPlayerCount } =
     useLobbyContext()
 
@@ -52,5 +52,3 @@ const Players = () => {
     </Grid>
   )
 }
-
-export default Players

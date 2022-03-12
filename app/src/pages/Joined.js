@@ -9,7 +9,7 @@ import {
 import { Box, Center, Flex, Text, Tag } from '@chakra-ui/react'
 import { Trans } from '@lingui/macro'
 import { useLobbyContext } from '../contexts/LobbyContext'
-import GameFooter from '../components/Game/GameFooter'
+import { GameFooter } from '../components/Game/GameFooter'
 
 const Joined = () => {
   const navigate = useNavigate()

@@ -7,10 +7,10 @@ import { PusherProvider } from '@harelpls/use-pusher'
 import splitbee from '@splitbee/web'
 import { GameProvider } from '../contexts/Game/GameContext'
 import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
-import Fonts from '../components/Fonts'
+import { Fonts } from '../components/Fonts'
 import theme from '@kalabam/theme'
 
-const CrispWithNoSSR = dynamic(() => import('../components/Crisp'), {
+const CrispChat = dynamic(() => import('../components/Crisp'), {
   ssr: false,
 })
 
@@ -40,7 +40,7 @@ const App = ({ Component, pageProps }) => {
       <Provider session={pageProps.session}>
         <ChakraProvider theme={theme}>
           <Fonts />
-          <CrispWithNoSSR />
+          <CrispChat />
           <PusherProvider {...config}>
             <GameProvider>
               <LobbyProvider>

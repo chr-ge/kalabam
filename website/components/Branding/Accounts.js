@@ -2,7 +2,7 @@ import { Box, Circle, Heading, Icon, SimpleGrid, Text } from '@chakra-ui/react'
 import { FcGraduationCap, FcBusinessman, FcBusinesswoman } from 'react-icons/fc'
 import Tilt from 'react-parallax-tilt'
 
-const Accounts = () => (
+export const Accounts = () => (
   <Box as='section' mt='6'>
     <SimpleGrid
       columns={[1, 1, 3]}
@@ -95,5 +95,3 @@ const Accounts = () => (
     </SimpleGrid>
   </Box>
 )
-
-export default Accounts

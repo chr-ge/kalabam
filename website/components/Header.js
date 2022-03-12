@@ -34,7 +34,7 @@ const SkewLink = chakra(Link, {
   },
 })
 
-const Header = () => {
+export const Header = () => {
   const [session, loading] = useSession()
   const router = useRouter()
 
@@ -151,5 +151,3 @@ const Header = () => {
     </nav>
   )
 }
-
-export default Header

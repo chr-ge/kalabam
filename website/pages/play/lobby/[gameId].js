@@ -16,8 +16,8 @@ import { LockIcon, UnlockIcon } from '@chakra-ui/icons'
 import { FaRegUserCircle, FaPlayCircle } from 'react-icons/fa'
 import { useCreateLobby, useSaveLobby } from '../../../lib/api-hooks'
 import { formatGameCode } from '../../../utils/gameCode'
-import Layout from '../../../components/Layout'
-import Players from '../../../components/Lobby/Players'
+import { Layout } from '../../../components/Layout'
+import { Players } from '../../../components/Lobby/Players'
 import { useLobbyContext } from '../../../contexts/Lobby/LobbyContext'
 
 function Play({ gameId }) {

@@ -1,6 +1,6 @@
 import { Flex, AspectRatio } from '@chakra-ui/react'
 import { Accounts, EarlyAccess, Hero, HowItWorks } from '../components/Branding'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 
 const Index = () => {
   return (

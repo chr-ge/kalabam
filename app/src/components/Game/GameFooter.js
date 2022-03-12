@@ -2,7 +2,7 @@ import React from 'react'
 import { Flex, Tag, Text, Spacer } from '@chakra-ui/react'
 import { useLobbyContext } from '../../contexts/LobbyContext'
 
-const GameLayout = () => {
+export const GameFooter = () => {
   const { name } = useLobbyContext()
 
   return (
@@ -17,5 +17,3 @@ const GameLayout = () => {
     </Flex>
   )
 }
-
-export default GameLayout

@@ -1,5 +1,5 @@
 import { Box, Container, Heading, Link, Stack, Text } from '@chakra-ui/react'
-import Layout from '../components/Layout'
+import { Layout } from '../components/Layout'
 
 const Tos = () => (
   <Layout title='Terms of Service | Kalabam'>

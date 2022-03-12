@@ -2,7 +2,7 @@ import NextImage from 'next/image'
 import { Box, Flex, Icon, Spacer, Text } from '@chakra-ui/react'
 import { ImCheckmark, ImCross } from 'react-icons/im'
 
-const Answer = ({ answer, color, image, showResults }) => {
+export const Answer = ({ answer, color, image, showResults }) => {
   const opacity = showResults && !answer.isCorrect && 0.5
 
   return (
@@ -45,5 +45,3 @@ const Answer = ({ answer, color, image, showResults }) => {
     </Flex>
   )
 }
-
-export default Answer

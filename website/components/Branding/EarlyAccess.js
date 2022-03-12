@@ -17,7 +17,7 @@ import { HiOutlineMail, HiCheckCircle } from 'react-icons/hi'
 import { useSaveEmail } from '../../lib/api-hooks'
 import { Link } from '../Link'
 
-const EarlyAccess = () => {
+export const EarlyAccess = () => {
   const [email, setEmail] = useState('')
   const [saveEmail, { isLoading, isError, isSuccess }] = useSaveEmail()
 
@@ -106,5 +106,3 @@ const EarlyAccess = () => {
     </Box>
   )
 }
-
-export default EarlyAccess

@@ -6,7 +6,7 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { messages } from './locales/en/messages'
 import { LobbyProvider } from './contexts/LobbyContext'
-import FontFace from './components/FontFace'
+import { FontFace } from './components/FontFace'
 import theme from '@kalabam/theme'
 
 // Pages
@@ -26,7 +26,7 @@ const config = {
 i18n.load('en', messages)
 i18n.activate('en')
 
-function App() {
+const App = () => {
   return (
     <>
       <ChakraProvider theme={theme}>

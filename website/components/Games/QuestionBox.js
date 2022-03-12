@@ -13,7 +13,7 @@ import { useGameContext } from '../../contexts/Game/GameContext'
 
 const TOAST_ID = 'cannot-delete'
 
-const QuestionBox = ({ question, index }) => {
+export const QuestionBox = ({ question, index }) => {
   const { questions, activeQuestion, setActiveQuestion, deleteQuestion } =
     useGameContext()
   const toast = useToast()
@@ -88,5 +88,3 @@ const QuestionBox = ({ question, index }) => {
     </Draggable>
   )
 }
-
-export default QuestionBox

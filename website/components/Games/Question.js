@@ -17,7 +17,7 @@ import { useGameContext } from '../../contexts/Game/GameContext'
 
 const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
 
-const Question = ({ question }) => {
+export const Question = ({ question }) => {
   const { updateQuestion } = useGameContext()
   const [q, setQ] = useState(question)
 
@@ -102,5 +102,3 @@ const Question = ({ question }) => {
     </Box>
   )
 }
-
-export default Question

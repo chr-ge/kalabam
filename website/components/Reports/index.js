@@ -1,2 +1,2 @@
-export { default as ReportButtons } from './ReportButtons'
-export { default as ReportRow } from './ReportRow'
+export * from './ReportButtons'
+export * from './ReportRow'

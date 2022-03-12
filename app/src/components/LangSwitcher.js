@@ -29,7 +29,7 @@ const dynamicActivate = async (locale) => {
   i18n.activate(locale)
 }
 
-const LangSwitcher = () => {
+export const LangSwitcher = () => {
   const { i18n } = useLingui()
 
   return (
@@ -54,5 +54,3 @@ const LangSwitcher = () => {
     </Menu>
   )
 }
-
-export default LangSwitcher
