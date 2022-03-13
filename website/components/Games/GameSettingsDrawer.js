@@ -137,10 +137,10 @@ export const GameSettingsDrawer = ({ isOpen, onOpen, onClose }) => {
                     value={settings.visibility}
                   >
                     <Stack direction='row' spacing={4}>
-                      <Radio colorScheme='teal' value='0'>
+                      <Radio colorScheme='purple' value='0'>
                         Private
                       </Radio>
-                      <Radio colorScheme='purple' value='1'>
+                      <Radio colorScheme='teal' value='1'>
                         Public
                       </Radio>
                     </Stack>
