@@ -35,7 +35,7 @@ const handler = async (req, res) => {
       createdBy: new ObjectId(user.id),
     })
 
-    if (!result.acknowledged) {
+    if (!result.insertedId) {
       return res
         .status(500)
         .json({ success: false, message: 'Unable to create game' })

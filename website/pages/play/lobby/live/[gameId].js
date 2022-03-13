@@ -9,14 +9,14 @@ import { QuestionBlock } from '../../../../components/Lobby'
 
 const Question = () => {
   const router = useRouter()
-  const [session, loading] = useSession()
+  const { session, state } = useSession()
   const { data } = useGameById(router.query.gameId)
   const { questionIndex } = useLobbyContext()
   const [count] = useCountDown(10)
 
-  if (!loading && !session) router.push('/auth/signin')
+  if (!state === 'loading' && !session) router.push('/auth/signin')
 
-  if (typeof window !== 'undefined' && loading) {
+  if (typeof window !== 'undefined' && state === 'loading') {
     return (
       <Center h='100vh' bg='green.100'>
         <Box align='center'>

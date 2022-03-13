@@ -21,13 +21,13 @@ const handler = async (req, res) => {
     }
 
     const gameCode = generateGameCode()
-    const { result } = await createLobby({
+    const result = await createLobby({
       gameCode,
       gameId: new ObjectId(gameId),
       createdBy: new ObjectId(user.id),
     })
 
-    if (!result.ok) {
+    if (!result.insertedId) {
       res
         .status(500)
         .json({ success: false, message: 'Unable to create lobby' })

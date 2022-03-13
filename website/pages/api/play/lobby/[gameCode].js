@@ -48,7 +48,7 @@ const handler = async (req, res) => {
       ? await addQuestionToLobby(gameCode, updates.question)
       : await updateLobbyByGameCode(gameCode, updates)
 
-    return res.status(200).json({ success: result.ok === 1 })
+    return res.status(200).json({ success: Boolean(result) })
   }
 
   res.end()

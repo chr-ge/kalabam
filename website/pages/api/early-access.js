@@ -15,7 +15,7 @@ const handler = async (req, res) => {
       userAgent: req.headers['user-agent'],
     })
 
-    if (!result.ok) return res.status(500).json({ success: false })
+    if (!result.insertedId) return res.status(500).json({ success: false })
 
     return res.status(200).json({ success: true })
   }

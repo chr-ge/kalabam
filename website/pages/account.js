@@ -2,7 +2,7 @@ import { getSession } from 'next-auth/react'
 import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react'
 import { Layout } from '../components/Layout'
 
-const Account = ({ session }) => {
+const Account = ({ user }) => {
   return (
     <Layout title='My Account | Kalabam' bg='gray.100'>
       <Container mt='6'>
@@ -10,21 +10,21 @@ const Account = ({ session }) => {
           My Account
         </Heading>
         <Flex direction='column'>
-          <Box p='2' bg='white' rounded='md' shadow='md'>
+          <Box p='2' bg='white' rounded='sm' shadow='md'>
             <Box mb='6'>
-              <Text fontWeight='bold' fontSize='xl' bg='yellow.300' pl='4'>
+              <Text fontWeight='bold' fontSize='xl' bg='teal.100' pl='4'>
                 Name
               </Text>
               <Text mt='2' pl='4' fontSize='lg'>
-                {session.user.name}
+                {user.name}
               </Text>
             </Box>
             <Box mb='4'>
-              <Text fontWeight='bold' fontSize='xl' bg='orange.300' pl='4'>
+              <Text fontWeight='bold' fontSize='xl' bg='teal.100' pl='4'>
                 Email
               </Text>
               <Text mt='2' pl='4' fontSize='lg'>
-                {session.user.email}
+                {user.email}
               </Text>
             </Box>
           </Box>
@@ -34,7 +34,7 @@ const Account = ({ session }) => {
               border='1px'
               bgColor='gray.200'
               borderColor='gray.500'
-              rounded='md'
+              rounded='sm'
               shadow='md'
               justify='space-between'
               align='center'
@@ -71,7 +71,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      session,
+      user: session.user,
     },
   }
 }
