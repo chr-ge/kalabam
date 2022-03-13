@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { Provider } from 'next-auth/client'
+import { SessionProvider } from 'next-auth/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
 import splitbee from '@splitbee/web'
@@ -21,7 +21,7 @@ const config = {
   authEndpoint: '/api/pusher/auth',
 }
 
-const App = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps: { session, ...pageProps } }) => {
   useEffect(() => {
     splitbee.init({
       scriptUrl: '/bee.js',
@@ -37,7 +37,7 @@ const App = ({ Component, pageProps }) => {
         <link rel='icon' type='image/png' href='/favicon.png' />
         <meta name='theme-color' content='#2A4365' />
       </Head>
-      <Provider session={pageProps.session}>
+      <SessionProvider session={session}>
         <ChakraProvider theme={theme}>
           <Fonts />
           <CrispChat />
@@ -49,7 +49,7 @@ const App = ({ Component, pageProps }) => {
             </GameProvider>
           </PusherProvider>
         </ChakraProvider>
-      </Provider>
+      </SessionProvider>
     </>
   )
 }

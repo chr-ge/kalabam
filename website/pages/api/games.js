@@ -26,7 +26,7 @@ const handler = async (req, res) => {
         .json({ success: false, message: 'Malformed content' })
     }
 
-    const { result } = await createGame({
+    const result = await createGame({
       title,
       description,
       visibility,
@@ -35,7 +35,7 @@ const handler = async (req, res) => {
       createdBy: new ObjectId(user.id),
     })
 
-    if (!result.ok) {
+    if (!result.acknowledged) {
       return res
         .status(500)
         .json({ success: false, message: 'Unable to create game' })

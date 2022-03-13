@@ -1,19 +1,20 @@
-import { getSession } from 'next-auth/client'
-import { connectToDatabase } from '../db/mongodb'
+import { getSession } from 'next-auth/react'
 import { ObjectId } from 'mongodb'
+import mongodb from '../db/mongodb'
 
 export async function getUserFromSession({ req }) {
   const session = await getSession({ req })
 
   if (!session) {
-    throw new Error()
+    throw new Error('No session')
   }
 
   return getUserFromId(session.user.id)
 }
 
 export async function getUserFromId(userId) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
 
   const user = await db
     .collection('users')

@@ -1,7 +1,8 @@
-import { connectToDatabase } from '../db/mongodb'
+import mongodb from '../db/mongodb'
 
 export const getLobbyByGameCode = async (gameCode) => {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   return await db
     .collection('lobbies')
     .findOne({ gameCode, ended: { $exists: false } })
@@ -15,14 +16,16 @@ export const createLobby = async (newLobby) => {
     created: new Date(),
   }
 
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('lobbies')
 
   return await collection.insertOne(lobby)
 }
 
 export async function updateLobbyByGameCode(gameCode, updates) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('lobbies')
 
   const { changes, ...newUpdates } = updates
@@ -38,7 +41,8 @@ export async function updateLobbyByGameCode(gameCode, updates) {
 }
 
 export async function addQuestionToLobby(gameCode, question) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('lobbies')
 
   return await collection.findOneAndUpdate(
@@ -52,9 +56,10 @@ export async function addQuestionToLobby(gameCode, question) {
 }
 
 export async function closeLobby(gameCode) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('lobbies')
 
   const response = await collection.deleteOne({ gameCode })
-  return response.result.ok === 1
+  return response.deletedCount === 1
 }

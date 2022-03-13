@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { providers, signIn, getSession } from 'next-auth/client'
+import { signIn, getProviders, getSession } from 'next-auth/react'
 import {
   Alert,
   AlertIcon,
@@ -104,9 +104,11 @@ export async function getServerSideProps(context) {
     }
   }
 
+  const providers = await getProviders()
+
   return {
     props: {
-      providers: await providers(context),
+      providers,
       error: context.query.error || null,
     },
   }

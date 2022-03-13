@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { getSession } from 'next-auth/client'
+import { getSession } from 'next-auth/react'
 import { Button, Flex, Stack } from '@chakra-ui/react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import {

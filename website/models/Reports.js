@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb'
-import { connectToDatabase } from '../db/mongodb'
+import mongodb from '../db/mongodb'
 
 const populateCreatedByAggregateStages = [
   {
@@ -23,7 +23,8 @@ const populateCreatedByAggregateStages = [
 ]
 
 export async function getUserReports(userId, limit = false) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('lobbies')
 
   const controlResults = limit
@@ -52,7 +53,8 @@ export async function getUserReports(userId, limit = false) {
 }
 
 export async function getReportById(lobbyId) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('lobbies')
 
   const report = await collection
@@ -70,9 +72,10 @@ export async function getReportById(lobbyId) {
 }
 
 export async function deleteReport(lobbyId) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('lobbies')
 
   const response = await collection.deleteOne({ _id: new ObjectId(lobbyId) })
-  return response.result.ok === 1
+  return response.deletedCount === 1
 }

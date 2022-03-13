@@ -1,4 +1,4 @@
-import { getSession } from 'next-auth/client'
+import { getSession } from 'next-auth/react'
 import { Box, Flex, Heading, Skeleton, Stack, Text } from '@chakra-ui/react'
 import { useGames, useReports } from '../lib/api-hooks'
 import { Layout } from '../components/Layout'

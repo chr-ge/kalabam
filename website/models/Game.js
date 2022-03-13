@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb'
-import { connectToDatabase } from '../db/mongodb'
+import mongodb from '../db/mongodb'
 
 const populateCreatedByAggregateStages = [
   {
@@ -26,7 +26,8 @@ const populateCreatedByAggregateStages = [
 ]
 
 export async function getPublicGames(sortBy) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('games')
 
   return await collection
@@ -36,7 +37,8 @@ export async function getPublicGames(sortBy) {
 }
 
 export async function getGamesCreatedByUser(userId) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('games')
 
   const games = await collection
@@ -55,7 +57,8 @@ export async function getGamesCreatedByUser(userId) {
 }
 
 export async function getGameById(gameId) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('games')
 
   const game = await collection
@@ -81,24 +84,27 @@ export async function createGame(newGame) {
     updated: dateNow,
   }
 
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('games')
 
   return await collection.insertOne(game)
 }
 
 export async function deleteGame(id) {
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('games')
 
   const response = await collection.deleteOne({ _id: new ObjectId(id) })
-  return response.result.ok === 1
+  return response.deletedCount === 1
 }
 
 export async function updateGameById(gameId, updates) {
   const gameObjectId = new ObjectId(gameId)
 
-  const { db } = await connectToDatabase()
+  const client = await mongodb
+  const db = client.db()
   const collection = db.collection('games')
 
   const { changes, ...newUpdates } = updates

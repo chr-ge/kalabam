@@ -1,4 +1,4 @@
-import { signin, signout, useSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import {
   chakra,
@@ -35,8 +35,9 @@ const SkewLink = chakra(Link, {
 })
 
 export const Header = () => {
-  const [session, loading] = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
+  const isLoading = status === 'loading'
 
   return (
     <nav>
@@ -80,10 +81,10 @@ export const Header = () => {
               color='white'
               aria-label='Sign In'
               size='sm'
-              isLoading={loading}
+              isLoading={isLoading}
               onClick={(e) => {
                 e.preventDefault()
-                signin()
+                signIn()
               }}
             >
               Sign in
@@ -97,7 +98,7 @@ export const Header = () => {
                 color='white'
                 aria-label='Sign In'
                 size='sm'
-                isLoading={loading}
+                isLoading={isLoading}
                 onClick={() => router.push('/games/create')}
               >
                 Create
@@ -130,7 +131,7 @@ export const Header = () => {
                   <MenuItem
                     onClick={(e) => {
                       e.preventDefault()
-                      signout()
+                      signOut()
                     }}
                   >
                     Logout
