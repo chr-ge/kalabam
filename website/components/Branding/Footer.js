@@ -1,21 +1,24 @@
+import NextLink from 'next/link'
 import {
   Box,
+  chakra,
   Container,
   Flex,
   Heading,
+  Link,
   Text,
   Spacer,
-  chakra,
 } from '@chakra-ui/react'
-import { Link } from '../Link'
 
 export const Footer = () => (
   <Box as='footer' bg='gray.600' color='white'>
     <Container py='12' maxW='3xl'>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Flex direction='column'>
-          <Heading mb='1'>Kalabam</Heading>
-          <Text flex={1}>Montreal, Canada 🍁</Text>
+          <Heading as='p' mb='1' cursor='default'>
+            Kalabam
+          </Heading>
+          <Text flex='1'>Montreal, Canada 🍁</Text>
           <Text>© {new Date().getFullYear()} Kalabam</Text>
         </Flex>
         <Spacer />
@@ -54,8 +57,12 @@ export const Footer = () => (
           >
             Get Support
           </chakra.a>
-          <Link href='/tos'>Terms of Service</Link>
-          <Link href='/privacy'>Privacy Policy</Link>
+          <NextLink href='/tos' passHref>
+            <Link>Terms of Service</Link>
+          </NextLink>
+          <NextLink href='/privacy' passHref>
+            <Link>Privacy Policy</Link>
+          </NextLink>
         </Flex>
       </Flex>
     </Container>

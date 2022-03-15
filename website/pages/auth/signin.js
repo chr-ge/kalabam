@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { signIn, getProviders, getSession } from 'next-auth/react'
+import NextLink from 'next/link'
 import {
   Alert,
   AlertIcon,
@@ -9,13 +10,13 @@ import {
   Divider,
   Heading,
   Flex,
-  Stack,
   Input,
+  Link,
+  Stack,
   Text,
 } from '@chakra-ui/react'
 import { FaGoogle, FaApple } from 'react-icons/fa'
 import { Layout } from '../../components/Layout'
-import { Link } from '../../components/Link'
 
 function SignIn({ providers, error }) {
   const [email, setEmail] = useState('')
@@ -77,13 +78,13 @@ function SignIn({ providers, error }) {
           </Button>
           <Text pt='3' fontSize='xs' align='center'>
             I accept the site{' '}
-            <Link href='/tos' variant='kalabam'>
-              Terms of Service
-            </Link>{' '}
+            <NextLink href='/tos' passHref>
+              <Link variant='kalabam'>Terms of Service</Link>
+            </NextLink>{' '}
             and agree to the{' '}
-            <Link href='/privacy' variant='kalabam'>
-              Privacy Policy
-            </Link>
+            <NextLink href='/privacy' passHref>
+              <Link variant='kalabam'>Privacy Policy</Link>
+            </NextLink>
             .
           </Text>
         </Stack>

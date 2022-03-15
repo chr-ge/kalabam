@@ -1,5 +1,6 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import NextLink from 'next/link'
 import {
   chakra,
   Avatar,
@@ -7,6 +8,7 @@ import {
   Button,
   Flex,
   Heading,
+  Link,
   Menu,
   MenuButton,
   MenuList,
@@ -14,7 +16,6 @@ import {
   MenuItem,
   Spacer,
 } from '@chakra-ui/react'
-import { Link } from './Link'
 
 const SkewLink = chakra(Link, {
   baseStyle: {
@@ -29,7 +30,7 @@ const SkewLink = chakra(Link, {
     _hover: {
       borderLeftWidth: 'thick',
       borderColor: 'teal.500',
-      transition: '0.1s',
+      transition: 'border 0.1s ease',
     },
   },
 })
@@ -57,21 +58,27 @@ export const Header = () => {
         <Spacer />
         {session && (
           <>
-            <SkewLink href='/dashboard'>Dashboard</SkewLink>
-            <SkewLink href='/reports'>Reports</SkewLink>
-            <SkewLink href='/discover'>Discover</SkewLink>
+            <NextLink href='/dashboard' passHref>
+              <SkewLink>Dashboard</SkewLink>
+            </NextLink>
+            <NextLink href='/reports' passHref>
+              <SkewLink>Reports</SkewLink>
+            </NextLink>
+            <NextLink href='/discover' passHref>
+              <SkewLink>Discover</SkewLink>
+            </NextLink>
             <Spacer />
           </>
         )}
         <Box>
           <Button
-            as={Link}
+            as='a'
+            href='https://play.kalabam.com'
+            aria-label='Play a Game'
             colorScheme='teal'
             variant='outline'
             size='sm'
-            marginRight='2'
-            textDecoration='none !important'
-            href='https://play.kalabam.com'
+            mr='2'
           >
             Play
           </Button>

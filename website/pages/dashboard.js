@@ -1,10 +1,18 @@
 import { getSession } from 'next-auth/react'
-import { Box, Flex, Heading, Skeleton, Stack, Text } from '@chakra-ui/react'
+import NextLink from 'next/link'
+import {
+  Box,
+  Flex,
+  Heading,
+  Link,
+  Skeleton,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 import { useGames, useReports } from '../lib/api-hooks'
 import { Layout } from '../components/Layout'
 import { GameRow, NoGames } from '../components/Games'
 import { ReportRow } from '../components/Reports'
-import { Link } from '../components/Link'
 
 const news = [
   {
@@ -79,14 +87,17 @@ const Dashboard = () => {
                   {reportsData[0].reports.map((r) => (
                     <ReportRow key={r._id} report={r} />
                   ))}
-                  <Link
-                    href='/reports'
-                    color='gray.600'
-                    textAlign='center'
-                    _focus={{ boxShadow: '0 0 0 3px rgba(159, 122, 234, 0.6)' }}
-                  >
-                    See all ({reportsData[0].count[0].count})
-                  </Link>
+                  <NextLink href='/reports' passHref>
+                    <Link
+                      color='gray.600'
+                      textAlign='center'
+                      _focus={{
+                        boxShadow: '0 0 0 3px rgba(159, 122, 234, 0.6)',
+                      }}
+                    >
+                      See all ({reportsData[0].count[0].count})
+                    </Link>
+                  </NextLink>
                 </>
               ) : (
                 <Box

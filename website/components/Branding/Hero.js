@@ -1,8 +1,8 @@
 import NextImage from 'next/image'
+import NextLink from 'next/link'
 import { Box, Flex, Heading, Button, chakra } from '@chakra-ui/react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { motion } from 'framer-motion'
-import { Link } from '../Link'
 
 const HeroHeading = motion(Heading)
 
@@ -37,19 +37,19 @@ export const Hero = () => (
             </chakra.span>
             .
           </HeroHeading>
-          <Button
-            as={Link}
-            href='/auth/signin'
-            mb={{ base: '4', md: '0' }}
-            w={{ base: '50%', md: '33%' }}
-            textDecoration='none !important'
-            aria-label='Sign up free'
-            size='lg'
-            colorScheme='pink'
-            rightIcon={<ImArrowRight2 />}
-          >
-            Sign up free
-          </Button>
+          <NextLink href='/auth/signin' passHref>
+            <Button
+              as='a'
+              mb={{ base: '4', md: '0' }}
+              w={{ base: '50%', md: '33%' }}
+              aria-label='Sign up free'
+              size='lg'
+              colorScheme='pink'
+              rightIcon={<ImArrowRight2 />}
+            >
+              Sign up free
+            </Button>
+          </NextLink>
         </Flex>
         <Flex
           w={{ md: '50%' }}

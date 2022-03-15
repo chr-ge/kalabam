@@ -14,8 +14,8 @@ import {
   Spacer,
   useToast,
 } from '@chakra-ui/react'
-import { HiDotsVertical } from 'react-icons/hi'
 import { InfoOutlineIcon, EditIcon, DeleteIcon } from '@chakra-ui/icons'
+import { HiDotsVertical } from 'react-icons/hi'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useDeleteGame } from '../../lib/api-hooks'

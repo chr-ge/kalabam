@@ -1,6 +1,6 @@
+import NextLink from 'next/link'
 import { Button, Icon, VStack, Text } from '@chakra-ui/react'
 import { GrDocumentMissing } from 'react-icons/gr'
-import { Link } from '../Link'
 
 export const NoGames = () => (
   <VStack mt='2' py='8' border='1px' borderColor='blue.100' spacing='6'>
@@ -11,15 +11,10 @@ export const NoGames = () => (
         Create a Game to Start Playing.
       </Text>
     </VStack>
-    <Button
-      as={Link}
-      px='6'
-      aria-label='Create a Game'
-      colorScheme='pink'
-      textDecoration='none !important'
-      href='/games/create'
-    >
-      Create a Game
-    </Button>
+    <NextLink href='/games/create' passHref>
+      <Button as='a' px='6' aria-label='Create a Game' colorScheme='pink'>
+        Create a Game
+      </Button>
+    </NextLink>
   </VStack>
 )

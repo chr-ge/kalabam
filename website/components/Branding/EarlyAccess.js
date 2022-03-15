@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import NextLink from 'next/link'
 import {
   Box,
   Button,
@@ -10,12 +11,12 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Text,
+  Link,
   Spacer,
+  Text,
 } from '@chakra-ui/react'
 import { HiOutlineMail, HiCheckCircle } from 'react-icons/hi'
 import { useSaveEmail } from '../../lib/api-hooks'
-import { Link } from '../Link'
 
 export const EarlyAccess = () => {
   const [email, setEmail] = useState('')
@@ -82,11 +83,12 @@ export const EarlyAccess = () => {
             </Button>
           </InputGroup>
           <Text mr='1' fontSize='xs' color='gray.100'>
-            We care about protecting your data. Here's our
-            <Link href='/privacy' fontSize='xs' color='purple.200'>
-              {' '}
-              Privacy Policy.
-            </Link>
+            We care about protecting your data. Here's our{' '}
+            <NextLink href='/privacy' passHref>
+              <Link fontSize='xs' color='purple.200'>
+                Privacy Policy.
+              </Link>
+            </NextLink>
           </Text>
         </Box>
         <Spacer />
