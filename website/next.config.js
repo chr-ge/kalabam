@@ -10,6 +10,7 @@ module.exports = {
       'images.unsplash.com'
     ]
   },
+  swcMinify: true,
   rewrites: async () => [
     {
       source: '/bee.js',
