@@ -1,6 +1,7 @@
 {
   "editor.formatOnSave": true,
   "eslint.workingDirectories": ["./app", "./website"],
+  "prettier.prettierPath": "./node_modules/prettier",
   "cSpell.words": [
     "Dropzone",
     "kalabam"
