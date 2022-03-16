@@ -13,10 +13,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest",
+    "test": "jest --maxWorkers=1",
     "test:coverage": "jest --coverage",
-    "lint": "next lint",
-    "lint-fix": "next lint --fix"
+    "lint": "eslint . --ext .ts,.tsx,.js",
+    "lint-fix": "yarn lint --fix"
   },
   "dependencies": {
     "@chakra-ui/icons": "1.1.7",

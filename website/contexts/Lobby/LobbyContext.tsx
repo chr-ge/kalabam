@@ -4,12 +4,12 @@ import {
   useClientTrigger,
   type usePresenceChannelValue,
 } from '@harelpls/use-pusher'
-import LobbyReducer from './LobbyReducer'
 import type { LobbyBase, Player } from '../../utils/types/lobby'
+import LobbyReducer from './LobbyReducer'
 
 type LobbyContextType = LobbyBase & {
   presenceChannel: usePresenceChannelValue
-  trigger: (eventName: string, data: {}) => void
+  trigger: (eventName: string, data: Record<string, unknown>) => void
   setGameCode: (gameCode: string) => void
   addPlayer: (player: Player) => void
   removePlayer: (memberId: string) => void

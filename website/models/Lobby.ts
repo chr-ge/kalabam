@@ -1,4 +1,3 @@
-import { PushOperator } from 'mongodb'
 import mongodb from '../db/mongodb'
 import type { Question } from '../utils/types'
 

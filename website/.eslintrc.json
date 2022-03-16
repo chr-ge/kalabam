@@ -16,7 +16,6 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
     "import/order": "error",
@@ -24,7 +23,13 @@
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/no-unescaped-entities": "warn",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
+    ]
   },
   "settings": {
     "react": {

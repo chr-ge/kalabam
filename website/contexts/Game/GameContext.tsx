@@ -1,7 +1,7 @@
 import { useReducer, useContext, createContext } from 'react'
 import uniqid from 'uniqid'
-import GameReducer from './GameReducer'
 import type { GameBase, Question } from '../../utils/types'
+import GameReducer from './GameReducer'
 
 export type InitialGameState = GameBase & {
   _id?: string

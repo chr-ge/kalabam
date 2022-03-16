@@ -1,5 +1,5 @@
-/** 
- * @type {import('ts-jest/dist/types').InitialOptionsTsJest} 
+/**
+ * @type {import('ts-jest/dist/types').InitialOptionsTsJest}
  * */
 module.exports = {
   preset: 'ts-jest',
@@ -7,4 +7,9 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   coveragePathIgnorePatterns: ['/node_modules/', './next/'],
   testMatch: ['**/*.(test|spec).(js|ts|tsx)'],
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
 }
