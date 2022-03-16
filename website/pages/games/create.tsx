@@ -1,7 +1,11 @@
 import type { NextPage } from 'next'
 import { getSession } from 'next-auth/react'
 import { Button, Flex, Stack } from '@chakra-ui/react'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import {
+  DragDropContext,
+  Droppable,
+  type DropResult,
+} from 'react-beautiful-dnd'
 import { Layout, Question, QuestionBox } from '../../components/Games'
 import { useGameContext } from '../../contexts/Game/GameContext'
 import { reorder } from '../../utils/sort'
@@ -10,7 +14,7 @@ const Create: NextPage = () => {
   const { questions, activeQuestion, addQuestion, reorderQuestions } =
     useGameContext()
 
-  const onDragEnd = (result): void => {
+  const onDragEnd = (result: DropResult): void => {
     if (!result.destination) return
     if (result.destination.index === result.source.index) return
 
@@ -35,16 +39,20 @@ const Create: NextPage = () => {
             <Droppable droppableId='questions'>
               {(provided) => (
                 <Stack
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
                   w={{ base: '100%', md: '48', xl: '52' }}
                   direction={{ base: 'row', md: 'column' }}
                   align='stretch'
                   overflowY='auto'
                   maxH='calc(100vh - 8rem)'
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
                 >
-                  {questions.map((q, i) => (
-                    <QuestionBox key={q.id} index={i} question={q} />
+                  {questions.map((question, i) => (
+                    <QuestionBox
+                      key={question.id}
+                      index={i}
+                      question={question}
+                    />
                   ))}
                   {provided.placeholder}
                 </Stack>

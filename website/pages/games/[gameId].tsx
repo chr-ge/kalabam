@@ -80,8 +80,8 @@ const Game: NextPage<GameProps> = ({ game, userId }) => {
           </Flex>
         </Box>
         <Stack w='100%' p='4' bg='gray.100' spacing={4}>
-          {game.questions.map((q, i) => (
-            <QuestionRow key={i} question={q} index={i + 1} />
+          {game.questions.map((question, i) => (
+            <QuestionRow key={i} question={question} index={i + 1} />
           ))}
         </Stack>
       </Flex>
