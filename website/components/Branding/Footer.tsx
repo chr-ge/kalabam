@@ -24,15 +24,29 @@ export const Footer: FC = () => (
         </Flex>
         <Spacer />
         <Flex direction='column'>
-          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>
+          <Text
+            mb='2'
+            mt={{ base: '4', sm: '0' }}
+            fontWeight='bold'
+            color='pink.200'
+            letterSpacing='wide'
+          >
             Company
           </Text>
-          <Link href='/about'>About Us</Link>
-          <Link href='/team'>Team</Link>
+          <Link href='https://chr-ge.com/?ref=kalabam.com' isExternal>
+            About Us
+          </Link>
+          <Link href='/'>Team</Link>
         </Flex>
         <Spacer />
         <Flex direction='column'>
-          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>
+          <Text
+            mb='2'
+            mt={{ base: '4', sm: '0' }}
+            fontWeight='bold'
+            color='pink.200'
+            letterSpacing='wide'
+          >
             Community
           </Text>
           <Link href='https://www.reddit.com' isExternal>
@@ -44,7 +58,13 @@ export const Footer: FC = () => (
         </Flex>
         <Spacer />
         <Flex direction='column'>
-          <Text mb='2' mt={{ base: '4', sm: '0' }} fontWeight='bold'>
+          <Text
+            mb='2'
+            mt={{ base: '4', sm: '0' }}
+            fontWeight='bold'
+            color='pink.200'
+            letterSpacing='wide'
+          >
             Help
           </Text>
           <Link href='mailto:hello@kalabam.com'>Contact</Link>
