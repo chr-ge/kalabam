@@ -13,16 +13,19 @@ export type Question = {
   image?: string
 }
 
-export type Game = {
-  _id: string
+export type GameBase = {
   title: string
   description: string
+  visibility: '1' | '0'
+  image: { src: string; alt: string }
   questions: Question[]
+}
+
+export type Game = GameBase & {
+  _id: string
   createdBy: string
   created: string
   updated: string
-  visibility: '1' | '0'
-  image: { src: string; alt: string }
   featured: number
   questionCount?: number
 }

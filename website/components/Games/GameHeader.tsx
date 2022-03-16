@@ -6,7 +6,7 @@ import { useAddGame, useEditGame } from '../../lib/api-hooks'
 import { GameSettingsDrawer } from './GameSettingsDrawer'
 
 interface GameHeaderProps {
-  mode: string
+  mode: 'create' | 'edit'
 }
 
 export const GameHeader: FC<GameHeaderProps> = ({ mode }) => {
@@ -46,13 +46,13 @@ export const GameHeader: FC<GameHeaderProps> = ({ mode }) => {
   return (
     <nav>
       <Flex
-        py='1'
-        px='4'
         align='center'
         justify='space-between'
         backgroundColor='gray.200'
         borderBottomColor='gray.300'
         borderBottomWidth='thick'
+        py='1'
+        px='4'
       >
         <Heading variant='logo'>Kalabam</Heading>
         <GameSettingsDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} />

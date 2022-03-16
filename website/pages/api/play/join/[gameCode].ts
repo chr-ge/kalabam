@@ -12,7 +12,7 @@ const cors = initMiddleware(
 
 const handler: NextApiHandler = async (req, res) => {
   await cors(req, res)
-  const gameCode = req.query.gameCode
+  const gameCode = req.query.gameCode as string
 
   if (req.method === 'GET') {
     const lobby = await getLobbyByGameCode(gameCode)

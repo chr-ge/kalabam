@@ -15,7 +15,7 @@ import {
 import { Layout } from '../../components/Layout'
 import { QuestionRow } from '../../components/Games'
 import { formatDateTime } from '../../utils/format'
-import { Game as GameType } from '../../utils/types'
+import type { Game as GameType } from '../../utils/types'
 
 interface GameProps {
   game: GameType & { user: any }
@@ -54,8 +54,8 @@ const Game: NextPage<GameProps> = ({ game, userId }) => {
             </Button>
             {userId === game.createdBy && (
               <Button
-                ml='2'
                 aria-label='Edit Game'
+                ml='2'
                 colorScheme='purple'
                 onClick={() => router.push(`/games/${game._id}/edit`)}
               >
@@ -92,7 +92,7 @@ const Game: NextPage<GameProps> = ({ game, userId }) => {
 export const getServerSideProps: GetServerSideProps<GameProps> = async (
   context
 ) => {
-  const game = await getGameById(context.query.gameId)
+  const game = await getGameById(context.query.gameId as string)
   if (!game) return { notFound: true }
   const session = await getSession(context)
 

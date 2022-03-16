@@ -1,7 +1,7 @@
-import { ObjectId } from 'mongodb'
+import { ObjectId, type Document } from 'mongodb'
 import mongodb from '../db/mongodb'
 
-const populateCreatedByAggregateStages = [
+const populateCreatedByAggregateStages: Document[] = [
   {
     $lookup: {
       from: 'games',
@@ -22,7 +22,7 @@ const populateCreatedByAggregateStages = [
   },
 ]
 
-export async function getUserReports(userId, limit = false) {
+export async function getUserReports(userId: string, limit = false) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('lobbies')
@@ -52,7 +52,7 @@ export async function getUserReports(userId, limit = false) {
   return reports
 }
 
-export async function getReportById(lobbyId) {
+export async function getReportById(lobbyId: string) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('lobbies')
@@ -71,7 +71,7 @@ export async function getReportById(lobbyId) {
   return report[0]
 }
 
-export async function deleteReport(lobbyId) {
+export async function deleteReport(lobbyId: string) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('lobbies')

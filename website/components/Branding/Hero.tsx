@@ -2,8 +2,8 @@ import type { FC } from 'react'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 import { Box, Flex, Heading, Button, chakra } from '@chakra-ui/react'
-import { ImArrowRight2 } from 'react-icons/im'
 import { motion } from 'framer-motion'
+import { ImArrowRight2 } from 'react-icons/im'
 
 const HeroHeading = motion(Heading)
 
@@ -60,10 +60,11 @@ export const Hero: FC = () => (
           pos='relative'
         >
           <NextImage
-            alt='Presentation'
             src='/images/presentation.svg'
+            alt='Presentation'
             layout='fill'
             objectFit='contain'
+            draggable='false'
           />
         </Flex>
       </Flex>

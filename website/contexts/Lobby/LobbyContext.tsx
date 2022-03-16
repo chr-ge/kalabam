@@ -1,15 +1,33 @@
 import { useReducer, useContext, createContext } from 'react'
-import { usePresenceChannel, useClientTrigger } from '@harelpls/use-pusher'
+import {
+  usePresenceChannel,
+  useClientTrigger,
+  type usePresenceChannelValue,
+} from '@harelpls/use-pusher'
 import LobbyReducer from './LobbyReducer'
+import type { LobbyBase, Player } from '../../utils/types/lobby'
 
-const initialState = {
+type LobbyContextType = LobbyBase & {
+  presenceChannel: usePresenceChannelValue
+  trigger: (eventName: string, data: {}) => void
+  setGameCode: (gameCode: string) => void
+  addPlayer: (player: Player) => void
+  removePlayer: (memberId: string) => void
+  setPlayerCount: (count: number) => void
+  setQuestionIndex: (index: number) => void
+  reset: () => void
+}
+
+const initialState: LobbyBase = {
   gameCode: '',
   players: [],
   playerCount: 0,
   questionIndex: 0,
 }
 
-const LobbyContext = createContext(initialState)
+const LobbyContext = createContext<LobbyContextType>(
+  initialState as LobbyContextType
+)
 
 export const LobbyProvider = ({ children }) => {
   const [state, dispatch] = useReducer(LobbyReducer, initialState)
@@ -23,7 +41,7 @@ export const LobbyProvider = ({ children }) => {
     })
   }
 
-  const addPlayer = (player): void => {
+  const addPlayer = (player: Player): void => {
     dispatch({
       type: 'ADD_PLAYER',
       payload: player,
@@ -37,14 +55,14 @@ export const LobbyProvider = ({ children }) => {
     })
   }
 
-  const setPlayerCount = (count): void => {
+  const setPlayerCount = (count: number): void => {
     dispatch({
       type: 'SET_PLAYER_COUNT',
       payload: count,
     })
   }
 
-  const setQuestionIndex = (index): void => {
+  const setQuestionIndex = (index: number): void => {
     dispatch({
       type: 'SET_QUESTION_INDEX',
       payload: index,

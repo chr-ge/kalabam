@@ -1,4 +1,15 @@
-export default function reducer(state, action) {
+type LobbyAction =
+  | 'SET_GAME_CODE'
+  | 'ADD_PLAYER'
+  | 'REMOVE_PLAYER'
+  | 'SET_PLAYER_COUNT'
+  | 'SET_QUESTION_INDEX'
+  | 'RESET'
+
+export default function reducer(
+  state,
+  action: { type: LobbyAction; payload: unknown }
+) {
   switch (action.type) {
     case 'SET_GAME_CODE':
       return {

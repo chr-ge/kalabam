@@ -11,7 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
         .status(400)
         .json({ success: false, message: 'Malformed content' })
 
-    const { result } = await createEmail({
+    const result = await createEmail({
       email: email.trim(),
       userAgent: req.headers['user-agent'],
     })

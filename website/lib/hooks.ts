@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 
-export const useCountDown = (
-  time: number
-): [number, (time: number) => void] => {
+type UseCountDown = (time: number) => [number, (time: number) => void]
+
+export const useCountDown: UseCountDown = (time) => {
   const [count, setCount] = useState<number>(time)
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import { GameHeader } from './GameHeader'
 
 interface LayoutProps {
   title: string
-  mode: string
+  mode: 'create' | 'edit'
   children: ReactNode
 }
 

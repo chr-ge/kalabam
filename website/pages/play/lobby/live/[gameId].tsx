@@ -11,7 +11,7 @@ import { QuestionBlock } from '../../../../components/Lobby'
 const Question: NextPage = () => {
   const router = useRouter()
   const { data: session, status } = useSession()
-  const { data } = useGameById(router.query.gameId)
+  const { data } = useGameById(router.query.gameId as string)
   const { questionIndex } = useLobbyContext()
   const [count] = useCountDown(10)
 

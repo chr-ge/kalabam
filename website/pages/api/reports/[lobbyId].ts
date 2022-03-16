@@ -11,7 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
     return
   }
 
-  const lobbyId = req.query.lobbyId
+  const lobbyId = req.query.lobbyId as string
   const lobby = await getReportById(lobbyId)
 
   if (user.id.toString() !== lobby.createdBy.toString())

@@ -1,8 +1,30 @@
 import { useReducer, useContext, createContext } from 'react'
-import GameReducer from './GameReducer'
 import uniqid from 'uniqid'
+import GameReducer from './GameReducer'
+import type { GameBase, Question } from '../../utils/types'
 
-const initialState = {
+export type InitialGameState = GameBase & {
+  _id?: string
+  activeQuestion: Question
+}
+
+type GameContextType = InitialGameState & {
+  setGame: (game: GameBase) => void
+  updateGameSettings: ({
+    title,
+    description,
+    visibility,
+  }: Pick<GameBase, 'title' | 'description' | 'visibility'>) => void
+  setGameImage: ({ src, alt }: GameBase['image']) => void
+  addQuestion: () => void
+  setActiveQuestion: (question: Question) => void
+  updateQuestion: (question: Question) => void
+  deleteQuestion: (questionId: number) => void
+  reorderQuestions: (questions: Question[]) => void
+  resetContext: () => void
+}
+
+const initialState: InitialGameState = {
   title: '',
   description: '',
   visibility: '0',
@@ -35,12 +57,14 @@ const initialState = {
   },
 }
 
-const GameContext = createContext(initialState)
+const GameContext = createContext<GameContextType>(
+  initialState as GameContextType
+)
 
 export const GameProvider = ({ children }) => {
   const [state, dispatch] = useReducer(GameReducer, initialState)
 
-  const setGame = (game): void => {
+  const setGame = (game: GameBase): void => {
     dispatch({
       type: 'SET_GAME',
       payload: game,
@@ -79,28 +103,28 @@ export const GameProvider = ({ children }) => {
     })
   }
 
-  const setActiveQuestion = (question): void => {
+  const setActiveQuestion = (question: Question): void => {
     dispatch({
       type: 'SET_ACTIVE_QUESTION',
       payload: question,
     })
   }
 
-  const updateQuestion = (question): void => {
+  const updateQuestion = (question: Question): void => {
     dispatch({
       type: 'UPDATE_QUESTION',
       payload: question,
     })
   }
 
-  const deleteQuestion = (questionId: string): void => {
+  const deleteQuestion = (questionId: number): void => {
     dispatch({
       type: 'DELETE_QUESTION',
       payload: questionId,
     })
   }
 
-  const reorderQuestions = (questions): void => {
+  const reorderQuestions = (questions: Question[]): void => {
     dispatch({
       type: 'REORDER_QUESTIONS',
       payload: questions,

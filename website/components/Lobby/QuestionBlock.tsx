@@ -85,7 +85,7 @@ export const QuestionBlock: FC<QuestionBlockProps> = ({
         },
       })
 
-      const save = async () => {
+      const save = async (): Promise<void> => {
         try {
           await saveLobby({
             question: {
@@ -103,8 +103,8 @@ export const QuestionBlock: FC<QuestionBlockProps> = ({
   }, [showResults])
 
   useEvent(presenceChannel.channel, 'client-answer', (data, metadata) =>
-    setAnswers((a) => [
-      ...a,
+    setAnswers((answer) => [
+      ...answer,
       {
         id: metadata.user_id,
         answer: data,
@@ -170,11 +170,11 @@ export const QuestionBlock: FC<QuestionBlockProps> = ({
             <Image src={question.image} alt={question.question} />
           </Flex>
         )}
-        <SimpleGrid columns={[1, 1, 2]} spacing={6}>
-          {question.answers.map((a, i) => (
+        <SimpleGrid columns={[1, null, 2]} spacing={6}>
+          {question.answers.map((answer, i) => (
             <Answer
-              key={a.id}
-              answer={a}
+              key={answer.id}
+              answer={answer}
               color={CHOICES[i].color}
               image={CHOICES[i].image}
               showResults={showResults}

@@ -1,6 +1,8 @@
+import { PushOperator } from 'mongodb'
 import mongodb from '../db/mongodb'
+import type { Question } from '../utils/types'
 
-export const getLobbyByGameCode = async (gameCode) => {
+export const getLobbyByGameCode = async (gameCode: string) => {
   const client = await mongodb
   const db = client.db()
   return await db
@@ -23,7 +25,7 @@ export const createLobby = async (newLobby) => {
   return await collection.insertOne(lobby)
 }
 
-export async function updateLobbyByGameCode(gameCode, updates) {
+export async function updateLobbyByGameCode(gameCode: string, updates) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('lobbies')
@@ -40,7 +42,7 @@ export async function updateLobbyByGameCode(gameCode, updates) {
   )
 }
 
-export async function addQuestionToLobby(gameCode, question) {
+export async function addQuestionToLobby(gameCode: string, question: Question) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('lobbies')
@@ -49,13 +51,13 @@ export async function addQuestionToLobby(gameCode, question) {
     { gameCode },
     {
       $push: {
-        questions: question,
+        questions: question as never,
       },
     }
   )
 }
 
-export async function closeLobby(gameCode) {
+export async function closeLobby(gameCode: string) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('lobbies')

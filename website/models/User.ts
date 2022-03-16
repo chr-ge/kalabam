@@ -12,7 +12,7 @@ export async function getUserFromSession({ req }) {
   return getUserFromId(session.user.id)
 }
 
-export async function getUserFromId(userId) {
+export async function getUserFromId(userId: string) {
   const client = await mongodb
   const db = client.db()
 

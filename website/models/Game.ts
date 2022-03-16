@@ -1,7 +1,7 @@
-import { ObjectId } from 'mongodb'
+import { ObjectId, type Document, type SortDirection } from 'mongodb'
 import mongodb from '../db/mongodb'
 
-const populateCreatedByAggregateStages = [
+const populateCreatedByAggregateStages: Document[] = [
   {
     $lookup: {
       from: 'users',
@@ -25,7 +25,7 @@ const populateCreatedByAggregateStages = [
   },
 ]
 
-export async function getPublicGames(sortBy) {
+export async function getPublicGames(sortBy: SortDirection) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('games')
@@ -36,7 +36,7 @@ export async function getPublicGames(sortBy) {
     .toArray()
 }
 
-export async function getGamesCreatedByUser(userId) {
+export async function getGamesCreatedByUser(userId: string) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('games')
@@ -56,7 +56,7 @@ export async function getGamesCreatedByUser(userId) {
   return games
 }
 
-export async function getGameById(gameId) {
+export async function getGameById(gameId: string) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('games')
@@ -91,7 +91,7 @@ export async function createGame(newGame) {
   return await collection.insertOne(game)
 }
 
-export async function deleteGame(id) {
+export async function deleteGame(id: string) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('games')

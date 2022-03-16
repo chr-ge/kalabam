@@ -11,7 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
     return
   }
 
-  const gameId = req.query.gameId
+  const gameId = req.query.gameId as string
   const game = await getGameById(gameId)
   if (!game) return res.status(404).json({ message: 'Not Found' })
 

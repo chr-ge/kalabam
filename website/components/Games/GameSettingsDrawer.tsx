@@ -56,7 +56,7 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
   return (
     <>
       {title ? (
-        <ButtonGroup size='sm' isAttached colorScheme='pink'>
+        <ButtonGroup size='sm' colorScheme='pink' isAttached>
           <Box
             d='flex'
             alignItems='center'
@@ -79,6 +79,7 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
         </ButtonGroup>
       ) : (
         <Button
+          aria-label='Open Game Settings'
           leftIcon={<IoMdSettings size='18' />}
           colorScheme='pink'
           onClick={onOpen}
@@ -89,11 +90,11 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
         </Button>
       )}
       <Drawer
+        isOpen={isOpen}
+        onClose={onClose}
         placement='right'
         size='sm'
-        isOpen={isOpen}
         initialFocusRef={titleField}
-        onClose={onClose}
       >
         <DrawerOverlay>
           <DrawerContent>
@@ -132,6 +133,7 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
                     id='description'
                     borderColor='gray.200'
                     focusBorderColor='teal.200'
+                    placeholder="What's this game about?"
                     value={settings.description}
                     onChange={(e) =>
                       setSettings({ ...settings, description: e.target.value })
@@ -141,8 +143,8 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
                 <Box>
                   <FormLabel htmlFor='visibility'>Visibility</FormLabel>
                   <RadioGroup
-                    onChange={(e) =>
-                      setSettings({ ...settings, visibility: e })
+                    onChange={(visibility: '0' | '1') =>
+                      setSettings({ ...settings, visibility })
                     }
                     value={settings.visibility}
                   >
@@ -184,8 +186,8 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
               justifyContent='center'
             >
               <Button
-                mr={3}
                 aria-label='Cancel'
+                mr='3'
                 variant='outline'
                 onClick={onClose}
               >

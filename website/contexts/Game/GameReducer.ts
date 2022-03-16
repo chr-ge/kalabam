@@ -1,4 +1,6 @@
-const initialState = {
+import type { InitialGameState } from './GameContext'
+
+const initialState: InitialGameState = {
   title: '',
   description: '',
   visibility: '0',
@@ -31,7 +33,21 @@ const initialState = {
   },
 }
 
-export default function reducer(state, action) {
+type GameAction =
+  | 'SET_GAME'
+  | 'UPDATE_GAME_SETTINGS'
+  | 'SET_GAME_IMAGE'
+  | 'ADD_QUESTION'
+  | 'SET_ACTIVE_QUESTION'
+  | 'UPDATE_QUESTION'
+  | 'DELETE_QUESTION'
+  | 'REORDER_QUESTIONS'
+  | 'RESET'
+
+export default function reducer(
+  state: InitialGameState,
+  action: { type: GameAction; payload?: any }
+) {
   switch (action.type) {
     case 'SET_GAME':
       return {

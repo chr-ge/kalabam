@@ -1,6 +1,11 @@
 import mongodb from '../db/mongodb'
 
-export async function createEmail(newEmail) {
+type EmailInput = {
+  email: string
+  userAgent: string
+}
+
+export async function createEmail(newEmail: EmailInput) {
   const client = await mongodb
   const db = client.db()
   const collection = db.collection('emails')

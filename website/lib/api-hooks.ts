@@ -1,6 +1,6 @@
 import { useQuery, useMutation, queryCache } from 'react-query'
 
-const defaultQueryFn = async (input, init) => {
+const defaultQueryFn = async (input: string, init) => {
   const res = await global.fetch(input, init)
   if (res.status >= 300) {
     throw res.status
@@ -12,7 +12,7 @@ export function useGames() {
   return useQuery('/api/games', defaultQueryFn)
 }
 
-export function useGameById(gameId) {
+export function useGameById(gameId: string) {
   return useQuery(`/api/games/${gameId}`, defaultQueryFn, {
     enabled: gameId != null,
   })
@@ -34,7 +34,7 @@ export function useAddGame() {
   })
 }
 
-export function useEditGame(gameId) {
+export function useEditGame(gameId: string) {
   const editGame = (body) => {
     return defaultQueryFn(`/api/games/${gameId}`, {
       method: 'PUT',
@@ -51,7 +51,7 @@ export function useEditGame(gameId) {
   })
 }
 
-export function useDeleteGame(gameId) {
+export function useDeleteGame(gameId: string) {
   const deleteGame = () => {
     return defaultQueryFn(`/api/games/${gameId}`, {
       method: 'DELETE',
@@ -83,7 +83,7 @@ export function useCreateLobby() {
   })
 }
 
-export function useSaveLobby(gameCode) {
+export function useSaveLobby(gameCode: string) {
   const saveLobby = (body) => {
     return defaultQueryFn(`/api/play/lobby/${gameCode}`, {
       method: 'PUT',
@@ -104,13 +104,13 @@ export function useReports() {
   return useQuery('/api/reports', defaultQueryFn)
 }
 
-export function useReportById(lobbyId) {
+export function useReportById(lobbyId: string) {
   return useQuery(`/api/reports/${lobbyId}`, defaultQueryFn, {
     enabled: lobbyId != null,
   })
 }
 
-export function useDeleteReport(lobbyId) {
+export function useDeleteReport(lobbyId: string) {
   const deleteReport = () => {
     return defaultQueryFn(`/api/reports/${lobbyId}`, {
       method: 'DELETE',

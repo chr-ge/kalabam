@@ -1,8 +1,12 @@
-import { GetServerSideProps, NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import { useEffect } from 'react'
 import { getSession } from 'next-auth/react'
 import { Button, Flex, Stack } from '@chakra-ui/react'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+import {
+  DragDropContext,
+  Droppable,
+  type DropResult,
+} from 'react-beautiful-dnd'
 import {
   Layout,
   GameLoading,
@@ -19,13 +23,8 @@ interface EditProps {
 }
 
 const Edit: NextPage<EditProps> = ({ gameId }) => {
-  const {
-    setGame,
-    questions,
-    activeQuestion,
-    addQuestion,
-    reorderQuestions,
-  }: any = useGameContext()
+  const { setGame, questions, activeQuestion, addQuestion, reorderQuestions } =
+    useGameContext()
   const { isLoading, data, error } = useGameById(gameId)
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const Edit: NextPage<EditProps> = ({ gameId }) => {
 
   if (error === 404) return <Custom404 />
 
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: DropResult): void => {
     if (!result.destination) return
     if (result.destination.index === result.source.index) return
 
@@ -62,16 +61,20 @@ const Edit: NextPage<EditProps> = ({ gameId }) => {
               <Droppable droppableId='questions'>
                 {(provided) => (
                   <Stack
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
                     w={{ base: '100%', md: '48', xl: '52' }}
                     direction={{ base: 'row', md: 'column' }}
                     align='stretch'
                     overflowY='auto'
                     maxH='calc(100vh - 8rem)'
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
                   >
-                    {questions.map((q, i) => (
-                      <QuestionBox key={q.id} index={i} question={q} />
+                    {questions.map((question, i) => (
+                      <QuestionBox
+                        key={question.id}
+                        index={i}
+                        question={question}
+                      />
                     ))}
                     {provided.placeholder}
                   </Stack>
@@ -79,10 +82,9 @@ const Edit: NextPage<EditProps> = ({ gameId }) => {
               </Droppable>
             </DragDropContext>
             <Button
+              aria-label='Add Question'
               m='2'
               boxShadow='md'
-              aria-label='Add Question'
-              size='lg'
               colorScheme='teal'
               onClick={addQuestion}
             >

@@ -60,10 +60,9 @@ const Create: NextPage = () => {
             </Droppable>
           </DragDropContext>
           <Button
+            aria-label='Add Question'
             m='2'
             boxShadow='md'
-            aria-label='Add Question'
-            size='lg'
             colorScheme='teal'
             onClick={addQuestion}
           >
