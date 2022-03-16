@@ -9,9 +9,13 @@ export const Players: FC = () => {
   const { presenceChannel, players, addPlayer, removePlayer, setPlayerCount } =
     useLobbyContext()
 
-  useEvent(presenceChannel.channel, 'client-player', (data: string, metadata) => {
-    if (data) addPlayer({ id: metadata.user_id, name: data })
-  })
+  useEvent(
+    presenceChannel.channel,
+    'client-player',
+    (data: string, metadata) => {
+      if (data) addPlayer({ id: metadata.user_id, name: data })
+    }
+  )
 
   useEvent(
     presenceChannel.channel,

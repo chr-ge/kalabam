@@ -11,10 +11,10 @@ import {
   SliderThumb,
   Text,
 } from '@chakra-ui/react'
-import { AnswerInput } from '.'
-import { ImageUpload } from './Files'
 import { useGameContext } from '../../contexts/Game/GameContext'
 import type { Question as QuestionType } from '../../utils/types'
+import { ImageUpload } from './Files'
+import { AnswerInput } from '.'
 
 const COLORS = ['yellow.400', 'pink.400', 'purple.400', 'teal.400']
 

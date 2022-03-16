@@ -1,7 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { useState } from 'react'
 import { getSession } from 'next-auth/react'
-import { getUserReports } from '../models/Reports'
 import { useRouter } from 'next/router'
 import {
   Badge,
@@ -21,6 +20,7 @@ import {
 } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
 import dayjs from 'dayjs'
+import { getUserReports } from '../models/Reports'
 import { Layout } from '../components/Layout'
 
 interface ReportsInterface {

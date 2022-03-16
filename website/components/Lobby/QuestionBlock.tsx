@@ -15,9 +15,9 @@ import { ImArrowRight2 } from 'react-icons/im'
 import { useCountDown } from '../../lib/hooks'
 import { useSaveLobby } from '../../lib/api-hooks'
 import { useLobbyContext } from '../../contexts/Lobby/LobbyContext'
+import type { Question } from '../../utils/types'
 import { Answer } from './Answer'
 import { ResultsChart } from './ResultsChart'
-import type { Question } from '../../utils/types'
 
 const CHOICES = [
   { color: 'yellow.400', image: '/images/cylinder.png' },

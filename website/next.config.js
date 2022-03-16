@@ -1,3 +1,8 @@
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ **/
 module.exports = {
   env: {
     lang: 'en',

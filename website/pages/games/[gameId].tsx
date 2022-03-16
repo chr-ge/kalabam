@@ -1,6 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { getSession } from 'next-auth/react'
-import { getGameById } from '../../models/Game'
 import { useRouter } from 'next/router'
 import NextImage from 'next/image'
 import {
@@ -12,6 +11,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
+import { getGameById } from '../../models/Game'
 import { Layout } from '../../components/Layout'
 import { QuestionRow } from '../../components/Games'
 import { formatDateTime } from '../../utils/format'

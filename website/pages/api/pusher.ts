@@ -1,7 +1,7 @@
 import type { NextApiHandler } from 'next'
 import Cors from 'cors'
-import { pusher } from './pusher/auth'
 import initMiddleware from '../../lib/init-middleware'
+import { pusher } from './pusher/auth'
 
 const cors = initMiddleware(
   Cors({

@@ -6,10 +6,10 @@ import { SessionProvider } from 'next-auth/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider, type PusherProviderProps } from '@harelpls/use-pusher'
 import splitbee from '@splitbee/web'
+import theme from '@kalabam/theme'
 import { GameProvider } from '../contexts/Game/GameContext'
 import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
 import { Fonts } from '../components/Fonts'
-import theme from '@kalabam/theme'
 
 const CrispChat = dynamic(() => import('../components/Crisp'), {
   ssr: false,

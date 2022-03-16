@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import { getPublicGames } from '../models/Game'
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -20,6 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { FaChevronDown, FaChevronUp, FaCheck } from 'react-icons/fa'
 import Tilt from 'react-parallax-tilt'
+import { getPublicGames } from '../models/Game'
 import { Layout } from '../components/Layout'
 
 const ChakraTilt = chakra(Tilt)
