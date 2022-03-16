@@ -146,8 +146,7 @@ export const Header: FC = () => {
                   </MenuItem>
                   <MenuDivider />
                   <MenuItem
-                    /* @ts-ignore */
-                    onClick={() => $crisp.push(['do', 'chat:open'])}
+                    onClick={() => window.$crisp.push(['do', 'chat:open'])}
                   >
                     Help
                   </MenuItem>

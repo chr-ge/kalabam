@@ -12,9 +12,8 @@
     "node": true
   },
   "extends": [
+    "next",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
   "plugins": ["prettier"],
@@ -24,7 +23,8 @@
     "import/newline-after-import": "error",
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "off",
-    "react/no-unescaped-entities": "warn"
+    "react/no-unescaped-entities": "warn",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "react": {

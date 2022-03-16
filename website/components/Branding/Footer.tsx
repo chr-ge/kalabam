@@ -69,8 +69,7 @@ export const Footer: FC = () => (
           </Text>
           <Link href='mailto:hello@kalabam.com'>Contact</Link>
           <chakra.a
-            /* @ts-ignore */
-            onClick={() => $crisp.push(['do', 'chat:open'])}
+            onClick={() => window.$crisp.push(['do', 'chat:open'])}
             _hover={{
               cursor: 'pointer',
               textDecoration: 'underline',

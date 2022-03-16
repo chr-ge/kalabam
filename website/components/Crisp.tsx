@@ -2,9 +2,7 @@ import { FC, useEffect } from 'react'
 
 const Crisp: FC = () => {
   useEffect(() => {
-    /* @ts-ignore */
     window.$crisp = []
-    /* @ts-ignore */
     window.CRISP_WEBSITE_ID = process.env.NEXT_PUBLIC_CRISP_CHAT
     ;(function () {
       const d = document
