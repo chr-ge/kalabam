@@ -115,7 +115,9 @@ export const ImageUpload: FC<ImageUploadProps> = ({ question }) => {
       borderStyle='dashed'
       height='250px'
       rounded='md'
+      cursor='pointer'
       _active={{ borderColor: 'gray.600' }}
+      _hover={{ borderColor: 'gray.500' }}
       {...borderColor}
       {...getRootProps()}
     >

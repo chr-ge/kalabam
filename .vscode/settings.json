@@ -1,5 +1,8 @@
 {
   "editor.formatOnSave": true,
   "eslint.workingDirectories": ["./app", "./website"],
-  "cSpell.words": ["kalabam"]
+  "cSpell.words": [
+    "Dropzone",
+    "kalabam"
+  ]
 }
