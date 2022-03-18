@@ -1,11 +1,9 @@
 {
   "short_name": "Kalabam",
   "name": "Kalabam",
+  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "description": "Multiplayer Games for Class Activities or Interactive Presentations",
   "icons": [
     {
       "src": "favicon.png",
@@ -13,5 +11,7 @@
       "type": "image/png"
     }
   ],
-  "categories": ["games", "quiz"]
+  "categories": ["games", "quiz"],
+  "theme_color": "#000000",
+  "background_color": "#000000"
 }

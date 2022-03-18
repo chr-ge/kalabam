@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+# Host
+Host: https://play.kalabam.com
+
+# Sitemaps
+Sitemap: https://play.kalabam.com/sitemap.xml
