@@ -36,8 +36,6 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
       <Head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-        <link rel='icon' type='image/png' href='/favicon.png' />
-        <meta name='theme-color' content='#2A4365' />
       </Head>
       <SessionProvider session={session}>
         <ChakraProvider theme={theme}>
