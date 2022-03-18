@@ -1,2 +1,9 @@
-User-agent: *
-Disallow: /api/*
+
+# *User-agent: *
+Disallow: /api/
+
+# Host
+Host: https://www.kalabam.com
+
+# Sitemaps
+Sitemap: https://www.kalabam.com/sitemap.xml
