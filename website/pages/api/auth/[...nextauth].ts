@@ -4,21 +4,22 @@ import AppleProvider from 'next-auth/providers/apple'
 import EmailProvider from 'next-auth/providers/email'
 import GoogleProvider from 'next-auth/providers/google'
 import clientPromise from '../../../db/mongodb'
+import { config } from '../../../config'
 
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     EmailProvider({
-      server: process.env.NEXTAUTH_EMAIL_SERVER,
-      from: process.env.NEXTAUTH_EMAIL_FROM,
+      server: config.nextAuth.email.server,
+      from: config.nextAuth.email.from,
     }),
     GoogleProvider({
-      clientId: process.env.NEXTAUTH_GOOGLE_ID,
-      clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET,
+      clientId: config.nextAuth.google.clientId,
+      clientSecret: config.nextAuth.google.clientSecret,
     }),
     AppleProvider({
-      clientId: process.env.NEXTAUTH_APPLE_ID,
-      clientSecret: process.env.NEXTAUTH_APPLE_SECRET,
+      clientId: config.nextAuth.apple.clientId,
+      clientSecret: config.nextAuth.apple.clientSecret,
     }),
   ],
   callbacks: {

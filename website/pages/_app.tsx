@@ -10,15 +10,16 @@ import theme from '@kalabam/theme'
 import { GameProvider } from '../contexts/Game/GameContext'
 import { LobbyProvider } from '../contexts/Lobby/LobbyContext'
 import { Fonts } from '../components/Fonts'
+import { config } from '../config'
 
 const CrispChat = dynamic(() => import('../components/Crisp'), {
   ssr: false,
 })
 
 // Pusher Config
-const config: PusherProviderProps = {
-  clientKey: process.env.NEXT_PUBLIC_PUSHER_CLIENT_KEY,
-  cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
+const pusherConfig: PusherProviderProps = {
+  clientKey: config.pusher.clientKey,
+  cluster: config.pusher.cluster,
   authEndpoint: '/api/pusher/auth',
 }
 
@@ -42,7 +43,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
         <ChakraProvider theme={theme}>
           <Fonts />
           <CrispChat />
-          <PusherProvider {...config}>
+          <PusherProvider {...pusherConfig}>
             <GameProvider>
               <LobbyProvider>
                 <Component {...pageProps} />

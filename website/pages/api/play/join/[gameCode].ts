@@ -2,10 +2,11 @@ import type { NextApiHandler } from 'next'
 import Cors from 'cors'
 import { getLobbyByGameCode } from '../../../../models/Lobby'
 import initMiddleware from '../../../../lib/init-middleware'
+import { config } from '../../../../config'
 
 const cors = initMiddleware(
   Cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: config.corsOrigin,
     methods: 'GET',
   })
 )

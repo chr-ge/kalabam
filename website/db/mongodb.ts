@@ -1,6 +1,7 @@
 import { MongoClient, type MongoClientOptions } from 'mongodb'
+import { config } from '../config'
 
-const uri = process.env.MONGODB_URI
+const uri = config.mongodbUri
 
 const options = {
   useUnifiedTopology: true,
@@ -10,7 +11,7 @@ const options = {
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
-if (!process.env.MONGODB_URI) {
+if (!uri) {
   throw new Error('Please add your Mongo URI to .env.local')
 }
 

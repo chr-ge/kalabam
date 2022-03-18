@@ -4,8 +4,9 @@ import NextLink from 'next/link'
 import { Box, Flex, Heading, Button, chakra } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { ImArrowRight2 } from 'react-icons/im'
+import { config } from '../../config'
 
-const HeroHeading = motion(Heading)
+const MotionHeading = motion(Heading)
 
 export const Hero: FC = () => (
   <Box>
@@ -17,7 +18,7 @@ export const Hero: FC = () => (
         direction={{ base: 'column-reverse', md: 'row' }}
       >
         <Flex pt={{ base: '2', md: '16' }} w={{ md: '50%' }} direction='column'>
-          <HeroHeading
+          <MotionHeading
             as='h1'
             mb='6'
             fontSize={{ base: '5xl', md: '7xl' }}
@@ -37,7 +38,7 @@ export const Hero: FC = () => (
               fun
             </chakra.span>
             .
-          </HeroHeading>
+          </MotionHeading>
           <NextLink href='/auth/signin' passHref>
             <Button
               as='a'
@@ -47,6 +48,7 @@ export const Hero: FC = () => (
               size='lg'
               colorScheme='pink'
               rightIcon={<ImArrowRight2 />}
+              data-splitbee-event={config.splitbee.events.heroButton}
             >
               Sign up free
             </Button>

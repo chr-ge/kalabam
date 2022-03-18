@@ -3,12 +3,13 @@ import Cors from 'cors'
 import Pusher from 'pusher'
 import { getLobbyByGameCode } from '../../../models/Lobby'
 import initMiddleware from '../../../lib/init-middleware'
+import { config } from '../../../config'
 
 export const pusher = new Pusher({
-  appId: process.env.PUSHER_APP_ID,
-  key: process.env.NEXT_PUBLIC_PUSHER_CLIENT_KEY,
-  secret: process.env.PUSHER_SECRET,
-  cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
+  appId: config.pusher.appId,
+  key: config.pusher.clientKey,
+  secret: config.pusher.secret,
+  cluster: config.pusher.cluster,
   useTLS: true,
 })
 

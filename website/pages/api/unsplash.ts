@@ -1,8 +1,9 @@
 import type { NextApiHandler } from 'next'
 import { createApi, type Orientation } from 'unsplash-js'
+import { config } from '../../config'
 
 const unsplash = createApi({
-  accessKey: process.env.UNSPLASH_ACCESS_KEY,
+  accessKey: config.unsplash.accessKey,
 })
 
 const handler: NextApiHandler = async (req, res) => {
