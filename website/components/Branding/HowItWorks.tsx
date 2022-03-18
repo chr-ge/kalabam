@@ -13,6 +13,7 @@ export const HowItWorks: FC = () => (
       bgGradient='linear(to-l, #7928CA,#FF0080)'
       bgClip='text'
       textAlign='center'
+      cursor='help'
     >
       How Kalabam works
     </Heading>
