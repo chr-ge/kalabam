@@ -2,7 +2,6 @@ import type { FC } from 'react'
 import NextLink from 'next/link'
 import {
   Box,
-  chakra,
   Container,
   Flex,
   Heading,
@@ -36,7 +35,12 @@ export const Footer: FC = () => (
           <Link href='https://chr-ge.com/?ref=kalabam.com' isExternal>
             About Us
           </Link>
-          <Link href='/'>Team</Link>
+          <Link
+            href='https://github.com/chr-ge/kalabam/graphs/contributors'
+            isExternal
+          >
+            Team
+          </Link>
         </Flex>
         <Spacer />
         <Flex direction='column'>
@@ -49,11 +53,11 @@ export const Footer: FC = () => (
           >
             Community
           </Text>
-          <Link href='https://www.reddit.com' isExternal>
-            Reddit
-          </Link>
           <Link href='https://github.com/chr-ge/kalabam' isExternal>
             Github
+          </Link>
+          <Link href='https://www.reddit.com' isExternal>
+            Reddit
           </Link>
         </Flex>
         <Spacer />
@@ -68,15 +72,9 @@ export const Footer: FC = () => (
             Help
           </Text>
           <Link href='mailto:hello@kalabam.com'>Contact</Link>
-          <chakra.a
-            onClick={() => window.$crisp.push(['do', 'chat:open'])}
-            _hover={{
-              cursor: 'pointer',
-              textDecoration: 'underline',
-            }}
-          >
+          <Link onClick={() => window.$crisp.push(['do', 'chat:open'])}>
             Get Support
-          </chakra.a>
+          </Link>
           <NextLink href='/tos' passHref>
             <Link>Terms of Service</Link>
           </NextLink>
