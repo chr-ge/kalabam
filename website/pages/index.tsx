@@ -5,7 +5,7 @@ import { Layout } from '../components/Layout'
 
 const Index: NextPage = () => {
   return (
-    <Layout title='Kalabam • Create Awesome Presentations'>
+    <Layout title='Kalabam • Make Your Presentations Fun'>
       <Flex mb='24' direction='column'>
         <Hero />
         <Accounts />

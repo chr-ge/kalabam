@@ -18,7 +18,7 @@ export const Layout: FC<LayoutProps> = ({ title, children, ...props }) => {
     () => ({
       title: title || 'Kalabam',
       description:
-        'Create multiplayer hames for class activities or interactive presentations. Free for everyone: teachers, professionals, Individuals.',
+        'Create multiplayer hames for class activities or interactive presentations. Free for everyone: teachers, students, professionals, individuals.',
       keywords: 'Multiplayer Quiz,Interactive Presentations',
       url: config.host + asPath,
       imageUrl: `${config.host}/images/banner.png`,
