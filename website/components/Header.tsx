@@ -42,7 +42,7 @@ export const Header: FC = () => {
   const isLoading = status === 'loading'
 
   return (
-    <nav>
+    <Box as='header'>
       <noscript>
         <style>{'.nojs-show { opacity: 1; top: 0; }'}</style>
       </noscript>
@@ -156,6 +156,6 @@ export const Header: FC = () => {
           )}
         </Box>
       </Flex>
-    </nav>
+    </Box>
   )
 }

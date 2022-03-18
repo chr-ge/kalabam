@@ -5,8 +5,12 @@
  **/
 module.exports = {
   env: {
-    lang: 'en',
-    locale: 'en-US',
+    HOST:
+      process.env.VERCEL_ENV === 'production'
+        ? 'https://www.kalabam.com'
+        : process.env.NEXT_PUBLIC_VERCEL_URL
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+        : 'http://localhost:3000',
   },
   images: {
     domains: [

@@ -27,15 +27,15 @@ module.exports = extendTheme({
   components: {
     Heading: {
       variants: {
-        logo: (props) => ({
-          color: props.colorMode === 'dark' ? 'gray.300' : 'blue.800',
+        logo: ({ colorMode }) => ({
+          color: colorMode === 'dark' ? 'gray.300' : 'blue.800',
         }),
       },
     },
     Link: {
       variants: {
-        kalabam: (props) => ({
-          color: props.colorMode === 'dark' ? 'blue.200' : 'blue.700',
+        kalabam: ({ colorMode }) => ({
+          color: colorMode === 'dark' ? 'blue.200' : 'blue.700',
         }),
       },
     },

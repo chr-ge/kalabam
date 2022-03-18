@@ -1,4 +1,5 @@
 export const config: Config = {
+  host: process.env.HOST || '',
   corsOrigin: process.env.CORS_ORIGIN,
   crisp: {
     websiteId: process.env.NEXT_PUBLIC_CRISP_CHAT || '',
@@ -42,6 +43,10 @@ export const config: Config = {
 }
 
 interface Config {
+  /**
+   * Website host.
+   */
+  host: string
   /**
    * Cors origin.
    */
