@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Button,
@@ -11,13 +11,13 @@ import {
 import { t, Trans } from '@lingui/macro'
 import { Layout } from '../components/Layout'
 
-const Home = () => {
+const Home: FC = () => {
   const toast = useToast()
   const navigate = useNavigate()
   const [gameCode, setGameCode] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const handleClick = async () => {
+  const handleClick = async (): Promise<void> => {
     setLoading(true)
     const res = await global.fetch(
       process.env.REACT_APP_JOIN_ENDPOINT + '/' + gameCode
@@ -60,7 +60,6 @@ const Home = () => {
             onChange={(val) => setGameCode(val)}
             type='number'
             autoFocus
-            isRequired
           >
             <PinInputField />
             <PinInputField />

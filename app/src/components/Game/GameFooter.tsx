@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 import { Flex, Tag, Text, Spacer } from '@chakra-ui/react'
 import { useLobbyContext } from '../../contexts/LobbyContext'
 
-export const GameFooter = () => {
+export const GameFooter: FC = () => {
   const { name } = useLobbyContext()
 
   return (
