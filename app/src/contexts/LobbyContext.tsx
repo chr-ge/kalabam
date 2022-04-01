@@ -12,6 +12,7 @@ const initialState: InitialState = {
 
 type LobbyContextType = InitialState & {
   channel: (Channel & PresenceChannel) | undefined
+  // eslint-disable-next-line @typescript-eslint/ban-types
   trigger: (eventName: string, data: {}) => void
   name: string
   setPlayerName: (name: string) => void
