@@ -1,13 +1,13 @@
-import React from 'react'
-import { render } from '@testing-library/react'
+import { FC, ReactElement, ReactNode } from 'react'
+import { render, RenderOptions } from '@testing-library/react'
 import { ChakraProvider, theme } from '@chakra-ui/react'
 import { MemoryRouter } from 'react-router-dom'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { en, fr } from 'make-plural/plurals'
 
-import { messages } from './locales/en/messages'
-import { messages as frMessages } from './locales/fr/messages'
+import { messages } from '../locales/en/messages'
+import { messages as frMessages } from '../locales/fr/messages'
 
 i18n.load({
   en: messages,
@@ -18,7 +18,7 @@ i18n.loadLocaleData({
   fr: { plurals: fr },
 })
 
-const AllProviders = ({ children }) => (
+const AllProviders: FC = ({ children }) => (
   <ChakraProvider theme={theme}>
     <I18nProvider i18n={i18n}>
       <MemoryRouter>{children}</MemoryRouter>
@@ -26,7 +26,7 @@ const AllProviders = ({ children }) => (
   </ChakraProvider>
 )
 
-const customRender = (ui, options) =>
+const customRender = (ui: ReactElement, options?: RenderOptions) =>
   render(ui, { wrapper: AllProviders, ...options })
 
 export { customRender as render }

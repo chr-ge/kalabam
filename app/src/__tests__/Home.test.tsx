@@ -1,8 +1,7 @@
 /* eslint-env jest */
-import React from 'react'
 import { screen, act } from '@testing-library/react'
-import { render } from '../test-utils'
 import { i18n } from '@lingui/core'
+import { render } from '../utils/test-utils'
 import Home from '../pages/Home'
 
 test('renders Join Game button', () => {

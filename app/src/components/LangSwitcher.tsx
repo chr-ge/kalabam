@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import {
   Button,
   Icon,
@@ -7,13 +7,13 @@ import {
   MenuList,
   MenuItem,
 } from '@chakra-ui/react'
-import { FaGlobeAmericas, FaCheck } from 'react-icons/fa'
 import { i18n } from '@lingui/core'
 import { useLingui } from '@lingui/react'
 import { en, fr } from 'make-plural/plurals'
 import { t } from '@lingui/macro'
+import { FaGlobeAmericas, FaCheck } from 'react-icons/fa'
 
-const locales = {
+const locales: Record<string, string> = {
   en: 'English',
   fr: 'Français',
 }
@@ -23,13 +23,13 @@ i18n.loadLocaleData({
   fr: { plurals: fr },
 })
 
-const dynamicActivate = async (locale) => {
+const dynamicActivate = async (locale: string): Promise<void> => {
   const { messages } = await import(`../locales/${locale}/messages`)
   i18n.load(locale, messages)
   i18n.activate(locale)
 }
 
-export const LangSwitcher = () => {
+export const LangSwitcher: FC = () => {
   const { i18n } = useLingui()
 
   return (

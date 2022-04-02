@@ -1,10 +1,14 @@
-import React from 'react'
+import { FC, ReactNode } from 'react'
 import { Center, Flex } from '@chakra-ui/react'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
 import { LangSwitcher } from './LangSwitcher'
 import { Footer } from './Footer'
 
-export const Layout = ({ children }) => (
+interface LayoutProps {
+  children: ReactNode
+}
+
+export const Layout: FC<LayoutProps> = ({ children }) => (
   <Flex h='100vh' direction='column' align='center'>
     <Flex alignSelf='flex-end' m='4'>
       <LangSwitcher />

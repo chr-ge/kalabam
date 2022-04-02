@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { Routes, Route, Outlet } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
@@ -26,13 +26,13 @@ const config = {
 i18n.load('en', messages)
 i18n.activate('en')
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <ChakraProvider theme={theme}>
         <I18nProvider i18n={i18n}>
           <Routes>
-            <Route exact path='/' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route
               element={
                 <PusherProvider {...config}>
