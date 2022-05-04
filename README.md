@@ -1,5 +1,5 @@
 <p align="center">
-  <img width=150px height=150px src="app/public/favicon.png" alt="Project logo"></a>
+  <img width=150px height=150px src="website/public/apple-touch-icon.png" alt="Project logo"></a>
 </p>
 
 # Kalabam
