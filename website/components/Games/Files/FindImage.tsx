@@ -155,7 +155,7 @@ export const FindImage: FC = () => {
                 className=''
                 h={images.length && '2xl'}
                 w='100%'
-                d='flex'
+                display='flex'
                 overflowY='scroll'
                 breakpointCols={masonryColumns}
                 columnClassName={styles.masonryGridColumn}

@@ -91,7 +91,7 @@ const Discover: NextPage<DiscoverProps> = ({ games }) => {
               tiltMaxAngleX={10}
               tiltMaxAngleY={10}
               glareBorderRadius='0'
-              d='flex'
+              display='flex'
             >
               <NextLink href={`/games/${game._id}`} passHref>
                 <Link

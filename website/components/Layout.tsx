@@ -49,7 +49,7 @@ export const Layout: FC<LayoutProps> = ({ title, children, ...props }) => {
         <meta name='twitter:image:alt' content={seo.imageAlt} />
       </Head>
       <Box h='100%'>
-        <Box d='flex' minH='100%' flexDir='column'>
+        <Box display='flex' minH='100%' flexDir='column'>
           <Header />
           <Box as='main' flex='1' {...props}>
             {children}

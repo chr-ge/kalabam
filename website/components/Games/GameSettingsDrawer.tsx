@@ -58,7 +58,7 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
       {title ? (
         <ButtonGroup size='sm' colorScheme='pink' isAttached>
           <Box
-            d='flex'
+            display='flex'
             alignItems='center'
             mr='-px'
             px='4'
@@ -161,7 +161,7 @@ export const GameSettingsDrawer: FC<GameSettingsDrawerProps> = ({
                 <Box>
                   <FormLabel htmlFor='image'>Game Image</FormLabel>
                   <Box
-                    d='flex'
+                    display='flex'
                     p='2'
                     borderColor='gray.200'
                     borderWidth='thin'
