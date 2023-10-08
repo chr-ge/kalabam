@@ -3,7 +3,7 @@
 </p>
 
 # Kalabam
-[![CircleCI](https://circleci.com/gh/chr-ge/kalabam.svg?style=svg&circle-token=61c56c9b4e9088d7f0b1e2b67d994a7c27df4f29)](https://circleci.com/gh/chr-ge/kalabam)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/chr-ge/kalabam/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/chr-ge/kalabam/tree/master)
 > Create Multiplayer Games for Class Activities or Interactive Presentations
 
 ## Domains
