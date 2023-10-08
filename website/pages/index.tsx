@@ -18,7 +18,7 @@ const Index: NextPage = () => {
           <iframe
             title='Kalabam shapes'
             src='https://my.spline.design/untitled-f690fd5cd94766dfb1ce8e3db5c9d91d/'
-            frameBorder='0'
+            style={{ border: '0px' }}
           />
         </AspectRatio>
         <EarlyAccess />
