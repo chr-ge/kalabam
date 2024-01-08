@@ -1,4 +1,5 @@
-import { FC } from 'react'
+import '@fontsource-variable/grandstander'
+import '@fontsource-variable/rubik'
 import { Routes, Route, Outlet } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { PusherProvider } from '@harelpls/use-pusher'
@@ -26,7 +27,7 @@ const config = {
 i18n.load('en', messages)
 i18n.activate('en')
 
-const App: FC = () => {
+const App: React.FC = () => {
   return (
     <>
       <ChakraProvider theme={theme}>

@@ -26,6 +26,8 @@
     "@chakra-ui/react": "1.8.6",
     "@emotion/react": "11.8.2",
     "@emotion/styled": "11.8.1",
+    "@fontsource-variable/grandstander": "5.0.19",
+    "@fontsource-variable/rubik": "5.0.20",
     "@harelpls/use-pusher": "7.2.1",
     "@kalabam/theme": "^1.0.0",
     "framer-motion": "6.2.8",

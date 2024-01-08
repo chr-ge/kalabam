@@ -1,3 +1,5 @@
+import '@fontsource-variable/grandstander'
+import '@fontsource-variable/rubik'
 import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import Head from 'next/head'
