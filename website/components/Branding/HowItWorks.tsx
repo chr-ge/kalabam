@@ -50,8 +50,8 @@ export const HowItWorks: FC = () => (
           borderColor='gray.100'
           color='gray.600'
         >
-          Build a game with multiple questions and answers. Make a quiz about
-          anything in minutes.
+          Add your questions, choose the right answers, and build an interactive
+          game in just a few minutes.
         </Text>
       </AnimatedBox>
       <AnimatedBox
@@ -87,8 +87,7 @@ export const HowItWorks: FC = () => (
           borderColor='gray.100'
           color='gray.600'
         >
-          Host a live game by sharing your screen or displaying the questions
-          for everyone to see.
+          Present the game live and invite players to join instantly using a simple game code.
         </Text>
       </AnimatedBox>
       <AnimatedBox
@@ -123,8 +122,8 @@ export const HowItWorks: FC = () => (
           borderColor='gray.100'
           color='gray.600'
         >
-          Ready! Join a game with a code provided by the host and answer
-          questions on your device.
+          Players answer in real time from their own devices while scores
+          and rankings update as the game goes on.
         </Text>
       </AnimatedBox>
     </Stack>
