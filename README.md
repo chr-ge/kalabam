@@ -4,7 +4,7 @@
 
 # Kalabam
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/chr-ge/kalabam/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/chr-ge/kalabam/tree/master)
-> Create Multiplayer Games for Class Activities or Interactive Presentations
+> Create interactive quiz games in minutes. Share a code, get everyone playing, and make your next class, meeting, or game night a lot more fun.
 
 ## Domains
 - [kalabam.com](https://kalabam.com)
