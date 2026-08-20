@@ -50,7 +50,7 @@ export const Hero: FC = () => (
               rightIcon={<ImArrowRight2 />}
               data-splitbee-event={config.splitbee.events.heroButton}
             >
-              Sign up free
+              Sign up for free
             </Button>
           </NextLink>
         </Flex>
