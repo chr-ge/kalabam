@@ -30,12 +30,12 @@ export const Hero: FC = () => (
               visible: { scale: 1, opacity: 1, transition: { delay: 0.2 } },
             }}
           >
-            Make your presentations{' '}
+            Turn presentations into live{' '}
             <chakra.span
               bgClip='text'
               bgGradient='linear(to-l, #7928CA,#FF0080)'
             >
-              fun
+              games
             </chakra.span>
             .
           </MotionHeading>
