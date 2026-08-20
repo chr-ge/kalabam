@@ -25,9 +25,9 @@ export const Accounts: FC = () => (
           style={{ transformStyle: 'preserve-3d' }}
         >
           <Heading color='teal.800' fontSize='2xl'>
-            Students and Teachers
+            Classrooms
           </Heading>
-          <Text my='4'>Make class activities interesting for any subject.</Text>
+          <Text my='4'>Turn lessons and reviews into live games that keep the whole class involved.</Text>
           <Circle bg='teal.100' style={{ transformStyle: 'preserve-3d' }}>
             <Icon
               as={FcGraduationCap}
@@ -51,10 +51,10 @@ export const Accounts: FC = () => (
           style={{ transformStyle: 'preserve-3d' }}
         >
           <Heading color='pink.800' fontSize='2xl'>
-            Professionals
+            Teams
           </Heading>
           <Text my='4'>
-            Turn your work presentation into an interactive one.
+            Add an interactive quiz to meetings, presentations, workshops, and team events.
           </Text>
           <Circle bg='pink.100' style={{ transformStyle: 'preserve-3d' }}>
             <Icon
@@ -79,10 +79,10 @@ export const Accounts: FC = () => (
           style={{ transformStyle: 'preserve-3d' }}
         >
           <Heading color='purple.800' fontSize='2xl'>
-            Individuals
+            Friends
           </Heading>
           <Text my='4'>
-            Create games to your hearts desire and play with your friends.
+            Create quizzes, challenges, and inside-joke games for your friends and see who comes out on top.
           </Text>
           <Circle bg='purple.100' style={{ transformStyle: 'preserve-3d' }}>
             <Icon
